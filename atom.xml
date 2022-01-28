@@ -42,10 +42,10 @@
     <link href="http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"/>
     <id>http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/</id>
     <published>2021-01-30T14:24:39.000Z</published>
-    <updated>2022-01-28T08:42:29.010Z</updated>
+    <updated>2022-01-28T14:41:04.291Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本次实验使用硬件描述语言 Verilog HDL，针对以 Altera 公司的 MAX II 系列可编程器件 EPM1270T144C5 为核心芯片的可编程器件实验板设计实验简易电子演奏琴，其基本功能 包括如下：&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;（1）通过用 8×8 点阵显示“1 2 3 4 5 6 7”七个音符构成的电子琴键盘。其中点阵的第 一列用一个 LED 点亮表示音符“1”，第二列用二个 LED 点亮表示音符“2”，依此类推，如图 1 所示。当音符为低音 1~7 时，点阵显示为绿色；当音符为中音 1~7 时，点阵显示为红色； 当音符为高音 1~7 时，点阵显示为黄色。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;（2）用 BTN7～BTN1 七个按键模拟电子琴手动演奏时的“1 2 3 4 5 6 7”七个音符。当 某个按键按下时，数码管 DISP7 显示相应的音符，点阵上与之对应的音符显示列全灭，同 时蜂鸣器演奏相应的声音；当按键放开时数码管显示的音符灭掉，点阵显示恢复，蜂鸣器停 止声音的输出。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;（3）由拨码开关切换选择高、中、低音，点阵颜色进行相应变化。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;（4）可通过拨码开关 SW0 进行手动/自动演奏的切换，自动演奏时，点阵根据乐曲进 行颜 色和亮灭的变化。 该实验设计过程中，将整个门铃分为 8 个模块：分频模块，演奏模块，点阵显示模块， 数码管显示模块。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最后通过对程序的调试、相应部分功能的仿真以及在电路板的烧写，验证了整个系统的原理和本设计方案的正确性。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;strong&gt;完整工程文件：&lt;/strong&gt; &lt;a href=&quot;https://github.com/lgc0208/electronic_organ&quot;&gt;https://github.com/lgc0208/electronic_organ&lt;/a&gt;&lt;br&gt;&amp;nbsp;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本次实验使用硬件描述语言 Verilog HDL，针对以 Altera 公司的 MAX II 系列可编程器件 EPM1270T144C5 为核心芯片的可编程器件实验板设计实验简易电子演奏琴。&lt;/p&gt;</summary>
     
     
     

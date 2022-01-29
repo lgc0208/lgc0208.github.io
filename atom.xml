@@ -38,6 +38,138 @@
   </entry>
   
   <entry>
+    <title>美赛 F 奖经验贴</title>
+    <link href="http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/"/>
+    <id>http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/</id>
+    <published>2021-07-31T13:45:47.000Z</published>
+    <updated>2022-01-29T14:19:10.112Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2021美赛过去半年了，一直也在忙各种各样的事情，刚好上学期有一门项目管理的课程，课程论文写的就是美赛经验，偷个懒直接改下排版复制上来，以作留念&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="竞赛" scheme="http://example.com/categories/%E7%AB%9E%E8%B5%9B/"/>
+    
+    <category term="美国大学生数学建模竞赛" scheme="http://example.com/categories/%E7%AB%9E%E8%B5%9B/%E7%BE%8E%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AB%9E%E8%B5%9B/"/>
+    
+    
+    <category term="心得" scheme="http://example.com/tags/%E5%BF%83%E5%BE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>流水灯、存储器、外部中断实验</title>
+    <link href="http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"/>
+    <id>http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</id>
+    <published>2021-07-07T16:10:46.000Z</published>
+    <updated>2022-01-29T14:20:26.903Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;计算机原理与应用实验-流水灯、存储器、外部中断实验&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Verilog" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/"/>
+    
+    <category term="汇编" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/%E6%B1%87%E7%BC%96/"/>
+    
+    <category term="C" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/%E6%B1%87%E7%BC%96/C/"/>
+    
+    
+    <category term="Verilog" scheme="http://example.com/tags/Verilog/"/>
+    
+    <category term="汇编" scheme="http://example.com/tags/%E6%B1%87%E7%BC%96/"/>
+    
+    <category term="C" scheme="http://example.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于微信小程序的北邮信息门户通知查询系统</title>
+    <link href="http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-06-10T07:27:49.000Z</published>
+    <updated>2022-01-29T14:20:43.768Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Python" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
+    
+    <category term="Java" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/"/>
+    
+    <category term="SQL Server" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/SQL-Server/"/>
+    
+    <category term="微信小程序" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/SQL-Server/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="SQL Server" scheme="http://example.com/tags/SQL-Server/"/>
+    
+    <category term="微信小程序" scheme="http://example.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于 pygame 的五子棋小游戏</title>
+    <link href="http://example.com/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/"/>
+    <id>http://example.com/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/</id>
+    <published>2021-02-02T09:33:22.000Z</published>
+    <updated>2022-01-29T14:18:52.598Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1、摘要&quot;&gt;&lt;a href=&quot;#1、摘要&quot; class=&quot;headerlink&quot; title=&quot;1、摘要&quot;&gt;&lt;/a&gt;1、摘要&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;通过python的pygame库，实现一款支持人机对战和人人对战的五子棋小游戏。在游戏初始界面会有5秒的规则介绍，五秒后自动进入人机对战模式。玩家可根据游戏中的提示按下Q键切换为初始人人对战对接，按下E键切换为初始人机对战界面。在游戏进行过程中，程序会记录并显示黑白两子的累计获胜局数，提高玩家体验。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;完整代码&lt;/strong&gt;：&lt;a href=&quot;https://github.com/lgc0208/Gobang&quot;&gt;https://github.com/lgc0208/Gobang&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Python" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简易函数信号发生器的设计和实现</title>
+    <link href="http://example.com/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/"/>
+    <id>http://example.com/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/</id>
+    <published>2021-01-30T15:28:15.000Z</published>
+    <updated>2022-01-29T14:19:16.278Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&amp;lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于 Verilog 和 EPM1270T144C5 的简易电子琴</title>
     <link href="http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"/>
     <id>http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/</id>
@@ -55,6 +187,226 @@
     
     
     <category term="Verilog" scheme="http://example.com/tags/Verilog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（6）</title>
+    <link href="http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/"/>
+    <id>http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/</id>
+    <published>2020-05-02T15:50:22.000Z</published>
+    <updated>2022-01-29T14:20:16.562Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/27/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1%E5%8F%8A%E5%85%B6%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF(5)/&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（5）&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（5）</title>
+    <link href="http://example.com/2020/04/27/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(5)/"/>
+    <id>http://example.com/2020/04/27/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(5)/</id>
+    <published>2020-04-27T15:07:03.000Z</published>
+    <updated>2022-01-29T14:20:07.420Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/24/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1%E5%8F%8A%E5%85%B6%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF(4)/&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（4）&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（4）</title>
+    <link href="http://example.com/2020/04/24/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(4)/"/>
+    <id>http://example.com/2020/04/24/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(4)/</id>
+    <published>2020-04-24T06:29:18.000Z</published>
+    <updated>2022-01-29T14:19:44.411Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/22/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1%E5%8F%8A%E5%85%B6%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF(3)/&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（3）&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++学习笔记-树</title>
+    <link href="http://example.com/2020/04/23/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/"/>
+    <id>http://example.com/2020/04/23/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/</id>
+    <published>2020-04-23T02:10:26.000Z</published>
+    <updated>2022-01-29T14:18:37.839Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前言：&lt;strong&gt;树型结构是&lt;/strong&gt;一类重要的&lt;strong&gt;非线性结构&lt;/strong&gt;,其特点是结点之间有分支,并具有层次关系。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="C++" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C/"/>
+    
+    
+    <category term="C++" scheme="http://example.com/tags/C/"/>
+    
+    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（3）</title>
+    <link href="http://example.com/2020/04/22/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(3)/"/>
+    <id>http://example.com/2020/04/22/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(3)/</id>
+    <published>2020-04-22T15:40:14.000Z</published>
+    <updated>2022-01-29T14:19:39.106Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/21/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1%E5%8F%8A%E5%85%B6%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF(2)/&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（2）&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（2）</title>
+    <link href="http://example.com/2020/04/21/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(2)/"/>
+    <id>http://example.com/2020/04/21/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(2)/</id>
+    <published>2020-04-21T08:09:22.000Z</published>
+    <updated>2022-01-29T14:19:33.321Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/11/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1%E5%8F%8A%E5%85%B6%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF(1)/&quot;&gt;双极型晶体管及其放大电路（1）&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（1）</title>
+    <link href="http://example.com/2020/04/11/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(1)/"/>
+    <id>http://example.com/2020/04/11/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(1)/</id>
+    <published>2020-04-11T08:48:01.000Z</published>
+    <updated>2022-01-29T14:19:24.868Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++学习笔记-顺序表vector</title>
+    <link href="http://example.com/2020/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_vector/"/>
+    <id>http://example.com/2020/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_vector/</id>
+    <published>2020-04-05T07:23:45.000Z</published>
+    <updated>2022-01-29T14:18:30.373Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;与string类一样 vector 类是随标准 C++引入的标准库的一部分 ，为了使用vector 我们必须包含相关的头文件  ：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="C++" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C/"/>
+    
+    
+    <category term="C++" scheme="http://example.com/tags/C/"/>
+    
+    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++-throw抛出异常</title>
+    <link href="http://example.com/2020/03/31/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_throw/"/>
+    <id>http://example.com/2020/03/31/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_throw/</id>
+    <published>2020-03-31T04:33:11.000Z</published>
+    <updated>2022-01-29T14:18:23.346Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 在学习C++数据结构的过程中，常常会见到如下的代码块：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="C++" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C/"/>
+    
+    
+    <category term="C++" scheme="http://example.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python学习笔记_else的用法</title>
+    <link href="http://example.com/2020/03/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_else/"/>
+    <id>http://example.com/2020/03/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_else/</id>
+    <published>2020-03-30T11:08:35.000Z</published>
+    <updated>2022-01-29T14:18:58.658Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 在学习Python前，基于对于CPP的学习，对于else的印象就是，else与if要成对出现。但是在不久前，一个在编写100以内求素数的程序时偶然出现的缩进“错误”导致了我的疑惑。代码如下：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Python" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
     
   </entry>
   

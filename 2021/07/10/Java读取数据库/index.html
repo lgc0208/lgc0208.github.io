@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun-side.svg#/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Java读取数据库"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2021-07-10T05:12:10.000Z" itemprop="datePublished">2021-07-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：<a target="_blank" rel="noopener" href="https://download.csdn.net/download/weixin_45817309/20150415">Java本地服务器读取SQL Server中的数据及账号密码核对</a></p>
+<span id="more"></span>
+
+<h1 id="1-系统概述"><a href="#1-系统概述" class="headerlink" title="1 系统概述"></a>1 系统概述</h1><p><strong>1.1 系统简介</strong></p>
+<p>基于微信小程序实现学校信息门户中校内通知、公示公告、校内新闻和学术讲座的便捷查看。</p>
+<p><strong>1.2 术语表</strong>  </p>
+<p>该文档涉及到的术语如表1所示。</p>
+<center>表 1 详细设计术语表</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th><strong>术语或缩略语</strong></th>
+<th><strong>说明性定义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>微信小程序</td>
+<td>微信小程序是一种不需要下载安装即可使用的应用，用户使用微信扫一扫或搜一下即可打开应用。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据库</td>
+<td>数据库是“按照数据结构来组织、存储和管理数据的仓库”。是一个长期存储在计算机内的、有组织的、可共享的、统一管理的大量数据的集合。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>信息门户</td>
+<td>信息门户是指利用网络浏览器访问组织内部和外部关键信息的单一入口，解决信息超载问题，利用先进的搜索及索引技术构建起一个内联网环境，用来从不同的信息系统和互联网中搜索和获取信息。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>爬虫</td>
+<td>爬虫是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PM</td>
+<td>Project Manager,项目经理</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑层</td>
+<td>小程序开发框架的逻辑层使用 JavaScript 引擎为小程序提供开发者 JavaScript 代码的运行环境以及微信小程序的特有功能。逻辑层将数据进行处理后发送给视图层，同时接受视图层的事件反馈。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>视图层</td>
+<td>框架的视图层由 WXML 与 WXSS 编写，由组件来进行展示。将逻辑层的数据反映成视图，同时将视图层的事件发送给逻辑层。</td>
+</tr>
+</tbody></table>
+<p><strong>1.3 系统运行环境</strong> </p>
+<ol>
+<li> <strong>软件环境：</strong></li>
+</ol>
+<p>系统所需要的软件环境如表2所示。</p>
+<center>表 2 系统运行的软件环境</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>分类</strong></th>
+<th><strong>名称</strong></th>
+<th><strong>版本</strong></th>
+<th><strong>语种</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC操作系统</td>
+<td>Windows 10</td>
+<td>家庭中文版</td>
+<td>简体中文</td>
+</tr>
+<tr>
+<td>数据库平台</td>
+<td>Microsoft SQL Server</td>
+<td>2019</td>
+<td>Sql</td>
+</tr>
+<tr>
+<td>服务器端</td>
+<td>IntelliJ IDEA</td>
+<td>2020.1</td>
+<td>Java</td>
+</tr>
+<tr>
+<td></td>
+<td>Tomcat</td>
+<td>9.0.44</td>
+<td></td>
+</tr>
+<tr>
+<td>开发环境</td>
+<td>Java</td>
+<td>14.0.1</td>
+<td>Java</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li> <strong>硬件平台</strong></li>
+</ol>
+<p>系统运行的硬件平台如表3所示。</p>
+<center>表 3 系统运行的硬件平台</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>设备名称</strong></th>
+<th><strong>设备要求</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>装有 Java 14.0.1 及以上版本、 Apache Tomcat 对应版本 、Microsoft SQL Server 数据库 2019及以上版本</td>
+</tr>
+</tbody></table>
+<p><strong>1.4 开发环境</strong> </p>
+<p>该程序开发环境如表4所示。</p>
+<center>表 4 程序开发环境</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>分类</strong></th>
+<th><strong>名称</strong></th>
+<th><strong>版本</strong></th>
+<th><strong>语种</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC操作系统</td>
+<td>Windows 10</td>
+<td>家庭中文版</td>
+<td>简体中文</td>
+</tr>
+<tr>
+<td>开发平台</td>
+<td>IntelliJ IDEA</td>
+<td>2020.1</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>开发平台</td>
+<td>Tomcat</td>
+<td>9.0.44</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>数据库平台</td>
+<td>Microsoft SQL Server</td>
+<td>2019</td>
+<td>Sql</td>
+</tr>
+</tbody></table>
+<h1 id="2-模块设计"><a href="#2-模块设计" class="headerlink" title="2 模块设计"></a>2 模块设计</h1><h2 id="2-1-模块2-Java-Tomcat-服务器模块"><a href="#2-1-模块2-Java-Tomcat-服务器模块" class="headerlink" title="2.1 模块2 Java Tomcat 服务器模块"></a><strong>2.1 模块2 Java Tomcat 服务器模块</strong></h2><h3 id="2-1-1-设计图"><a href="#2-1-1-设计图" class="headerlink" title="2.1.1 设计图"></a><strong>2.1.1 设计图</strong></h3><p>该模块的设计图如图1所示。</p>
+<div align=center>
+<img src="https://img-blog.csdnimg.cn/20210710111158840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" />
+</div>
+
+<center>图1 Java Tomcat 服务器模块设计图</center>
+
+
+<h3 id="2-1-2-功能描述"><a href="#2-1-2-功能描述" class="headerlink" title="2.1.2 功能描述"></a><strong>2.1.2 功能描述</strong></h3><p>该部分包含九个类，该部分为数据库和微信小程序之间的桥梁模块，搭建服务器作为数据库和微信小程序通信的中枢。</p>
+<h3 id="2-1-3-输入数据"><a href="#2-1-3-输入数据" class="headerlink" title="2.1.3 输入数据"></a><strong>2.1.3 输入数据</strong></h3><p>若需要检验用户的登录名和密码，需要在GET指定URL时同时传递username和password数据。</p>
+<h3 id="2-1-4-输出数据"><a href="#2-1-4-输出数据" class="headerlink" title="2.1.4 输出数据"></a><strong>2.1.4 输出数据</strong></h3><p>若访问的为用户登录鉴权接口，则根据用户传递的数据返回success（登陆成功）或error（登录失败）。</p>
+<p>若访问的为各类通知对应的接口，则返回JSON格式的通知数据，包含信息标题title，发布日期date，文章主体article和文章中包含的图片的URL地址image。</p>
+<h3 id="2-1-5-数据设计"><a href="#2-1-5-数据设计" class="headerlink" title="2.1.5 数据设计"></a><strong>2.1.5 数据设计</strong></h3><pre><code>该部分的数据设计如表5所示。
+</code></pre>
+<center>表 5 Java Tomcat 服务器模块数据设计</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>数据结构</strong></th>
+<th><strong>元素类型</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>information</td>
+<td>ArrayList</td>
+<td>String</td>
+<td>存储从数据库中获取的信息</td>
+</tr>
+<tr>
+<td>ct</td>
+<td>Database</td>
+<td>Table</td>
+<td>读取数据库的数据</td>
+</tr>
+<tr>
+<td>jsonOutput</td>
+<td>String</td>
+<td>char</td>
+<td>作为JSON格式的数据供微信小程序读取</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-6-算法和流程"><a href="#2-1-6-算法和流程" class="headerlink" title="2.1.6 算法和流程"></a><strong>2.1.6 算法和流程</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>  **<span class="keyword">if</span>** 访问通知获取接口:  &#123;</span><br><span class="line"><span class="number">2.</span>    	获取数据库连接  </span><br><span class="line"><span class="number">3.</span>   	从数据库的指定表中读取信息  </span><br><span class="line"><span class="number">4.</span>   	根据不同列名将数据按照对应格式存储到List  </span><br><span class="line"><span class="number">5.</span>   	将List中的数据转换为JSON格式  </span><br><span class="line"><span class="number">6.</span>   **<span class="keyword">if</span>** 接口被以GET或POST格式访问：  </span><br><span class="line"><span class="number">7.</span>       在网页上输出JSON格式的信息  &#125;</span><br><span class="line"><span class="number">8.</span>   **<span class="keyword">if</span>** 访问登录鉴权接口:  &#123;</span><br><span class="line"><span class="number">9.</span>   	获取数据库连接  </span><br><span class="line"><span class="number">10.</span>  	获取前端传递的信息  </span><br><span class="line"><span class="number">11.</span>  	将传递的信息与数据库中的信息进行比对  </span><br><span class="line"><span class="number">12.</span>  	**<span class="keyword">if</span>** 比对成功:  </span><br><span class="line"><span class="number">13.</span>      	在网页上输出 success 的信息  </span><br><span class="line"><span class="number">14.</span>  	**<span class="keyword">else</span>**:  </span><br><span class="line"><span class="number">15.</span>      	在网页上输出 error 的信息 &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-7-函数实现"><a href="#3-4-7-函数实现" class="headerlink" title="3.4.7 函数实现"></a><strong>3.4.7 函数实现</strong></h3><p>该部分的函数说明如表6所示。</p>
+<center>表 6 Java Tomcat 服务器模块函数说明</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>函数名称</strong></th>
+<th><strong>功能</strong></th>
+<th><strong>参数</strong></th>
+<th><strong>返回值</strong></th>
+<th><strong>算法说明</strong></th>
+<th><strong>全局变量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>informationDatabase</td>
+<td>构造函数</td>
+<td>String lableName</td>
+<td>None</td>
+<td>完成对数据库的链接工作</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getInformation</td>
+<td>获取通知信息并存储到Notification数组中</td>
+<td>None</td>
+<td>JSON格式的通知字符串</td>
+<td>从数据库的指定表中获取信息，根据不同列将信息分类存储，并转换为JSON格式</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>构造函数</td>
+<td>信息标题title，发布日期date，文章主体article和文章中图片的URL地址image</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>doGet</td>
+<td>网页传递来的信息和回应的信息</td>
+<td>HttpServletRequest request, HttpServletResponse response</td>
+<td>None</td>
+<td>当用户使用GET方式访问时给出相应的反应</td>
+<td>None</td>
+</tr>
+<tr>
+<td>doGet</td>
+<td>网页传递来的信息和回应的信息</td>
+<td>HttpServletRequest request, HttpServletResponse response</td>
+<td>None</td>
+<td>当用户使用POST方式访问时给出相应的反应</td>
+<td>None</td>
+</tr>
+<tr>
+<td>userDatabase</td>
+<td>构造函数</td>
+<td>None</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>checkUser</td>
+<td>确认登录信息</td>
+<td>用户登录username, 用户登录密码password</td>
+<td>若查到，返回对象User，否则返回null</td>
+<td>将传递进来的信息与数据库信息进行查询比对，若找到，返回信息，否则返回null</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getTitle</td>
+<td>赋值</td>
+<td>None</td>
+<td>title</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setTitle</td>
+<td>取值</td>
+<td>title</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getDate</td>
+<td>赋值</td>
+<td>None</td>
+<td>date</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setDate</td>
+<td>取值</td>
+<td>date</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getArticle</td>
+<td>赋值</td>
+<td>None</td>
+<td>article</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setArticle</td>
+<td>取值</td>
+<td>article</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getImage</td>
+<td>取值</td>
+<td>None</td>
+<td>image</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setImage</td>
+<td>赋值</td>
+<td>image</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getUsername</td>
+<td>赋值</td>
+<td>None</td>
+<td>username</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setUsername</td>
+<td>取值</td>
+<td>username</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>getPassword</td>
+<td>赋值</td>
+<td>None</td>
+<td>password</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+<tr>
+<td>setPassword</td>
+<td>取值</td>
+<td>password</td>
+<td>None</td>
+<td>赋值语句</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  Name:       Information.java</span></span><br><span class="line"><span class="comment"> *  Author:     LIN Guocheng</span></span><br><span class="line"><span class="comment"> *  Date:       2021-3-28</span></span><br><span class="line"><span class="comment"> *  Function:   用于存取校内通知的标题、发布时间和文章主体。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Information</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line">    <span class="keyword">private</span> String article;</span><br><span class="line">    <span class="keyword">private</span> String[] image;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Information</span><span class="params">(String title, String date, String article, String[] image)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">        <span class="keyword">this</span>.article = article;</span><br><span class="line">        <span class="keyword">this</span>.image = image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDate</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getArticle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> article;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setArticle</span><span class="params">(String article)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.article = article;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(String[] image)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.image = image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String[] getImage() &#123;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> myServlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> database.informationDatabase;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">announcementServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//设置响应头允许ajax跨域访问</span></span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET,POST&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Writer out = response.getWriter();</span><br><span class="line">        String jsonOutput = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        informationDatabase nd = <span class="keyword">new</span> informationDatabase(<span class="string">&quot;schoolAnnouncements&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            jsonOutput = nd.getInformation();</span><br><span class="line">            out.write(jsonOutput);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        out.flush();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doGet(request,response);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.Information;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">informationDatabase</span> </span>&#123;</span><br><span class="line">    String lableName = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    Connection ct = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement pestmt = <span class="keyword">null</span>;</span><br><span class="line">    String jsonOutput = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Information&gt; information = <span class="keyword">new</span> ArrayList&lt;Information&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">informationDatabase</span><span class="params">(String lableName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.lableName = lableName;</span><br><span class="line">            Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">            ct = DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:1433;databaseName=schoolNews&quot;</span>, <span class="string">&quot;这里输入数据库用户名&quot;</span>, <span class="string">&quot;这里输入数据库密码&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (ct != <span class="keyword">null</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接成功&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取通知信息并存储到Notification数组中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInformation</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;正在打包发送 校内通知&quot;</span>);</span><br><span class="line"></span><br><span class="line">            pestmt = ct.prepareStatement(<span class="string">&quot;select * from &quot;</span> + <span class="keyword">this</span>.lableName + <span class="string">&quot; order by date desc&quot;</span>);</span><br><span class="line">            ResultSet rs = pestmt.executeQuery(); <span class="comment">// 将数据库响应的查询结果放在rs中</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(rs.next()) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(1)+&quot;,&quot;);	//标题</span></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(2)+&quot;,&quot;);</span></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(3)+&quot;,&quot;);</span></span><br><span class="line">                String[] imgUrls = rs.getString(<span class="number">4</span>).split(<span class="string">&quot;,&quot;</span>); <span class="comment">// 将image字符串按逗号分割，成为数组</span></span><br><span class="line">                Information information = <span class="keyword">new</span> Information(rs.getString(<span class="number">1</span>),rs.getString(<span class="number">2</span>),rs.getString(<span class="number">3</span>),imgUrls);</span><br><span class="line">                <span class="keyword">this</span>.information.add(information);</span><br><span class="line">            &#125;</span><br><span class="line">            jsonOutput = JSON.toJSONString(information);</span><br><span class="line">            System.out.println(jsonOutput);</span><br><span class="line">            <span class="keyword">return</span> jsonOutput;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;转换JSON出错&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            ct.close();</span><br><span class="line">            pestmt.close();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">userDatabase</span> </span>&#123;</span><br><span class="line">    Connection ct = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement pestmt = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">userDatabase</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">            ct=DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:1433;databaseName=schoolNews&quot;</span>, <span class="string">&quot;数据库用户名&quot;</span>, <span class="string">&quot;数据库密码&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(ct != <span class="keyword">null</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接成功&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 确认登录信息</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">checkUser</span><span class="params">(String username,String password)</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;正在确认登录信息&quot;</span>);</span><br><span class="line">            pestmt=ct.prepareStatement(<span class="string">&quot;select * from [User] where convert(nvarchar(255),username)=? and convert(nvarchar(255),password)=?&quot;</span>);</span><br><span class="line">            pestmt.setString(<span class="number">1</span>, username);</span><br><span class="line">            pestmt.setString(<span class="number">2</span>, password);</span><br><span class="line">            ResultSet rs=pestmt.executeQuery(); <span class="comment">// 将数据库响应的查询结果放在rs中</span></span><br><span class="line">            System.out.println(<span class="string">&quot;数据库响应结果为：&quot;</span> + rs.toString());</span><br><span class="line"></span><br><span class="line">            User user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                user.setUsername(rs.getString(<span class="number">1</span>));<span class="comment">//第一个属性</span></span><br><span class="line">                user.setPassword(rs.getString(<span class="number">2</span>));<span class="comment">//第二个属性</span></span><br><span class="line">                System.out.println(<span class="string">&quot;用户信息为：&quot;</span> + user.getUsername() + <span class="string">&quot; &quot;</span> + user.getPassword());</span><br><span class="line">                <span class="keyword">return</span> user;	<span class="comment">///查到就返回对象</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            ct.close();</span><br><span class="line">            pestmt.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> myServlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.User;</span><br><span class="line"><span class="keyword">import</span> database.userDatabase;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">userServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//设置响应头允许ajax跨域访问</span></span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET,POST&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取微信小程序get的参数值并打印</span></span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        String password = request.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;微信小程序中获得的内容为：username:&quot;</span> + username + <span class="string">&quot; password:&quot;</span> + password);</span><br><span class="line"></span><br><span class="line">        userDatabase userDatabase =<span class="keyword">new</span> userDatabase(); <span class="comment">// 建立输入信息比对对象</span></span><br><span class="line">        HttpSession session=request.getSession(); <span class="comment">// 创建保存信息对象</span></span><br><span class="line">        User user=(User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;<span class="comment">//第一次进入</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                user= userDatabase.checkUser(username, password);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="comment">///如果账户密码正确，把返回的对象抛给user，不正确对象则为空</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        session.setAttribute(<span class="string">&quot;user&quot;</span>, user);<span class="comment">///保存对象</span></span><br><span class="line">        Writer out = response.getWriter();</span><br><span class="line">        <span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;<span class="comment">///有对象，用户名密码正确</span></span><br><span class="line">            out.write(<span class="string">&quot;success&quot;</span>);<span class="comment">//向小程序返回结果</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//对象为空</span></span><br><span class="line">            out.write(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        out.flush();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doGet(request,response);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-8-全局数据结构与该模块的关系"><a href="#2-1-8-全局数据结构与该模块的关系" class="headerlink" title="2.1.8 全局数据结构与该模块的关系"></a><strong>2.1.8 全局数据结构与该模块的关系</strong></h3><p>该模块为数据库和微信小程序相互通信的中枢模块，与数据库之间的通信通过JDBC进行，与微信小程序之间的通信依赖于微信小程序的主动访问。</p>
+<h2 id="2-2-数据库设计"><a href="#2-2-数据库设计" class="headerlink" title="2.2 数据库设计"></a>2.2 数据库设计</h2><h3 id="2-2-1-数据库及数据表"><a href="#2-2-1-数据库及数据表" class="headerlink" title="2.2.1 数据库及数据表"></a><strong>2.2.1 数据库及数据表</strong></h3><p>本系统内使用的数据库系统为 Microsoft SQL Server 2019 数据库，数据库中包含表<br>User, schoolAnnouncements, schoolArticles, schoolLectures 和 schoolNews<br>五张表，分别用于用户登录鉴权、公告公示、校内通知、学术讲座和校内新闻的存储。</p>
+<h3 id="2-2-2-数据结构设计"><a href="#2-2-2-数据结构设计" class="headerlink" title="2.2.2 数据结构设计"></a><strong>2.2.2 数据结构设计</strong></h3><p>五张表中，User 表的数据结构设计如表7所示，schoolAnnouncements, schoolArticles,<br>schoolLectures 和 schoolNews 表的数据结构设计如表8所示。</p>
+<center>表 7 User 表的数据结构设计</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>列名</strong></th>
+<th><strong>数据类型</strong></th>
+<th><strong>允许Null值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>username</td>
+<td>nchar(10)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>password</td>
+<td>ntext</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<center>表 8 schoolAnnouncements, schoolArticles, schoolLectures 和 schoolNews
+表的数据结构设计</center>
+
+<table>
+<thead>
+<tr>
+<th><strong>列名</strong></th>
+<th><strong>数据类型</strong></th>
+<th><strong>允许Null值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>nvarchar(50)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>date</td>
+<td>nvarchar(50)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>article</td>
+<td>ntext</td>
+<td>√</td>
+</tr>
+<tr>
+<td>image</td>
+<td>ntext</td>
+<td>√</td>
+</tr>
+</tbody></table>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            美赛 F 奖经验贴
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">流水灯、存储器、外部中断实验</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> github
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun-side.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

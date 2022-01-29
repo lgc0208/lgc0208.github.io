@@ -59,11 +59,34 @@
   </entry>
   
   <entry>
+    <title>基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对</title>
+    <link href="http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2021-07-10T05:12:10.000Z</published>
+    <updated>2022-01-29T14:35:51.052Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：&lt;a href=&quot;https://download.csdn.net/download/weixin_45817309/20150415&quot;&gt;Java本地服务器读取SQL Server中的数据及账号密码核对&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Java" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Java/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="SQL Server" scheme="http://example.com/tags/SQL-Server/"/>
+    
+  </entry>
+  
+  <entry>
     <title>流水灯、存储器、外部中断实验</title>
     <link href="http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"/>
     <id>http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</id>
     <published>2021-07-07T16:10:46.000Z</published>
-    <updated>2022-01-29T14:20:26.903Z</updated>
+    <updated>2022-01-29T14:36:20.539Z</updated>
     
     
     <summary type="html">&lt;p&gt;计算机原理与应用实验-流水灯、存储器、外部中断实验&lt;/p&gt;</summary>
@@ -72,11 +95,7 @@
     
     <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="Verilog" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/"/>
-    
-    <category term="汇编" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/%E6%B1%87%E7%BC%96/"/>
-    
-    <category term="C" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Verilog/%E6%B1%87%E7%BC%96/C/"/>
+    <category term="汇编" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E6%B1%87%E7%BC%96/"/>
     
     
     <category term="Verilog" scheme="http://example.com/tags/Verilog/"/>
@@ -92,7 +111,7 @@
     <link href="http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"/>
     <id>http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</id>
     <published>2021-06-10T07:27:49.000Z</published>
-    <updated>2022-01-29T14:26:29.615Z</updated>
+    <updated>2022-01-29T14:33:36.620Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-项目目标&quot;&gt;&lt;a href=&quot;#1-项目目标&quot; class=&quot;headerlink&quot; title=&quot;1 项目目标&quot;&gt;&lt;/a&gt;1 项目目标&lt;/h1&gt;&lt;h2 id=&quot;1-1-基础目标&quot;&gt;&lt;a href=&quot;#1-1-基础目标&quot; class=&quot;headerlink&quot; title=&quot;1.1 基础目标&quot;&gt;&lt;/a&gt;1.1 基础目标&lt;/h2&gt;&lt;p&gt;（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的&lt;strong&gt;查询&lt;/strong&gt;&lt;br&gt;（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容&lt;strong&gt;更新到数据库&lt;/strong&gt;&lt;br&gt;（3）将微信小程序与数据库进行连接，使得小程序可以&lt;strong&gt;实时调取数据库内容&lt;/strong&gt;&lt;br&gt;（4）在微信小程序上实现&lt;strong&gt;搜索功能&lt;/strong&gt;&lt;br&gt;（5）在微信小程序上实现&lt;strong&gt;用户登录功能&lt;/strong&gt; &lt;/p&gt;
@@ -102,13 +121,7 @@
     
     <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="Python" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
-    
-    <category term="Java" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/"/>
-    
-    <category term="SQL Server" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/SQL-Server/"/>
-    
-    <category term="微信小程序" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/Java/SQL-Server/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>

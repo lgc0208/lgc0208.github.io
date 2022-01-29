@@ -643,12 +643,13 @@
   <entry>
     <title>基于微信小程序的北邮信息门户通知查询系统</title>
     <url>/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
-
-<h1 id="1-项目目标"><a href="#1-项目目标" class="headerlink" title="1 项目目标"></a>1 项目目标</h1><h2 id="1-1-基础目标"><a href="#1-1-基础目标" class="headerlink" title="1.1 基础目标"></a>1.1 基础目标</h2><p>（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的<strong>查询</strong><br>（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容<strong>更新到数据库</strong><br>（3）将微信小程序与数据库进行连接，使得小程序可以<strong>实时调取数据库内容</strong><br>（4）在微信小程序上实现<strong>搜索功能</strong><br>（5）在微信小程序上实现<strong>用户登录功能</strong> </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-项目目标"><a href="#1-项目目标" class="headerlink" title="1 项目目标"></a>1 项目目标</h1><h2 id="1-1-基础目标"><a href="#1-1-基础目标" class="headerlink" title="1.1 基础目标"></a>1.1 基础目标</h2><p>（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的<strong>查询</strong><br>（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容<strong>更新到数据库</strong><br>（3）将微信小程序与数据库进行连接，使得小程序可以<strong>实时调取数据库内容</strong><br>（4）在微信小程序上实现<strong>搜索功能</strong><br>（5）在微信小程序上实现<strong>用户登录功能</strong> </p>
 <h2 id="1-2-进阶目标"><a href="#1-2-进阶目标" class="headerlink" title="1.2 进阶目标"></a>1.2 进阶目标</h2><p>（1）用户可以在微信小程序上对重要通知进行<strong>收藏和取消收藏</strong><br>（2）将用户收藏的通知<strong>与用户微信号挂钩</strong>，使用户可以随时读取自己收藏的内容</p>
+<span id="more"></span>
+
+
 <h1 id="2-技术栈及相关环境要求"><a href="#2-技术栈及相关环境要求" class="headerlink" title="2 技术栈及相关环境要求"></a>2 技术栈及相关环境要求</h1><h2 id="2-1-技术栈"><a href="#2-1-技术栈" class="headerlink" title="2.1 技术栈"></a>2.1 技术栈</h2><ol>
-<li><p>微信小程序<br>用户“无需下载，用完即走”，增加了用户使用的便捷性<br>不受手机操作系统的限制，只需要开发一套程序</p>
+<li><p>微信小程序<br>用户“无需下载，用完即走”，增加了用户使用的便捷性<br> 不受手机操作系统的限制，只需要开发一套程序</p>
 </li>
 <li><p>腾讯云<br>支撑微信小程序云开发，可以将数据操作与用户绑定</p>
 </li>

@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>项目 |  梦</title>
+      <title> 梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun-side.svg#/favicon.ico" />
@@ -58,7 +58,54 @@
         style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
-      <section class="outer">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover3.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">梦</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['要清醒，温柔，一尘不染', '迷途漫漫，终有一归', '偷来时光，与你相逢'],
+        startDelay: 0,
+        typeSpeed: 150,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
   
   <ul class="ads">
     
@@ -71,284 +118,122 @@
 </ul>
   
   
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
   <article class="articles">
     
     
-    <h1 class="page-type-title">项目</h1>
     
     
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
-  <time datetime="2021-07-10T05:12:10.000Z" itemprop="datePublished">07/10</time>
-</a>
+    <article
+  id="post-大鱼吃小鱼"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"
-    >基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/" class="archive-article-date">
-  <time datetime="2021-07-07T16:10:46.000Z" itemprop="datePublished">07/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"
-    >流水灯、存储器、外部中断实验</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%B1%87%E7%BC%96/">汇编</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  <time datetime="2021-06-10T07:27:49.000Z" itemprop="datePublished">06/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"
-    >基于微信小程序的北邮信息门户通知查询系统</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/" class="archive-article-date">
-  <time datetime="2021-02-02T09:33:22.000Z" itemprop="datePublished">02/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/"
-    >基于 pygame 的五子棋小游戏</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Python/">Python</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/" class="archive-article-date">
-  <time datetime="2021-01-30T15:28:15.000Z" itemprop="datePublished">01/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/"
-    >简易函数信号发生器的设计和实现</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%A8%A1%E7%94%B5/">模电</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/" class="archive-article-date">
-  <time datetime="2021-01-30T14:24:39.000Z" itemprop="datePublished">01/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"
-    >基于 Verilog 和 EPM1270T144C5 的简易电子琴</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Verilog/">Verilog</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/" class="archive-article-date">
-  <time datetime="2020-08-20T05:12:10.000Z" itemprop="datePublished">08/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"
-    >基于 Java 的单机坦克大战游戏</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/20/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
-  <time datetime="2020-08-20T05:12:10.000Z" itemprop="datePublished">08/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/20/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"
-    >基于微信小程序的垃圾分类移动应用</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/29/%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC/" class="archive-article-date">
-  <time datetime="2020-03-29T03:25:04.000Z" itemprop="datePublished">03/29</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/03/29/%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC/"
+  <a class="article-title" href="/2020/03/29/%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC/"
     >基于 EasyX 库的大鱼吃小鱼游戏</a> 
 </h2>
  
 
-    </header>
-    
       
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/03/29/%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC/" class="article-date">
+  <time datetime="2020-03-29T03:25:04.000Z" itemprop="datePublished">2020-03-29</time>
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/C/">C++</a>
   </div>
-
-    
-    
-  </div>
-</article>
+   
+    </div>
       
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是进入大学本科之后完成的第一个比较完整的程序，通过EasyX库使用CPP实现一个大鱼吃小鱼的游戏。<br>&nbsp;<br><strong>工程文件下载：</strong> <a target="_blank" rel="noopener" href="https://github.com/lgc0208/BigFishEatSmallFish">https://github.com/lgc0208/BigFishEatSmallFish</a><br>&nbsp;</p> 
+      <a class="article-more-link" href="/2020/03/29/%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
   </div>
-  
+
+    
+ 
+    
+</article>
+
+    
+  </article>
   
 
   
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+  
 </section>
+</div>
+
       <footer class="footer">
   <div class="outer">
     <ul>

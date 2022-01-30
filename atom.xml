@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-29T12:20:57.642Z</updated>
+  <updated>2022-01-30T02:19:41.849Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>关于我</title>
-    <link href="http://example.com/2022/01/28/hello-world/"/>
-    <id>http://example.com/2022/01/28/hello-world/</id>
+    <link href="http://example.com/2022/01/28/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
+    <id>http://example.com/2022/01/28/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
     <published>2022-01-28T06:03:43.000Z</published>
-    <updated>2022-01-29T12:20:57.642Z</updated>
+    <updated>2022-01-30T02:19:41.849Z</updated>
     
     
       

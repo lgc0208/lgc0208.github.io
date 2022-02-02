@@ -15,6 +15,180 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【Python】【Flask】 使用 gunicorn 运行 flask app 时无法记录日志的解决方法</title>
+    <url>/2022/02/02/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_flask%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>使用 <code>app.logger</code> 对日志进行记录时，在本地服务器上运行正常，而部署到 <code>gunicorn</code> 后无法正常工作</p>
+<span id="more"></span>
+
+<p>我的代码片段如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># name: flask_LSTM.py</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/predict&#x27;</span></span>)</span></span><br><span class="line">app.logger.debug(<span class="string">&#x27;Running&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    file_handler = FileHandler(<span class="string">&#x27;logs/flask.log&#x27;</span>)</span><br><span class="line">    file_handler.setLevel(logging.DEBUG)</span><br><span class="line">    file_handler.setFormatter(Formatter(<span class="string">&#x27;%(asctime)s %(levelname)s: %(message)s &#x27;</span><span class="string">&#x27;[in %(pathname)s:%(lineno)d]&#x27;</span>))</span><br><span class="line">    app.logger.addHandler(file_handler)</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在服务器上输入指令 <code>python flask_LSTM.py</code> 后，程序正常运行，使用 POSTMAN 进行访问后，<code>flask.log</code> 文件里获得期望输出</p>
+<p>然而使用 <code>guinicorn</code> 运行程序时，程序运行后使用 POSTMAN 访问，日志文件没有任何新写入的信息</p>
+<p>冥思苦想了一个晚上，于是还是决定直接采用</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">nohup python flask_LSTM.py</span><br></pre></td></tr></table></figure>
+<p>运行程序。在此方法下，日志记录功能可以正常工作</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Python】 module ‘h5py‘ has no attribute ‘File‘解决方案</title>
+    <url>/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>产生报错信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">module <span class="string">&#x27;h5py&#x27;</span> has no attribute <span class="string">&#x27;File&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>的解决方法</p>
+<span id="more"></span>
+
+<h2 id="1-普遍解决方案"><a href="#1-普遍解决方案" class="headerlink" title="1 普遍解决方案"></a>1 普遍解决方案</h2><p>可能与 pip 和 conda 的混用有关，先使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip uninstall h5py</span><br></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install h5py</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-备用解决方案"><a href="#2-备用解决方案" class="headerlink" title="2 备用解决方案"></a>2 备用解决方案</h2><p>通过 1 节中介绍的方式笔者并没有解决报错问题，这时采用先输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 uninstall h5py</span><br></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install h5py</span><br></pre></td></tr></table></figure>
+<p>即可解决该问题</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Win10】 解决文件夹被占用无法删除的情况</title>
+    <url>/2021/12/11/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9A%84%E6%83%85%E5%86%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了关闭文件夹后，对文件夹进行删除等操作时提示文件夹被占用，但此时没有打开文件夹中的文件的解决方法</p>
+<span id="more"></span>
+
+<ol>
+<li><p>打开<strong>任务管理器</strong></p>
+</li>
+<li><p>点击<strong>性能</strong>，在最下方点击<strong>打开资源监视器</strong><br><img src="https://img-blog.csdnimg.cn/45456e9d43d741d3a7e80ca6c7e692fe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</li>
+<li><p>点击<strong>CPU</strong>，在<strong>关联的句柄处</strong>输入无法进行操作的<strong>文件夹名称</strong><br><img src="https://img-blog.csdnimg.cn/0cf9b629f9b246ce8567094875f19ebc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</li>
+<li><p>在搜索结果中<strong>右键符合条件的结果</strong>，点击<strong>结束进程</strong>即可</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Mathtype】 编辑时无法删除，只能输入的解决方法</title>
+    <url>/2021/12/01/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Mathtype%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E5%8F%AA%E8%83%BD%E8%BE%93%E5%85%A5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了使用 Mathtype 编辑时无法删除，只能输入的解决方法</p>
+<span id="more"></span>
+
+<h1 id="1-点击-Preferences（预置）"><a href="#1-点击-Preferences（预置）" class="headerlink" title="1 点击 Preferences（预置）"></a>1 点击 Preferences（预置）</h1><p><img src="https://img-blog.csdnimg.cn/52994e75b150489792087ebd7582167b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="2-点击-Customize-Keyboard（自定义键盘）"><a href="#2-点击-Customize-Keyboard（自定义键盘）" class="headerlink" title="2 点击 Customize Keyboard（自定义键盘）"></a>2 点击 Customize Keyboard（自定义键盘）</h1><h1 id="3-点击-Reset-all-（重置所有）即可"><a href="#3-点击-Reset-all-（重置所有）即可" class="headerlink" title="3 点击 Reset all （重置所有）即可"></a>3 点击 Reset all （重置所有）即可</h1><p><img src="https://img-blog.csdnimg.cn/eb476cf14f284182abaf24b5558a1048.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Jupyter Notebook】 导出好看的中文PDF</title>
+    <url>/2021/11/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E5%AF%BC%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E4%B8%AD%E6%96%87PDF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了使用 Jupyter Notebook 导出好看的中文PDF的方式。</p>
+<span id="more"></span>
+
+<h1 id="Step-1-导出-Tex-文件"><a href="#Step-1-导出-Tex-文件" class="headerlink" title="Step 1 导出 Tex 文件"></a>Step 1 导出 Tex 文件</h1><p>打开 $jupyter Notebook$，点击 $File \to Download \quad as \to LaTeX(.tex)$<br><img src="https://img-blog.csdnimg.cn/1f9ddcda78764b51b25ec9e6628d5130.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="Step-2-修改-Tex-文件"><a href="#Step-2-修改-Tex-文件" class="headerlink" title="Step 2 修改 Tex 文件"></a>Step 2 修改 Tex 文件</h1><p>在指定位置会看到导出的  $.tex$ 文件。为了使输出的 PDF 中的中文正常显示，需要对导出的 $.tex$ 文件进行编辑：</p>
+<p>在 <code>\documentclass</code> 的后面插入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\usepackage&#123;fontspec, xunicode, xltxtra&#125;</span><br><span class="line">\setmainfont&#123;Microsoft YaHei&#125;</span><br><span class="line">\usepackage&#123;ctex&#125;</span><br></pre></td></tr></table></figure>
+<p>即可</p>
+<h1 id="Step-3-导出-PDF"><a href="#Step-3-导出-PDF" class="headerlink" title="Step 3 导出 PDF"></a>Step 3 导出 PDF</h1><p>回到 $.tex$ 文件所在目录，在命令行中输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xelatex 文件名.tex</span><br></pre></td></tr></table></figure>
+<p>即可得到好看的中文PDF</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【LaTeX】 将参考文献引用改为上标的方式</title>
+    <url>/2021/08/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Latex%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8A%E6%A0%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了LaTeX中将参考文献的引用改为上标的方式</p>
+<span id="more"></span>
+
+<p>改变 <code>\cite</code> 指令的格式，在文章中添加代码段：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\makeatletter</span><br><span class="line">　　\def\@cite<span class="comment">#1#2&#123;\textsuperscript&#123;[&#123;#1\if@tempswa , #2\fi&#125;]&#125;&#125;</span></span><br><span class="line">\makeatother</span><br></pre></td></tr></table></figure>
+<p>即可实现带中括号的上标引用，效果如下图所示</p>
+<div align=center>
+
+<p><img src="https://img-blog.csdnimg.cn/ff237ca68f364b53a3cfd9a1edcd57d8.png" alt="在这里插入图片描述"></div></p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Jupyter Notebook】 使用 Jupyter Notebook 打开C盘外的文件</title>
+    <url>/2021/08/15/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E6%89%93%E5%BC%80C%E7%9B%98%E5%A4%96%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>直接打开 Jupyter Notebook 会默认处理C盘中的文件，而许多项目文件保存在其他盘，因此存在使用 Jupyter Notebook 打开不属于C盘文件的需求</p>
+<span id="more"></span>
+
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>打开 Anaconda Prompt</li>
+<li>指定需要打开的盘，例如输入 <code>cd /d F:</code> 则定位到 F 盘</li>
+<li>输入 <code>jupyter notebook</code> 即可在 F 盘中打开 Jupyter Notebook</li>
+</ol>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【QT】【乱码】 Qt Creator 中文乱码问题解决</title>
+    <url>/2021/08/08/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Qt%20Creator%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在编译 Qt Creator 项目时出现中文乱码</p>
+<span id="more"></span>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>在 pro 文件下添加如下代码即可：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">msvc &#123;</span><br><span class="line">QMAKE_CFLAGS += /utf<span class="number">-8</span></span><br><span class="line">QMAKE_CXXFLAGS += /utf<span class="number">-8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python学习笔记_神经网络常见激活函数整理及其 Python 绘图</title>
     <url>/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了三种常见的激活函数以及激活函数的选择方式。</p>

@@ -38,6 +38,27 @@
   </entry>
   
   <entry>
+    <title>Python学习笔记_神经网络常见激活函数整理及其 Python 绘图</title>
+    <link href="http://example.com/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/"/>
+    <id>http://example.com/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/</id>
+    <published>2021-08-04T08:50:29.000Z</published>
+    <updated>2022-02-02T15:09:06.722Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍了三种常见的激活函数以及激活函数的选择方式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Python" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>美赛 F 奖经验贴</title>
     <link href="http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/"/>
     <id>http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/</id>
@@ -432,27 +453,6 @@
     
     
     <category term="C++" scheme="http://example.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python学习笔记_else的用法</title>
-    <link href="http://example.com/2020/03/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_else/"/>
-    <id>http://example.com/2020/03/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_else/</id>
-    <published>2020-03-30T11:08:35.000Z</published>
-    <updated>2022-01-29T14:18:58.658Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 在学习Python前，基于对于CPP的学习，对于else的印象就是，else与if要成对出现。但是在不久前，一个在编写100以内求素数的程序时偶然出现的缩进“错误”导致了我的疑惑。代码如下：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Python" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
-    
-    
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
     
   </entry>
   

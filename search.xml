@@ -15,6 +15,65 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Python学习笔记_神经网络常见激活函数整理及其 Python 绘图</title>
+    <url>/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了三种常见的激活函数以及激活函数的选择方式。</p>
+<span id="more"></span>
+
+<h1 id="1-Sigmoid-Function"><a href="#1-Sigmoid-Function" class="headerlink" title="1 Sigmoid Function"></a>1 Sigmoid Function</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>Sigmoid 函数又名 Logistic 函数，值域为 (0, 1) ，可以将任意一个实数映射到一个介于 (0, 1) 区间之内的值，常用于隐层神经元输出，其函数表达式为：</p>
+<p>$$<br>Sigmoid(z) = \frac{1}{1+e^{-z}}<br>$$</p>
+<h2 id="1-2-优缺点"><a href="#1-2-优缺点" class="headerlink" title="1.2 优缺点"></a>1.2 优缺点</h2><ul>
+<li><p><strong>优点</strong>：Sigmoid 函数求导简便，在在特征相差比较复杂或是相差不是特别大时效果比较</p>
+</li>
+<li><p><strong>缺点</strong>：激活函数计算量大，在反向传播时容易出现梯度消失问题；当 $z$ 很大或者很小时，函数变化的很慢，会拖慢梯度下降算法</p>
+</li>
+</ul>
+<p><strong>★ 除非在二分类的输出层，否则尽量不要使用</strong></p>
+<h2 id="1-3-函数图像"><a href="#1-3-函数图像" class="headerlink" title="1.3 函数图像"></a>1.3 函数图像</h2><p>使用 <code>matplotlib.pyplot</code> 进行绘图，代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">0.01</span>) <span class="comment"># 生成一个 [-10, 10] 之间差值为 0.01 的等差数列，代表图像中的 x axis</span></span><br><span class="line">y = []</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> x:</span><br><span class="line">    y.append(<span class="number">1</span>/(<span class="number">1</span> + math.exp(-num)))</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&#x27;Sigmoid Function&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;σ(z)&#x27;</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>图像绘制结果如下所示：</p>
+<center><img src="https://img-blog.csdnimg.cn/0c5f84be12604ccd96152040da5203e5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" /></center>
+
+<h1 id="2-Tanh-Function"><a href="#2-Tanh-Function" class="headerlink" title="2 Tanh Function"></a>2 Tanh Function</h1><h2 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h2><p>Tanh 函数叫做 反正切 函数，值域为 (-1, 1) ，可以将任意一个实数映射到一个介于 (-1, 1) 区间之内的值，其函数表达式为：</p>
+<p>$$<br>tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}<br>$$</p>
+<h2 id="2-2-优缺点"><a href="#2-2-优缺点" class="headerlink" title="2.2 优缺点"></a>2.2 优缺点</h2><ul>
+<li><p><strong>优点</strong>：Tanh 函数几乎总比 Sigmoid 函数表现的好，因为函数输出介于 -1 和 1 之间，激活函数的平均值更接近 0，使用 Tanh 函数有类似数据中心化的效果，使得数据的平均值更接近 0，使得下一层的学习更加方便</p>
+</li>
+<li><p><strong>缺点</strong>：在输出层时，我们更希望输出值 $\hat{y}$ 是一个介于 0 和 1 之间的数而不是 -1 和 1 之间； 在二元分类的时候， Tanh 函数作为输出层的表现也不如 Sigmoid 函数； 当 $z$ 很大或者很小时，函数变化的很慢，会拖慢梯度下降算法</p>
+</li>
+</ul>
+<h2 id="2-3-函数图像"><a href="#2-3-函数图像" class="headerlink" title="2.3 函数图像"></a>2.3 函数图像</h2><p>使用 <code>matplotlib.pyplot</code> 进行绘图，代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">0.01</span>) <span class="comment"># 生成一个 [-10, 10] 之间差值为 0.01 的等差数列，代表图像中的 x axis</span></span><br><span class="line">y = []</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> x:</span><br><span class="line">    y.append((math.exp(num) - math.exp(-num))/(math.exp(num) + math.exp(-num)))</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&#x27;Tanh Function&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;tanh(x)&#x27;</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>图像绘制结果如下所示：</p>
+<center><img src="https://img-blog.csdnimg.cn/73706a0154194cb9bc7806de2a6a3b9f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70"></center>
+
+<h1 id="3-ReLU-Rectified-Linear-Unit"><a href="#3-ReLU-Rectified-Linear-Unit" class="headerlink" title="3 ReLU (Rectified Linear Unit)"></a>3 ReLU (Rectified Linear Unit)</h1><h2 id="3-1-简介"><a href="#3-1-简介" class="headerlink" title="3.1 简介"></a>3.1 简介</h2><p>通常意义下，线性修正单元 ReLU 指代数学中的斜坡函数，即<br>$$<br>ReLU(z) = max{0, z}<br>$$</p>
+<p>而在神经网络中，ReLU 通常作为神经元的默认激活函数，定义了该神经元在线性变换$w^{T}x+b$ 之后的非线性输出结果。换言之，对于进入神经元的来自上一层神经网络的输入向量，使用线性整流激活函数的神经元会输出<br>$$<br>ReLU(z) = max{0, w^{T}x+b}<br>$$<br>至下一层神经元或作为整个神经网络的输出</p>
+<h2 id="3-2-优缺点"><a href="#3-2-优缺点" class="headerlink" title="3.2 优缺点"></a>3.2 优缺点</h2><ul>
+<li><strong>优点</strong>：更加有效率的梯度下降以及反向传播：避免了梯度爆炸和梯度消失问题；简化计算过程：没有了其他复杂激活函数中诸如指数函数的影响；同时相较于 Sigmoid Function &amp; Tanh Function， 神经网络整体计算成本下降，速度加快很多</li>
+<li><strong>缺点</strong>：在 $z&lt;0$ 时导数为 0 ，在 $z=0$ 时不可导</li>
+</ul>
+<h2 id="3-3-函数图像"><a href="#3-3-函数图像" class="headerlink" title="3.3 函数图像"></a>3.3 函数图像</h2><p>使用 <code>matplotlib.pyplot</code> 进行绘图，代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(-<span class="number">10</span>, <span class="number">10</span>, <span class="number">0.01</span>) <span class="comment"># 生成一个 [-10, 10] 之间差值为 0.01 的等差数列，代表图像中的 x axis</span></span><br><span class="line">y = []</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> x:</span><br><span class="line">    <span class="keyword">if</span> num &lt;= <span class="number">0</span> :</span><br><span class="line">        y.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        y.append(num)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&#x27;Rectified Linear Unit&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;ReLU(z)&#x27;</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>图像绘制结果如下所示：</p>
+<center><img src="https://img-blog.csdnimg.cn/a35167547d6546f7b0934e68c36b8bc2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70"></center>
+
+<h1 id="4-选择-Activation-Functions-的经验法则"><a href="#4-选择-Activation-Functions-的经验法则" class="headerlink" title="4 选择 Activation Functions 的经验法则"></a>4 选择 Activation Functions 的经验法则</h1><ul>
+<li>如果输出值是 0 和 1 （二元分类），Sigmoid Function 很适合作为输出层的激活函数，其他单元都用 ReLU 作为激活函数（如果你不知道隐层应该用什么激活函数）</li>
+<li>如果愿意的话，也可以用 $Leaky ReLU(z) = max{0.01z,z}$ ，与 ReLU 相比， Leaky ReLU 在 $z&lt;0$ 的部分导数不为 0。当然，Leaky ReLU 中的系数 $0.01$ 也可以把其看做一个需要学习的参数进行训练</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>美赛 F 奖经验贴</title>
     <url>/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>2021美赛过去半年了，一直也在忙各种各样的事情，刚好上学期有一门项目管理的课程，课程论文写的就是美赛经验，偷个懒直接改下排版复制上来，以作留念</p>

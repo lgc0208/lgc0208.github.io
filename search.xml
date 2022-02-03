@@ -1212,6 +1212,7 @@ ReLU(z) = max\{0, w^{T}x+b\}</script><p>至下一层神经元或作为整个神�
       <categories>
         <category>项目</category>
         <category>汇编</category>
+        <category>C</category>
       </categories>
       <tags>
         <tag>Verilog</tag>
@@ -1602,7 +1603,9 @@ ReLU(z) = max\{0, w^{T}x+b\}</script><p>至下一层神经元或作为整个神�
 ]]></content>
       <categories>
         <category>项目</category>
+        <category>Python</category>
         <category>微信小程序</category>
+        <category>Java</category>
       </categories>
       <tags>
         <tag>Python</tag>

@@ -277,7 +277,7 @@
     <link href="http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"/>
     <id>http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</id>
     <published>2021-07-07T16:10:46.000Z</published>
-    <updated>2022-02-03T06:57:35.830Z</updated>
+    <updated>2022-02-03T15:50:01.265Z</updated>
     
     
     <summary type="html">&lt;p&gt;计算机原理与应用实验-流水灯、存储器、外部中断实验&lt;/p&gt;</summary>
@@ -287,6 +287,8 @@
     <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="汇编" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E6%B1%87%E7%BC%96/"/>
+    
+    <category term="C" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/C/"/>
     
     
     <category term="Verilog" scheme="http://example.com/tags/Verilog/"/>
@@ -302,7 +304,7 @@
     <link href="http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"/>
     <id>http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</id>
     <published>2021-06-10T07:27:49.000Z</published>
-    <updated>2022-02-03T07:00:37.676Z</updated>
+    <updated>2022-02-03T15:48:33.349Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-项目目标&quot;&gt;&lt;a href=&quot;#1-项目目标&quot; class=&quot;headerlink&quot; title=&quot;1 项目目标&quot;&gt;&lt;/a&gt;1 项目目标&lt;/h1&gt;&lt;h2 id=&quot;1-1-基础目标&quot;&gt;&lt;a href=&quot;#1-1-基础目标&quot; class=&quot;headerlink&quot; title=&quot;1.1 基础目标&quot;&gt;&lt;/a&gt;1.1 基础目标&lt;/h2&gt;&lt;p&gt;（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的&lt;strong&gt;查询&lt;/strong&gt;&lt;br&gt;（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容&lt;strong&gt;更新到数据库&lt;/strong&gt;&lt;br&gt;（3）将微信小程序与数据库进行连接，使得小程序可以&lt;strong&gt;实时调取数据库内容&lt;/strong&gt;&lt;br&gt;（4）在微信小程序上实现&lt;strong&gt;搜索功能&lt;/strong&gt;&lt;br&gt;（5）在微信小程序上实现&lt;strong&gt;用户登录功能&lt;/strong&gt; &lt;/p&gt;
@@ -312,7 +314,11 @@
     
     <category term="项目" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/"/>
     
+    <category term="Python" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
+    
     <category term="微信小程序" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+    <category term="Java" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE/Java/"/>
     
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>

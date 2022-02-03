@@ -117,15 +117,10 @@
        
   <p>产生报错信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module <span class="string">&#x27;h5py&#x27;</span> has no attribute <span class="string">&#x27;File&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <p>的解决方法</p>
 <span id="more"></span>
-
-<h2 id="1-普遍解决方案"><a href="#1-普遍解决方案" class="headerlink" title="1 普遍解决方案"></a>1 普遍解决方案</h2><p>可能与 pip 和 conda 的混用有关，先使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall h5py</span><br></pre></td></tr></table></figure>
-<p>再输入</p>
+<h2 id="1-普遍解决方案"><a href="#1-普遍解决方案" class="headerlink" title="1 普遍解决方案"></a>1 普遍解决方案</h2><p>可能与 pip 和 conda 的混用有关，先使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall h5py</span><br></pre></td></tr></table></figure><br>再输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install h5py</span><br></pre></td></tr></table></figure>
-
 <h2 id="2-备用解决方案"><a href="#2-备用解决方案" class="headerlink" title="2 备用解决方案"></a>2 备用解决方案</h2><p>通过 1 节中介绍的方式笔者并没有解决报错问题，这时采用先输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 uninstall h5py</span><br></pre></td></tr></table></figure>
 <p>再输入</p>
@@ -556,6 +551,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -659,6 +677,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

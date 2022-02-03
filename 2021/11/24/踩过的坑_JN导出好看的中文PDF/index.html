@@ -117,7 +117,6 @@
        
   <p>本文介绍了使用 Jupyter Notebook 导出好看的中文PDF的方式。</p>
 <span id="more"></span>
-
 <h1 id="Step-1-导出-Tex-文件"><a href="#Step-1-导出-Tex-文件" class="headerlink" title="Step 1 导出 Tex 文件"></a>Step 1 导出 Tex 文件</h1><p>打开 $jupyter Notebook$，点击 $File \to Download \quad as \to LaTeX(.tex)$<br><img src="https://img-blog.csdnimg.cn/1f9ddcda78764b51b25ec9e6628d5130.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="Step-2-修改-Tex-文件"><a href="#Step-2-修改-Tex-文件" class="headerlink" title="Step 2 修改 Tex 文件"></a>Step 2 修改 Tex 文件</h1><p>在指定位置会看到导出的  $.tex$ 文件。为了使输出的 PDF 中的中文正常显示，需要对导出的 $.tex$ 文件进行编辑：</p>
 <p>在 <code>\documentclass</code> 的后面插入：</p>
@@ -551,6 +550,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -654,6 +676,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

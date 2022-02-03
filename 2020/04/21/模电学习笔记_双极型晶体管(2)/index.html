@@ -115,34 +115,33 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>前置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/11/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(1)/">双极型晶体管及其放大电路（1）</a></p>
+  <p>前置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/11/模电学习笔记_双极型晶体管(1">双极型晶体管及其放大电路（1）</a>/)</p>
 <span id="more"></span>
-
 <h1 id="一-基本知识点"><a href="#一-基本知识点" class="headerlink" title="一.基本知识点"></a>一.基本知识点</h1><h3 id="补充：集成电路中元器件的特点"><a href="#补充：集成电路中元器件的特点" class="headerlink" title="补充：集成电路中元器件的特点"></a>补充：集成电路中元器件的特点</h3><p>1.单个元件的参数精度不高，且受温度影响较大，但参数对称性及温度对称性较好。批量间差异较大</p>
 <p>2.集成电路工艺制造出的电阻阻值受限，应尽量避免使用高阻值电阻。</p>
 <p>3.无电感元件</p>
 <p>4.不适于制造几十皮法以上的电容，电路中应尽量避免采用或少用电容</p>
 <h2 id="2-2-放大电路的基本知识"><a href="#2-2-放大电路的基本知识" class="headerlink" title="2.2 放大电路的基本知识"></a>2.2 放大电路的基本知识</h2><h3 id="2-2-1-放大电路的组成"><a href="#2-2-1-放大电路的组成" class="headerlink" title="2.2.1 放大电路的组成"></a>2.2.1 放大电路的组成</h3><p>1.<strong>信号的放大</strong>：输出量与输入量始终保持线性关系，电路基本不会产生线性失真和非线性失真。</p>
 <p>2.<strong>放大电路</strong>：晶体管<strong>工作在放大区</strong>，<strong>输入为（中频）小信号</strong>。</p>
-<p>3.共射放大电路的原理图：<br><img src="https://img-blog.csdnimg.cn/20200421150922797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v<del>s</del>：待放大交流小信号，常以正弦波作为测试信号。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>BB</del>及R<del>B</del>：提供合适的输入回路静态工作点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R<del>C</del>：输出负载。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>CC</del>：与R<del>C</del>一起提供输出回路合适的静态工作点。</p>
-<p>4.<strong>直流（静态）工作点的设置</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用直流电压V<del>BB</del>和V<del>CC</del>以及电阻R<del>B</del>、R<del>C</del>，<strong>使晶体管始终工作在放大区</strong>，并各电极电流、极间电压均有合适的数值——称之为设置直流工作点或静态工作点，一般用“Q”表示，<strong>提供静态工作点的电路称为放大电路的偏置电路</strong>。<br><img src="https://img-blog.csdnimg.cn/20200421151415642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直流分量：<strong>I<del>BQ</del>﹑I<del>CQ</del>﹑V<del>BEQ</del>和V<del>CEQ</del>表示晶体管静态工作的电流和电压</strong>（静态工作点）。</p>
-<p>5.合适的直流（静态）工作点：（交流信号叠加在直流工作点上）<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）晶体管必须<strong>在交流信号的整个周期内都工作在放大区</strong>，使晶体管的<strong>发射结始终正偏，且始终有电流流入基极；</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;（2）集电极电源电压V<del>CC</del>足够高（使V<del>CE</del>足够大），并选择合适的R<del>C</del>，保证集电极电流最大时，<strong>晶体管的集电结依然反偏</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;（3）合适的静态工作点应保证不产生截止失真或饱和失真，且使电路的功耗较低。</p>
-<p>6.交流信号的放大<br>&nbsp;&nbsp;&nbsp;&nbsp;交流信号叠加在直流（静态）工作点之上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v<del>BE</del>（交直流分量和）  =V<del>BEQ</del>（直流分量）+v<del>be</del>（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<del>B</del> （交直流分量和） =I<del>BQ</del>（直流分量） +i<del>b</del> （交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<del>C</del> （交直流分量和） =I<del>CQ</del> （直流分量） +i<del>c</del>（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v<del>CE</del> (交直流分量和） =V<del>CEQ</del>（直流分量） +v<del>ce</del>（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>合适的直流Q点</strong>是交流信号无失真放大的基本条件。</p>
+<p>3.共射放大电路的原理图：<br><img src="https://img-blog.csdnimg.cn/20200421150922797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v~s~：待放大交流小信号，常以正弦波作为测试信号。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~BB~及R~B~：提供合适的输入回路静态工作点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R~C~：输出负载。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~CC~：与R~C~一起提供输出回路合适的静态工作点。</p>
+<p>4.<strong>直流（静态）工作点的设置</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用直流电压V~BB~和V~CC~以及电阻R~B~、R~C~，<strong>使晶体管始终工作在放大区</strong>，并各电极电流、极间电压均有合适的数值——称之为设置直流工作点或静态工作点，一般用“Q”表示，<strong>提供静态工作点的电路称为放大电路的偏置电路</strong>。<br><img src="https://img-blog.csdnimg.cn/20200421151415642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直流分量：<strong>I~BQ~﹑I~CQ~﹑V~BEQ~和V~CEQ~表示晶体管静态工作的电流和电压</strong>（静态工作点）。</p>
+<p>5.合适的直流（静态）工作点：（交流信号叠加在直流工作点上）<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）晶体管必须<strong>在交流信号的整个周期内都工作在放大区</strong>，使晶体管的<strong>发射结始终正偏，且始终有电流流入基极；</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;（2）集电极电源电压V~CC~足够高（使V~CE~足够大），并选择合适的R~C~，保证集电极电流最大时，<strong>晶体管的集电结依然反偏</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;（3）合适的静态工作点应保证不产生截止失真或饱和失真，且使电路的功耗较低。</p>
+<p>6.交流信号的放大<br>&nbsp;&nbsp;&nbsp;&nbsp;交流信号叠加在直流（静态）工作点之上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v~BE~（交直流分量和）  =V~BEQ~（直流分量）+v~be~（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i~B~ （交直流分量和） =I~BQ~（直流分量） +i~b~ （交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i~C~ （交直流分量和） =I~CQ~ （直流分量） +i~c~（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v~CE~ (交直流分量和） =V~CEQ~（直流分量） +v~ce~（交流分量）<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>合适的直流Q点</strong>是交流信号无失真放大的基本条件。</p>
 <p>7.<strong>放大电路的组成的基本原则</strong><br>（1）直流偏置电路提供<strong>合适的静态工作点Q</strong>，使晶体管始终工作于放大区；<br>（2）<strong>交流输入信号能够</strong>较少损失且无失真地<strong>加至放大电路的输入端</strong>；<br>（3）<strong>被放大的交流输出信号能够较少损失且无失真送至负载</strong>，以实现信号（电压、电流或功率）的放大。</p>
 <p>8.放大的本质<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;放大电路的基本功能是将微弱的电信号进行无失真放大（失真尽量小）。输出信号中的能量来自电源（放大电路从电源中获得能量，按照输入信号成比例复制出输出信号）。<strong>晶体管是能够控制能量和转换能量的有源元件。</strong></p>
 <h3 id="2-2-2-放大电路主要的性能指标"><a href="#2-2-2-放大电路主要的性能指标" class="headerlink" title="2.2.2 放大电路主要的性能指标"></a>2.2.2 放大电路主要的性能指标</h3><p>1.输入阻抗和输出阻抗<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;放大电路可看成是一个双端口网络，我们主要关心它的输入、输出以及转移特性等。<br> <img src="https://img-blog.csdnimg.cn/20200421152538753.png" alt="在这里插入图片描述"></p>
-<p> （1）输入阻抗：从输入端看入的等效阻抗(不含信号源内阻，但包含负载电阻的影响）<br> <img src="https://img-blog.csdnimg.cn/20200421154231743.png" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/2020042115271628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于信号源为电压源： Z<del>i</del> （R<del>i</del>）越大，R<del>S</del>上的压降就越小，输入电压损失越小。</p>
-<p> （2）输出阻抗：当R<del>L</del>开路，输入信号源短路（保留内阻R<del>S</del>)时从输出端看入的阻抗。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ①当中频时Z<del>o</del>可用R<del>o</del>替代（一般不声明时，指中频）<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ②输出阻抗Zo （中频用Ro）越小，在Zo上的压降越小，输出的电压损失越小。</p>
-<p>2.增益<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当不考虑信号源内阻时，对应输入电流、输入电压、输出电流、输出电压4个物理量有4种传输增益<br><img src="https://img-blog.csdnimg.cn/20200421153219807.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421153131929.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020042115315474.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421153206682.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020042115334622.png" alt="功率增益："><br>3.通频带<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 放大电路中存在耦合电容、电感、分布电容、晶体管结电容，在不同频率下输出和输入间的增益、相位不同。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①上截止频率fH ：幅频特性在高频段比中频下降3dB点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②下截止频率fL ：幅频特性在低频段比中频下降3dB点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③中频指的是在幅频特性和相频特性中，增益的大小和相位基本不随频率发生变化的部分。<br><img src="https://img-blog.csdnimg.cn/20200421153411596.png" alt="在这里插入图片描述"><br>4.非线性失真<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于晶体管、场效应管的输入输出曲线是非线性的，当输入信号为单一正弦信号时，输出信号会含有其它频率成分，产生非线性失真。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在静态工作点附近，只有放大电路的输入信号足够小时，才能保证非线性失真也较小。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出波形中谐波成分总量与基波成分之比称为非线性失真系数N。设基波幅值为A<del>1</del>，各谐波幅值为A<del>2</del>、A<del>3</del>、……，则<br><img src="https://img-blog.csdnimg.cn/20200421154018808.png" alt="在这里插入图片描述"></p>
+<p> （1）输入阻抗：从输入端看入的等效阻抗(不含信号源内阻，但包含负载电阻的影响）<br> <img src="https://img-blog.csdnimg.cn/20200421154231743.png" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/2020042115271628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于信号源为电压源： Z~i~ （R~i~）越大，R~S~上的压降就越小，输入电压损失越小。</p>
+<p> （2）输出阻抗：当R~L~开路，输入信号源短路（保留内阻R~S~)时从输出端看入的阻抗。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ①当中频时Z~o~可用R~o~替代（一般不声明时，指中频）<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ②输出阻抗Zo （中频用Ro）越小，在Zo上的压降越小，输出的电压损失越小。</p>
+<p>2.增益<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当不考虑信号源内阻时，对应输入电流、输入电压、输出电流、输出电压4个物理量有4种传输增益<br><img src="https://img-blog.csdnimg.cn/20200421153219807.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421153131929.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020042115315474.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200421153206682.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020042115334622.png" alt="功率增益："><br>3.通频带<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 放大电路中存在耦合电容、电感、分布电容、晶体管结电容，在不同频率下输出和输入间的增益、相位不同。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①上截止频率fH ：幅频特性在高频段比中频下降3dB点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②下截止频率fL ：幅频特性在低频段比中频下降3dB点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③中频指的是在幅频特性和相频特性中，增益的大小和相位基本不随频率发生变化的部分。<br><img src="https://img-blog.csdnimg.cn/20200421153411596.png" alt="在这里插入图片描述"><br>4.非线性失真<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于晶体管、场效应管的输入输出曲线是非线性的，当输入信号为单一正弦信号时，输出信号会含有其它频率成分，产生非线性失真。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在静态工作点附近，只有放大电路的输入信号足够小时，才能保证非线性失真也较小。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出波形中谐波成分总量与基波成分之比称为非线性失真系数N。设基波幅值为A~1~，各谐波幅值为A~2~、A~3~、……，则<br><img src="https://img-blog.csdnimg.cn/20200421154018808.png" alt="在这里插入图片描述"></p>
 <p>5.最大输出幅度<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指非线性失真系数不超过额定值的输出信号最大值。</p>
-<p>6.最大输出功率与效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①最大输出功率：非线性失真系数达到某值时对应的最大输出有效电压和最大输出有效电流的乘积。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②效率：输出功率P<del>o</del>与电源提供的平均功率P<del>DC</del>之比<img src="https://img-blog.csdnimg.cn/20200421154105276.png" alt="在这里插入图片描述"></p>
+<p>6.最大输出功率与效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①最大输出功率：非线性失真系数达到某值时对应的最大输出有效电压和最大输出有效电流的乘积。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②效率：输出功率P~o~与电源提供的平均功率P~DC~之比<img src="https://img-blog.csdnimg.cn/20200421154105276.png" alt="在这里插入图片描述"></p>
 <h2 id="2-3-基本共射放大电路的工作原理及分析方法"><a href="#2-3-基本共射放大电路的工作原理及分析方法" class="headerlink" title="2.3 基本共射放大电路的工作原理及分析方法"></a>2.3 基本共射放大电路的工作原理及分析方法</h2><h3 id="2-3-1-基本共射放大电路的组成及工作原理"><a href="#2-3-1-基本共射放大电路的组成及工作原理" class="headerlink" title="2.3.1 基本共射放大电路的组成及工作原理"></a>2.3.1 基本共射放大电路的组成及工作原理</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入电压通过RB加到BE结，输出电压取自集电极（与地之间）。<br><img src="https://img-blog.csdnimg.cn/20200421154437266.png" alt="在这里插入图片描述"></p>
 <h3 id="2-3-2-直流通路与交流通路"><a href="#2-3-2-直流通路与交流通路" class="headerlink" title="2.3.2 直流通路与交流通路"></a>2.3.2 直流通路与交流通路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在放大电路中，直流量和交流信号是共存的，在分析放大电路时，可分开考虑。应遵循“<strong>先静态，后动态</strong>”的原则。</p>
 <p>一.直流通路是在直流电源作用下直流电流流经的通路，用于分析直流参数（Q点）。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>直流通路图构成原则：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①<strong>电容</strong>视为<strong>开路</strong>；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>电感</strong>线圈视为<strong>短路</strong>（一般忽略线圈电阻）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③<strong>交流电压信号源</strong>视为<strong>短路</strong>，保留其内阻；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④<strong>交流电流信号源</strong>视为<strong>开路</strong>，保留其内阻。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑤工作在击穿区的稳压二极管，可等效为等值的直流电压源。（工作在正向工作区的普通二极管，可等效为0.7V（硅）的直流电压源）</p>
 <p>二.交流通路是交流输入信号作用下交流信号流经的通路，用于分析动态（交流）参数。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>交流通路图构成原则</strong>（<strong>在中频区</strong>）：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①<strong>容量大的电容</strong>（如耦合电容、旁路电容）视为交流<strong>短路</strong>；<strong>容量小的电容</strong>（如晶体管结电容）视为交流<strong>开路</strong>；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>感抗大的电感</strong>线圈视为交流<strong>开路</strong>；<strong>感抗小的电感</strong>线圈视为交流<strong>短路</strong>；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③<strong>直流电压源视为交流短路</strong>，如有内阻则保留其内阻。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④<strong>直流电流源视为交流开路</strong>，如有内阻则保留其内阻。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑤工作在击穿区的稳压二极管，交流短路。（工作在正向工作区的普通二极管，若不考虑其动态电阻可视为交流短路）</p>
-<h3 id="2-3-3-图解分析法"><a href="#2-3-3-图解分析法" class="headerlink" title="2.3.3 图解分析法"></a>2.3.3 图解分析法</h3><h4 id="1-静态工作点分析"><a href="#1-静态工作点分析" class="headerlink" title="1.静态工作点分析"></a>1.静态工作点分析</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;（1）近似估算法求静态工作点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155335136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/20200421155206273.pn"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先画出直流等效电路：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155522448.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已知V<del>CC</del>、β、R<del>B</del>、R<del>C</del>，根据直流通路可知：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155400800.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若晶体管工作在放大区，则有：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155424513.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若无特殊说明，则硅管V<del>BEQ</del>=0.7V，锗管V<del>BEQ</del>=0.3V</p>
+<h3 id="2-3-3-图解分析法"><a href="#2-3-3-图解分析法" class="headerlink" title="2.3.3 图解分析法"></a>2.3.3 图解分析法</h3><h4 id="1-静态工作点分析"><a href="#1-静态工作点分析" class="headerlink" title="1.静态工作点分析"></a>1.静态工作点分析</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;（1）近似估算法求静态工作点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155335136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="!\[在这里插入图片描述\](https://img-blog.csdnimg.cn/20200421155206273.pn"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先画出直流等效电路：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155522448.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已知V~CC~、β、R~B~、R~C~，根据直流通路可知：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155400800.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若晶体管工作在放大区，则有：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421155424513.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若无特殊说明，则硅管V~BEQ~=0.7V，锗管V~BEQ~=0.3V</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;（2）用图解分析法确定静态工作点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：图解法分析静态工作点，<strong>必须已知三极管的输入输出特性曲线</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①画出直流通路<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②在已知的输入特性曲线上作出输入回路的直流负载线。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③在已知的输出特性曲线上作出输出回路的直流负载线。<br><img src="https://img-blog.csdnimg.cn/20200421155845283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="2-动态图解分析"><a href="#2-动态图解分析" class="headerlink" title="2.动态图解分析"></a>2.动态图解分析</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;交流负载线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①画出交流通路<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160036112.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②在已知的输出特性曲线上作出输出回路的交流负载线。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160056152.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可令i<del>C</del>=0画出交流负载线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160148992.png" alt="在这里插入图片描述"></p>
+<h4 id="2-动态图解分析"><a href="#2-动态图解分析" class="headerlink" title="2.动态图解分析"></a>2.动态图解分析</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;交流负载线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①画出交流通路<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160036112.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②在已知的输出特性曲线上作出输出回路的交流负载线。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160056152.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可令i~C~=0画出交流负载线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200421160148992.png" alt="在这里插入图片描述"></p>
 <h4 id="3-工作点的动态范围"><a href="#3-工作点的动态范围" class="headerlink" title="3.工作点的动态范围"></a>3.工作点的动态范围</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;动态范围：在不出现饱和和截止失真这两种非线性失真的情况下，<strong>放大电路能够输出的最大信号的幅度</strong>。<br>取值为：<br><img src="https://img-blog.csdnimg.cn/20200421160425893.png" alt="在这里插入图片描述"></p>
 <h1 id="二-易错点总结"><a href="#二-易错点总结" class="headerlink" title="二.易错点总结"></a>二.易错点总结</h1><p>1）在集成电路中，应尽量避免使用过高阻值的电阻。</p>
 <p>2）若信号源为电压源，则放大电路的输入电阻越大越好。</p>
@@ -156,7 +155,7 @@
 <p>10）大部分情况下，交流负载线斜率的绝对值要大于直流负载线斜率的绝对值。</p>
 <p>11）直流负载线和交流负载线都经过Q点。</p>
 <p>12）晶体管特性的变化不会对直流负载线产生影响。</p>
-<p>后置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/22/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(3)/">模电学习笔记_双极型晶体管及其放大电路（3）</a></p>
+<p>后置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/22/模电学习笔记_双极型晶体管(3">模电学习笔记_双极型晶体管及其放大电路（3）</a>/)</p>
  
       <!-- reward -->
       
@@ -582,6 +581,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -685,6 +707,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

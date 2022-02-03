@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-02T15:56:12.799Z</updated>
+  <updated>2022-02-03T05:03:06.638Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2022/02/02/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_flask%E6%97%A5%E5%BF%97/"/>
     <id>http://example.com/2022/02/02/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_flask%E6%97%A5%E5%BF%97/</id>
     <published>2022-02-02T12:02:07.000Z</published>
-    <updated>2022-02-02T15:56:12.799Z</updated>
+    <updated>2022-02-03T05:03:06.638Z</updated>
     
     
     <summary type="html">&lt;p&gt;使用 &lt;code&gt;app.logger&lt;/code&gt; 对日志进行记录时，在本地服务器上运行正常，而部署到 &lt;code&gt;gunicorn&lt;/code&gt; 后无法正常工作&lt;/p&gt;</summary>
@@ -63,12 +63,11 @@
     <link href="http://example.com/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/"/>
     <id>http://example.com/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/</id>
     <published>2022-01-16T09:34:10.000Z</published>
-    <updated>2022-02-02T15:56:00.246Z</updated>
+    <updated>2022-02-03T05:03:11.957Z</updated>
     
     
     <summary type="html">&lt;p&gt;产生报错信息&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;module &lt;span class=&quot;string&quot;&gt;&amp;#x27;h5py&amp;#x27;&lt;/span&gt; has no attribute &lt;span class=&quot;string&quot;&gt;&amp;#x27;File&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
 &lt;p&gt;的解决方法&lt;/p&gt;</summary>
     
     
@@ -87,7 +86,7 @@
     <link href="http://example.com/2021/12/11/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9A%84%E6%83%85%E5%86%B5/"/>
     <id>http://example.com/2021/12/11/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9A%84%E6%83%85%E5%86%B5/</id>
     <published>2021-12-11T08:53:33.000Z</published>
-    <updated>2022-02-02T15:55:11.380Z</updated>
+    <updated>2022-02-03T05:03:44.922Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了关闭文件夹后，对文件夹进行删除等操作时提示文件夹被占用，但此时没有打开文件夹中的文件的解决方法&lt;/p&gt;</summary>
@@ -108,7 +107,7 @@
     <link href="http://example.com/2021/12/01/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Mathtype%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E5%8F%AA%E8%83%BD%E8%BE%93%E5%85%A5/"/>
     <id>http://example.com/2021/12/01/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Mathtype%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E5%8F%AA%E8%83%BD%E8%BE%93%E5%85%A5/</id>
     <published>2021-12-01T04:11:38.000Z</published>
-    <updated>2022-02-02T15:55:30.246Z</updated>
+    <updated>2022-02-03T05:03:33.946Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了使用 Mathtype 编辑时无法删除，只能输入的解决方法&lt;/p&gt;</summary>
@@ -129,7 +128,7 @@
     <link href="http://example.com/2021/11/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E5%AF%BC%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E4%B8%AD%E6%96%87PDF/"/>
     <id>http://example.com/2021/11/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E5%AF%BC%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E4%B8%AD%E6%96%87PDF/</id>
     <published>2021-11-24T02:45:09.000Z</published>
-    <updated>2022-02-02T15:55:47.367Z</updated>
+    <updated>2022-02-03T05:03:22.882Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了使用 Jupyter Notebook 导出好看的中文PDF的方式。&lt;/p&gt;</summary>
@@ -150,7 +149,7 @@
     <link href="http://example.com/2021/08/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Latex%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8A%E6%A0%87/"/>
     <id>http://example.com/2021/08/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Latex%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8A%E6%A0%87/</id>
     <published>2021-08-30T13:50:46.000Z</published>
-    <updated>2022-02-02T15:55:37.816Z</updated>
+    <updated>2022-02-03T05:03:27.983Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了LaTeX中将参考文献的引用改为上标的方式&lt;/p&gt;</summary>
@@ -171,7 +170,7 @@
     <link href="http://example.com/2021/08/15/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E6%89%93%E5%BC%80C%E7%9B%98%E5%A4%96%E6%96%87%E4%BB%B6/"/>
     <id>http://example.com/2021/08/15/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E6%89%93%E5%BC%80C%E7%9B%98%E5%A4%96%E6%96%87%E4%BB%B6/</id>
     <published>2021-08-15T07:03:32.000Z</published>
-    <updated>2022-02-02T15:54:15.939Z</updated>
+    <updated>2022-02-03T05:03:17.761Z</updated>
     
     
     <summary type="html">&lt;p&gt;直接打开 Jupyter Notebook 会默认处理C盘中的文件，而许多项目文件保存在其他盘，因此存在使用 Jupyter Notebook 打开不属于C盘文件的需求&lt;/p&gt;</summary>
@@ -192,7 +191,7 @@
     <link href="http://example.com/2021/08/08/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Qt%20Creator%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     <id>http://example.com/2021/08/08/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Qt%20Creator%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</id>
     <published>2021-08-08T15:05:10.000Z</published>
-    <updated>2022-02-02T15:56:46.606Z</updated>
+    <updated>2022-02-03T05:03:39.424Z</updated>
     
     
     <summary type="html">&lt;p&gt;在编译 Qt Creator 项目时出现中文乱码&lt;/p&gt;</summary>
@@ -213,7 +212,7 @@
     <link href="http://example.com/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/"/>
     <id>http://example.com/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/</id>
     <published>2021-08-04T08:50:29.000Z</published>
-    <updated>2022-02-02T15:09:06.722Z</updated>
+    <updated>2022-02-03T05:03:00.779Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了三种常见的激活函数以及激活函数的选择方式。&lt;/p&gt;</summary>
@@ -234,7 +233,7 @@
     <link href="http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/"/>
     <id>http://example.com/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/</id>
     <published>2021-07-31T13:45:47.000Z</published>
-    <updated>2022-01-29T14:19:10.112Z</updated>
+    <updated>2022-02-03T05:04:05.131Z</updated>
     
     
     <summary type="html">&lt;p&gt;2021美赛过去半年了，一直也在忙各种各样的事情，刚好上学期有一门项目管理的课程，课程论文写的就是美赛经验，偷个懒直接改下排版复制上来，以作留念&lt;/p&gt;</summary>
@@ -255,7 +254,7 @@
     <link href="http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
     <published>2021-07-10T05:12:10.000Z</published>
-    <updated>2022-01-29T14:35:51.052Z</updated>
+    <updated>2022-02-03T05:02:31.950Z</updated>
     
     
     <summary type="html">&lt;p&gt;前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：&lt;a href=&quot;https://download.csdn.net/download/weixin_45817309/20150415&quot;&gt;Java本地服务器读取SQL Server中的数据及账号密码核对&lt;/a&gt;&lt;/p&gt;</summary>
@@ -278,7 +277,7 @@
     <link href="http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"/>
     <id>http://example.com/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</id>
     <published>2021-07-07T16:10:46.000Z</published>
-    <updated>2022-01-29T14:36:20.539Z</updated>
+    <updated>2022-02-03T05:05:07.380Z</updated>
     
     
     <summary type="html">&lt;p&gt;计算机原理与应用实验-流水灯、存储器、外部中断实验&lt;/p&gt;</summary>
@@ -303,7 +302,7 @@
     <link href="http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"/>
     <id>http://example.com/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</id>
     <published>2021-06-10T07:27:49.000Z</published>
-    <updated>2022-01-29T14:33:36.620Z</updated>
+    <updated>2022-02-03T05:05:22.446Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-项目目标&quot;&gt;&lt;a href=&quot;#1-项目目标&quot; class=&quot;headerlink&quot; title=&quot;1 项目目标&quot;&gt;&lt;/a&gt;1 项目目标&lt;/h1&gt;&lt;h2 id=&quot;1-1-基础目标&quot;&gt;&lt;a href=&quot;#1-1-基础目标&quot; class=&quot;headerlink&quot; title=&quot;1.1 基础目标&quot;&gt;&lt;/a&gt;1.1 基础目标&lt;/h2&gt;&lt;p&gt;（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的&lt;strong&gt;查询&lt;/strong&gt;&lt;br&gt;（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容&lt;strong&gt;更新到数据库&lt;/strong&gt;&lt;br&gt;（3）将微信小程序与数据库进行连接，使得小程序可以&lt;strong&gt;实时调取数据库内容&lt;/strong&gt;&lt;br&gt;（4）在微信小程序上实现&lt;strong&gt;搜索功能&lt;/strong&gt;&lt;br&gt;（5）在微信小程序上实现&lt;strong&gt;用户登录功能&lt;/strong&gt; &lt;/p&gt;
@@ -331,7 +330,7 @@
     <link href="http://example.com/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/"/>
     <id>http://example.com/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/</id>
     <published>2021-02-02T09:33:22.000Z</published>
-    <updated>2022-01-29T14:18:52.598Z</updated>
+    <updated>2022-02-03T05:02:51.158Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1、摘要&quot;&gt;&lt;a href=&quot;#1、摘要&quot; class=&quot;headerlink&quot; title=&quot;1、摘要&quot;&gt;&lt;/a&gt;1、摘要&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;通过python的pygame库，实现一款支持人机对战和人人对战的五子棋小游戏。在游戏初始界面会有5秒的规则介绍，五秒后自动进入人机对战模式。玩家可根据游戏中的提示按下Q键切换为初始人人对战对接，按下E键切换为初始人机对战界面。在游戏进行过程中，程序会记录并显示黑白两子的累计获胜局数，提高玩家体验。&lt;/p&gt;
@@ -353,7 +352,7 @@
     <link href="http://example.com/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/"/>
     <id>http://example.com/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/</id>
     <published>2021-01-30T15:28:15.000Z</published>
-    <updated>2022-01-29T14:19:16.278Z</updated>
+    <updated>2022-02-03T05:04:15.309Z</updated>
     
     
     <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&amp;lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。&lt;/p&gt;</summary>
@@ -374,7 +373,7 @@
     <link href="http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"/>
     <id>http://example.com/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/</id>
     <published>2021-01-30T14:24:39.000Z</published>
-    <updated>2022-01-28T14:41:04.291Z</updated>
+    <updated>2022-02-03T05:04:53.354Z</updated>
     
     
     <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本次实验使用硬件描述语言 Verilog HDL，针对以 Altera 公司的 MAX II 系列可编程器件 EPM1270T144C5 为核心芯片的可编程器件实验板设计实验简易电子演奏琴。&lt;/p&gt;</summary>
@@ -395,7 +394,7 @@
     <link href="http://example.com/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"/>
     <id>http://example.com/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/</id>
     <published>2020-08-20T05:12:10.000Z</published>
-    <updated>2022-01-30T06:46:34.024Z</updated>
+    <updated>2022-02-03T05:02:44.797Z</updated>
     
     
     <summary type="html">&lt;p&gt;基于 Java 开发的坦克大战单机版小游戏&lt;/p&gt;
@@ -417,7 +416,7 @@
     <link href="http://example.com/2020/08/20/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     <id>http://example.com/2020/08/20/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</id>
     <published>2020-08-20T05:12:10.000Z</published>
-    <updated>2022-01-30T03:47:26.512Z</updated>
+    <updated>2022-02-03T05:04:09.980Z</updated>
     
     
     <summary type="html">&lt;p&gt;基于天行API和微信小程序的垃圾分类小程序，支持文字和图像识别&lt;/p&gt;
@@ -439,10 +438,10 @@
     <link href="http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/"/>
     <id>http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/</id>
     <published>2020-05-02T15:50:22.000Z</published>
-    <updated>2022-01-29T14:38:53.899Z</updated>
+    <updated>2022-02-03T05:04:59.321Z</updated>
     
     
-    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/27/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(5)/&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（5）&lt;/a&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/27/模电学习笔记_双极型晶体管(5&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（5）&lt;/a&gt;/)&lt;/p&gt;</summary>
     
     
     

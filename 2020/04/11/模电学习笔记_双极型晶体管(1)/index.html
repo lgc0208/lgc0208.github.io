@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.8k</span>
+            <span class="post-count">1.9k</span>
         </span>
     </span>
 
@@ -117,53 +117,42 @@
        
   <p>本系列用于记录双极型晶体管及其放大电路相关的学习笔记</p>
 <span id="more"></span>
-
 <h1 id="1-基本知识点"><a href="#1-基本知识点" class="headerlink" title="1 基本知识点"></a>1 基本知识点</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <h2 id="1-1-双极型晶体管"><a href="#1-1-双极型晶体管" class="headerlink" title="1.1 双极型晶体管"></a>1.1 双极型晶体管</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <h3 id="一-晶体管的工作原理"><a href="#一-晶体管的工作原理" class="headerlink" title="一.晶体管的工作原理"></a>一.晶体管的工作原理</h3><ol>
 <li><p><strong>晶体管具有放大作用所需的内部条件</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①基区很薄,且掺杂浓度很低;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②发射区的掺杂浓度远大于基区和集电区的掺杂浓度;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③集电结结面积大。</p>
 </li>
-<li><p><strong>晶体管具有放大作用所需的外部条件</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发射结正偏、集电结反偏。(NPN下，V<del>B</del>&gt;V<del>E</del>,V<del>B</del>&lt;V<del>E</del>)</p>
+<li><p><strong>晶体管具有放大作用所需的外部条件</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发射结正偏、集电结反偏。(NPN下，V~B~&gt;V~E~,V~B~&lt;V~E~)</p>
 </li>
-<li><p><strong>晶体管在放大状态下的载流子传输过程和3个电极电流表达式</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I<del>E</del> = I<del>C</del> + I<del>B</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; α = I<del>C</del>/I<del>E</del> 取值0.95<del>0.99<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; β = I</del>C<del>/I</del>B~ 取值几十到几百</p>
+<li><p><strong>晶体管在放大状态下的载流子传输过程和3个电极电流表达式</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~E~ = I~C~ + I~B~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; α = I~C~/I~E~ 取值0.95~0.99<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; β = I~C~/I~B~ 取值几十到几百</p>
 </li>
 <li><p><strong>根据电压判断三极管类型</strong>：</p>
 <ol>
-<li><p>B极的电压位于中间</p>
-</li>
+<li>B极的电压位于中间</li>
 <li><p>E极与B极电压相差0.7V或0.2V  </p>
+<p>2.1 若相差0.7V，为硅管<br>2.2 若相差0.2V，为锗管</p>
 </li>
-<li><p>1 若相差0.7V，为硅管  </p>
-</li>
-<li><p>2 若相差0.2V，为锗管</p>
-</li>
-<li><p>PNP&amp;&amp;NPN  </p>
-</li>
-<li><p>1 V<del>BE</del>为正，NPN  </p>
-</li>
-<li><p>2 V<del>BE</del>为负，PNP</p>
-</li>
+<li>PNP&amp;&amp;NPN<br>3.1 V~BE~为正，NPN<br>3.2 V~BE~为负，PNP</li>
 </ol>
 </li>
 </ol>
 <h3 id="二-晶体管的静态特性曲线"><a href="#二-晶体管的静态特性曲线" class="headerlink" title="二.晶体管的静态特性曲线"></a>二.晶体管的静态特性曲线</h3><ol>
-<li><p><strong>共射输入特性曲线</strong><br><img src="https://img-blog.csdnimg.cn/20200411160604614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>类似于二极管的伏安特性,只是在V<del>ce</del>增加时,特性曲线会稍向右移动。</p>
+<li><p><strong>共射输入特性曲线</strong><br><img src="https://img-blog.csdnimg.cn/20200411160604614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>类似于二极管的伏安特性,只是在V~ce~增加时,特性曲线会稍向右移动。</p>
 </li>
-<li><p><strong>共射输出特性曲线</strong><br>输出特性曲线分为四个工作区：<br><img src="https://img-blog.csdnimg.cn/20200411160821114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（1）饱和区<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点:i<del>C</del>受V<del>CE</del>影响,V<del>CE</del>略增,则i<del>C</del>增加很快。<br> &nbsp;<br> （2）放大区一曲线基本水平稍有上翘（原因：基区调宽效应）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点:满足i<del>C</del>=βi<del>B</del>+I<del>CEO</del>,具有正向控制作用。由于基区宽度调制效应，曲线随v<del>CE</del>的增加而稍有上翘,其延长线交于厄尔利电压V<del>A</del>,用输出电阻r<del>ce</del>来表示其上翘程度为<br><img src="https://img-blog.csdnimg.cn/20200411161443456.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200411161644709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;<br>（3）截止区一近似为 i<del>B</del>=0以下的区域。<br>&nbsp;<br>（4）击穿区<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当v<del>CE</del>增大到一定值时，集电结发生雪崩击穿。</p>
+<li><p><strong>共射输出特性曲线</strong><br>输出特性曲线分为四个工作区：<br><img src="https://img-blog.csdnimg.cn/20200411160821114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（1）饱和区<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点:i~C~受V~CE~影响,V~CE~略增,则i~C~增加很快。<br> &nbsp;<br> （2）放大区一曲线基本水平稍有上翘（原因：基区调宽效应）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点:满足i~C~=βi~B~+I~CEO~,具有正向控制作用。由于基区宽度调制效应，曲线随v~CE~的增加而稍有上翘,其延长线交于厄尔利电压V~A~,用输出电阻r~ce~来表示其上翘程度为<br><img src="https://img-blog.csdnimg.cn/20200411161443456.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200411161644709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;<br>（3）截止区一近似为 i~B~=0以下的区域。<br>&nbsp;<br>（4）击穿区<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当v~CE~增大到一定值时，集电结发生雪崩击穿。</p>
 </li>
 </ol>
-<h3 id="三-温度对晶体管特性曲线的影响"><a href="#三-温度对晶体管特性曲线的影响" class="headerlink" title="三.温度对晶体管特性曲线的影响"></a>三.温度对晶体管特性曲线的影响</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>温度上升时</strong>，发射结正向电压降v<del>BE</del> 减小，反向饱和电流I<del>CBO</del>和电流放大系数β增大，使得<strong>晶体管输入特性曲线左移，输出特性曲线上移且曲线间隔增大</strong>。<br><img src="https://img-blog.csdnimg.cn/20200411161909600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="三-温度对晶体管特性曲线的影响"><a href="#三-温度对晶体管特性曲线的影响" class="headerlink" title="三.温度对晶体管特性曲线的影响"></a>三.温度对晶体管特性曲线的影响</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>温度上升时</strong>，发射结正向电压降v~BE~ 减小，反向饱和电流I~CBO~和电流放大系数β增大，使得<strong>晶体管输入特性曲线左移，输出特性曲线上移且曲线间隔增大</strong>。<br><img src="https://img-blog.csdnimg.cn/20200411161909600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h3 id="四-晶体管的参数"><a href="#四-晶体管的参数" class="headerlink" title="四.晶体管的参数"></a>四.晶体管的参数</h3><ol>
 <li><strong>电流放大系数</strong><br>&nbsp;<br>1.1 共射直流电流放大系数<br><img src="https://img-blog.csdnimg.cn/20200411162212705.png" alt="在这里插入图片描述"><br>1.2 共射交流电流放大系数（又称短路电流放大系数）<br><img src="https://img-blog.csdnimg.cn/20200411162313313.png" alt="在这里插入图片描述"><br>1.3 共基直流电流放大系数<br><img src="https://img-blog.csdnimg.cn/20200411162403104.png" alt="在这里插入图片描述"><br>1.4 共基交流电流放大系数<br><img src="https://img-blog.csdnimg.cn/20200411162423777.png" alt="在这里插入图片描述"><br>★工程上，通常不再区分交流电流放大系数和直流电流放大系数，都用α和β表示。<br>&nbsp;<br>1.5 α与β的关系<br><img src="https://img-blog.csdnimg.cn/20200411162714407.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20200411162723892.png" alt="在这里插入图片描述"></li>
-<li><strong>极间反向电流</strong><br>&nbsp;<br>2.1 反向饱和电流I<del>CBO</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I<del>CBO</del>表示发射极开路时集电结的反向饱和电流<br>2.2反向饱和电流I<del>EBO</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I<del>EBO</del>表示集电极开路时发射结的反向饱和电流<br>2.3穿透电流I<del>CEO</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I<del>CBO</del>表示基极开路时集电极和发射极之间的穿透电流<br><img src="https://img-blog.csdnimg.cn/20200411163215402.png" alt="在这里插入图片描述"></li>
-<li><strong>极限参数</strong><br>&nbsp;<br>  3.1 集电极最大允许电流I<del>CM</del>（工作时应小于其值）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>一般取β下降至最高值的2/3时所对应的集电极电流</strong><br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>  3.2 反向击穿电压：（工作的最高值应小于其70％）<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>(BR)CBO</del>:发射极开路，集电极与基极之间允许加的最高反向电压<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>(BR)CEO</del>:基极开路，集电极与发射极之间允许加的最高电压<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>(BR)EBO</del>:集电极开路，发射极与基极之间允许加的最高反向电压<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>3.3 集电极最大允许功率损耗P<del>CM</del>（工作时应小于其值，必要时加散热片、风冷、油冷等）<br>&nbsp;</li>
+<li><strong>极间反向电流</strong><br>&nbsp;<br>2.1 反向饱和电流I~CBO~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~CBO~表示发射极开路时集电结的反向饱和电流<br>2.2反向饱和电流I~EBO~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~EBO~表示集电极开路时发射结的反向饱和电流<br>2.3穿透电流I~CEO~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~CBO~表示基极开路时集电极和发射极之间的穿透电流<br><img src="https://img-blog.csdnimg.cn/20200411163215402.png" alt="在这里插入图片描述"></li>
+<li><p><strong>极限参数</strong><br>&nbsp;<br>  3.1 集电极最大允许电流I~CM~（工作时应小于其值）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>一般取β下降至最高值的2/3时所对应的集电极电流</strong><br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>  3.2 反向击穿电压：（工作的最高值应小于其70％）<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~(BR)CBO~:发射极开路，集电极与基极之间允许加的最高反向电压<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~(BR)CEO~:基极开路，集电极与发射极之间允许加的最高电压<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~(BR)EBO~:集电极开路，发射极与基极之间允许加的最高反向电压<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>3.3 集电极最大允许功率损耗P~CM~（工作时应小于其值，必要时加散热片、风冷、油冷等）<br>&nbsp;</p>
+<ol>
 <li><strong>高频参数</strong><br>&nbsp;</li>
 </ol>
-<pre><code>4.1 共基截止频率f~α~
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;α随工作频率的升高而下降，当**降为α~0~的0.707倍时所对应的频率**。
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
-</code></pre>
-<p>  4.2 共射截止频率f<del>β</del><br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;β随工作频率的升高而下降，当<strong>降为β<del>0</del>的0.707倍时所对应的频率</strong>。<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>  4.3 特征频率f<del>T</del><br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;β随工作频率的升高而下降，当<strong>降为1时所对应的频率</strong>。<br>  <img src="https://img-blog.csdnimg.cn/20200411163912239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>  准确：f<del>α</del>&gt;f<del>T</del>&gt;f<del>β</del></p>
+<p>4.1 共基截止频率f~α~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;α随工作频率的升高而下降，当<strong>降为α~0~的0.707倍时所对应的频率</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>4.2 共射截止频率f~β~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;β随工作频率的升高而下降，当<strong>降为β~0~的0.707倍时所对应的频率</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>4.3 特征频率f~T~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;β随工作频率的升高而下降，当<strong>降为1时所对应的频率</strong>。<br><img src="https://img-blog.csdnimg.cn/20200411163912239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>准确：f~α~&gt;f~T~&gt;f~β~</p>
+</li>
+</ol>
 <h1 id="2-易错点总结"><a href="#2-易错点总结" class="headerlink" title="2 易错点总结"></a>2 易错点总结</h1><p>1）有一PNP型三极管的发射结正偏、集电结正偏，则基极电位最低。</p>
 <p>2）PNP型晶体管工作在饱和区时，发射结和集电结都正偏。</p>
 <p>3）厄尔利（Early）电压反映的是晶体管的基区调宽效应。</p>
@@ -175,11 +164,11 @@
 <p>9）设有一NPN型三极管的发射结正偏、集电结反偏，则集电极电位最高，发射极电位最低。</p>
 <p>10）放大电路的有效输入信号必须加在发射结上。</p>
 <p>11）分析放大电路时，通常应该采用先直流后交流的方法。</p>
-<p>12）双极型晶体管处于放大状态时，i<del>C</del>和i<del>b</del>是线性关系；i<del>C</del>和V<del>BE</del>是指数关系；Δi<del>C</del>和ΔV<del>BE</del>是线性关系。</p>
+<p>12）双极型晶体管处于放大状态时，i~C~和i~b~是线性关系；i~C~和V~BE~是指数关系；Δi~C~和ΔV~BE~是线性关系。</p>
 <p>13）通常的晶体三极管在集电极和发射极互换使用时，不再有较大的电流放大作用。</p>
 <p>14）放大电路必须加上合适的直流电源才能正常工作。</p>
-<p>15）在放大区内，共发射极输出特性曲线基本水平略有上翘，说明此时输出电压V<del>CE</del>变化时，输出电流i<del>C</del>基本不变。</p>
-<p>&nbsp;<br>后置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/21/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(2)/">模电学习笔记_双极型晶体管及其放大电路（2）</a></p>
+<p>15）在放大区内，共发射极输出特性曲线基本水平略有上翘，说明此时输出电压V~CE~变化时，输出电流i~C~基本不变。</p>
+<p>&nbsp;<br>后置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/21/模电学习笔记_双极型晶体管(2">模电学习笔记_双极型晶体管及其放大电路（2）</a>/)</p>
  
       <!-- reward -->
       
@@ -605,6 +594,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -708,6 +720,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

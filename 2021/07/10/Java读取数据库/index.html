@@ -117,13 +117,13 @@
        
   <p>前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：<a target="_blank" rel="noopener" href="https://download.csdn.net/download/weixin_45817309/20150415">Java本地服务器读取SQL Server中的数据及账号密码核对</a></p>
 <span id="more"></span>
-
 <h1 id="1-系统概述"><a href="#1-系统概述" class="headerlink" title="1 系统概述"></a>1 系统概述</h1><p><strong>1.1 系统简介</strong></p>
 <p>基于微信小程序实现学校信息门户中校内通知、公示公告、校内新闻和学术讲座的便捷查看。</p>
 <p><strong>1.2 术语表</strong>  </p>
 <p>该文档涉及到的术语如表1所示。</p>
 <center>表 1 详细设计术语表</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -132,7 +132,8 @@
 <th><strong>说明性定义</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>微信小程序</td>
 <td>微信小程序是一种不需要下载安装即可使用的应用，用户使用微信扫一扫或搜一下即可打开应用。</td>
@@ -167,14 +168,17 @@
 <td>视图层</td>
 <td>框架的视图层由 WXML 与 WXSS 编写，由组件来进行展示。将逻辑层的数据反映成视图，同时将视图层的事件发送给逻辑层。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>1.3 系统运行环境</strong> </p>
 <ol>
-<li> <strong>软件环境：</strong></li>
+<li><strong>软件环境：</strong></li>
 </ol>
 <p>系统所需要的软件环境如表2所示。</p>
 <center>表 2 系统运行的软件环境</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -184,7 +188,8 @@
 <th><strong>语种</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>PC操作系统</td>
 <td>Windows 10</td>
 <td>家庭中文版</td>
@@ -214,13 +219,16 @@
 <td>14.0.1</td>
 <td>Java</td>
 </tr>
-</tbody></table>
-<ol start="2">
-<li> <strong>硬件平台</strong></li>
+</tbody>
+</table>
+</div>
+<ol>
+<li><strong>硬件平台</strong></li>
 </ol>
 <p>系统运行的硬件平台如表3所示。</p>
 <center>表 3 系统运行的硬件平台</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -228,15 +236,19 @@
 <th><strong>设备要求</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>PC</td>
 <td>装有 Java 14.0.1 及以上版本、 Apache Tomcat 对应版本 、Microsoft SQL Server 数据库 2019及以上版本</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>1.4 开发环境</strong> </p>
 <p>该程序开发环境如表4所示。</p>
 <center>表 4 程序开发环境</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -246,7 +258,8 @@
 <th><strong>语种</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>PC操作系统</td>
 <td>Windows 10</td>
 <td>家庭中文版</td>
@@ -270,7 +283,9 @@
 <td>2019</td>
 <td>Sql</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="2-模块设计"><a href="#2-模块设计" class="headerlink" title="2 模块设计"></a>2 模块设计</h1><h2 id="2-1-模块2-Java-Tomcat-服务器模块"><a href="#2-1-模块2-Java-Tomcat-服务器模块" class="headerlink" title="2.1 模块2 Java Tomcat 服务器模块"></a><strong>2.1 模块2 Java Tomcat 服务器模块</strong></h2><h3 id="2-1-1-设计图"><a href="#2-1-1-设计图" class="headerlink" title="2.1.1 设计图"></a><strong>2.1.1 设计图</strong></h3><p>该模块的设计图如图1所示。</p>
 <div align=center>
 <img src="https://img-blog.csdnimg.cn/20210710111158840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" />
@@ -284,9 +299,9 @@
 <h3 id="2-1-4-输出数据"><a href="#2-1-4-输出数据" class="headerlink" title="2.1.4 输出数据"></a><strong>2.1.4 输出数据</strong></h3><p>若访问的为用户登录鉴权接口，则根据用户传递的数据返回success（登陆成功）或error（登录失败）。</p>
 <p>若访问的为各类通知对应的接口，则返回JSON格式的通知数据，包含信息标题title，发布日期date，文章主体article和文章中包含的图片的URL地址image。</p>
 <h3 id="2-1-5-数据设计"><a href="#2-1-5-数据设计" class="headerlink" title="2.1.5 数据设计"></a><strong>2.1.5 数据设计</strong></h3><pre><code>该部分的数据设计如表5所示。
-</code></pre>
-<center>表 5 Java Tomcat 服务器模块数据设计</center>
+</code></pre><center>表 5 Java Tomcat 服务器模块数据设计</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -296,7 +311,8 @@
 <th><strong>功能</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>information</td>
 <td>ArrayList</td>
 <td>String</td>
@@ -314,12 +330,14 @@
 <td>char</td>
 <td>作为JSON格式的数据供微信小程序读取</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="2-1-6-算法和流程"><a href="#2-1-6-算法和流程" class="headerlink" title="2.1.6 算法和流程"></a><strong>2.1.6 算法和流程</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>  **<span class="keyword">if</span>** 访问通知获取接口:  &#123;</span><br><span class="line"><span class="number">2.</span>    	获取数据库连接  </span><br><span class="line"><span class="number">3.</span>   	从数据库的指定表中读取信息  </span><br><span class="line"><span class="number">4.</span>   	根据不同列名将数据按照对应格式存储到List  </span><br><span class="line"><span class="number">5.</span>   	将List中的数据转换为JSON格式  </span><br><span class="line"><span class="number">6.</span>   **<span class="keyword">if</span>** 接口被以GET或POST格式访问：  </span><br><span class="line"><span class="number">7.</span>       在网页上输出JSON格式的信息  &#125;</span><br><span class="line"><span class="number">8.</span>   **<span class="keyword">if</span>** 访问登录鉴权接口:  &#123;</span><br><span class="line"><span class="number">9.</span>   	获取数据库连接  </span><br><span class="line"><span class="number">10.</span>  	获取前端传递的信息  </span><br><span class="line"><span class="number">11.</span>  	将传递的信息与数据库中的信息进行比对  </span><br><span class="line"><span class="number">12.</span>  	**<span class="keyword">if</span>** 比对成功:  </span><br><span class="line"><span class="number">13.</span>      	在网页上输出 success 的信息  </span><br><span class="line"><span class="number">14.</span>  	**<span class="keyword">else</span>**:  </span><br><span class="line"><span class="number">15.</span>      	在网页上输出 error 的信息 &#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-4-7-函数实现"><a href="#3-4-7-函数实现" class="headerlink" title="3.4.7 函数实现"></a><strong>3.4.7 函数实现</strong></h3><p>该部分的函数说明如表6所示。</p>
 <center>表 6 Java Tomcat 服务器模块函数说明</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -331,7 +349,8 @@
 <th><strong>全局变量</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>informationDatabase</td>
 <td>构造函数</td>
 <td>String lableName</td>
@@ -483,26 +502,22 @@
 <td>赋值语句</td>
 <td>None</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  Name:       Information.java</span></span><br><span class="line"><span class="comment"> *  Author:     LIN Guocheng</span></span><br><span class="line"><span class="comment"> *  Date:       2021-3-28</span></span><br><span class="line"><span class="comment"> *  Function:   用于存取校内通知的标题、发布时间和文章主体。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Information</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line">    <span class="keyword">private</span> String article;</span><br><span class="line">    <span class="keyword">private</span> String[] image;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Information</span><span class="params">(String title, String date, String article, String[] image)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">        <span class="keyword">this</span>.article = article;</span><br><span class="line">        <span class="keyword">this</span>.image = image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDate</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getArticle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> article;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setArticle</span><span class="params">(String article)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.article = article;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(String[] image)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.image = image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String[] getImage() &#123;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> myServlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> database.informationDatabase;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">announcementServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//设置响应头允许ajax跨域访问</span></span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET,POST&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Writer out = response.getWriter();</span><br><span class="line">        String jsonOutput = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        informationDatabase nd = <span class="keyword">new</span> informationDatabase(<span class="string">&quot;schoolAnnouncements&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            jsonOutput = nd.getInformation();</span><br><span class="line">            out.write(jsonOutput);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        out.flush();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doGet(request,response);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.Information;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">informationDatabase</span> </span>&#123;</span><br><span class="line">    String lableName = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    Connection ct = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement pestmt = <span class="keyword">null</span>;</span><br><span class="line">    String jsonOutput = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Information&gt; information = <span class="keyword">new</span> ArrayList&lt;Information&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">informationDatabase</span><span class="params">(String lableName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.lableName = lableName;</span><br><span class="line">            Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">            ct = DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:1433;databaseName=schoolNews&quot;</span>, <span class="string">&quot;这里输入数据库用户名&quot;</span>, <span class="string">&quot;这里输入数据库密码&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (ct != <span class="keyword">null</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接成功&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取通知信息并存储到Notification数组中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInformation</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;正在打包发送 校内通知&quot;</span>);</span><br><span class="line"></span><br><span class="line">            pestmt = ct.prepareStatement(<span class="string">&quot;select * from &quot;</span> + <span class="keyword">this</span>.lableName + <span class="string">&quot; order by date desc&quot;</span>);</span><br><span class="line">            ResultSet rs = pestmt.executeQuery(); <span class="comment">// 将数据库响应的查询结果放在rs中</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(rs.next()) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(1)+&quot;,&quot;);	//标题</span></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(2)+&quot;,&quot;);</span></span><br><span class="line">            	<span class="comment">//System.out.println(rs.getString(3)+&quot;,&quot;);</span></span><br><span class="line">                String[] imgUrls = rs.getString(<span class="number">4</span>).split(<span class="string">&quot;,&quot;</span>); <span class="comment">// 将image字符串按逗号分割，成为数组</span></span><br><span class="line">                Information information = <span class="keyword">new</span> Information(rs.getString(<span class="number">1</span>),rs.getString(<span class="number">2</span>),rs.getString(<span class="number">3</span>),imgUrls);</span><br><span class="line">                <span class="keyword">this</span>.information.add(information);</span><br><span class="line">            &#125;</span><br><span class="line">            jsonOutput = JSON.toJSONString(information);</span><br><span class="line">            System.out.println(jsonOutput);</span><br><span class="line">            <span class="keyword">return</span> jsonOutput;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;转换JSON出错&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            ct.close();</span><br><span class="line">            pestmt.close();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">userDatabase</span> </span>&#123;</span><br><span class="line">    Connection ct = <span class="keyword">null</span>;</span><br><span class="line">    PreparedStatement pestmt = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">userDatabase</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">            ct=DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:1433;databaseName=schoolNews&quot;</span>, <span class="string">&quot;数据库用户名&quot;</span>, <span class="string">&quot;数据库密码&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(ct != <span class="keyword">null</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接成功&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;数据库连接失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 确认登录信息</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">checkUser</span><span class="params">(String username,String password)</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;正在确认登录信息&quot;</span>);</span><br><span class="line">            pestmt=ct.prepareStatement(<span class="string">&quot;select * from [User] where convert(nvarchar(255),username)=? and convert(nvarchar(255),password)=?&quot;</span>);</span><br><span class="line">            pestmt.setString(<span class="number">1</span>, username);</span><br><span class="line">            pestmt.setString(<span class="number">2</span>, password);</span><br><span class="line">            ResultSet rs=pestmt.executeQuery(); <span class="comment">// 将数据库响应的查询结果放在rs中</span></span><br><span class="line">            System.out.println(<span class="string">&quot;数据库响应结果为：&quot;</span> + rs.toString());</span><br><span class="line"></span><br><span class="line">            User user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                user.setUsername(rs.getString(<span class="number">1</span>));<span class="comment">//第一个属性</span></span><br><span class="line">                user.setPassword(rs.getString(<span class="number">2</span>));<span class="comment">//第二个属性</span></span><br><span class="line">                System.out.println(<span class="string">&quot;用户信息为：&quot;</span> + user.getUsername() + <span class="string">&quot; &quot;</span> + user.getPassword());</span><br><span class="line">                <span class="keyword">return</span> user;	<span class="comment">///查到就返回对象</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            ct.close();</span><br><span class="line">            pestmt.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> myServlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> model.User;</span><br><span class="line"><span class="keyword">import</span> database.userDatabase;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">userServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//设置响应头允许ajax跨域访问</span></span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">        response.setHeader(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET,POST&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取微信小程序get的参数值并打印</span></span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        String password = request.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;微信小程序中获得的内容为：username:&quot;</span> + username + <span class="string">&quot; password:&quot;</span> + password);</span><br><span class="line"></span><br><span class="line">        userDatabase userDatabase =<span class="keyword">new</span> userDatabase(); <span class="comment">// 建立输入信息比对对象</span></span><br><span class="line">        HttpSession session=request.getSession(); <span class="comment">// 创建保存信息对象</span></span><br><span class="line">        User user=(User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;<span class="comment">//第一次进入</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                user= userDatabase.checkUser(username, password);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="comment">///如果账户密码正确，把返回的对象抛给user，不正确对象则为空</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        session.setAttribute(<span class="string">&quot;user&quot;</span>, user);<span class="comment">///保存对象</span></span><br><span class="line">        Writer out = response.getWriter();</span><br><span class="line">        <span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;<span class="comment">///有对象，用户名密码正确</span></span><br><span class="line">            out.write(<span class="string">&quot;success&quot;</span>);<span class="comment">//向小程序返回结果</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//对象为空</span></span><br><span class="line">            out.write(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        out.flush();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doGet(request,response);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h3 id="2-1-8-全局数据结构与该模块的关系"><a href="#2-1-8-全局数据结构与该模块的关系" class="headerlink" title="2.1.8 全局数据结构与该模块的关系"></a><strong>2.1.8 全局数据结构与该模块的关系</strong></h3><p>该模块为数据库和微信小程序相互通信的中枢模块，与数据库之间的通信通过JDBC进行，与微信小程序之间的通信依赖于微信小程序的主动访问。</p>
 <h2 id="2-2-数据库设计"><a href="#2-2-数据库设计" class="headerlink" title="2.2 数据库设计"></a>2.2 数据库设计</h2><h3 id="2-2-1-数据库及数据表"><a href="#2-2-1-数据库及数据表" class="headerlink" title="2.2.1 数据库及数据表"></a><strong>2.2.1 数据库及数据表</strong></h3><p>本系统内使用的数据库系统为 Microsoft SQL Server 2019 数据库，数据库中包含表<br>User, schoolAnnouncements, schoolArticles, schoolLectures 和 schoolNews<br>五张表，分别用于用户登录鉴权、公告公示、校内通知、学术讲座和校内新闻的存储。</p>
 <h3 id="2-2-2-数据结构设计"><a href="#2-2-2-数据结构设计" class="headerlink" title="2.2.2 数据结构设计"></a><strong>2.2.2 数据结构设计</strong></h3><p>五张表中，User 表的数据结构设计如表7所示，schoolAnnouncements, schoolArticles,<br>schoolLectures 和 schoolNews 表的数据结构设计如表8所示。</p>
 <center>表 7 User 表的数据结构设计</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -511,7 +526,8 @@
 <th><strong>允许Null值</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>username</td>
 <td>nchar(10)</td>
 <td>√</td>
@@ -521,10 +537,13 @@
 <td>ntext</td>
 <td>√</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <center>表 8 schoolAnnouncements, schoolArticles, schoolLectures 和 schoolNews
 表的数据结构设计</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -533,7 +552,8 @@
 <th><strong>允许Null值</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>title</td>
 <td>nvarchar(50)</td>
 <td>√</td>
@@ -553,7 +573,9 @@
 <td>ntext</td>
 <td>√</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
  
       <!-- reward -->
       
@@ -979,6 +1001,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -1082,6 +1127,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

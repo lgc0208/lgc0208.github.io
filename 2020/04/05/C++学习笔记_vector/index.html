@@ -117,19 +117,16 @@
        
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与string类一样 vector 类是随标准 C++引入的标准库的一部分 ，为了使用vector 我们必须包含相关的头文件  ：</p>
 <span id="more"></span>
-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::vector;</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector在实例化时不需要申明长度。标准库负责管理和储存元素相关的内存，用户不用担心长度不够，例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; ivec<span class="comment">//定义向量对象ivec，向量中每一个元素都是int类型</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="一-vector的初始化"><a href="#一-vector的初始化" class="headerlink" title="一.vector的初始化"></a>一.vector的初始化</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector有两种不同的使用形式，分别为数组习惯和 STL习惯。</p>
 <ol>
 <li><strong>数组习惯用法</strong></li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ivec</span><span class="params">(<span class="number">5</span>)</span></span>;  <span class="comment">//类似数组定义int ivec[5];</span></span><br></pre></td></tr></table></figure>
-
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以通过ivec[索引号] 来访问元素</p>
-<ol start="2">
+<ol>
 <li><strong>STL习惯</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在定义vector的元素时，可以为每个元素提供一个显式的初始值来完成初始化，例如：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ivec</span><span class="params">(<span class="number">2</span>,<span class="number">1</span>)</span></span></span><br></pre></td></tr></table></figure>
@@ -141,18 +138,20 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;或者：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ivec</span><span class="params">(&amp;ia[<span class="number">0</span>],&amp;ia[<span class="number">1</span>])</span></span></span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示将a[0],a[1]的元素拷贝到ivec内</p>
-<ol start="3">
+<ol>
 <li><strong>vector可以被另一个vector初始化，或被赋值给另一个vector</strong>，例如：</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; ivec;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ivec2</span><span class="params">(ivec)</span></span>;</span><br><span class="line">ivec2 = ivec;</span><br></pre></td></tr></table></figure>
-<h2 id="二-定义在vector类中的方法"><a href="#二-定义在vector类中的方法" class="headerlink" title="二.定义在vector类中的方法"></a>二.定义在vector类中的方法</h2><table>
+<h2 id="二-定义在vector类中的方法"><a href="#二-定义在vector类中的方法" class="headerlink" title="二.定义在vector类中的方法"></a>二.定义在vector类中的方法</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>方法名</th>
 <th>方法描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>back()</td>
 <td>返回最后一个向量的值</td>
 </tr>
@@ -200,9 +199,10 @@
 <td>size()</td>
 <td>返回向量中的元素个数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="三-vector使用实例"><a href="#三-vector使用实例" class="headerlink" title="三.vector使用实例"></a>三.vector使用实例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::vector;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;PHONEBOOK&gt; vec;</span><br><span class="line">	PHONEBOOK pbook[<span class="number">4</span>] = &#123;</span><br><span class="line">							&#123; <span class="number">20181208</span>, <span class="string">&quot;Mary&quot;</span> ,<span class="string">&quot; 13011221827&quot;</span>，<span class="string">&quot;classmates&quot;</span> &#125;,</span><br><span class="line">							&#123; <span class="number">20181127</span>,<span class="string">&quot;Tom&quot;</span> ,<span class="string">&quot;13934621123”,&quot;</span> <span class="string">&quot;family&quot;</span> &#125;,</span><br><span class="line">							&#123; <span class="number">20181156</span>, <span class="string">&quot;John&quot;</span> ,<span class="string">&quot;1324579880&quot;</span> ,<span class="string">&quot;classmates&quot;</span> &#125;,</span><br><span class="line">							&#123; <span class="number">20181133</span>, <span class="string">&quot;Lisa&quot;</span> ,<span class="string">&quot; 1378001822”,&#x27; classmates&quot;</span> &#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		vec.<span class="built_in">push_back</span>(pbook[i]); <span class="comment">//尾部添加4条通信录</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;通信录内容列表:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vec.<span class="built_in">size</span>(); i++)</span><br><span class="line">		vec[i].<span class="built_in">print</span>();<span class="comment">//使用数组方式访问每个元素</span></span><br><span class="line">	<span class="function">PHONEBOOK <span class="title">record</span><span class="params">(<span class="number">20181209</span>,<span class="string">&quot;phoenix&quot;</span>,<span class="string">&quot;15930209020&quot;</span>,<span class="string">&quot;teacher&quot;</span>)</span></span>;</span><br><span class="line">	vec.<span class="built_in">insert</span>(vec.<span class="built_in">begin</span>(), record); <span class="comment">//在 vec头添加元素record,该操作时间复杂度为0(n)</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;通信录内容列表:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (vector&lt;PHONEBOOK&gt;::iterator it = vec.<span class="built_in">begin</span>(); it != vec.<span class="built_in">end</span>(); it++)</span><br><span class="line">		(*it).<span class="built_in">print</span>();<span class="comment">//使用迭代器访问每个元素</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;删除元素:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	vec.<span class="built_in">erase</span>((++ ++vec.<span class="built_in">begin</span>()))-&gt;<span class="built_in">print</span>(); <span class="comment">//删除第3位置的元素</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;通信录内容列表:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (vector &lt; PHONEBOOK&gt;::iterator it = vec.<span class="built_in">begin</span>(); it != vec.<span class="built_in">end</span>(); it++)</span><br><span class="line">		(*it).<span class="built_in">print</span>();<span class="comment">//使用迭代器访问每个元素</span></span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里要重点说明的是，上例第一个循环采用下标方式访问向量对象vec中的每个元素,操作与数组相同,但需要注意在使用下标操作符“[]”时要防止地址越界，否则这类错误很难被捕捉到,会导致程序运行结果不确定。为了避免这种错误，一般使用迭代器，如上例中的第二个循环。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义迭代器的方法如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector &lt;PHONEBOOK&gt;::iterator it;</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>迭代器类似于指针</strong>,可以使用*it访问相应元素。如it= vec.begin()表示迭代器it指向vec的第一个元素;it=vec.end()表示迭代器it指向vec最后一个元素的下一个元素位置。若向量对象vec为空,vec.begin()与vec. end()指向同一个位置。容器的begin() 和end()函数都是常用接口,在程序设计时注意灵活使用。上例中还调用了push_back() 、size( )、insert()、erase()这4个接口函数,具体功能见上文函数表。</p>
@@ -631,6 +631,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -734,6 +757,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

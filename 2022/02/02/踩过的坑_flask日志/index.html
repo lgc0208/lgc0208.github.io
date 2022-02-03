@@ -115,10 +115,8 @@
        
   <p>使用 <code>app.logger</code> 对日志进行记录时，在本地服务器上运行正常，而部署到 <code>gunicorn</code> 后无法正常工作</p>
 <span id="more"></span>
-
 <p>我的代码片段如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># name: flask_LSTM.py</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/predict&#x27;</span></span>)</span></span><br><span class="line">app.logger.debug(<span class="string">&#x27;Running&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    file_handler = FileHandler(<span class="string">&#x27;logs/flask.log&#x27;</span>)</span><br><span class="line">    file_handler.setLevel(logging.DEBUG)</span><br><span class="line">    file_handler.setFormatter(Formatter(<span class="string">&#x27;%(asctime)s %(levelname)s: %(message)s &#x27;</span><span class="string">&#x27;[in %(pathname)s:%(lineno)d]&#x27;</span>))</span><br><span class="line">    app.logger.addHandler(file_handler)</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>在服务器上输入指令 <code>python flask_LSTM.py</code> 后，程序正常运行，使用 POSTMAN 进行访问后，<code>flask.log</code> 文件里获得期望输出</p>
 <p>然而使用 <code>guinicorn</code> 运行程序时，程序运行后使用 POSTMAN 访问，日志文件没有任何新写入的信息</p>
 <p>冥思苦想了一个晚上，于是还是决定直接采用</p>
@@ -540,6 +538,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -643,6 +664,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

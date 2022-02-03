@@ -115,7 +115,6 @@
        
   <p>本文介绍了关闭文件夹后，对文件夹进行删除等操作时提示文件夹被占用，但此时没有打开文件夹中的文件的解决方法</p>
 <span id="more"></span>
-
 <ol>
 <li><p>打开<strong>任务管理器</strong></p>
 </li>
@@ -123,8 +122,7 @@
 </li>
 <li><p>点击<strong>CPU</strong>，在<strong>关联的句柄处</strong>输入无法进行操作的<strong>文件夹名称</strong><br><img src="https://img-blog.csdnimg.cn/0cf9b629f9b246ce8567094875f19ebc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGdjMDIwOA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 </li>
-<li><p>在搜索结果中<strong>右键符合条件的结果</strong>，点击<strong>结束进程</strong>即可</p>
-</li>
+<li>在搜索结果中<strong>右键符合条件的结果</strong>，点击<strong>结束进程</strong>即可</li>
 </ol>
  
       <!-- reward -->
@@ -551,6 +549,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -654,6 +675,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

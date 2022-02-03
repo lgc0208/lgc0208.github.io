@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -100,7 +100,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6 分钟</span>
+            <span class="post-count">7 分钟</span>
         </span>
     </span>
 </div>
@@ -115,23 +115,22 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>前置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/27/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(5)/">模电学习笔记_双极型晶体管及其放大电路（5）</a></p>
+  <p>前置：<a target="_blank" rel="noopener" href="https://lgc0208.github.io/2020/04/27/模电学习笔记_双极型晶体管(5">模电学习笔记_双极型晶体管及其放大电路（5）</a>/)</p>
 <span id="more"></span>
-
 <h1 id="一-基本知识点"><a href="#一-基本知识点" class="headerlink" title="一.基本知识点"></a>一.基本知识点</h1><h2 id="2-8-功率放大电路"><a href="#2-8-功率放大电路" class="headerlink" title="2.8 功率放大电路"></a>2.8 功率放大电路</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;功率放大器的作用：<strong>用作放大电路的输出级</strong>，驱动扬声器、继电器等执行机构。</p>
-<h3 id="2-8-1-功率放大电路的特点及分类"><a href="#2-8-1-功率放大电路的特点及分类" class="headerlink" title="2.8.1 功率放大电路的特点及分类"></a>2.8.1 功率放大电路的特点及分类</h3><p>1.功率放大电路的特点<br>（1）输出功率大<br>&nbsp;&nbsp;&nbsp;&nbsp;功放管的电压电流需要有足够的输出幅度，因此晶体管往往在<strong>接近极限状态</strong>下工作<br>&nbsp;&nbsp;&nbsp;&nbsp;注意：电路参数不能超过晶体管的极限值I<del>CM</del>,V<del>CEM</del>,P<del>CM</del><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502175024462.png" alt="在这里插入图片描述"><br>（2）效率高<br>&nbsp;&nbsp;&nbsp;&nbsp;功率放大器的输出功率<strong>由直流电源供给的能量转换得到</strong>的。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>效率</strong>是负载得到的<strong>有用信号功率和电源供给的直流功率的比值</strong>。比值越大，效率越高<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502175228179.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;P<del>O</del>：负载上得到的交流信号功率<br>&nbsp;&nbsp;&nbsp;&nbsp;P<del>DC</del>：电源提供的直流功率</p>
+<h3 id="2-8-1-功率放大电路的特点及分类"><a href="#2-8-1-功率放大电路的特点及分类" class="headerlink" title="2.8.1 功率放大电路的特点及分类"></a>2.8.1 功率放大电路的特点及分类</h3><p>1.功率放大电路的特点<br>（1）输出功率大<br>&nbsp;&nbsp;&nbsp;&nbsp;功放管的电压电流需要有足够的输出幅度，因此晶体管往往在<strong>接近极限状态</strong>下工作<br>&nbsp;&nbsp;&nbsp;&nbsp;注意：电路参数不能超过晶体管的极限值I~CM~,V~CEM~,P~CM~<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502175024462.png" alt="在这里插入图片描述"><br>（2）效率高<br>&nbsp;&nbsp;&nbsp;&nbsp;功率放大器的输出功率<strong>由直流电源供给的能量转换得到</strong>的。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>效率</strong>是负载得到的<strong>有用信号功率和电源供给的直流功率的比值</strong>。比值越大，效率越高<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502175228179.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;P~O~：负载上得到的交流信号功率<br>&nbsp;&nbsp;&nbsp;&nbsp;P~DC~：电源提供的直流功率</p>
 <p>（3）非线性失真小</p>
 <p>（4）功放管需要散热和保护<br>&nbsp;&nbsp;&nbsp;&nbsp;在功率放大电路中，绝大部分功率消耗在集电结上，使得管子温度升高。</p>
 <p>（5）一般采用图解法分析</p>
-<p>2.功率放大电路的分类<br>&nbsp;&nbsp;&nbsp;&nbsp;按照晶体管工作状态不同，一般模拟功放可以分为甲类（A类）、乙类（B类）、甲乙类（AB类）和丙类（C类）四种。<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）甲类放大（导通角θ=180°）：晶体管的静态Q点在放大区，在输入信号的整个周期内都有电流流过晶体管；<br>&nbsp;&nbsp;&nbsp;&nbsp;（2）甲乙类放大（90°＜θ＜180°）：Q点靠近零点，晶体管有半个周期以上导通；<br>&nbsp;&nbsp;&nbsp;&nbsp;（3）乙类放大（θ=90°）：Q点在零点（V<del>BE</del>＜0），晶体管只有半个周期导通；<br>&nbsp;&nbsp;&nbsp;&nbsp;（4）丙类放大（θ＜90°）：Q点在零点以下（NPN:V<del>BE</del>＜0），晶体管导通时间小于半个周期</p>
+<p>2.功率放大电路的分类<br>&nbsp;&nbsp;&nbsp;&nbsp;按照晶体管工作状态不同，一般模拟功放可以分为甲类（A类）、乙类（B类）、甲乙类（AB类）和丙类（C类）四种。<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）甲类放大（导通角θ=180°）：晶体管的静态Q点在放大区，在输入信号的整个周期内都有电流流过晶体管；<br>&nbsp;&nbsp;&nbsp;&nbsp;（2）甲乙类放大（90°＜θ＜180°）：Q点靠近零点，晶体管有半个周期以上导通；<br>&nbsp;&nbsp;&nbsp;&nbsp;（3）乙类放大（θ=90°）：Q点在零点（V~BE~＜0），晶体管只有半个周期导通；<br>&nbsp;&nbsp;&nbsp;&nbsp;（4）丙类放大（θ＜90°）：Q点在零点以下（NPN:V~BE~＜0），晶体管导通时间小于半个周期</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502184024696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h3 id="2-8-2-互补对称功率放大电路"><a href="#2-8-2-互补对称功率放大电路" class="headerlink" title="2.8.2 互补对称功率放大电路"></a>2.8.2 互补对称功率放大电路</h3><p>1.互补对称（互补推挽）功放的类型：<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）变压器输出方式<br>&nbsp;&nbsp;&nbsp;&nbsp;（2）无变压器输出方式（OTL电路：Output TransformerLess）<br>&nbsp;&nbsp;&nbsp;&nbsp;（3）无电容输出方式（OCL电路：Output CapacitorLess）</p>
 <p>2.变压器耦合输出<br>&nbsp;&nbsp;&nbsp;&nbsp;选择恰当的变比，即可在负载上得到尽可能大的输出功率</p>
-<p>3.乙类互补功率放大电路原理及参数（OCL电路）<br>（1）电路组成及工作原理<br>&nbsp;&nbsp;&nbsp;&nbsp;互补对称：电路中采用两个晶体管：NPN、PNP各一支。两管特性一致，组成互补对称式射极输出器。<br>&nbsp;&nbsp;&nbsp;&nbsp;★两个晶体管都只在半个周期内工作<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502210824516.png" alt="在这里插入图片描述"><br>（2）实际乙类互补输出的波形图及其特点<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502211058307.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;①静态电流I<del>CQ</del>，I<del>BQ</del>等于0；<br>&nbsp;&nbsp;&nbsp;&nbsp;②每个三极管导通时间为半个周期；<br>&nbsp;&nbsp;&nbsp;&nbsp;③由于死区电压的存在，电路存在交越失真<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502212408283.png" alt="在这里插入图片描述"><br>（3）主要参数的计算<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502212704170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;①输出功率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设负载上输出正弦电压幅度为V<del>OM</del>，则输出电流的幅度为I<del>OM</del>=V<del>OM</del>/R<del>L</del>，则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;负载上得到的信号功率为P<del>o</del>=0.5V<del>om</del>I<del>om</del>=0.5V<del>om</del>^2^/R<del>L</del>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不考虑V<del>CES</del>时的最大输出功率：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>omax</del>=V<del>CC</del>，I<del>omax</del>=V<del>CC</del>/R<del>L</del>，P<del>omax</del>=0.5V<del>CC</del>^2^/R<del>L</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考虑晶体管饱和压降V<del>CES</del>时的最大输出功率：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>omax</del>=V<del>CC</del>-V<del>CE（sat）</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I<del>omax</del>=(V<del>CC</del>-V<del>CE（sat）</del>)/R<del>L</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P<del>omax</del>=V<del>omax</del>^2^/(2R<del>L</del>)</p>
-<p>②电源提供的直流平均功率计算<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个电源中电流为半个正弦波（峰值为<del>V</del>om<del>），其平均值为<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I</del>av1<del>=I</del>av2<del>=V</del>om<del>/（πR</del>L<del>）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>两个电源提供的总功率为</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;****P</del>DC<del>=2V</del>CC<del>I</del>av1<del>=2V</del>CC<del>*V</del>om<del>/（πR</del>L<del>）****<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当V</del>om<del>=V</del>omax<del>且忽略饱和压降V</del>CES<del>时，P</del>DCmax<del>=2V</del>CC<del>*V</del>CC<del>/（πR</del>L~）</p>
-<p>③效率和最高效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出幅值为某一电压时的效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P<del>o</del>/P<del>DC</del>=π/4 *V<del>om</del>/V<del>CC</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V<del>omax</del>=V<del>CC</del>，P<del>omax</del>/P<del>DCmax</del>=π/4≈78.5%</p>
-<p>（4）晶体管的选择（未考虑饱和压降）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①I<del>CM</del>＞V<del>CC</del>/R<del>L</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②V<del>(BR)CEO</del>＞2V<del>CC</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③P<del>CM</del>大于任意时刻电源功率与输出功率之差<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④晶体管的最大功耗<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P<del>T1max</del>=P<del>T2max</del>=0.5(P<del>DC</del>-P<del>o</del>)=1/π^2^ *V<del>CC</del>^2^/R<del>L</del>≈0.2P<del>omax</del><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故选择时，P<del>CM</del>＞0.2P<del>omax</del></p>
-<p>4.单电源供电的互补功率放大电路（无输出变压器的互补对称功放电路OTL）<br>（1）特点：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①单电源供电；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>输出加有大电容</strong><br>（2）静态分析<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502231708689.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调整R使得T<del>1</del>,T<del>2</del>有合适的静态电流<br>（3）动态分析<br><img src="https://img-blog.csdnimg.cn/20200502234435345.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T<del>3</del>集电极电压信号为正半周时，T<del>1</del>导通（见红色虚线）、T<del>2</del>截止；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T<del>3</del>集电极电压信号为负半周时，T<del>2</del>导通（见蓝色虚线）、T1截止；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若输出电容足够大，电容上电压基本保持不变，则负载上得到的交流信号正负半周对称。<br>（4）最大输出功率及效率（分析方法同OCL，参数计算中只需将OCL中的VCC用0.5VCC替代即可。）</p>
+<p>3.乙类互补功率放大电路原理及参数（OCL电路）<br>（1）电路组成及工作原理<br>&nbsp;&nbsp;&nbsp;&nbsp;互补对称：电路中采用两个晶体管：NPN、PNP各一支。两管特性一致，组成互补对称式射极输出器。<br>&nbsp;&nbsp;&nbsp;&nbsp;★两个晶体管都只在半个周期内工作<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502210824516.png" alt="在这里插入图片描述"><br>（2）实际乙类互补输出的波形图及其特点<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502211058307.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;①静态电流I~CQ~，I~BQ~等于0；<br>&nbsp;&nbsp;&nbsp;&nbsp;②每个三极管导通时间为半个周期；<br>&nbsp;&nbsp;&nbsp;&nbsp;③由于死区电压的存在，电路存在交越失真<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502212408283.png" alt="在这里插入图片描述"><br>（3）主要参数的计算<br>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502212704170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;①输出功率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设负载上输出正弦电压幅度为V~OM~，则输出电流的幅度为I~OM~=V~OM~/R~L~，则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;负载上得到的信号功率为P~o~=0.5V~om~I~om~=0.5V~om~^2^/R~L~。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不考虑V~CES~时的最大输出功率：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~omax~=V~CC~，I~omax~=V~CC~/R~L~，P~omax~=0.5V~CC~^2^/R~L~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考虑晶体管饱和压降V~CES~时的最大输出功率：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~omax~=V~CC~-V~CE（sat）~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~omax~=(V~CC~-V~CE（sat）~)/R~L~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P~omax~=V~omax~^2^/(2R~L~)</p>
+<p>②电源提供的直流平均功率计算<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个电源中电流为半个正弦波（峰值为~V~om~），其平均值为<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I~av1~=I~av2~=V~om~/（πR~L~）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>两个电源提供的总功率为</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><strong>P~DC~=2V~CC~I~av1~=2V~CC~*V~om~/（πR~L~）</strong></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当V~om~=V~omax~且忽略饱和压降V~CES~时，P~DCmax~=2V~CC~*V~CC~/（πR~L~）</p>
+<p>③效率和最高效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出幅值为某一电压时的效率<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P~o~/P~DC~=π/4 *V~om~/V~CC~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V~omax~=V~CC~，P~omax~/P~DCmax~=π/4≈78.5%</p>
+<p>（4）晶体管的选择（未考虑饱和压降）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①I~CM~＞V~CC~/R~L~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②V~(BR)CEO~＞2V~CC~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③P~CM~大于任意时刻电源功率与输出功率之差<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④晶体管的最大功耗<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P~T1max~=P~T2max~=0.5(P~DC~-P~o~)=1/π^2^ *V~CC~^2^/R~L~≈0.2P~omax~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故选择时，P~CM~＞0.2P~omax~</p>
+<p>4.单电源供电的互补功率放大电路（无输出变压器的互补对称功放电路OTL）<br>（1）特点：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①单电源供电；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>输出加有大电容</strong><br>（2）静态分析<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img-blog.csdnimg.cn/20200502231708689.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调整R使得T~1~,T~2~有合适的静态电流<br>（3）动态分析<br><img src="https://img-blog.csdnimg.cn/20200502234435345.png" alt="在这里插入图片描述"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T~3~集电极电压信号为正半周时，T~1~导通（见红色虚线）、T~2~截止；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T~3~集电极电压信号为负半周时，T~2~导通（见蓝色虚线）、T1截止；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若输出电容足够大，电容上电压基本保持不变，则负载上得到的交流信号正负半周对称。<br>（4）最大输出功率及效率（分析方法同OCL，参数计算中只需将OCL中的VCC用0.5VCC替代即可。）</p>
  
       <!-- reward -->
       
@@ -557,6 +556,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
@@ -660,6 +682,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

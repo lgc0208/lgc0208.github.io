@@ -127,10 +127,7 @@
 <li><strong>电路结构图</strong></li>
 </ol>
 <p>实现流水灯的电路结构图如图1所示。以两条红色虚线为界，从左至右第一部分为ARM系统部分，第三部分为外围电路，第二部分是接口部分，需要自己将其连接。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707225257418.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707225257418.png" alt=" "></p>
 <center> 图 1 流水灯的电路结构图 </center>
 
 
@@ -139,49 +136,31 @@
 <li><strong>LED电路原理</strong></li>
 </ol>
 <p>LED灯的驱动原理如图2所示。当发光二极管正向导通时，LED灯点亮。    </p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707225607582.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707225607582.png" alt=" "></p>
 <center> 图 2 LED灯正向导通</center>
 
 <p>如图3所示，LED灯与MCU引脚连接，MCU IO额定电流为25mA，例如0603封装红色LED灯额定电流为20mA，已经接近MCU IO的额定电流，可能会损毁器件。因此图1.3微控制器驱动LED灯方案不可取。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707230556740.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707230556740.png" alt=" "></p>
 <center> 图 3 微控制器驱动 LED 灯</center>
 
 <p>实际微控制驱动LED灯的电路模型包括：控制器、驱动器和执行器三部分，控制器提供控制信号，再由驱动器驱动执行器，如图4所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707230939893.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707230939893.png" alt=" "></p>
 <center> 图 4 LED 灯去驱动电路模型</center>
 
 
 
 <p>如图5所示LED灯通过N沟道MOS管驱动，MCU IO输出高电平时MOS管漏极和源极导通LED灯被点亮，反之MCU输出低电平时MOS管漏极和源极截止，LED灯不能被点亮。假设VCC电压3.3V，MOS管导通阻值为零，通过LED灯的电流将远超额定电流出现短路现象，故此方案不可取。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234219270.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707234219270.png" alt=" "></p>
 <center> 图 5 MOS 管驱动 LED 灯电路</center>
 
 <p>如图6所示，LED驱动电路中增加电阻（R），以此保证通过LED灯的电流不超过额定电流，避免损坏器件，故将电阻R称为限流电阻。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234307889.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707234307889.png" alt=" "></p>
 <center> 图 6 限流电阻</center>
 
 
 
 <p>如图7所示LED电路原理图，R1位置电阻作为限流电阻，R29位置电阻作为下拉电阻，避免MOS管栅极出现亚稳态。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234335315.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707234335315.png" alt=" "></p>
 <center> 图 7 LED 电路原理图</center>
 
 
@@ -189,10 +168,7 @@
 <li><strong>微控制器IO输出控制原理</strong></li>
 </ol>
 <p>如图8所示，基本结构针对STM32F407有7组IO。分别为GPIOA~GPIOG，每组IO有16个IO口，则有112个IO口。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234407548.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387143066830.png" alt=" "></p>
 <center> 图 8 I/O 端口位控制基本结构</center>
 
 
@@ -212,10 +188,7 @@
 <li><strong>硬件接线图</strong></li>
 </ol>
 <p>实现流水灯的电路结构图如图1所示。以两条红色虚线为界，从左至右第一部分为ARM系统部分，第三部分为外围电路，第二部分是接口部分，需要自己将其连接。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234455340.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707234455340.png" alt=" "></p>
 <center> 图 9 流水灯的硬件接线图</center>
 
 <p>接线方式为：GPIOF_0~GPIOF_7（P12接口）接LED1~LED8（P2接口）。</p>
@@ -223,10 +196,7 @@
 <li><strong>软件程序流程图</strong></li>
 </ol>
 <p>实现流水灯的软件流程图如图10所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234617722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387142237627.png" alt=" "></p>
 <center> 图 10 流水灯的软件流程图</center>
 
 
@@ -235,10 +205,7 @@
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/************************************************************* </span></span><br><span class="line"><span class="comment">实验名称：LED流水灯 </span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment">硬件模块：计算机原理应用试验箱 </span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment">硬件接线：P12~P2 </span></span><br><span class="line"><span class="comment">           </span></span><br><span class="line"><span class="comment">实验现象：通过数据移位操作，LED1~LED8实现流水灯效果 </span></span><br><span class="line"><span class="comment">**************************************************************/</span>  </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f4xx.h&quot;</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">uint8_t</span>  cont = <span class="number">128</span>;  </span><br><span class="line">    <span class="keyword">uint16_t</span> led_data = <span class="number">0</span>;  </span><br><span class="line">    GPIO_InitTypeDef   GPIO_InitStructure;  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">//  开启GPIO时钟  </span></span><br><span class="line">    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);     </span><br><span class="line">  </span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 输出模式  </span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;          </span><br><span class="line">    <span class="comment">// 设置推挽输出  </span></span><br><span class="line">        GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;           </span><br><span class="line">        <span class="comment">// 速率25MHZ  </span></span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Medium_Speed;       </span><br><span class="line">    GPIO_Init(GPIOF, &amp;GPIO_InitStructure);  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    GPIO_Write(GPIOF, <span class="number">0x00FF</span>);  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">// 初始化延时  </span></span><br><span class="line">    Delay_Init();     </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        led_data = <span class="number">128</span>&lt;&lt;cont;           </span><br><span class="line">        GPIO_Write(GPIOF, led_data);   </span><br><span class="line">        Delay_Ms(<span class="number">100</span>);  </span><br><span class="line">        cont++;  </span><br><span class="line">                <span class="comment">// 大于7后清零  </span></span><br><span class="line">        cont &amp;= <span class="number">0x07</span>;    </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="1-5-流水灯实验结果"><a href="#1-5-流水灯实验结果" class="headerlink" title="1.5 流水灯实验结果"></a>1.5 流水灯实验结果</h2><p>流水灯实验结果如图11所示，实验现象表示为LED1~LED8依次被点亮。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234821471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387141714525.png" alt=" "></p>
 <center> 图 11 流水灯实验结果</center>
 
 
@@ -257,50 +224,31 @@
 <p>data:写入的数据0~7；</p>
 <p>wren:写使能高电平有效；</p>
 <p>rdadress:读数据地址，将内存中的数据从RAM存储区读出；</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/2021070723490282.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/2021070723490282.png" alt=" "></p>
 <center>图 12 双端口存储器结构图</center>
 
 
 
 <p>此外，数据写入写出时的波形分别如图13和图14所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707234926504.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707234926504.png" alt=" "></p>
 <center>图 13 数据写入时波形</center>
 
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/2021070723495429.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/2021070723495429.png" alt=" "></p>
 <center>图 14 数据读取时波形</center>
 
 <h2 id="2-3-完整的硬件接线图和程序流程图"><a href="#2-3-完整的硬件接线图和程序流程图" class="headerlink" title="2.3 完整的硬件接线图和程序流程图"></a>2.3 完整的硬件接线图和程序流程图</h2><p><strong>（1）硬件接线图</strong></p>
 <p>完整的硬件接线图如图15所示。其中P2接口与P10接口相连，P1接口与P11接口相连，P12接口与P13接口相连。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235022858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387140352420.png" alt=" "></p>
 <center>图 15 存储器硬件接线图</center>
 
 
 
 <p><strong>（2）软件程序流程图</strong></p>
 <p>Quartus中的程序流程图如图16所示，Keil中的软件流程图如图17所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235100798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387140046918.png" alt=" "></p>
 <center>图 16 Quartus中的程序流程图</center>
 
-
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235126702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387139831916.png" alt=" "></p>
 <center>图 17 Keil中的软件流程图</center>
 
 <h2 id="2-4-存储器源代码程序"><a href="#2-4-存储器源代码程序" class="headerlink" title="2.4 存储器源代码程序"></a>2.4 存储器源代码程序</h2><p><strong>（1）double_ram.v</strong></p>
@@ -311,37 +259,25 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>	<span class="comment">/******************************************************************* </span></span><br><span class="line"><span class="comment">2.	实验名称：第2次试验.拨档开关输入实验 </span></span><br><span class="line"><span class="comment">3.	 </span></span><br><span class="line"><span class="comment">4.	硬件模块：计算机原理应用实验箱 </span></span><br><span class="line"><span class="comment">5.	 </span></span><br><span class="line"><span class="comment">6.	硬件接线：P12-P13,P11-P1,P10-P2 </span></span><br><span class="line"><span class="comment">7.	实验现象：拨码开关状态映射到LED灯上。 </span></span><br><span class="line"><span class="comment">8.	             </span></span><br><span class="line"><span class="comment">9.	key 1 读 Key 2 写 </span></span><br><span class="line"><span class="comment">10.	********************************************************************/</span>  </span><br><span class="line"><span class="number">11.</span>	<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f4xx.h&quot;</span>  </span></span><br><span class="line"><span class="number">12.</span>	<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>  </span></span><br><span class="line"><span class="number">13.</span>	  </span><br><span class="line"><span class="number">14.</span>	<span class="comment">/******************************* </span></span><br><span class="line"><span class="comment">15.	功  能：LED端口初始化 </span></span><br><span class="line"><span class="comment">16.	参  数：无 </span></span><br><span class="line"><span class="comment">17.	返回值：无 </span></span><br><span class="line"><span class="comment">18.	*******************************/</span>  </span><br><span class="line"><span class="number">19.</span>	  </span><br><span class="line"><span class="number">20.</span>	  </span><br><span class="line"><span class="number">21.</span>	<span class="meta">#<span class="meta-keyword">define</span> KEY_READ()       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_8)              <span class="comment">// 上按键检测  </span></span></span><br><span class="line"><span class="number">22.</span>	<span class="meta">#<span class="meta-keyword">define</span> KEY_WRITE()       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_11)            <span class="comment">// 下按键检测  </span></span></span><br><span class="line"><span class="number">23.</span>	  </span><br><span class="line"><span class="number">24.</span>	  </span><br><span class="line"><span class="number">25.</span>	<span class="meta">#<span class="meta-keyword">define</span> CLK(val)     GPIO_WriteBit(GPIOF, GPIO_Pin_6, (BitAction)val)          <span class="comment">// FPGA 时钟信号  </span></span></span><br><span class="line"><span class="number">26.</span>	<span class="meta">#<span class="meta-keyword">define</span> WREN(val)    GPIO_WriteBit(GPIOF, GPIO_Pin_7, (BitAction)val)          <span class="comment">// FPGA 读写信号  </span></span></span><br><span class="line"><span class="number">27.</span>	  </span><br><span class="line"><span class="number">28.</span>	  </span><br><span class="line"><span class="number">29.</span>	<span class="comment">/******************************* </span></span><br><span class="line"><span class="comment">30.	功  能：LED灯读写数据显示 </span></span><br><span class="line"><span class="comment">31.	参  数：无 </span></span><br><span class="line"><span class="comment">32.	返回值：无 </span></span><br><span class="line"><span class="comment">33.	*******************************/</span>  </span><br><span class="line"><span class="number">34.</span>	  </span><br><span class="line"><span class="number">35.</span>	<span class="function"><span class="keyword">void</span> <span class="title">Led_Init</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function">36.	</span>&#123;  </span><br><span class="line"><span class="number">37.</span>	    GPIO_InitTypeDef   GPIO_InitStructure;  </span><br><span class="line"><span class="number">38.</span>	  </span><br><span class="line"><span class="number">39.</span>	    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);   <span class="comment">//开启GPIOB的时钟  </span></span><br><span class="line"><span class="number">40.</span>	      </span><br><span class="line"><span class="number">41.</span>	    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 \  </span><br><span class="line"><span class="number">42.</span>	                                | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;  </span><br><span class="line"><span class="number">43.</span>	      </span><br><span class="line"><span class="number">44.</span>	    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;          <span class="comment">//输出模式  </span></span><br><span class="line"><span class="number">45.</span>	    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;         <span class="comment">//推挽输出   </span></span><br><span class="line"><span class="number">46.</span>	    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;      <span class="comment">//速度50MHz  </span></span><br><span class="line"><span class="number">47.</span>	    GPIO_Init(GPIOB, &amp;GPIO_InitStructure);  </span><br><span class="line"><span class="number">48.</span>	    GPIO_Write(GPIOB, <span class="number">0x0000</span>);        </span><br><span class="line"><span class="number">49.</span>	&#125;  </span><br><span class="line"><span class="number">50.</span>	  </span><br><span class="line"><span class="number">51.</span>	<span class="comment">/******************************* </span></span><br><span class="line"><span class="comment">52.	功  能：拨码开关端口初始化 </span></span><br><span class="line"><span class="comment">53.	参  数：无 </span></span><br><span class="line"><span class="comment">54.	返回值：无 </span></span><br><span class="line"><span class="comment">55.	*******************************/</span>  </span><br><span class="line"><span class="number">56.</span>	<span class="function"><span class="keyword">void</span> <span class="title">Sw_Init</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function">57.	</span>&#123;  </span><br><span class="line"><span class="number">58.</span>	    GPIO_InitTypeDef   GPIO_InitStructure;  </span><br><span class="line"><span class="number">59.</span>	  </span><br><span class="line"><span class="number">60.</span>	    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);   <span class="comment">//开启GPIOC的时钟  </span></span><br><span class="line"><span class="number">61.</span>	  </span><br><span class="line"><span class="number">62.</span>	    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3   </span><br><span class="line"><span class="number">63.</span>	                                | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7  | GPIO_Pin_8 | GPIO_Pin_11;  </span><br><span class="line"><span class="number">64.</span>	  </span><br><span class="line"><span class="number">65.</span>	    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;           <span class="comment">//输入模式  </span></span><br><span class="line"><span class="number">66.</span>	    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;           <span class="comment">//上拉   </span></span><br><span class="line"><span class="number">67.</span>	    GPIO_Init(GPIOC, &amp;GPIO_InitStructure);  </span><br><span class="line"><span class="number">68.</span>	&#125;  </span><br><span class="line"><span class="number">69.</span>	  </span><br><span class="line"><span class="number">70.</span>	<span class="comment">/******************************* </span></span><br><span class="line"><span class="comment">71.	功  能：GPIOF与FPGA连接初始化 </span></span><br><span class="line"><span class="comment">72.	参  数：无 </span></span><br><span class="line"><span class="comment">73.	返回值：无 </span></span><br><span class="line"><span class="comment">74.	*******************************/</span>  </span><br><span class="line"><span class="number">75.</span>	<span class="function"><span class="keyword">void</span> <span class="title">GPIO_FPGA_Init</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function">76.	</span>&#123;  </span><br><span class="line"><span class="number">77.</span>	  GPIO_InitTypeDef   GPIO_InitStructure;  </span><br><span class="line"><span class="number">78.</span>	          </span><br><span class="line"><span class="number">79.</span>	    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);   <span class="comment">//开启GPIOF的时钟  </span></span><br><span class="line"><span class="number">80.</span>	      </span><br><span class="line"><span class="number">81.</span>	    GPIO_InitStructure.GPIO_Pin = <span class="number">0x0fff</span>;  </span><br><span class="line"><span class="number">82.</span>	      </span><br><span class="line"><span class="number">83.</span>	    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;        <span class="comment">//输出模式  </span></span><br><span class="line"><span class="number">84.</span>	    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;       <span class="comment">//推挽输出   </span></span><br><span class="line"><span class="number">85.</span>	    GPIO_InitStructure.GPIO_Speed = GPIO_High_Speed;     <span class="comment">//输出速率25MHz   </span></span><br><span class="line"><span class="number">86.</span>	    GPIO_Init(GPIOF, &amp;GPIO_InitStructure);  </span><br><span class="line"><span class="number">87.</span>	      </span><br><span class="line"><span class="number">88.</span>	      </span><br><span class="line"><span class="number">89.</span>	  GPIO_InitStructure.GPIO_Pin = <span class="number">0xf000</span>;  </span><br><span class="line"><span class="number">90.</span>	    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;          <span class="comment">//输出模式  </span></span><br><span class="line"><span class="number">91.</span>	  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;  </span><br><span class="line"><span class="number">92.</span>	    GPIO_Init(GPIOF, &amp;GPIO_InitStructure);  </span><br><span class="line"><span class="number">93.</span>	&#125;  </span><br><span class="line"><span class="number">94.</span>	  </span><br><span class="line"><span class="number">95.</span>	  </span><br><span class="line"><span class="number">96.</span>	  </span><br><span class="line"><span class="number">97.</span>	  </span><br><span class="line"><span class="number">98.</span>	<span class="comment">/************读取数据***************/</span>  </span><br><span class="line"><span class="number">99.</span>	<span class="function"><span class="keyword">void</span> <span class="title">Read_Data</span><span class="params">(<span class="keyword">uint8_t</span> read_addr, <span class="keyword">uint8_t</span> *read_date)</span>  </span></span><br><span class="line"><span class="function">100.	</span>&#123;  </span><br><span class="line"><span class="number">101.</span>	    <span class="keyword">uint16_t</span> buf = <span class="number">0</span>;                                           <span class="comment">// GPIOF 数据变量  </span></span><br><span class="line"><span class="number">102.</span>	    WREN(<span class="number">0</span>);                                                    <span class="comment">// 读数据  </span></span><br><span class="line"><span class="number">103.</span>	  CLK(<span class="number">0</span>);                                                     <span class="comment">// 时钟信号  </span></span><br><span class="line"><span class="number">104.</span>	    buf =  GPIO_ReadOutputData(GPIOF) &amp; <span class="number">0x00C0</span>;                 <span class="comment">// 保留第6、7位,即时钟信号和读写信号不变  </span></span><br><span class="line"><span class="number">105.</span>	    buf |= read_addr;                                           <span class="comment">// 将读取地址放入GPIOF, 读地址 0-2位  </span></span><br><span class="line"><span class="number">106.</span>	    GPIO_Write(GPIOF, buf);                                     <span class="comment">// GPIOF输出数据  </span></span><br><span class="line"><span class="number">107.</span>	    CLK(<span class="number">1</span>);                                                     <span class="comment">// 时钟周期发送读数据地址  </span></span><br><span class="line"><span class="number">108.</span>	  CLK(<span class="number">0</span>);  </span><br><span class="line"><span class="number">109.</span>	    CLK(<span class="number">1</span>);                                                     <span class="comment">// 时钟信号获取内存数据  </span></span><br><span class="line"><span class="number">110.</span>	    *read_date =  ((GPIO_ReadInputData(GPIOF) &amp; <span class="number">0xf000</span>) &gt;&gt; <span class="number">12</span> );<span class="comment">// 获得FPGA返回数据q, 数据pin在12-15位          </span></span><br><span class="line"><span class="number">111.</span>	    WREN(<span class="number">0</span>);  </span><br><span class="line"><span class="number">112.</span>	&#125;  </span><br><span class="line"><span class="number">113.</span>	  </span><br><span class="line"><span class="number">114.</span>	<span class="comment">/***********写入数据***************/</span>  </span><br><span class="line"><span class="number">115.</span>	<span class="function"><span class="keyword">void</span> <span class="title">Write_Data</span><span class="params">(<span class="keyword">uint8_t</span> write_addr, <span class="keyword">uint8_t</span> write_date)</span>  </span></span><br><span class="line"><span class="function">116.	</span>&#123;  </span><br><span class="line"><span class="number">117.</span>	  <span class="keyword">uint16_t</span> buf = <span class="number">0</span>;                                            <span class="comment">// GPIOF 数据变量  </span></span><br><span class="line"><span class="number">118.</span>	    WREN(<span class="number">1</span>);                                                     <span class="comment">// 写数据  </span></span><br><span class="line"><span class="number">119.</span>	  CLK(<span class="number">0</span>);                                                      <span class="comment">// 时钟信号  </span></span><br><span class="line"><span class="number">120.</span>	    buf =  GPIO_ReadOutputData(GPIOF) &amp; <span class="number">0x00C0</span>;                  <span class="comment">// 保留第6、7位,即时钟信号和读写信号不变  </span></span><br><span class="line"><span class="number">121.</span>	    buf |= ((write_addr &amp; <span class="number">0x7</span>) &lt;&lt; <span class="number">3</span>) | (write_date &lt;&lt; <span class="number">8</span>) ;       <span class="comment">// 将读取地址放入GPIOF, 写地址在3-5位，写数据在8-11位  </span></span><br><span class="line"><span class="number">122.</span>	    GPIO_Write(GPIOF, buf);                                      <span class="comment">// GPIOF输出数据  </span></span><br><span class="line"><span class="number">123.</span>	    CLK(<span class="number">1</span>);  </span><br><span class="line"><span class="number">124.</span>	    WREN(<span class="number">0</span>);  </span><br><span class="line"><span class="number">125.</span>	&#125;  </span><br><span class="line"><span class="number">126.</span>	  </span><br><span class="line"><span class="number">127.</span>	<span class="function"><span class="keyword">void</span> <span class="title">Key_Scan</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function">128.	</span>&#123;  </span><br><span class="line"><span class="number">129.</span>	       <span class="keyword">uint8_t</span> gpioc_data;  <span class="comment">// GPIOC数据读取变量  </span></span><br><span class="line"><span class="number">130.</span>	       <span class="keyword">uint8_t</span> read_addr;   <span class="comment">// 拨码开关 0-2    </span></span><br><span class="line"><span class="number">131.</span>	       <span class="keyword">uint8_t</span> write_addr;  <span class="comment">// 写入地址  </span></span><br><span class="line"><span class="number">132.</span>	       <span class="keyword">uint8_t</span> read_date;   <span class="comment">// 拨码开关 4-7  </span></span><br><span class="line"><span class="number">133.</span>	         <span class="keyword">uint8_t</span> write_date;  <span class="comment">// 写入数据  </span></span><br><span class="line"><span class="number">134.</span>	       <span class="keyword">if</span>(KEY_READ() == <span class="number">0</span>)  <span class="comment">// 读按键检测  </span></span><br><span class="line"><span class="number">135.</span>	         &#123;  </span><br><span class="line"><span class="number">136.</span>	              Delay_Ms(<span class="number">5</span>);      <span class="comment">// 防抖  </span></span><br><span class="line"><span class="number">137.</span>	              <span class="keyword">if</span>(KEY_READ() == <span class="number">0</span>)  </span><br><span class="line"><span class="number">138.</span>	                &#123;  </span><br><span class="line"><span class="number">139.</span>	                    <span class="keyword">while</span>(KEY_READ() == <span class="number">0</span>)&#123;&#125;;  </span><br><span class="line"><span class="number">140.</span>	                        gpioc_data = ~(GPIO_ReadInputData(GPIOC) &amp; <span class="number">0x00FF</span>);  <span class="comment">// 获取拨码开关数据,上0，下1  </span></span><br><span class="line"><span class="number">141.</span>	                        read_addr = gpioc_data &amp; <span class="number">0x07</span>;                       <span class="comment">// 获得读地址  </span></span><br><span class="line"><span class="number">142.</span>	                        read_date = (gpioc_data &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>;                <span class="comment">// 读数据，这个没用，调试用  </span></span><br><span class="line"><span class="number">143.</span>	                        Read_Data(read_addr, &amp;read_date);                    <span class="comment">// 传入指针读取FPGA内存数据  </span></span><br><span class="line"><span class="number">144.</span>	                        GPIO_Write(GPIOB, read_date);                        <span class="comment">// 获得的数据从GPIOB发送到LED  </span></span><br><span class="line"><span class="number">145.</span>	                            <span class="comment">//LED1(!LED1_DATA());  </span></span><br><span class="line"><span class="number">146.</span>	                &#125;  </span><br><span class="line"><span class="number">147.</span>	         &#125;  </span><br><span class="line"><span class="number">148.</span>	         <span class="keyword">if</span>(KEY_WRITE() == <span class="number">0</span>)  <span class="comment">// 写按键检测  </span></span><br><span class="line"><span class="number">149.</span>	         &#123;  </span><br><span class="line"><span class="number">150.</span>	              Delay_Ms(<span class="number">5</span>);       <span class="comment">// 防抖  </span></span><br><span class="line"><span class="number">151.</span>	              <span class="keyword">if</span>(KEY_WRITE() == <span class="number">0</span>)  </span><br><span class="line"><span class="number">152.</span>	                &#123;  </span><br><span class="line"><span class="number">153.</span>	                          </span><br><span class="line"><span class="number">154.</span>	                        <span class="keyword">while</span>(KEY_WRITE() == <span class="number">0</span>)&#123;&#125;;  </span><br><span class="line"><span class="number">155.</span>	                        gpioc_data = ~(GPIO_ReadInputData(GPIOC) &amp; <span class="number">0x00FF</span>);  <span class="comment">// 获取拨码开关数据,上0，下1  </span></span><br><span class="line"><span class="number">156.</span>	                        write_addr = gpioc_data &amp; <span class="number">0x07</span>;                      <span class="comment">// 获得写地址  </span></span><br><span class="line"><span class="number">157.</span>	                        write_date = (gpioc_data &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>;               <span class="comment">// 写数据保存  </span></span><br><span class="line"><span class="number">158.</span>	                        Write_Data(write_addr, write_date);                  <span class="comment">// 向FPGA内存写入数据  </span></span><br><span class="line"><span class="number">159.</span>	                        GPIO_Write(GPIOB, write_date);                       <span class="comment">// 把向FPGA写入的数据显示出来  </span></span><br><span class="line"><span class="number">160.</span>	                            <span class="comment">//LED2(!LED2_DATA());  </span></span><br><span class="line"><span class="number">161.</span>	                &#125;  </span><br><span class="line"><span class="number">162.</span>	         &#125;  </span><br><span class="line"><span class="number">163.</span>	 &#125;  </span><br><span class="line"><span class="number">164.</span>	   </span><br><span class="line"><span class="number">165.</span>	   </span><br><span class="line"><span class="number">166.</span>	<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function">167.	</span>&#123;  </span><br><span class="line"><span class="number">168.</span>	    Delay_Init();  </span><br><span class="line"><span class="number">169.</span>	    Led_Init();      <span class="comment">//LED灯初始化  </span></span><br><span class="line"><span class="number">170.</span>	    Sw_Init();       <span class="comment">//拨码开关初始化 按键初始化  </span></span><br><span class="line"><span class="number">171.</span>	    GPIO_FPGA_Init(); <span class="comment">// GPIOF初始化  </span></span><br><span class="line"><span class="number">172.</span>	    <span class="keyword">while</span>(<span class="number">1</span>)  </span><br><span class="line"><span class="number">173.</span>	  &#123;  </span><br><span class="line"><span class="number">174.</span>	    Key_Scan();  </span><br><span class="line"><span class="number">175.</span>	    &#125;  </span><br><span class="line"><span class="number">176.</span>	&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="2-5-存储器实验结果"><a href="#2-5-存储器实验结果" class="headerlink" title="2.5 存储器实验结果"></a>2.5 存储器实验结果</h2><p>存储器实验的实验步骤如下所示：</p>
 <p>（1） 在地址101写入数据1001，如图18所示；</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235448662.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707235448662.png" alt=" "></p>
 <center>图 18 在地址101写入数据1001</center>
 
 
 
 <p>（2）在地址111写入数据0111，如图19所示；</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235538431.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707235538431.png" alt=" "></p>
 <center>图 19 在地址111写入数据0111</center>
 
 
 
 <p>（3）在地址101读出数据1001，如图20所示；</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235601804.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707235601804.png" alt=" "></p>
 <center>图 20 在地址101读出数据1001</center>
 
 
 
 <p>（4） 在地址111读出数据0111，如图21所示；</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235638270.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210707235638270.png" alt=" "></p>
 <center>图 21 在地址111读出数据0111</center>
 
 
@@ -469,10 +405,7 @@
 <p><strong>（2）外部中断</strong></p>
 <p>外部中断事件控制器（EXTI）管理了控制器的 23 个中断事件线。每个中断事件线都对应有一个边沿检测器，可以实现输入信号的上升沿检测和下降沿的检测。EXTI可以实现对每个中断事件线进行单独配置，可以单独配置为中断或者事件，以及触发事件的属性。</p>
 <p>EXTI功能框图如图22所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210707235850570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387137281210.png" alt=" "></p>
 <center>图 22 EXTI 功能框图</center>
 
 
@@ -508,30 +441,21 @@
 </li>
 </ul>
 <p>STM32F4 供 IO 口使用的中断线只有 16 个，但是 STM32F4 的 IO 口却远远不止 16 个，那么 STM32F4 是怎么把 16 个中断线和 IO 口一一对应起来的呢？于是STM32 就这样设计，GPIO 的管脚 GPIOx.0~GPIOx.15(x=A,B,C,D,E，F,G,H,I)分别对应中断线 0~15。这样每个中断线对应了最多 9 个 IO 口，以线 0 为例：它对应了 GPIOA.0、GPIOB.0、GPIOC.0、GPIOD.0、GPIOE.0、GPIOF.0、GPIOG.0、GPIOH.0、GPIOI.0。而中断线每次只能连接到 1 个 IO 口上，这样就需要通过配置来决定对应的中断线配置到哪个 GPIO 上了。GPIO 跟中断线的映射关系如图23所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210708000216511.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210708000216511.png" alt=" "></p>
 <center>图 23 GPIO 中断线映射</center>
 
 
 
 <h2 id="3-3-完整的硬件接线图和程序流程图"><a href="#3-3-完整的硬件接线图和程序流程图" class="headerlink" title="3.3 完整的硬件接线图和程序流程图"></a>3.3 完整的硬件接线图和程序流程图</h2><p><strong>（1）硬件接线图</strong></p>
 <p>完整的硬件接线图如图24所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210708000241500.png">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/20210708000241500.png" alt=" "></p>
 <center>图 24 外部中断实验硬件接线图</center>
 
 
 
 <p><strong>（2）程序流程图</strong></p>
 <p>程序流程图如图25所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/2021070800030610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-16438713605706.png" alt=" "></p>
 <center>图 25 外部中断实验程序流程图</center>
 
 
@@ -548,27 +472,18 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>	<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;my_timer.h&quot;</span>  </span></span><br><span class="line"><span class="number">2.</span>	<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;led.h&quot;</span>  </span></span><br><span class="line"><span class="number">3.</span>	  </span><br><span class="line"><span class="number">4.</span>	<span class="comment">/****************************************** </span></span><br><span class="line"><span class="comment">5.	功  能：定时器1初始化 </span></span><br><span class="line"><span class="comment">6.	参  数：arr  定时器初值  psc  预分频系数 </span></span><br><span class="line"><span class="comment">7.	返回值：无 </span></span><br><span class="line"><span class="comment">8.	******************************************/</span>  </span><br><span class="line"><span class="number">9.</span>	<span class="function"><span class="keyword">void</span> <span class="title">TIM1_Configure</span><span class="params">(<span class="keyword">uint32_t</span> arr,<span class="keyword">uint16_t</span> psc)</span>  </span></span><br><span class="line"><span class="function">10.	</span>&#123;  </span><br><span class="line"><span class="number">11.</span>	    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  </span><br><span class="line"><span class="number">12.</span>	    NVIC_InitTypeDef NVIC_InitStructure;  </span><br><span class="line"><span class="number">13.</span>	      </span><br><span class="line"><span class="number">14.</span>	    RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);  </span><br><span class="line"><span class="number">15.</span>	      </span><br><span class="line"><span class="number">16.</span>	    <span class="comment">//定时器初值  </span></span><br><span class="line"><span class="number">17.</span>	    TIM_TimeBaseStructure.TIM_Period = arr;  </span><br><span class="line"><span class="number">18.</span>	    <span class="comment">//预分配系数  </span></span><br><span class="line"><span class="number">19.</span>	    TIM_TimeBaseStructure.TIM_Prescaler = psc;  </span><br><span class="line"><span class="number">20.</span>	    <span class="comment">//向上计数  </span></span><br><span class="line"><span class="number">21.</span>	    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  </span><br><span class="line"><span class="number">22.</span>	    <span class="comment">//时钟分频因子  </span></span><br><span class="line"><span class="number">23.</span>	    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;  </span><br><span class="line"><span class="number">24.</span>	    <span class="comment">//重复计数次数  </span></span><br><span class="line"><span class="number">25.</span>	    TIM_TimeBaseStructure.TIM_RepetitionCounter = <span class="number">0</span>;  </span><br><span class="line"><span class="number">26.</span>	      </span><br><span class="line"><span class="number">27.</span>	    TIM_TimeBaseInit(TIM1,&amp;TIM_TimeBaseStructure);  </span><br><span class="line"><span class="number">28.</span>	      </span><br><span class="line"><span class="number">29.</span>	    <span class="comment">//选择中断向量  </span></span><br><span class="line"><span class="number">30.</span>	    NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_TIM10_IRQn;  </span><br><span class="line"><span class="number">31.</span>	    <span class="comment">//抢占优先级  </span></span><br><span class="line"><span class="number">32.</span>	    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">0</span>;  </span><br><span class="line"><span class="number">33.</span>	    <span class="comment">//响应优先级  </span></span><br><span class="line"><span class="number">34.</span>	    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">6</span>;  </span><br><span class="line"><span class="number">35.</span>	    <span class="comment">//使能中断向量  </span></span><br><span class="line"><span class="number">36.</span>	    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  </span><br><span class="line"><span class="number">37.</span>	    NVIC_Init(&amp;NVIC_InitStructure);  </span><br><span class="line"><span class="number">38.</span>	      </span><br><span class="line"><span class="number">39.</span>	    <span class="comment">//TIM1中断使能  </span></span><br><span class="line"><span class="number">40.</span>	    TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE);  </span><br><span class="line"><span class="number">41.</span>	    <span class="comment">//TIM1使能  </span></span><br><span class="line"><span class="number">42.</span>	    TIM_Cmd(TIM1,ENABLE);  </span><br><span class="line"><span class="number">43.</span>	&#125;  </span><br><span class="line"><span class="number">44.</span>	  </span><br><span class="line"><span class="number">45.</span>	<span class="comment">/****************************************** </span></span><br><span class="line"><span class="comment">46.	功  能：定时器1中断服务函数 </span></span><br><span class="line"><span class="comment">47.	参  数：无 </span></span><br><span class="line"><span class="comment">48.	返回值：无 </span></span><br><span class="line"><span class="comment">49.	******************************************/</span>  </span><br><span class="line"><span class="number">50.</span>	<span class="function"><span class="keyword">void</span> <span class="title">TIM1_UP_TIM10_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function">51.	</span>&#123;  </span><br><span class="line"><span class="number">52.</span>	    <span class="keyword">static</span> <span class="keyword">uint16_t</span> cont_time = <span class="number">0</span>;  </span><br><span class="line"><span class="number">53.</span>	    <span class="keyword">if</span>(TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)  </span><br><span class="line"><span class="number">54.</span>	    &#123;  </span><br><span class="line"><span class="number">55.</span>	       <span class="keyword">if</span>(led_flow_flag)  </span><br><span class="line"><span class="number">56.</span>	       &#123;  </span><br><span class="line"><span class="number">57.</span>	          cont_time++;  </span><br><span class="line"><span class="number">58.</span>	          <span class="keyword">if</span>(cont_time &gt;= <span class="number">5000</span>)  <span class="comment">// 闪烁时间  </span></span><br><span class="line"><span class="number">59.</span>	          &#123;  </span><br><span class="line"><span class="number">60.</span>	             cont_time = <span class="number">0</span>;  </span><br><span class="line"><span class="number">61.</span>	             led_flow_flag = <span class="number">0</span>;  </span><br><span class="line"><span class="number">62.</span>	          &#125;  </span><br><span class="line"><span class="number">63.</span>	       &#125;  </span><br><span class="line"><span class="number">64.</span>	       TIM_ClearITPendingBit(TIM1,TIM_IT_Update);  </span><br><span class="line"><span class="number">65.</span>	    &#125;  </span><br><span class="line"><span class="number">66.</span>	&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="3-5-外部中断实验结果"><a href="#3-5-外部中断实验结果" class="headerlink" title="3.5 外部中断实验结果"></a>3.5 外部中断实验结果</h2><p>外部中断实验的实验步骤如下所示：</p>
 <p>(1) 正常状态下，数码管由0到7不断循环显示数字，如图26所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210708000700767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-16438713524454.png" alt=" "></p>
 <center>图 26 数码管由0到7不断循环显示数字</center>
 
 
 
 <p>(2) 按下按键1后，数码管保持当前显示不动，交通灯闪烁，如图27所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/20210708000716273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-16438713495682.png" alt=" "></p>
 <center>图 27 数码管保持当前显示不动，交通灯闪烁</center>
 
 
 <p>(3) 当数码管显示5时，按下按键2后，数码管保持当前显示不动，流水灯启动，如图28所示。</p>
-<div align=center>
-<img src="https://img-blog.csdnimg.cn/2021070800080059.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70">
-</div>
-
+<p><img src="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70.png" alt=" "></p>
 <center>图 28 数码管保持当前显示不动，流水灯启动</center>
 
 
@@ -1127,6 +1042,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

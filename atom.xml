@@ -38,27 +38,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/01/29/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(2)/"/>
-    <id>http://example.com/2022/01/29/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(2)/</id>
-    <published>2022-01-29T12:59:18.475Z</published>
-    <updated>2022-02-03T06:41:37.722Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;title: 模电学习笔记_双极型晶体管及其放大电路（2）&lt;br&gt;date: 2020-04-21 16:09:22&lt;br&gt;id: modian_2&lt;br&gt;tags:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- 模电
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;categories: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    - 学习笔记
-            - 模电     
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;mathjax: true&lt;/p&gt;
-&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/11/模电学习笔记_双极型晶体管(1&quot;&gt;双极型晶体管及其放大电路（1）&lt;/a&gt;/)&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>关于我</title>
     <link href="http://example.com/2022/01/28/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
     <id>http://example.com/2022/01/28/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
@@ -451,6 +430,27 @@
     
     
     <category term="微信小程序" scheme="http://example.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模电学习笔记_双极型晶体管及其放大电路（6）</title>
+    <link href="http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/"/>
+    <id>http://example.com/2020/05/02/%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(6)/</id>
+    <published>2020-05-02T15:50:22.000Z</published>
+    <updated>2022-02-03T06:44:04.149Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前置：&lt;a href=&quot;https://lgc0208.github.io/2020/04/27/模电学习笔记_双极型晶体管(5&quot;&gt;模电学习笔记_双极型晶体管及其放大电路（5）&lt;/a&gt;/)&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="模电" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E7%94%B5/"/>
+    
+    
+    <category term="模电" scheme="http://example.com/tags/%E6%A8%A1%E7%94%B5/"/>
     
   </entry>
   

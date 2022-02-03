@@ -254,7 +254,7 @@
     <link href="http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>http://example.com/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
     <published>2021-07-10T05:12:10.000Z</published>
-    <updated>2022-02-03T06:26:36.787Z</updated>
+    <updated>2022-02-03T16:07:57.242Z</updated>
     
     
     <summary type="html">&lt;p&gt;前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：&lt;a href=&quot;https://download.csdn.net/download/weixin_45817309/20150415&quot;&gt;Java本地服务器读取SQL Server中的数据及账号密码核对&lt;/a&gt;&lt;/p&gt;</summary>

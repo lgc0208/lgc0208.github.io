@@ -255,28 +255,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>大部分人都希望选到一个分高活少性价比高的选修课，这就导致了每次选课之前需要花费大量的时间向学长学姐们打听消息。基于此，我就想不如做一个简单的自助查询前端，让有需求的同学可以随时查询其他学长学姐们对课程和授课老师的评价，学长学姐们也可以对课程和授课老师进行评价。因此，就有了这个选课指南的诞生。</p>
-<h2 id="网页预览"><a href="#网页预览" class="headerlink" title="网页预览"></a>网页预览</h2><p><img src="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/image-20220218174729162.png" alt="首页"></p>
-<p><img src="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/image-20220218174944886.png" alt="课程类别"></p>
-<p><img src="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/image-20220218175011188.png" alt="课程名称"></p>
-<p><img src="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/image-20220218175052249.png" alt="授课教师选择"></p>
-<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><h3 id="只想检索数据"><a href="#只想检索数据" class="headerlink" title="只想检索数据"></a>只想检索数据</h3><ol>
-<li>网址：www.xtxkzn.ml （信通选课指南.机器学习）</li>
-<li>Github Page 网址（备用）：<a href="https://lgc0208.github.io/course_reference_SICE_BUPT/">https://lgc0208.github.io/course_reference_SICE_BUPT/</a></li>
-<li>进入仓库 <a target="_blank" rel="noopener" href="https://github.com/lgc0208/course_reference_SICE_BUPT">https://github.com/lgc0208/course_reference_SICE_BUPT</a> 下载源代码。下载文件后，使用浏览器打开 <code>index.html</code> 文件（此时最好保持联网状态，因为代码里使用了<code>bootstrap</code>和<code>jquery</code>，不联网可能 UI 会很乱）</li>
-</ol>
-<h3 id="想要获取原始数据"><a href="#想要获取原始数据" class="headerlink" title="想要获取原始数据"></a>想要获取原始数据</h3><p>进入 <a target="_blank" rel="noopener" href="https://github.com/lgc0208/course_reference_SICE_BUPT">Github 仓库</a> 后，可以下载其中的 <code>data.js</code> 文件</p>
-<ul>
-<li><code>data.js</code> 文件中储存了原始数据，初始数据来自于2021年年底信通院18级 ZJR 同学创建的共享文档。后续数据来自于使用问卷星征集到的投稿。投稿链接：<a target="_blank" rel="noopener" href="https://www.wjx.cn/vj/wGw4GYE.aspx">https://www.wjx.cn/vj/wGw4GYE.aspx</a></li>
-<li>数据开源存储，不排除可能因为不可抗力因素关闭本平台</li>
-<li><code>data.js</code> 中的数据格式为<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;course_type&quot;: &quot;&quot;, </span><br><span class="line">    &quot;course&quot;: &quot;&quot;, </span><br><span class="line">    &quot;teacher&quot;: &quot;&quot;, </span><br><span class="line">    &quot;score&quot;: &quot;&quot;, </span><br><span class="line">    &quot;description&quot;: &quot;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="UI-界面"><a href="#UI-界面" class="headerlink" title="UI 界面"></a>UI 界面</h2><p><code>index.html</code>是使用<code>bootstrap</code>和<code>jquery</code>完成的简易的检索页面，页面所需要的数据存储在<code>data.js</code>中，页面背景存储在 <code>figure</code> 文件夹中。初始背景为 <code>figure/blue_snow.png</code></p>
-<h2 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h2><p>在非选课期间，数据更新频率会保持在半个月至一个月一次。在选课期间，数据更新频率会保持在一天两次。也可以通过该项目的issue催更</p>
-<p>为了便于管理，请统一使用投稿链接：<a target="_blank" rel="noopener" href="https://www.wjx.cn/vj/wGw4GYE.aspx">https://www.wjx.cn/vj/wGw4GYE.aspx</a> 进行投稿。问卷星收集到的问卷完全匿名，请尽量客观。对于具有明显人身攻击的投稿无法进行更新，请您见谅</p>
-<p><strong>祝大家都能选到轻松愉悦分还高的选修课！</strong></p>
- 
+  <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>大部分人都希望选到一个分高活少性价比高的选修课，这就导致了每次选课之前需要花费大量的时间向学长学姐们打听消息。基于此，我就想不如做一个简单的自助查询前端，让有需求的同学可以随时查询其他学长学姐们对课程和授课老师的评价，学长学姐们也可以对课程和授课老师进行评价。因此，就有了这个选课指南的诞生。</p> 
+      <a class="article-more-link" href="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -1152,6 +1135,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

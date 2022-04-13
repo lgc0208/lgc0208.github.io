@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-03-03T15:15:02.901Z</updated>
+  <updated>2022-04-13T02:15:44.284Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Win10】 代理服务器出现问题或地址有误</title>
+    <link href="https://lgc0208.github.io/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/"/>
+    <id>https://lgc0208.github.io/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/</id>
+    <published>2022-04-13T02:05:02.000Z</published>
+    <updated>2022-04-13T02:15:44.284Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍了访问浏览器时显示代理服务器出现问题或地址有误的解决方案&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【Win10】 解决 Office 安装后图标空白的问题</title>
@@ -435,28 +456,6 @@
     
     
     <category term="Verilog" scheme="https://lgc0208.github.io/tags/Verilog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于 Java 的单机坦克大战游戏</title>
-    <link href="https://lgc0208.github.io/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"/>
-    <id>https://lgc0208.github.io/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/</id>
-    <published>2020-08-20T05:12:10.000Z</published>
-    <updated>2022-02-03T05:02:44.797Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;基于 Java 开发的坦克大战单机版小游戏&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;：&lt;a href=&quot;https://github.com/lgc0208/TankGame&quot;&gt;https://github.com/lgc0208/TankGame&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Java" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Java/"/>
-    
-    
-    <category term="Java" scheme="https://lgc0208.github.io/tags/Java/"/>
     
   </entry>
   

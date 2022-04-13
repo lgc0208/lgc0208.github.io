@@ -28,7 +28,7 @@
 <li>输入 <code>ping www.baidu.com</code> 命令检查远端服务器是否正常工作，发现正常工作</li>
 <li>右键右下角 Wi-Fi 图标，打开 <code>网络和 Internet</code> 设置，选择 <code>代理</code>，发现手动设置代理中使用代理服务器被打开了。关闭代理服务器后重新打开浏览器，恢复正常。</li>
 </ol>
-<p><img src="/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/image-20220413101213948.png" alt="image-20220413101213948"></p>
+<p><img src="/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/image-20220413101213948.png" alt="关闭代理服务器"></p>
 ]]></content>
       <categories>
         <category>那些年我踩过的坑</category>

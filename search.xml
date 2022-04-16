@@ -15,6 +15,25 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【LINUX】 使用服务器虚拟环境运行 Python 代码</title>
+    <url>/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了在腾讯云 LINUX 服务器中运行 Python 的方式。（假设已经创建好虚拟环境）</p>
+<span id="more"></span>
+<h2 id="1-不间断运行-Python-程序"><a href="#1-不间断运行-Python-程序" class="headerlink" title="1 不间断运行 Python 程序"></a>1 不间断运行 Python 程序</h2><h3 id="1-1-进入虚拟环境"><a href="#1-1-进入虚拟环境" class="headerlink" title="1.1 进入虚拟环境"></a>1.1 进入虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> 项目路径/项目名_venv/bin/activate</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-运行项目"><a href="#1-2-运行项目" class="headerlink" title="1.2 运行项目"></a>1.2 运行项目</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 项目路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nohup python 程序名.py</span><br></pre></td></tr></table></figure>
+<h2 id="2-停止运行"><a href="#2-停止运行" class="headerlink" title="2 停止运行"></a>2 停止运行</h2><h3 id="2-1-查看进程编号"><a href="#2-1-查看进程编号" class="headerlink" title="2.1 查看进程编号"></a>2.1 查看进程编号</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -aux | grep python</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-杀死进程"><a href="#2-2-杀死进程" class="headerlink" title="2.2 杀死进程"></a>2.2 杀死进程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 进程id</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Win10】 代理服务器出现问题或地址有误</title>
     <url>/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了访问浏览器时显示代理服务器出现问题或地址有误的解决方案</p>

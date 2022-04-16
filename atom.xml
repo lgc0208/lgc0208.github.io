@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-04-13T02:19:58.683Z</updated>
+  <updated>2022-04-16T08:47:35.990Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【LINUX】 使用服务器虚拟环境运行 Python 代码</title>
+    <link href="https://lgc0208.github.io/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/"/>
+    <id>https://lgc0208.github.io/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/</id>
+    <published>2022-04-16T08:24:07.000Z</published>
+    <updated>2022-04-16T08:47:35.990Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录了在腾讯云 LINUX 服务器中运行 Python 的方式。（假设已经创建好虚拟环境）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【Win10】 代理服务器出现问题或地址有误</title>
@@ -435,27 +456,6 @@
     
     
     <category term="模电" scheme="https://lgc0208.github.io/tags/%E6%A8%A1%E7%94%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于 Verilog 和 EPM1270T144C5 的简易电子琴</title>
-    <link href="https://lgc0208.github.io/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"/>
-    <id>https://lgc0208.github.io/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/</id>
-    <published>2021-01-30T14:24:39.000Z</published>
-    <updated>2022-02-03T06:47:38.688Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本次实验使用硬件描述语言 Verilog HDL，针对以 Altera 公司的 MAX II 系列可编程器件 EPM1270T144C5 为核心芯片的可编程器件实验板设计实验简易电子演奏琴。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Verilog" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Verilog/"/>
-    
-    
-    <category term="Verilog" scheme="https://lgc0208.github.io/tags/Verilog/"/>
     
   </entry>
   

@@ -15,6 +15,57 @@
 ]]></content>
   </entry>
   <entry>
+    <title>HM 软件安装</title>
+    <url>/2022/04/24/HM_setup/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了 HM 软件的安装过程。</p>
+<span id="more"></span>
+<h1 id="HEVC"><a href="#HEVC" class="headerlink" title="HEVC"></a>HEVC</h1><p>高效视频编码（HEVC）是ITU-T视频编码专家组(ITU-T Q.6/SG 16) 和 ISO/IEC运动图像专家组 (ISO/IEC JTC 1/ SC 29/WG 11) 成立了视频编码联合协作小组(JCT-VC)来开展该项目。该小组的范围已扩展为继续研究格式范围扩展 (RExt)、可扩展HEVC (SHVC) 和屏幕内容编码 (SCC) 作为 HEVC 的扩展。HEVC 标准的第一个版本于 2013 年 4 月完成。HEVC 的第二个版本，包括RExt、SHVC和MV-HEVC扩展，于 2014 年 10 月完成。包括3D-HEVC扩展在内的第三版HEVC已于 2015 年 2 月完成。</p>
+<h1 id="HM"><a href="#HM" class="headerlink" title="HM"></a>HM</h1><p>HM（HEVC Test Model）是官方定义的HEVC参考软件，包括编码器和解码器功能。</p>
+<p>HM软件有助于帮助视频编码标准的用户建立和测试一致性和可操作性，具有用于教育和展示标准的功能。该软件由ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组第 6 题）和 ISO/IEC运动图像专家组（MPEG，ISO/IEC 第 29 分委员会第 11 工作组）联合开发联合技术委员会)，由联合视频专家组 (JVET) 维护，该组是 ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组的第 6 题）和 ISO/IEC 运动图像专家组(MPEG , ISO/IEC 联合技术委员会 1) 第 29 分委员会第 5 工作组。</p>
+<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><ul>
+<li><p>实验软件：HM 16.20，Vitural Stuidio 2019</p>
+</li>
+<li><p>实验设备：Legion Y7000 2019 PG0。</p>
+</li>
+<li><p>操作系统：Windows 10 家庭中文版20H2版本</p>
+</li>
+</ul>
+<h1 id="HM安装步骤及操作说明"><a href="#HM安装步骤及操作说明" class="headerlink" title="HM安装步骤及操作说明"></a>HM安装步骤及操作说明</h1><h2 id="Tortoise-SVN下载"><a href="#Tortoise-SVN下载" class="headerlink" title="Tortoise SVN下载"></a>Tortoise SVN下载</h2><p>HM采用SVN进行代码管理，不能直接从网页下载。因此需要利用SVN软件下载。Tortoise SVN下载链接：<a href="https://tortoisesvn.net/">https://tortoisesvn.net/</a> 。打开链接后，点击 Download 标签栏，在出现的下载选项中选择合适的版本进行下载。</p>
+<p><img src="/2022/04/24/HM_setup/48ae278c0cfc6eb93a3d2ff05c0d79ff.png" alt="图 1 Tortise SVN下载"></p>
+<h2 id="HM下载"><a href="#HM下载" class="headerlink" title="HM下载"></a>HM下载</h2><p>完成上一节的下载后，回到桌面，右键空白处即可看到Tortise SVN选项，如图2所示。点击后进入Repo-browser，在弹出的URL输入框中输入HM的下载地址：<a href="https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/">https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/</a> 。输入后点击OK，可以获得不同版本的HM软件，如图3所示。选定合适的版本后右击其对应的文件夹，点击Checkout即可下载。</p>
+<p><img src="/2022/04/24/HM_setup/0605ec886e6b1d6d9d43845524910406.png" alt="图 2 桌面右击空白处"></p>
+<p><img src="/2022/04/24/HM_setup/3a9c09b737511fe3f6fb35f4580f6fd0.png" alt="图 3 HM版本选择"></p>
+<h2 id="HM安装"><a href="#HM安装" class="headerlink" title="HM安装"></a>HM安装</h2><p>完成HM下载后，打开对应的文件夹，进入 <code>build</code> 文件夹，如图4所示。其中包含了不同环境下的编译文件，支持Linux系统和Windows系统。根据电脑中存在的编译环境，选择并打开 <code>HM_vc2015.sln</code> 文件。</p>
+<p><img src="/2022/04/24/HM_setup/384e754746e92ec81759a32345cdfa2b.png" alt="图 4 build文件夹内容"></p>
+<p>打开sln文件后，可以看到解决方案资源管理器中有10个项目，如图5所示。右击 <code>解决方案”HM_vc2015”</code>，选择 <code>属性</code>，选择 <code>单启动项目</code>，单启动项目中选择 <code>TAppEncoder</code>，如图6所示。此处为对其进行编码。如果需要进行解码，则在单启动项目中应选择<code>AppDecoder</code>。点击 <code>确定</code> 保存设置。完成后右击 <code>解决方案</code>，在弹出的菜单栏中点击 <code>生成解决方案</code>。</p>
+<p>生成解决方案成功后，在 <code>HM</code> 文件夹下会生成一个 <code>bin</code> 文件夹。进入 <code>bin</code> 文件夹，看到有一个 <code>vc2015</code> 文件夹。继续进入 <code>vc2015</code> 文件夹，点击 <code>Win32</code> 文件夹，可以看到 <code>debug</code> 文件夹。进入 <code>debug</code> 文件夹，可以看到有两个可执行文件 <code>TAppDecoder.exe</code> 和<code>TAppEncoder.exe</code></p>
+<p><img src="/2022/04/24/HM_setup/b3bd39a8477009783cd73f514678b3b6.png" alt="图 5 sln文件打开后的解决方案"></p>
+<p><img src="/2022/04/24/HM_setup/e9c37afd340954c8deda1b18e4d8921e.png" alt="图 6 解决方案属性"></p>
+<h2 id="编码配置"><a href="#编码配置" class="headerlink" title="编码配置"></a>编码配置</h2><p>完成上述步骤后，回到 <code>Virtual Studio</code> 软件。点击顶部菜单栏中的 <code>调试</code>，选择 <code>TAppEncoder调试属性</code> ，在配置属性中点击 <code>调试</code> 进行配置。这里需要更改 <code>工作目录</code> 和 <code>命令参数</code>。在配置工作目录时，需要现在 <code>HM</code> 文件夹下创建一个 <code>workspace</code> 文件夹作为工作目录，再在工作目录中选择新建的 <code>workspace</code> 路径。在命令参数中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\-c encoder_intra_main.cfg -c bitstream.cfg\&gt; \&gt;out.txt</span><br></pre></td></tr></table></figure>
+<p>并将 <code>HM</code> 文件夹中 <code>cfg</code> 文件夹里的 <code>encoder_intra_main.cfg</code> 文件复制到 <code>workspace</code> 文件夹下。此外，还需要在 <code>workspace</code>文件夹下新建 <code>bitstream.cfg</code> 文件。<code>bitstream.cfg</code> 文件格式可以直接复制 <code>HM</code> 文件夹中 <code>per-sequence</code> 文件夹下的任意配置文件。<code>bitstream.cfg</code> 文件的内容如下所示。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\<span class="comment">#======== File I/O =============== </span></span><br><span class="line">InputFile                  : E:\\HM-16.20+SCM-8.8\\workspace\\yuv\\salesman_qcif.yuv </span><br><span class="line">InputBitDepth              : 8           \<span class="comment"># Input bitdepth </span></span><br><span class="line">InputChromaFormat          : 420         \<span class="comment"># Ratio of luminance to chrominance samples </span></span><br><span class="line">FrameRate                  : 50          \<span class="comment"># Frame Rate per second </span></span><br><span class="line">FrameSkip                  : 0           \<span class="comment"># Number of frames to be skipped in input </span></span><br><span class="line">SourceWidth                : 176         \<span class="comment"># Input  frame width </span></span><br><span class="line">SourceHeight               : 144         \<span class="comment"># Input  frame height </span></span><br><span class="line">FramesToBeEncoded          : 449         \<span class="comment"># Number of frames to be coded </span></span><br><span class="line">Level                      : 3.1</span><br></pre></td></tr></table></figure>
+<p>其中，参数由上至下分别为输入文件路径、位深度、亮度与色度比值、帧率、输入帧跳过帧数、输入帧宽度、输入帧高度以及编码帧数。这些参数需要根据输入的文件进行调整。</p>
+<p>完成上述步骤后，就可以对YUV文件进行编码了。</p>
+<h1 id="YUV到HEVC的编码过程和结果分析"><a href="#YUV到HEVC的编码过程和结果分析" class="headerlink" title="YUV到HEVC的编码过程和结果分析"></a>YUV到HEVC的编码过程和结果分析</h1><h2 id="YUV视频下载"><a href="#YUV视频下载" class="headerlink" title="YUV视频下载"></a>YUV视频下载</h2><p>YUV视频可以通过网址 <a href="http://trace.eas.asu.edu/yuv/">http://trace.eas.asu.edu/yuv/</a> 进行下载。该网址中还提供了我们所需要的 YUV 视频的各种参数。下载好视频后，将其放在 workspace 的 yuv 文件夹中，并将文件路径和参数更新到 bitstream.cfg 文件中。</p>
+<h2 id="HEVC编码"><a href="#HEVC编码" class="headerlink" title="HEVC编码"></a>HEVC编码</h2><p>完成5.1节中的操作后，回到 <code>Visual Stuidio</code>，按下 <code>Ctrl + F5</code> 开始执行。执行后会弹出一个命令行窗口，如图7所示。</p>
+<p><img src="/2022/04/24/HM_setup/2da8c8a546605e186a6576418f411534.png" alt="图 7 执行过程中的命令行窗口"></p>
+<p>完成执行后，在 <code>workspace</code> 文件夹下会多出3个文件，分别为 <code>out.txt</code>，<code>rec.yuv</code>，<code>str.bin</code>。<code>out.txt</code> 文件是基本编码信息的输出文件，包含编码后的比特数、编码信息、编码时间等各种信息。<code>rec.yuv</code> 是编码过程中重建的YUV图像。<code>str.bin</code> 是压缩后的二进制码流文件。可以利用 Elecard HEVC Analyzer 软件进行查看，软件下载链接为：<a href="https://elecard-hevc-analyzer.software.informer.com/download/">https://elecard-hevc-analyzer.software.informer.com/download/</a>。</p>
+<p>5.3 结果分析</p>
+<p>使用Elecard HEVC Analyzer打开str.bin文件后，得到的结果如图8所示。左上角选择chart</p>
+<p>bar可以查看每帧视频码流的分配情况。thumbnails可以查看视频的缩略图以及对应的编码索引和时间索引，左侧可以看到帧级别的统计信息，如色度、格式、分辨率、各类行帧所分配的比特比率等，并可以更换查看vps、sps等其他级别的信息，右侧可以查看cu级别的信息，包括块的位置、尺寸、预测方向等。</p>
+<p><img src="/2022/04/24/HM_setup/d05c9ff383155befd58bed6e7c173d13.png" alt="图 8 Elecard HEVC Analyzer查看结果"></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>HM</category>
+      </categories>
+      <tags>
+        <tag>HM</tag>
+        <tag>软件安装</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【LINUX】 使用服务器虚拟环境运行 Python 代码</title>
     <url>/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了在腾讯云 LINUX 服务器中运行 Python 的方式。（假设已经创建好虚拟环境）</p>
@@ -2376,100 +2427,6 @@ ReLU(z) = max\{0, w^{T}x+b\}</script><p>至下一层神经元或作为整个神�
       </categories>
       <tags>
         <tag>模电</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HM 软件安装</title>
-    <url>/2020/04/24/HM/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了 HM 软件的安装过程。</p>
-<span id="more"></span>
-<h1 id="HEVC"><a href="#HEVC" class="headerlink" title="HEVC"></a>HEVC</h1><p>高效视频编码（HEVC）是ITU-T视频编码专家组(ITU-T Q.6/SG 16) 和 ISO/IEC运动图像专家组 (ISO/IEC JTC 1/ SC 29/WG 11) 成立了视频编码联合协作小组(JCT-VC)来开展该项目。该小组的范围已扩展为继续研究格式范围扩展 (RExt)、可扩展HEVC (SHVC) 和屏幕内容编码 (SCC) 作为 HEVC 的扩展。HEVC 标准的第一个版本于 2013 年 4 月完成。HEVC 的第二个版本，包括RExt、SHVC和MV-HEVC扩展，于 2014 年 10 月完成。包括3D-HEVC扩展在内的第三版HEVC已于 2015 年 2 月完成。</p>
-<h1 id="HM"><a href="#HM" class="headerlink" title="HM"></a>HM</h1><p>HM（HEVC Test Model）是官方定义的HEVC参考软件，包括编码器和解码器功能。</p>
-<p>HM软件有助于帮助视频编码标准的用户建立和测试一致性和可操作性，具有用于教育和展示标准的功能。该软件由ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组第 6 题）和 ISO/IEC运动图像专家组（MPEG，ISO/IEC 第 29 分委员会第 11 工作组）联合开发联合技术委员会)，由联合视频专家组 (JVET) 维护，该组是 ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组的第 6 题）和 ISO/IEC 运动图像专家组(MPEG , ISO/IEC 联合技术委员会 1) 第 29 分委员会第 5 工作组。</p>
-<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><ul>
-<li><p>实验软件：HM 16.20，Vitural Stuidio 2019</p>
-</li>
-<li><p>实验设备：Legion Y7000 2019 PG0。</p>
-</li>
-<li><p>操作系统：Windows 10 家庭中文版20H2版本</p>
-</li>
-</ul>
-<h1 id="HM安装步骤及操作说明"><a href="#HM安装步骤及操作说明" class="headerlink" title="HM安装步骤及操作说明"></a>HM安装步骤及操作说明</h1><h2 id="Tortoise-SVN下载"><a href="#Tortoise-SVN下载" class="headerlink" title="Tortoise SVN下载"></a>Tortoise SVN下载</h2><p>HM采用SVN进行代码管理，不能直接从网页下载。因此需要利用SVN软件下载。Tortoise SVN下载链接：<a href="https://tortoisesvn.net/。打开链接后，点击">https://tortoisesvn.net/。打开链接后，点击</a> Download 标签栏，在出现的下载选项中选择合适的版本进行下载。</p>
-<p><img src="/2020/04/24/HM/48ae278c0cfc6eb93a3d2ff05c0d79ff.png" alt="图 1 Tortise SVN下载"></p>
-<h2 id="HM下载"><a href="#HM下载" class="headerlink" title="HM下载"></a>HM下载</h2><p>完成上一节的下载后，回到桌面，右键空白处即可看到Tortise SVN选项，如图2所示。点击后进入Repo-browser，在弹出的URL输入框中输入HM的下载地址：<a href="https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/。输入后点击OK，可以获得不同版本的HM软件，如图3所示。选定合适的版本后右击其对应的文件夹，点击Checkout即可下载。">https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/。输入后点击OK，可以获得不同版本的HM软件，如图3所示。选定合适的版本后右击其对应的文件夹，点击Checkout即可下载。</a></p>
-<p><img src="/2020/04/24/HM/0605ec886e6b1d6d9d43845524910406.png" alt="图 2 桌面右击空白处"></p>
-<p><img src="/2020/04/24/HM/3a9c09b737511fe3f6fb35f4580f6fd0.png" alt="图 3 HM版本选择"></p>
-<h2 id="HM安装"><a href="#HM安装" class="headerlink" title="HM安装"></a>HM安装</h2><p>完成HM下载后，打开对应的文件夹，进入build文件夹，如图4所示。其中包含了不同环境下的编译文件，支持Linux系统和Windows系统。根据电脑中存在的编译环境，选择并打开HM_vc2015.sln文件。</p>
-<p><img src="/2020/04/24/HM/384e754746e92ec81759a32345cdfa2b.png" alt="图 4 build文件夹内容"></p>
-<p>打开sln文件后，可以看到解决方案资源管理器中有10个项目，如图5所示。右击 <code>解决方案”HM_vc2015”</code>，选择 <code>属性</code>，选择 <code>单启动项目</code>，单启动项目中选择 <code>TAppEncoder</code>，如图6所示。此处为对其进行编码。如果需要进行解码，则在单启动项目中应选择<code>AppDecoder</code>。点击 <code>确定</code> 保存设置。完成后右击 <code>解决方案</code>，在弹出的菜单栏中点击 <code>生成解决方案</code>。</p>
-<p>生成解决方案成功后，在 <code>HM</code> 文件夹下会生成一个 <code>bin</code> 文件夹。进入 <code>bin</code> 文件夹，看到有一个 <code>vc2015</code> 文件夹。继续进入 <code>vc2015</code> 文件夹，点击 <code>Win32</code> 文件夹，可以看到 <code>debug</code> 文件夹。进入 <code>debug</code> 文件夹，可以看到有两个可执行文件 <code>TAppDecoder.exe</code> 和<code>TAppEncoder.exe</code></p>
-<p><img src="/2020/04/24/HM/b3bd39a8477009783cd73f514678b3b6.png" alt="图 5 sln文件打开后的解决方案"></p>
-<p><img src="/2020/04/24/HM/e9c37afd340954c8deda1b18e4d8921e.png" alt="图 6 解决方案属性"></p>
-<h2 id="编码配置"><a href="#编码配置" class="headerlink" title="编码配置"></a>编码配置</h2><p>完成上述步骤后，回到 <code>Virtual Studio</code> 软件。点击顶部菜单栏中的 <code>调试</code>，选择 <code>TAppEncoder调试属性</code> ，在配置属性中点击 <code>调试</code> 进行配置。这里需要更改 <code>工作目录</code> 和 <code>命令参数</code>。在配置工作目录时，需要现在 <code>HM</code> 文件夹下创建一个 <code>workspace</code> 文件夹作为工作目录，再在工作目录中选择新建的 <code>workspace</code> 路径。在命令参数中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\-c encoder_intra_main.cfg -c bitstream.cfg\&gt; \&gt;out.txt</span><br></pre></td></tr></table></figure>
-<p>并将 <code>HM</code> 文件夹中 <code>cfg</code> 文件夹里的 <code>encoder_intra_main.cfg</code> 文件复制到 <code>workspace</code> 文件夹下。此外，还需要在 <code>workspace</code>文件夹下新建 <code>bitstream.cfg</code> 文件。<code>bitstream.cfg</code> 文件格式可以直接复制 <code>HM</code> 文件夹中 <code>per-sequence</code> 文件夹下的任意配置文件。<code>bitstream.cfg</code> 文件的内容如下所示。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\<span class="comment">#======== File I/O =============== </span></span><br><span class="line">InputFile                  : E:\\HM-16.20+SCM-8.8\\workspace\\yuv\\salesman_qcif.yuv </span><br><span class="line">InputBitDepth              : 8           \<span class="comment"># Input bitdepth </span></span><br><span class="line">InputChromaFormat          : 420         \<span class="comment"># Ratio of luminance to chrominance samples </span></span><br><span class="line">FrameRate                  : 50          \<span class="comment"># Frame Rate per second </span></span><br><span class="line">FrameSkip                  : 0           \<span class="comment"># Number of frames to be skipped in input </span></span><br><span class="line">SourceWidth                : 176         \<span class="comment"># Input  frame width </span></span><br><span class="line">SourceHeight               : 144         \<span class="comment"># Input  frame height </span></span><br><span class="line">FramesToBeEncoded          : 449         \<span class="comment"># Number of frames to be coded </span></span><br><span class="line">Level                      : 3.1</span><br></pre></td></tr></table></figure>
-<p>其中，参数由上至下分别为输入文件路径、位深度、亮度与色度比值、帧率、输入帧跳过帧数、输入帧宽度、输入帧高度以及编码帧数。这些参数需要根据输入的文件进行调整。</p>
-<p>完成上述步骤后，就可以对YUV文件进行编码了。</p>
-<h1 id="YUV到HEVC的编码过程和结果分析"><a href="#YUV到HEVC的编码过程和结果分析" class="headerlink" title="YUV到HEVC的编码过程和结果分析"></a>YUV到HEVC的编码过程和结果分析</h1><h2 id="YUV视频下载"><a href="#YUV视频下载" class="headerlink" title="YUV视频下载"></a>YUV视频下载</h2><p>YUV视频可以通过网址 <a href="http://trace.eas.asu.edu/yuv/">http://trace.eas.asu.edu/yuv/</a> 进行下载。该网址中还提供了我们所需要的 YUV 视频的各种参数。下载好视频后，将其放在 workspace 的 yuv 文件夹中，并将文件路径和参数更新到 bitstream.cfg 文件中。</p>
-<h2 id="HEVC编码"><a href="#HEVC编码" class="headerlink" title="HEVC编码"></a>HEVC编码</h2><p>完成5.1节中的操作后，回到 <code>Visual Stuidio</code>，按下 <code>Ctrl + F5</code> 开始执行。执行后会弹出一个命令行窗口，如图7所示。</p>
-<p><img src="/2020/04/24/HM/2da8c8a546605e186a6576418f411534.png" alt="图 7 执行过程中的命令行窗口"></p>
-<p>完成执行后，在 <code>workspace</code> 文件夹下会多出3个文件，分别为 <code>out.txt</code>，<code>rec.yuv</code>，<code>str.bin</code>。<code>out.txt</code> 文件是基本编码信息的输出文件，包含编码后的比特数、编码信息、编码时间等各种信息。<code>rec.yuv</code> 是编码过程中重建的YUV图像。<code>str.bin</code> 是压缩后的二进制码流文件。可以利用 Elecard HEVC Analyzer 软件进行查看，软件下载链接为：<a href="https://elecard-hevc-analyzer.software.informer.com/download/">https://elecard-hevc-analyzer.software.informer.com/download/</a>。</p>
-<p>5.3 结果分析</p>
-<p>使用Elecard HEVC Analyzer打开str.bin文件后，得到的结果如图8所示。左上角选择chart</p>
-<p>bar可以查看每帧视频码流的分配情况。thumbnails可以查看视频的缩略图以及对应的编码索引和时间索引，左侧可以看到帧级别的统计信息，如色度、格式、分辨率、各类行帧所分配的比特比率等，并可以更换查看vps、sps等其他级别的信息，右侧可以查看cu级别的信息，包括块的位置、尺寸、预测方向等。</p>
-<p><img src="/2020/04/24/HM/d05c9ff383155befd58bed6e7c173d13.png" alt="图 8 Elecard HEVC Analyzer查看结果"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>HM 软件安装</title>
-    <url>/2020/04/24/HM_setup/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了 HM 软件的安装过程。</p>
-<span id="more"></span>
-<h1 id="HEVC"><a href="#HEVC" class="headerlink" title="HEVC"></a>HEVC</h1><p>高效视频编码（HEVC）是ITU-T视频编码专家组(ITU-T Q.6/SG 16) 和 ISO/IEC运动图像专家组 (ISO/IEC JTC 1/ SC 29/WG 11) 成立了视频编码联合协作小组(JCT-VC)来开展该项目。该小组的范围已扩展为继续研究格式范围扩展 (RExt)、可扩展HEVC (SHVC) 和屏幕内容编码 (SCC) 作为 HEVC 的扩展。HEVC 标准的第一个版本于 2013 年 4 月完成。HEVC 的第二个版本，包括RExt、SHVC和MV-HEVC扩展，于 2014 年 10 月完成。包括3D-HEVC扩展在内的第三版HEVC已于 2015 年 2 月完成。</p>
-<h1 id="HM"><a href="#HM" class="headerlink" title="HM"></a>HM</h1><p>HM（HEVC Test Model）是官方定义的HEVC参考软件，包括编码器和解码器功能。</p>
-<p>HM软件有助于帮助视频编码标准的用户建立和测试一致性和可操作性，具有用于教育和展示标准的功能。该软件由ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组第 6 题）和 ISO/IEC运动图像专家组（MPEG，ISO/IEC 第 29 分委员会第 11 工作组）联合开发联合技术委员会)，由联合视频专家组 (JVET) 维护，该组是 ITU-T 视频编码专家组（VCEG，ITU-T 第 16 研究组的第 6 题）和 ISO/IEC 运动图像专家组(MPEG , ISO/IEC 联合技术委员会 1) 第 29 分委员会第 5 工作组。</p>
-<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><ul>
-<li><p>实验软件：HM 16.20，Vitural Stuidio 2019</p>
-</li>
-<li><p>实验设备：Legion Y7000 2019 PG0。</p>
-</li>
-<li><p>操作系统：Windows 10 家庭中文版20H2版本</p>
-</li>
-</ul>
-<h1 id="HM安装步骤及操作说明"><a href="#HM安装步骤及操作说明" class="headerlink" title="HM安装步骤及操作说明"></a>HM安装步骤及操作说明</h1><h2 id="Tortoise-SVN下载"><a href="#Tortoise-SVN下载" class="headerlink" title="Tortoise SVN下载"></a>Tortoise SVN下载</h2><p>HM采用SVN进行代码管理，不能直接从网页下载。因此需要利用SVN软件下载。Tortoise SVN下载链接：<a href="https://tortoisesvn.net/">https://tortoisesvn.net/</a> 。打开链接后，点击 Download 标签栏，在出现的下载选项中选择合适的版本进行下载。</p>
-<p><img src="/2020/04/24/HM_setup/48ae278c0cfc6eb93a3d2ff05c0d79ff.png" alt="图 1 Tortise SVN下载"></p>
-<h2 id="HM下载"><a href="#HM下载" class="headerlink" title="HM下载"></a>HM下载</h2><p>完成上一节的下载后，回到桌面，右键空白处即可看到Tortise SVN选项，如图2所示。点击后进入Repo-browser，在弹出的URL输入框中输入HM的下载地址：<a href="https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/">https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/</a> 。输入后点击OK，可以获得不同版本的HM软件，如图3所示。选定合适的版本后右击其对应的文件夹，点击Checkout即可下载。</p>
-<p><img src="/2020/04/24/HM_setup/0605ec886e6b1d6d9d43845524910406.png" alt="图 2 桌面右击空白处"></p>
-<p><img src="/2020/04/24/HM_setup/3a9c09b737511fe3f6fb35f4580f6fd0.png" alt="图 3 HM版本选择"></p>
-<h2 id="HM安装"><a href="#HM安装" class="headerlink" title="HM安装"></a>HM安装</h2><p>完成HM下载后，打开对应的文件夹，进入 <code>build</code> 文件夹，如图4所示。其中包含了不同环境下的编译文件，支持Linux系统和Windows系统。根据电脑中存在的编译环境，选择并打开 <code>HM_vc2015.sln</code> 文件。</p>
-<p><img src="/2020/04/24/HM_setup/384e754746e92ec81759a32345cdfa2b.png" alt="图 4 build文件夹内容"></p>
-<p>打开sln文件后，可以看到解决方案资源管理器中有10个项目，如图5所示。右击 <code>解决方案”HM_vc2015”</code>，选择 <code>属性</code>，选择 <code>单启动项目</code>，单启动项目中选择 <code>TAppEncoder</code>，如图6所示。此处为对其进行编码。如果需要进行解码，则在单启动项目中应选择<code>AppDecoder</code>。点击 <code>确定</code> 保存设置。完成后右击 <code>解决方案</code>，在弹出的菜单栏中点击 <code>生成解决方案</code>。</p>
-<p>生成解决方案成功后，在 <code>HM</code> 文件夹下会生成一个 <code>bin</code> 文件夹。进入 <code>bin</code> 文件夹，看到有一个 <code>vc2015</code> 文件夹。继续进入 <code>vc2015</code> 文件夹，点击 <code>Win32</code> 文件夹，可以看到 <code>debug</code> 文件夹。进入 <code>debug</code> 文件夹，可以看到有两个可执行文件 <code>TAppDecoder.exe</code> 和<code>TAppEncoder.exe</code></p>
-<p><img src="/2020/04/24/HM_setup/b3bd39a8477009783cd73f514678b3b6.png" alt="图 5 sln文件打开后的解决方案"></p>
-<p><img src="/2020/04/24/HM_setup/e9c37afd340954c8deda1b18e4d8921e.png" alt="图 6 解决方案属性"></p>
-<h2 id="编码配置"><a href="#编码配置" class="headerlink" title="编码配置"></a>编码配置</h2><p>完成上述步骤后，回到 <code>Virtual Studio</code> 软件。点击顶部菜单栏中的 <code>调试</code>，选择 <code>TAppEncoder调试属性</code> ，在配置属性中点击 <code>调试</code> 进行配置。这里需要更改 <code>工作目录</code> 和 <code>命令参数</code>。在配置工作目录时，需要现在 <code>HM</code> 文件夹下创建一个 <code>workspace</code> 文件夹作为工作目录，再在工作目录中选择新建的 <code>workspace</code> 路径。在命令参数中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\-c encoder_intra_main.cfg -c bitstream.cfg\&gt; \&gt;out.txt</span><br></pre></td></tr></table></figure>
-<p>并将 <code>HM</code> 文件夹中 <code>cfg</code> 文件夹里的 <code>encoder_intra_main.cfg</code> 文件复制到 <code>workspace</code> 文件夹下。此外，还需要在 <code>workspace</code>文件夹下新建 <code>bitstream.cfg</code> 文件。<code>bitstream.cfg</code> 文件格式可以直接复制 <code>HM</code> 文件夹中 <code>per-sequence</code> 文件夹下的任意配置文件。<code>bitstream.cfg</code> 文件的内容如下所示。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\<span class="comment">#======== File I/O =============== </span></span><br><span class="line">InputFile                  : E:\\HM-16.20+SCM-8.8\\workspace\\yuv\\salesman_qcif.yuv </span><br><span class="line">InputBitDepth              : 8           \<span class="comment"># Input bitdepth </span></span><br><span class="line">InputChromaFormat          : 420         \<span class="comment"># Ratio of luminance to chrominance samples </span></span><br><span class="line">FrameRate                  : 50          \<span class="comment"># Frame Rate per second </span></span><br><span class="line">FrameSkip                  : 0           \<span class="comment"># Number of frames to be skipped in input </span></span><br><span class="line">SourceWidth                : 176         \<span class="comment"># Input  frame width </span></span><br><span class="line">SourceHeight               : 144         \<span class="comment"># Input  frame height </span></span><br><span class="line">FramesToBeEncoded          : 449         \<span class="comment"># Number of frames to be coded </span></span><br><span class="line">Level                      : 3.1</span><br></pre></td></tr></table></figure>
-<p>其中，参数由上至下分别为输入文件路径、位深度、亮度与色度比值、帧率、输入帧跳过帧数、输入帧宽度、输入帧高度以及编码帧数。这些参数需要根据输入的文件进行调整。</p>
-<p>完成上述步骤后，就可以对YUV文件进行编码了。</p>
-<h1 id="YUV到HEVC的编码过程和结果分析"><a href="#YUV到HEVC的编码过程和结果分析" class="headerlink" title="YUV到HEVC的编码过程和结果分析"></a>YUV到HEVC的编码过程和结果分析</h1><h2 id="YUV视频下载"><a href="#YUV视频下载" class="headerlink" title="YUV视频下载"></a>YUV视频下载</h2><p>YUV视频可以通过网址 <a href="http://trace.eas.asu.edu/yuv/">http://trace.eas.asu.edu/yuv/</a> 进行下载。该网址中还提供了我们所需要的 YUV 视频的各种参数。下载好视频后，将其放在 workspace 的 yuv 文件夹中，并将文件路径和参数更新到 bitstream.cfg 文件中。</p>
-<h2 id="HEVC编码"><a href="#HEVC编码" class="headerlink" title="HEVC编码"></a>HEVC编码</h2><p>完成5.1节中的操作后，回到 <code>Visual Stuidio</code>，按下 <code>Ctrl + F5</code> 开始执行。执行后会弹出一个命令行窗口，如图7所示。</p>
-<p><img src="/2020/04/24/HM_setup/2da8c8a546605e186a6576418f411534.png" alt="图 7 执行过程中的命令行窗口"></p>
-<p>完成执行后，在 <code>workspace</code> 文件夹下会多出3个文件，分别为 <code>out.txt</code>，<code>rec.yuv</code>，<code>str.bin</code>。<code>out.txt</code> 文件是基本编码信息的输出文件，包含编码后的比特数、编码信息、编码时间等各种信息。<code>rec.yuv</code> 是编码过程中重建的YUV图像。<code>str.bin</code> 是压缩后的二进制码流文件。可以利用 Elecard HEVC Analyzer 软件进行查看，软件下载链接为：<a href="https://elecard-hevc-analyzer.software.informer.com/download/">https://elecard-hevc-analyzer.software.informer.com/download/</a>。</p>
-<p>5.3 结果分析</p>
-<p>使用Elecard HEVC Analyzer打开str.bin文件后，得到的结果如图8所示。左上角选择chart</p>
-<p>bar可以查看每帧视频码流的分配情况。thumbnails可以查看视频的缩略图以及对应的编码索引和时间索引，左侧可以看到帧级别的统计信息，如色度、格式、分辨率、各类行帧所分配的比特比率等，并可以更换查看vps、sps等其他级别的信息，右侧可以查看cu级别的信息，包括块的位置、尺寸、预测方向等。</p>
-<p><img src="/2020/04/24/HM_setup/d05c9ff383155befd58bed6e7c173d13.png" alt="图 8 Elecard HEVC Analyzer查看结果"></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>HM</category>
-      </categories>
-      <tags>
-        <tag>HM</tag>
-        <tag>软件安装</tag>
       </tags>
   </entry>
   <entry>

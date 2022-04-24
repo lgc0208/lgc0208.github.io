@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-04-16T08:47:35.990Z</updated>
+  <updated>2022-04-24T02:25:51.220Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HM 软件安装</title>
+    <link href="https://lgc0208.github.io/2022/04/24/HM_setup/"/>
+    <id>https://lgc0208.github.io/2022/04/24/HM_setup/</id>
+    <published>2022-04-24T03:23:43.000Z</published>
+    <updated>2022-04-24T02:25:51.220Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录了 HM 软件的安装过程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="HM" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HM/"/>
+    
+    
+    <category term="HM" scheme="https://lgc0208.github.io/tags/HM/"/>
+    
+    <category term="软件安装" scheme="https://lgc0208.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
   
   <entry>
     <title>【LINUX】 使用服务器虚拟环境运行 Python 代码</title>
@@ -435,27 +458,6 @@
     
     
     <category term="Python" scheme="https://lgc0208.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简易函数信号发生器的设计和实现</title>
-    <link href="https://lgc0208.github.io/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/"/>
-    <id>https://lgc0208.github.io/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/</id>
-    <published>2021-01-30T15:28:15.000Z</published>
-    <updated>2022-02-03T06:38:25.102Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&amp;lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="模电" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/%E6%A8%A1%E7%94%B5/"/>
-    
-    
-    <category term="模电" scheme="https://lgc0208.github.io/tags/%E6%A8%A1%E7%94%B5/"/>
     
   </entry>
   

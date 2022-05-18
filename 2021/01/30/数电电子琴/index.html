@@ -16,7 +16,7 @@
       <title>基于 Verilog 和 EPM1270T144C5 的简易电子琴 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
-      <link rel="shortcut icon" href="/images/sun-side.svg#/favicon.ico" />
+      <link rel="shortcut icon" href="/images/sun-side.svg" />
        
 <link rel="stylesheet" href="/dist/main.css">
 
@@ -90,7 +90,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">12.6k</span>
+            <span class="post-count">12.5k</span>
         </span>
     </span>
 
@@ -119,15 +119,11 @@
 <p>其基本功能如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）通过用 8×8 点阵显示“1 2 3 4 5 6 7”七个音符构成的电子琴键盘。其中点阵的第 一列用一个 LED 点亮表示音符“1”，第二列用二个 LED 点亮表示音符“2”，依此类推，如图 1 所示。当音符为低音 1~7 时，点阵显示为绿色；当音符为中音 1~7 时，点阵显示为红色； 当音符为高音 1~7 时，点阵显示为黄色。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）用 BTN7～BTN1 七个按键模拟电子琴手动演奏时的“1 2 3 4 5 6 7”七个音符。当 某个按键按下时，数码管 DISP7 显示相应的音符，点阵上与之对应的音符显示列全灭，同 时蜂鸣器演奏相应的声音；当按键放开时数码管显示的音符灭掉，点阵显示恢复，蜂鸣器停 止声音的输出。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）由拨码开关切换选择高、中、低音，点阵颜色进行相应变化。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）可通过拨码开关 SW0 进行手动/自动演奏的切换，自动演奏时，点阵根据乐曲进 行颜 色和亮灭的变化。 该实验设计过程中，将整个门铃分为 8 个模块：分频模块，演奏模块，点阵显示模块， 数码管显示模块。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后通过对程序的调试、相应部分功能的仿真以及在电路板的烧写，验证了整个系统的原理和本设计方案的正确性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><strong>完整工程文件：</strong> <a target="_blank" rel="noopener" href="https://github.com/lgc0208/electronic_organ">https://github.com/lgc0208/electronic_organ</a><br>&nbsp;</p>
 <h1 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1 背景介绍"></a>1 背景介绍</h1><h2 id="1-1-相关知识"><a href="#1-1-相关知识" class="headerlink" title="1.1 相关知识"></a>1.1 相关知识</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据声乐知识，产生音乐的两个因素是音乐频率的持续时间，音乐的十二平均率规定， 每两个八音度之间的频率相差一倍，在两个八音度之间，又可分为 12 个半音。每两个半音 的频率比为 4。另外，音名 A（乐谱中的低音 6）的频率为 440HZ，音名 B 到 C 之间，E 到 F 之间为半音，其余为全音。由此可以计算出乐谱中从低音 1 到高音 1 之间每个音名的频率如表1所示</p>
 <center><b>表1 简谱中音名与频率的关系<b></b></b></center>
-![ ](%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387085671228.png)
 
 
-## 1.2 基本要求 
-### 1.2.1 点阵显示
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用 8×8 点阵显示“1 2 3 4 5 6 7”七个音符构成的电子琴键盘。其中点阵的第一列用一个 LED 点亮表示音符“1”，第二列用二个 LED 点亮表示音符“2”，依此类推，如图 1 所示。当音符为低音 1~7 时，点阵显示为绿色；当音符为中音 1~7 时，点阵显示为红色；当音符为高音 1~7 时，点阵显示为黄色；如图1所示。
-
-![ ](%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/20210130212904672.png)
-
+<p><img src="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387085671228.png" alt=" "></p>
+<h2 id="1-2-基本要求"><a href="#1-2-基本要求" class="headerlink" title="1.2 基本要求"></a>1.2 基本要求</h2><h3 id="1-2-1-点阵显示"><a href="#1-2-1-点阵显示" class="headerlink" title="1.2.1 点阵显示"></a>1.2.1 点阵显示</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用 8×8 点阵显示“1 2 3 4 5 6 7”七个音符构成的电子琴键盘。其中点阵的第一列用一个 LED 点亮表示音符“1”，第二列用二个 LED 点亮表示音符“2”，依此类推，如图 1 所示。当音符为低音 1~7 时，点阵显示为绿色；当音符为中音 1~7 时，点阵显示为红色；当音符为高音 1~7 时，点阵显示为黄色；如图1所示。</p>
+<p><img src="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/20210130212904672.png" alt=" "></p>
 <center><b>图 1 点阵显示<b></b></b></center>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -152,23 +148,15 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <h3 id="3-1-3-音调的控制"><a href="#3-1-3-音调的控制" class="headerlink" title="3.1.3 音调的控制"></a>3.1.3 音调的控制</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;频率的高低决定了音调的高低。音乐的十二平均率规定：每两个 8 度音（如简谱中的中音 1 与高音 1）之间的频率相差一倍。在两个 8度音之间，又可分为 12个半音，每两个半音的频率比为 $12\sqrt{2}$。 另外，音名 A(简谱中的低音 6)的频率为 440Hz，音名 B到 C之间、E到 F之间为半音，其余为全音。简谱中音名与频率的关系如1.1节中表1所示。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有不同频率的信号都是从同一个基准频率分频得到的。由于音阶频率多为非整数，而分频系数又不能为小数，故必须将计算得到的分频数四舍五入取整。若基准频率过低，则由于分频比太小，四舍五入取整后的误差较大；若基准频率过高，虽然误差变小，但分频数将变大。实际的设计综合考虑这两方面的因素，在尽量减小频率误差的前提下取合适的基准频率。基于点阵显示模块对于系统时钟的要求，本实验中笔者对1MHZ的时钟进行分频，进而输出到发声器件。实际上，只要各个音名间的相对频率关系不变，演奏出的乐曲听起来都不会 “走调”。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本实验需要演奏从低音1到高音7跨越三个八度的音符，因此通过简单的计算可以得出，在基准频率为1MHZ时，简谱中各音阶相应的分频系数如表2所示。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <center><b>表 2 简谱中各音阶相应的分频系数<b></b></b></center>
-![ ](%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387084005020.png)
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，对于乐曲中的休止符，只需要将输出到发声器件的变量赋值为0，发声器件便不会发出声音。
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-### 3.1.4 音长的控制
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;音符的持续时间必须根据乐曲的速度及每个音符的节拍数来确定。该实验中音长的控制主要应用于自动演奏模块中。本实验演奏的《天空之城》片段，最短的音符为4分音符，假设一个全音符持续的时间为1秒，则4分音符所需要持续的时间为0.25秒，即需要通过分频提供一个4HZ的时钟信号，从而控制音长。
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;控制音长是通过控制计数器预置数的停留时间来实现的，预置数停留的时间越长，则该音符演奏的时间越长。每个音符的演奏时间都是0.25秒的整数倍，对于节拍较长的音符，如 2 分音符，在自动播放的时候连续输出两次该音符即可。
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-## 3.2 总体框图
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该实验设计时的总体技术框图如图5所示。
-
-![ ](%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387083617918.png)
-
+<p><img src="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387084005020.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，对于乐曲中的休止符，只需要将输出到发声器件的变量赋值为0，发声器件便不会发出声音。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h3 id="3-1-4-音长的控制"><a href="#3-1-4-音长的控制" class="headerlink" title="3.1.4 音长的控制"></a>3.1.4 音长的控制</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;音符的持续时间必须根据乐曲的速度及每个音符的节拍数来确定。该实验中音长的控制主要应用于自动演奏模块中。本实验演奏的《天空之城》片段，最短的音符为4分音符，假设一个全音符持续的时间为1秒，则4分音符所需要持续的时间为0.25秒，即需要通过分频提供一个4HZ的时钟信号，从而控制音长。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;控制音长是通过控制计数器预置数的停留时间来实现的，预置数停留的时间越长，则该音符演奏的时间越长。每个音符的演奏时间都是0.25秒的整数倍，对于节拍较长的音符，如 2 分音符，在自动播放的时候连续输出两次该音符即可。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2 id="3-2-总体框图"><a href="#3-2-总体框图" class="headerlink" title="3.2 总体框图"></a>3.2 总体框图</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该实验设计时的总体技术框图如图5所示。</p>
+<p><img src="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387083617918.png" alt=" " style="zoom: 25%;"></p>
 <center><b>图 5 总体技术框图<b></b></b></center>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -519,7 +507,7 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="/images/zhifubao.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
@@ -813,6 +801,6 @@
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 
 </html>

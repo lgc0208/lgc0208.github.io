@@ -15,7 +15,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>【hexo】 对博客进行更新</title>
+    <title>【Win10】 使用Hexo对博客进行更新</title>
     <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍使用 hexo 更新博客的方式。</p>
 <span id="more"></span>
@@ -55,7 +55,7 @@
       </tags>
   </entry>
   <entry>
-    <title>【hexo】 安装及绑定Github</title>
+    <title>【Win10】 安装Hexo并绑定Github</title>
     <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍安装 hexo 并绑定 Github 的方式。</p>
 <span id="more"></span>
@@ -101,7 +101,7 @@
       </tags>
   </entry>
   <entry>
-    <title>【git】 取消追踪文件夹</title>
+    <title>【Git】 取消追踪文件夹</title>
     <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>需要使用 git 命令取消对某一文件/文件夹的追踪，可以通过以下方式：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rm -r --cache 文件夹名/</span><br></pre></td></tr></table></figure>

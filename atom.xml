@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-05-23T11:09:03.462Z</updated>
+  <updated>2022-05-23T11:28:43.856Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【hexo】 对博客进行更新</title>
+    <title>【Win10】 使用Hexo对博客进行更新</title>
     <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/"/>
     <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</id>
     <published>2022-05-23T13:24:10.000Z</published>
-    <updated>2022-05-23T11:09:03.462Z</updated>
+    <updated>2022-05-23T11:28:43.856Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍使用 hexo 更新博客的方式。&lt;/p&gt;</summary>
@@ -59,11 +59,11 @@
   </entry>
   
   <entry>
-    <title>【hexo】 安装及绑定Github</title>
+    <title>【Win10】 安装Hexo并绑定Github</title>
     <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/"/>
     <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/</id>
     <published>2022-05-23T13:14:10.000Z</published>
-    <updated>2022-05-23T11:22:01.347Z</updated>
+    <updated>2022-05-23T11:29:17.373Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍安装 hexo 并绑定 Github 的方式。&lt;/p&gt;</summary>
@@ -101,11 +101,11 @@
   </entry>
   
   <entry>
-    <title>【git】 取消追踪文件夹</title>
+    <title>【Git】 取消追踪文件夹</title>
     <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/</id>
     <published>2022-05-23T08:24:10.000Z</published>
-    <updated>2022-05-23T10:48:21.000Z</updated>
+    <updated>2022-05-23T11:29:01.167Z</updated>
     
     
       

@@ -15,6 +15,127 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【hexo】 对博客进行更新</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍使用 hexo 更新博客的方式。</p>
+<span id="more"></span>
+<p>博客文章存储地址：<code>博客路径\source\_posts</code>，需要为 markdown 文件</p>
+<p>文章打包到本地：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>文章发布到 Github：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>若想先本地测试，则输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器输入 <code>localhost:4000</code> 即可访问</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Ubuntu】 安装ns3</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Ubuntu%E5%AE%89%E8%A3%85ns3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了在 Ubuntu 系统安装 ns-3 的方式</p>
+<span id="more"></span>
+<h1 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1 安装依赖"></a>1 安装依赖</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install gcc g++ python</span><br><span class="line">sudo apt-get install gcc g++ python python-dev</span><br><span class="line">sudo apt-get install mercurial</span><br><span class="line">sudo apt-get install bzr</span><br><span class="line">sudo apt-get install gdb valgrind</span><br><span class="line">sudo apt-get install gsl-bin libgsl-dev libgslcblas0</span><br><span class="line">sudo apt-get install flex bison libfl-dev</span><br><span class="line">sudo apt-get install g++-3.4 gcc-3.4</span><br><span class="line">sudo apt-get install tcpdump</span><br><span class="line">sudo apt-get install sqlite sqlite3 libsqlite3-dev</span><br><span class="line">sudo apt-get install libxml2 libxml2-dev</span><br><span class="line">sudo apt-get install libgtk2.0-0 libgtk2.0-dev</span><br><span class="line">sudo apt-get install vtun lxc</span><br><span class="line">sudo apt-get install uncrustify</span><br><span class="line">sudo apt-get install doxygen graphviz imagemagick</span><br><span class="line">sudo apt-get install texlive texlive-extra-utils texlive-latex-extra</span><br><span class="line">sudo apt-get install python-sphinx dia</span><br><span class="line">sudo apt-get install gir1.2-goocanvas-2.0 python-gi python-gi-cairo python-pygraphviz python3-gi python3-gi-cairo python3-pygraphviz gir1.2-gtk-3.0 ipython ipython3 </span><br><span class="line">sudo apt-get install libboost-signals-dev libboost-filesystem-dev</span><br><span class="line">sudo apt-get install openmpi*</span><br></pre></td></tr></table></figure>
+<h1 id="2-下载-ns-3"><a href="#2-下载-ns-3" class="headerlink" title="2 下载 ns-3"></a>2 下载 ns-3</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tarballs</span><br><span class="line"><span class="built_in">cd</span> tarballs</span><br><span class="line">wget http://www.nsnam.org/release/ns-allinone-3.30.tar.bz2</span><br><span class="line">tar xjf ns-allinone-3.30.tar.bz2</span><br></pre></td></tr></table></figure>
+<h1 id="3-安装-ns-3"><a href="#3-安装-ns-3" class="headerlink" title="3 安装 ns-3"></a>3 安装 ns-3</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ns-allinone-3.30</span><br><span class="line">./build.py</span><br><span class="line"><span class="built_in">cd</span> ns-3.30</span><br><span class="line">./waf distclean</span><br><span class="line">./waf configure --enable-examples --enable-tests</span><br><span class="line">./waf</span><br><span class="line">./test.py</span><br><span class="line">./waf --run hello-simulator</span><br></pre></td></tr></table></figure>
+<p>若得到 Hello Simulator 的文字回应，即安装成功。</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【hexo】 安装及绑定Github</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍安装 hexo 并绑定 Github 的方式。</p>
+<span id="more"></span>
+<h1 id="安装并绑定-git"><a href="#安装并绑定-git" class="headerlink" title="安装并绑定 git"></a>安装并绑定 git</h1><p>鼠标右键打开菜单栏，点击 <code>Git Bash Here</code>，设置 <code>user.name</code> 和 <code>user.email</code> 的配置信息并生成 SSH 秘钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;注册邮箱&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;注册邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在生成的 <code>.ssh</code> 文件夹中复制 <code>id_rsa.pub</code> 的全部内容。</p>
+<p>接下来在 Github 上进行绑定，打开 Github 网页版的 SSH 设置界面（<a href="https://github.com/settings/keys），点击">https://github.com/settings/keys），点击</a> <code>New SSH key</code>，任意输入 <code>Title</code> 内容，并把刚才复制的 <code>id_rsa.pub</code> 内容全部粘贴进 <code>Key</code>，然后点击 <code>Add SSH key</code> 进行确认。</p>
+<p>这时回到 <code>Git Bash</code> 中，输入 <code>ssh git@github.com</code>，若成功连接，则设定完成。</p>
+<h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装 hexo 之前要先安装 <code>Node.js</code>，下载地址为：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+<p>安装成功后，在命令行输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>检查 <code>Node.js</code> 和 <code>npm</code> 是否安装成功。</p>
+<p>上述工作都完成后，进行 hexo 的安装。选定博客目录，本文以 <code>Blog</code> 为例。进入 <code>Blog</code> 文件夹，打开命令行，输入下述代码进行安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>运行完成后，输入下述命令搭建一个简易 demo：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器中输入 <code>localhost:4000</code> ，若成功显示博客雏形，则表示安装完成。</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Python】 导出项目依赖</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E5%AF%BC%E5%87%BApython%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>介绍借助 <code>pipreqs</code> 导出 Python 项目所需依赖的方式</p>
+<span id="more"></span>
+<p>首先下载 <code>pipreqs</code> 包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pipreqs</span><br></pre></td></tr></table></figure>
+<p>切换到项目根目录，输入以下指令即可生成包含项目依赖的 <code>requirements.txt</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipreqs ./ --encoding=utf8</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【git】 取消追踪文件夹</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>需要使用 git 命令取消对某一文件/文件夹的追踪，可以通过以下方式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rm -r --cache 文件夹名/</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【系统】 修改 hosts 文件</title>
+    <url>/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了在各种系统下修改 hosts 文件的方式</p>
+<span id="more"></span>
+<h1 id="1-hosts-文件的作用"><a href="#1-hosts-文件的作用" class="headerlink" title="1 hosts 文件的作用"></a>1 hosts 文件的作用</h1><p>hosts文件将域名与其对应的 IP 地址建立关联表，用户在浏览器中输入访问的域名时，系统会首先自动从 hosts 文件中寻找对应的 IP 地址</p>
+<h1 id="2-hosts-文件的存放路径"><a href="#2-hosts-文件的存放路径" class="headerlink" title="2 hosts 文件的存放路径"></a>2 hosts 文件的存放路径</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p><code>C:\Windows\System32\drivers\etc</code></p>
+<h2 id="Mac-OS-Linux-类-Unix"><a href="#Mac-OS-Linux-类-Unix" class="headerlink" title="Mac OS/Linux/类 Unix"></a>Mac OS/Linux/类 Unix</h2><p><code>/etc/</code></p>
+<h2 id="Andriod"><a href="#Andriod" class="headerlink" title="Andriod"></a>Andriod</h2><p><code>/system/etc/</code></p>
+<h1 id="3-激活-hosts-文件内容"><a href="#3-激活-hosts-文件内容" class="headerlink" title="3 激活 hosts 文件内容"></a>3 激活 hosts 文件内容</h1><p>通过刷新 DNS 缓存表的方式使 hosts 文件生效，需要使用命令行</p>
+<h2 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+<h2 id="Mac-OS-Linux-类-Unix-1"><a href="#Mac-OS-Linux-类-Unix-1" class="headerlink" title="Mac OS/Linux/类 Unix"></a>Mac OS/Linux/类 Unix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo killall -HUP mDNSResponder</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Win10】 HM 软件安装</title>
     <url>/2022/04/24/HM_setup/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了 HM 软件的安装过程。</p>

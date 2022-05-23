@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-04-28T08:46:23.524Z</updated>
+  <updated>2022-05-23T11:09:03.462Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,138 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【hexo】 对博客进行更新</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</id>
+    <published>2022-05-23T13:24:10.000Z</published>
+    <updated>2022-05-23T11:09:03.462Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍使用 hexo 更新博客的方式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Ubuntu】 安装ns3</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Ubuntu%E5%AE%89%E8%A3%85ns3/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Ubuntu%E5%AE%89%E8%A3%85ns3/</id>
+    <published>2022-05-23T13:24:07.000Z</published>
+    <updated>2022-05-23T10:58:48.529Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录了在 Ubuntu 系统安装 ns-3 的方式&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【hexo】 安装及绑定Github</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/</id>
+    <published>2022-05-23T13:14:10.000Z</published>
+    <updated>2022-05-23T11:22:01.347Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍安装 hexo 并绑定 Github 的方式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Python】 导出项目依赖</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E5%AF%BC%E5%87%BApython%E4%BE%9D%E8%B5%96/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E5%AF%BC%E5%87%BApython%E4%BE%9D%E8%B5%96/</id>
+    <published>2022-05-23T12:02:07.000Z</published>
+    <updated>2022-05-23T10:51:15.275Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;介绍借助 &lt;code&gt;pipreqs&lt;/code&gt; 导出 Python 项目所需依赖的方式&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="编程语言" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【git】 取消追踪文件夹</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_git%E5%8F%96%E6%B6%88%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/</id>
+    <published>2022-05-23T08:24:10.000Z</published>
+    <updated>2022-05-23T10:48:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【系统】 修改 hosts 文件</title>
+    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/"/>
+    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/</id>
+    <published>2022-05-23T08:24:07.000Z</published>
+    <updated>2022-05-23T10:46:45.869Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录了在各种系统下修改 hosts 文件的方式&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【Win10】 HM 软件安装</title>
@@ -312,152 +444,6 @@
     
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python学习笔记_神经网络常见激活函数整理及其 Python 绘图</title>
-    <link href="https://lgc0208.github.io/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/"/>
-    <id>https://lgc0208.github.io/2021/08/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E7%BB%98%E5%9B%BE/</id>
-    <published>2021-08-04T08:50:29.000Z</published>
-    <updated>2022-02-03T06:28:37.057Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文介绍了三种常见的激活函数以及激活函数的选择方式。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Python" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
-    
-    
-    <category term="Python" scheme="https://lgc0208.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>美赛 F 奖经验贴</title>
-    <link href="https://lgc0208.github.io/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/"/>
-    <id>https://lgc0208.github.io/2021/07/31/%E7%AB%9E%E8%B5%9B_%E7%BE%8E%E8%B5%9B/</id>
-    <published>2021-07-31T13:45:47.000Z</published>
-    <updated>2022-02-03T06:30:52.557Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2021美赛过去半年了，一直也在忙各种各样的事情，刚好上学期有一门项目管理的课程，课程论文写的就是美赛经验，偷个懒直接改下排版复制上来，以作留念&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="竞赛" scheme="https://lgc0208.github.io/categories/%E7%AB%9E%E8%B5%9B/"/>
-    
-    <category term="美国大学生数学建模竞赛" scheme="https://lgc0208.github.io/categories/%E7%AB%9E%E8%B5%9B/%E7%BE%8E%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AB%9E%E8%B5%9B/"/>
-    
-    
-    <category term="心得" scheme="https://lgc0208.github.io/tags/%E5%BF%83%E5%BE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对</title>
-    <link href="https://lgc0208.github.io/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>https://lgc0208.github.io/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
-    <published>2021-07-10T05:12:10.000Z</published>
-    <updated>2022-02-03T16:07:57.242Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前言：该小项目使用 Java Tomcat 本地服务器，实现了读取 SQL Server 数据以及将输入的账号密码与数据库中已有的账号密码进行比对的功能，Java 源代码下载链接：&lt;a href=&quot;https://download.csdn.net/download/weixin_45817309/20150415&quot;&gt;Java本地服务器读取SQL Server中的数据及账号密码核对&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Java" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Java/"/>
-    
-    
-    <category term="Java" scheme="https://lgc0208.github.io/tags/Java/"/>
-    
-    <category term="SQL Server" scheme="https://lgc0208.github.io/tags/SQL-Server/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流水灯、存储器、外部中断实验</title>
-    <link href="https://lgc0208.github.io/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"/>
-    <id>https://lgc0208.github.io/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/</id>
-    <published>2021-07-07T16:10:46.000Z</published>
-    <updated>2022-02-03T15:50:01.265Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;计算机原理与应用实验-流水灯、存储器、外部中断实验&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="汇编" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/%E6%B1%87%E7%BC%96/"/>
-    
-    <category term="C" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/C/"/>
-    
-    
-    <category term="Verilog" scheme="https://lgc0208.github.io/tags/Verilog/"/>
-    
-    <category term="汇编" scheme="https://lgc0208.github.io/tags/%E6%B1%87%E7%BC%96/"/>
-    
-    <category term="C" scheme="https://lgc0208.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于微信小程序的北邮信息门户通知查询系统</title>
-    <link href="https://lgc0208.github.io/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"/>
-    <id>https://lgc0208.github.io/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/</id>
-    <published>2021-06-10T07:27:49.000Z</published>
-    <updated>2022-02-03T15:48:33.349Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;1-项目目标&quot;&gt;&lt;a href=&quot;#1-项目目标&quot; class=&quot;headerlink&quot; title=&quot;1 项目目标&quot;&gt;&lt;/a&gt;1 项目目标&lt;/h1&gt;&lt;h2 id=&quot;1-1-基础目标&quot;&gt;&lt;a href=&quot;#1-1-基础目标&quot; class=&quot;headerlink&quot; title=&quot;1.1 基础目标&quot;&gt;&lt;/a&gt;1.1 基础目标&lt;/h2&gt;&lt;p&gt;（1）实现北邮信息门户校内通知、学术讲座、公示公告、校园新闻的&lt;strong&gt;查询&lt;/strong&gt;&lt;br&gt;（2）将从北邮信息门户校内通知、学术讲座、公示公告、校园新闻的内容&lt;strong&gt;更新到数据库&lt;/strong&gt;&lt;br&gt;（3）将微信小程序与数据库进行连接，使得小程序可以&lt;strong&gt;实时调取数据库内容&lt;/strong&gt;&lt;br&gt;（4）在微信小程序上实现&lt;strong&gt;搜索功能&lt;/strong&gt;&lt;br&gt;（5）在微信小程序上实现&lt;strong&gt;用户登录功能&lt;/strong&gt; &lt;/p&gt;
-&lt;h2 id=&quot;1-2-进阶目标&quot;&gt;&lt;a href=&quot;#1-2-进阶目标&quot; class=&quot;headerlink&quot; title=&quot;1.2 进阶目标&quot;&gt;&lt;/a&gt;1.2 进阶目标&lt;/h2&gt;&lt;p&gt;（1）用户可以在微信小程序上对重要通知进行&lt;strong&gt;收藏和取消收藏&lt;/strong&gt;&lt;br&gt;（2）将用户收藏的通知&lt;strong&gt;与用户微信号挂钩&lt;/strong&gt;，使用户可以随时读取自己收藏的内容&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Python" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
-    
-    <category term="微信小程序" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-    <category term="Java" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Java/"/>
-    
-    
-    <category term="Python" scheme="https://lgc0208.github.io/tags/Python/"/>
-    
-    <category term="Java" scheme="https://lgc0208.github.io/tags/Java/"/>
-    
-    <category term="SQL Server" scheme="https://lgc0208.github.io/tags/SQL-Server/"/>
-    
-    <category term="微信小程序" scheme="https://lgc0208.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于 pygame 的五子棋小游戏</title>
-    <link href="https://lgc0208.github.io/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/"/>
-    <id>https://lgc0208.github.io/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/</id>
-    <published>2021-02-02T09:33:22.000Z</published>
-    <updated>2022-02-03T05:02:51.158Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;1、摘要&quot;&gt;&lt;a href=&quot;#1、摘要&quot; class=&quot;headerlink&quot; title=&quot;1、摘要&quot;&gt;&lt;/a&gt;1、摘要&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;通过python的pygame库，实现一款支持人机对战和人人对战的五子棋小游戏。在游戏初始界面会有5秒的规则介绍，五秒后自动进入人机对战模式。玩家可根据游戏中的提示按下Q键切换为初始人人对战对接，按下E键切换为初始人机对战界面。在游戏进行过程中，程序会记录并显示黑白两子的累计获胜局数，提高玩家体验。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;完整代码&lt;/strong&gt;：&lt;a href=&quot;https://github.com/lgc0208/Gobang&quot;&gt;https://github.com/lgc0208/Gobang&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Python" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/Python/"/>
-    
-    
-    <category term="Python" scheme="https://lgc0208.github.io/tags/Python/"/>
     
   </entry>
   

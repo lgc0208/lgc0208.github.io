@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>项目 |  梦</title>
+      <title>参考文献格式生成器（GB/T 7714-2015） |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -58,338 +58,214 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-参考文献格式生成器"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  参考文献格式生成器（GB/T 7714-2015）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/" class="article-date">
+  <time datetime="2022-07-02T09:52:07.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/HTML/">HTML</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">139</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这是一个因为懒诞生的小项目，发出来是感觉也花了一些精力就自己用太亏了。</p>
+<p>因为懒得对着引用文献标准一个个敲字，文献管理软件的引用格式又好像经常出错，就参考其他格式生成器自己写了个，针对的是 GB/T 7714-2015 标准</p>
+<span id="more"></span>
+<h2 id="网页预览"><a href="#网页预览" class="headerlink" title="网页预览"></a>网页预览</h2><p><img src="/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/image-20220702214355905.png" alt="image-20220702214355905"></p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol>
+<li>Github Page 网址：<a href="https://lgc0208.github.io/reference_format_generation/">https://lgc0208.github.io/reference_format_generation/</a></li>
+<li>进入 Github 仓库，下载 <code>index.html</code>, <code>generation.js</code>, <code>style.css</code> 后，使用浏览器打开 <code>index.html</code> 文件</li>
+</ol>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
         <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
         </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">项目</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+      </ul>
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/" class="archive-article-date">
-  <time datetime="2022-07-02T09:52:07.000Z" itemprop="datePublished">07/02</time>
-</a>
+    
+    <footer class="article-footer">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/"
-    >参考文献格式生成器（GB/T 7714-2015）</a> 
-</h2>
- 
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/HTML/">HTML</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/" class="archive-article-date">
-  <time datetime="2022-02-18T09:52:07.000Z" itemprop="datePublished">02/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/"
-    >北京邮电大学信息与通信工程学院选课参考指南</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/HTML/">HTML</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/" alt="微信分享二维码">
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/07/19/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0%E6%8A%A5%E5%91%8A/" class="archive-article-date">
-  <time datetime="2021-07-19T03:25:04.000Z" itemprop="datePublished">07/19</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/07/19/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0%E6%8A%A5%E5%91%8A/"
-    >金工实习报告</a> 
-</h2>
- 
+</div>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/">金工实习</a>
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+
+    </footer>
   </div>
 
+   
+  <nav class="article-nav">
     
     
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
-  <time datetime="2021-07-10T05:12:10.000Z" itemprop="datePublished">07/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/07/10/Java%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/"
-    >基于 Tomcat 的  Java 本地服务器读取 SQL Server 中的数据及账号密码核对</a> 
-</h2>
- 
-
-    </header>
+      <a href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【Win10】 使用Hexo对博客进行更新</div>
+      </a>
     
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/" class="archive-article-date">
-  <time datetime="2021-07-07T16:10:46.000Z" itemprop="datePublished">07/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/07/08/%E6%B0%B4%E7%81%AF%E3%80%81%E5%AD%98%E5%82%A8%E5%99%A8%E3%80%81%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD/"
-    >流水灯、存储器、外部中断实验</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/C/">C</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%B1%87%E7%BC%96/">汇编</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  <time datetime="2021-06-10T07:27:49.000Z" itemprop="datePublished">06/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/06/10/%E4%BF%A1%E6%81%AF%E9%97%A8%E6%88%B7%E9%80%9A%E7%9F%A5%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/"
-    >基于微信小程序的北邮信息门户通知查询系统</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Python/">Python</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/" class="archive-article-date">
-  <time datetime="2021-02-02T09:33:22.000Z" itemprop="datePublished">02/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/02/Python%E4%BA%94%E5%AD%90%E6%A3%8B/"
-    >基于 pygame 的五子棋小游戏</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Python/">Python</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/" class="archive-article-date">
-  <time datetime="2021-01-30T15:28:15.000Z" itemprop="datePublished">01/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/30/%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/"
-    >简易函数信号发生器的设计和实现</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%A8%A1%E7%94%B5/">模电</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/" class="archive-article-date">
-  <time datetime="2021-01-30T14:24:39.000Z" itemprop="datePublished">01/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/30/%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/"
-    >基于 Verilog 和 EPM1270T144C5 的简易电子琴</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Verilog/">Verilog</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/" class="archive-article-date">
-  <time datetime="2020-08-20T05:12:10.000Z" itemprop="datePublished">08/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/20/Java%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/"
-    >基于 Java 的单机坦克大战游戏</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/Java/">Java</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-      
-    </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E9%A1%B9%E7%9B%AE/page/2/">2</a><a class="extend next" rel="next" href="/categories/%E9%A1%B9%E7%9B%AE/page/2/">下一页</a>
   </nav>
-  
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -532,6 +408,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

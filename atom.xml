@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-05-23T11:28:43.856Z</updated>
+  <updated>2022-07-02T13:44:45.045Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>参考文献格式生成器（GB/T 7714-2015）</title>
+    <link href="https://lgc0208.github.io/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/"/>
+    <id>https://lgc0208.github.io/2022/07/02/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E7%94%9F%E6%88%90%E5%99%A8/</id>
+    <published>2022-07-02T09:52:07.000Z</published>
+    <updated>2022-07-02T13:44:45.045Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;这是一个因为懒诞生的小项目，发出来是感觉也花了一些精力就自己用太亏了。&lt;/p&gt;
+&lt;p&gt;因为懒得对着引用文献标准一个个敲字，文献管理软件的引用格式又好像经常出错，就参考其他格式生成器自己写了个，针对的是 GB/T 7714-2015 标准&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="HTML" scheme="https://lgc0208.github.io/categories/%E9%A1%B9%E7%9B%AE/HTML/"/>
+    
+    
+    <category term="HTML" scheme="https://lgc0208.github.io/tags/HTML/"/>
+    
+  </entry>
   
   <entry>
     <title>【Win10】 使用Hexo对博客进行更新</title>
@@ -414,27 +436,6 @@
     
     
     <summary type="html">&lt;p&gt;直接打开 Jupyter Notebook 会默认处理C盘中的文件，而许多项目文件保存在其他盘，因此存在使用 Jupyter Notebook 打开不属于C盘文件的需求&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【QT】【乱码】 Qt Creator 中文乱码问题解决</title>
-    <link href="https://lgc0208.github.io/2021/08/08/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Qt%20Creator%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    <id>https://lgc0208.github.io/2021/08/08/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Qt%20Creator%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</id>
-    <published>2021-08-08T15:05:10.000Z</published>
-    <updated>2022-02-03T05:03:39.424Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在编译 Qt Creator 项目时出现中文乱码&lt;/p&gt;</summary>
     
     
     

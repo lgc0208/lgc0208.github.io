@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-07-02T13:44:45.045Z</updated>
+  <updated>2022-07-24T15:35:33.493Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Typora】 This beta version of Typora is expired, please download and install a newer version.</title>
+    <link href="https://lgc0208.github.io/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/"/>
+    <id>https://lgc0208.github.io/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/</id>
+    <published>2022-07-24T08:24:10.000Z</published>
+    <updated>2022-07-24T15:35:33.493Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在使用一段时间 beta 版本 Typora 后，打开 Typora 可能会跳出：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;This beta version of Typora is expired, please download and install a newer version.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下面提供一个解决方法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>参考文献格式生成器（GB/T 7714-2015）</title>
@@ -421,27 +444,6 @@
     <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
     <category term="编程语言" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Jupyter Notebook】 使用 Jupyter Notebook 打开C盘外的文件</title>
-    <link href="https://lgc0208.github.io/2021/08/15/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E6%89%93%E5%BC%80C%E7%9B%98%E5%A4%96%E6%96%87%E4%BB%B6/"/>
-    <id>https://lgc0208.github.io/2021/08/15/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_JN%E6%89%93%E5%BC%80C%E7%9B%98%E5%A4%96%E6%96%87%E4%BB%B6/</id>
-    <published>2021-08-15T07:03:32.000Z</published>
-    <updated>2022-02-03T05:03:17.761Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;直接打开 Jupyter Notebook 会默认处理C盘中的文件，而许多项目文件保存在其他盘，因此存在使用 Jupyter Notebook 打开不属于C盘文件的需求&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>

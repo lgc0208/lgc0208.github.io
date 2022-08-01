@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>OMNet++ 基础语法：消息 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-基础语法：消息"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  OMNet++ 基础语法：消息
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/31/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%B6%88%E6%81%AF/" class="article-date">
+  <time datetime="2022-07-31T08:50:29.000Z" itemprop="datePublished">2022-07-31</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/">OMNet++</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="cMessage-类"><a href="#cMessage-类" class="headerlink" title="cMessage 类"></a><code>cMessage</code> 类</h2><p><code>cMessage</code> 类是 <code>OMNet++</code> 的核心类，它及其子类的对象可以模拟时间、包、帧、蜂窝、网络中的信号传输、系统中的实体传输等。Message在创建时可以指定名字、消息类型、长度、位错误标记、优先权：</p>
+<span id="more"></span>
+<ul>
+<li><strong>名字</strong>：<code>string(const char *)</code> 类型，在模拟程序中可以自由使用。名字属性继承自 <code>cObject</code>。</li>
+<li><strong>消息类型</strong>：定义为携带消息类型信息，值为 0 或正值。（负值部分被仿真库保留）。</li>
+<li><strong>长度</strong>：用以计算当消息经过一个具有确定数据速率的信道时的传输时延。</li>
+<li><strong>位错误标记</strong>：当消息通过具有位错误率 <code>ber</code> 的信道时，仿真内核以 $1-(1-ber)\times length$ 的概率将位错误标记设置为 1。</li>
+<li><strong>优先权</strong>：仿真内核在对具有相同到达时间值的消息队列（FES）中使用优先权进行消息定制。</li>
+</ul>
+<h2 id="消息定义"><a href="#消息定义" class="headerlink" title="消息定义"></a>消息定义</h2><p>假设目前需要一些具有源地址、目的地址和跳数的消息对象，可以编写一个 <code>mypacket.msg</code> 文件如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message MyPacket &#123;</span><br><span class="line">    fields:</span><br><span class="line">    	<span class="keyword">int</span> srcAddress;</span><br><span class="line">    	<span class="keyword">int</span> destAddress;</span><br><span class="line">    	<span class="keyword">int</span> hops = <span class="number">32</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>消息子集编译器的任务是生成一个 <code>C++</code> 类。若使用消息子集编译器来处理 <code>mypacket.msg</code> 文件，则会生成 <code>mypacket_m.h</code> 文件和 <code>mypacket_m.cc</code> 文件。其中，<code>mypacket_m.h</code> 文件包含类的声明。在 <code>field</code> 中支持以下数据类型：</p>
+<ol>
+<li>原始类型：<code>bool, char, short, int, long, unsigned short, unsigned int, unsigned long, double ,string</code></li>
+<li>结构、类，由额外的 <code>C++</code> 代码进行声明</li>
+</ol>
+<h2 id="消息收发"><a href="#消息收发" class="headerlink" title="消息收发"></a>消息收发</h2><p>在 <code>OMNet++</code> 中，<strong>对网络的仿真就是一系列简单模块间通过 <code>message</code> 进行通信的过程</strong>。在抽象层面上，<code>OMNeT++</code> 是一组通过消息传递相互通信的简单模块。简单模块的本质是它们创建、发送、接收、存储、修改、调度和销毁消息，而 <code>OMNeT++</code> 的其余部分都是为了促进这项任务，并收集有关正在发生的事情的统计数据。</p>
+<p><code>OMNeT++</code> 中的消息是 <code>cMessage</code> 类或其子类之一的实例。网络数据包用 <code>cPacket</code> 表示，它是 <code>cMessage</code> 的子类。消息对象使用 C++ <code>new</code> 运算符创建，并在不再需要时使用 <code>delete</code> 运算符销毁。消息也被称为 <code>cMessage</code> 指针。</p>
+<p>消息发送是这样实现的：消息的到达时间和误码标志在 <code>send()</code> 调用中计算得到，然后用计算出的到达时间将消息插入 FES 。仿真内核不会为每个链接单独安排消息，这样可以提高它的运行时效率。</p>
+<h3 id="普通发送"><a href="#普通发送" class="headerlink" title="普通发送"></a>普通发送</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">send</span>(cMessage *msg, <span class="keyword">const</span> <span class="keyword">char</span> *gateName, <span class="keyword">int</span> index=<span class="number">0</span>);</span><br><span class="line"><span class="built_in">send</span>(cMessage *msg, <span class="keyword">int</span> gateId);</span><br><span class="line"><span class="built_in">send</span>(cMessage *msg, cGate *gate);</span><br></pre></td></tr></table></figure>
+<p>其中，第一个函数 <code>gateName</code> 指消息必须通过的门的名称。如果该门是门向量，那么需要在 <code>index</code> 中指定执行的输出门；若不是，则不用考虑 <code>index</code> 参数。第二个函数和第三个函数分别使用门 ID 和门对象指针进行索引，执行速度比第一个函数要快。如果使用的是 IO 门，则需要制定输出门或输入门，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">send</span>(msg, <span class="string">&quot;out&quot;</span>);</span><br><span class="line"><span class="built_in">send</span>(msg, <span class="string">&quot;outv&quot;</span>, i);</span><br></pre></td></tr></table></figure>
+<h3 id="广播和重传"><a href="#广播和重传" class="headerlink" title="广播和重传"></a>广播和重传</h3><p>需要注意的是，不能使用 <code>send()</code> 函数多次发送同一个 <code>message</code>，否则会产生 <code>not owner of message</code> 的错误。在 <code>OMNet++</code> 中，消息就是一个具体的对象，在同一时刻不能出现在多个不同的地点。一旦 <code>message</code> 从源节点发出，它就不再属于源节点。当 <code>message</code> 到达目的端后，目的端就具有对该 <code>message</code> 的一切控制权，如接收、转发、删除等。</p>
+<p>在 <code>OMNet++</code> 中，广播可以通过在一个简单模块中发送相同消息的副本来实现，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Method 1 基础版本</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cMessage *copy = msg-&gt;<span class="built_in">dup</span>();</span><br><span class="line">    <span class="built_in">send</span>(copy, <span class="string">&quot;out&quot;</span>, i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> msg;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Method 2 利用门 ID 实现优化</span></span><br><span class="line"><span class="keyword">int</span> outGateBaseId = <span class="built_in">gateBaseId</span>(<span class="string">&quot;out&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="built_in">send</span>(i==n<span class="number">-1</span> ? msg : msg-&gt;<span class="built_in">dup</span>(), outGateBaseId+i);</span><br></pre></td></tr></table></figure>
+<p>在实现重传时，不能重复发送指向同一个消息对象的指针，因为这样在第一次重发时就会得到 <code>not owner of message</code> 错误。解决方案与广播相似，实现重传需要创建和发送消息的副本并保留原始信息。当确定不会再重新传输该消息时，再删除原始消息：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// retransmit packet:</span></span><br><span class="line">cMessage *copy = packet-&gt;<span class="built_in">dup</span>();</span><br><span class="line"><span class="built_in">send</span>(copy, <span class="string">&quot;out&quot;</span>);</span><br><span class="line"><span class="keyword">delete</span> packet; <span class="comment">// Finish</span></span><br></pre></td></tr></table></figure>
+<h3 id="延迟发送"><a href="#延迟发送" class="headerlink" title="延迟发送"></a>延迟发送</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sendDelayed</span>(cMessage *msg, <span class="keyword">double</span> delay, <span class="keyword">const</span> <span class="keyword">char</span> *gateName, <span class="keyword">int</span> index);</span><br><span class="line"><span class="built_in">sendDelayed</span>(cMessage *msg, <span class="keyword">double</span> delay, <span class="keyword">int</span> gateId);</span><br><span class="line"><span class="built_in">sendDelayed</span>(cMessage *msg, <span class="keyword">double</span> delay, cGate *gate);</span><br></pre></td></tr></table></figure>
+<p>延迟发送相较 <code>send()</code> 函数多了一个延迟参数 <code>delay</code>。<code>delay</code> 值必须是非负数。消息的送出时间是当前的模拟时间 + 延迟时间。该功能的效果类似于模块将消息保留了延迟间隔，然后再发送，在函数的内部并不会执行 <code>scheduleAt()</code> 加上 <code>send()</code> 函数，而是预先计算有关消息发送的所有内容，包括到达时间和目标模块。</p>
+<h3 id="自传消息"><a href="#自传消息" class="headerlink" title="自传消息"></a>自传消息</h3><p>在 <code>OMNet++</code> 中，让简单模块向自身发送消息可以解决仿真模型对未来事件的调度，以实现定时、超时、延迟等功能。以这种方式使用的消息称为 <em>self-messages</em>，模块类为它们提供了特殊的方法，允许在没有门和连接的情况下实现自传消息。</p>
+<h4 id="调度事件"><a href="#调度事件" class="headerlink" title="调度事件"></a>调度事件</h4><p>模块可以使用 <code>scheduleAt()</code> 向自己发送信息，该函数可以使用一个绝对模拟时间：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scheduleAt</span>(absoluteTime, msg);</span><br></pre></td></tr></table></figure>
+<p>由于目的时间通常与当前的模拟时间相关联，因此函数还有另一个变体 <code>scheduleAfter()</code>，该函数使用的是时间增量。以下两种用法是等效的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>()+delta, msg);</span><br><span class="line"><span class="built_in">scheduleAfter</span>(delta, msg);</span><br></pre></td></tr></table></figure>
+<p>自信息还可以与其他消息以相同的方式传递（如 <code>handleMessage()</code>），模块也可以通过调用接收到的信息对象的 <code>isSelfMessage()</code> 成员函数来确定其是否是自信息，也可以通过 <code>isScheduled()</code> 成员函数确定消息是否在 FES 中。</p>
+<h4 id="取消事件"><a href="#取消事件" class="headerlink" title="取消事件"></a>取消事件</h4><p>模块可以取消已经预定了的自信息，即从 FES 中删除对应事件：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cancelEvent</span>(msg);</span><br></pre></td></tr></table></figure>
+<p><code>cancelEvent()</code> 函数接受一个指向要取消的消息的指针，并返回相同的指针。执行取消命令后，可以删除对应消息或在 <code>scheduleAt()</code> 函数中重新启用事件。但如果没有对消息进行操作，则 <code>cancelEvent()</code> 无效。</p>
+<p>还有一种便捷方式可以实现对消息的删除，且通常用于编写析构函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">    <span class="function"><span class="keyword">delete</span> <span class="title">cancelEvent</span><span class="params">(msg)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个假想停止等待协议的实际应用实例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Protocol::handleMessage</span><span class="params">( cMessage *msg)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">if</span> (msg == timeoutEvent) &#123; </span><br><span class="line">        <span class="comment">// 超时，重新发送数据包并重启定时器</span></span><br><span class="line">        <span class="built_in">send</span>(currentPacket-&gt;<span class="built_in">dup</span>(), <span class="string">&quot;out&quot;</span>); </span><br><span class="line">        <span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>() + timeout, timeoutEvent); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (...) &#123; <span class="comment">// 如果收到确认</span></span><br><span class="line">        <span class="comment">// 取消超时，准备发送下一个数据包等</span></span><br><span class="line">        <span class="built_in">cancelEvent</span>(timeoutEvent); </span><br><span class="line">        ... </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; </span><br><span class="line">       ... </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重新安排事件"><a href="#重新安排事件" class="headerlink" title="重新安排事件"></a>重新安排事件</h4><p>要重新安排事件到不同模拟时间时，先要使用 <code>cancelEvent()</code> 取消事件，再进行安排：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg-&gt;<span class="built_in">isScheduled</span>())</span><br><span class="line">    <span class="built_in">cancelEvent</span>(msg);</span><br><span class="line"><span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>() + delay, msg);</span><br></pre></td></tr></table></figure>
+<p>或者也可以直接使用成员函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rescheduleAt</span>(absoluteTime, msg);</span><br><span class="line"><span class="built_in">rescheduleAfter</span>(delta, msg);</span><br></pre></td></tr></table></figure>
+<h3 id="消息直传"><a href="#消息直传" class="headerlink" title="消息直传"></a>消息直传</h3><p><code>sendDirect()</code> 函数提供了直接将消息直接发送到另一个模块输入门的方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, cModule *mod, <span class="keyword">int</span> gateId);</span><br><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, cModule *mod, <span class="keyword">const</span> <span class="keyword">char</span> *gateName, <span class="keyword">int</span> index=<span class="number">-1</span>); </span><br><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, cGate *gate);</span><br></pre></td></tr></table></figure>
+<p>在目标模块，直接接收的消息和通过连接传输的消息没有区别。但是需要注意的是，模块必须有专用的门才能接收通过 <code>sendDirect()</code> 发送的消息。不能一个门既能通过连接也能通过 <code>sendDirect()</code> 接收消息。</p>
+<p>官方文档中建议在模块的 <code>NED</code> 声明中使用 <code>@directIn</code> 标记专用于通过 <code>sendDirect()</code> 接收消息的门以避免 <code>OMNeT++</code> 提示在使用该模块的网络或复合模块中没有连接门，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">simple Radio &#123;</span><br><span class="line">    gates:</span><br><span class="line">        input radioIn @directIn; <span class="comment">// 接受直传帧</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>sendDirect()</code>方法也接受传播延迟和传输持续时间作为参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, <span class="keyword">simtime_t</span> propagationDelay, <span class="keyword">simtime_t</span> duration,</span><br><span class="line">           cModule *mod, <span class="keyword">int</span> gateId);</span><br><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, <span class="keyword">simtime_t</span> propagationDelay, <span class="keyword">simtime_t</span> duration,</span><br><span class="line">           cModule *mod, <span class="keyword">const</span> <span class="keyword">char</span> *gateName, <span class="keyword">int</span> index=<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">sendDirect</span>(cMessage *msg, <span class="keyword">simtime_t</span> propagationDelay, <span class="keyword">simtime_t</span> duration,</span><br><span class="line">           cGate *gate);</span><br></pre></td></tr></table></figure>
+<p>消息是一个数据包（<code>cPacket</code> 的实例）时需要指定 <code>duration</code> 参数。对于不是数据包的消息可以忽略 <code>duration</code>。</p>
+<p>如果消息是一个数据包，则持续时间将被写入数据包，并且可以由接收者通过数据包的<code>getDuration()</code>方法读取。</p>
+<h2 id="数据包传输"><a href="#数据包传输" class="headerlink" title="数据包传输"></a>数据包传输</h2><p>当一条消息在门上发出后通常会经过一系列连接直到它到达目标模块，称这一系列的连接为<strong>连接路径</strong>（connection paths）。</p>
+<p>路径中的多个连接可能具有关联的通道，但每条路径只能有一个通道来模拟非零传输持续时间。此限制由模拟内核强制执行。这个通道称为<strong>传输通道</strong>(transition channels)。</p>
+<h3 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h3><p>只有在传输通道空闲时才能发送数据包。这意味着在每次传输之后，发送模块需要等到通道完成传输才能发送另一个数据包。</p>
+<p>我们可以通过在输出门上调用 <code>getTransmissionChannel()</code> 方法获取指向传输通道的指针。通道的 <code>isBusy()</code> 和 <code>getTransmissionFinishTime()</code> 方法可以得到通道当前是否正在传输，以及传输何时结束。（当后者小等于当前模拟时间时，通道空闲）如果通道当前忙，发送需要推迟，则可以将数据包存储在队列中，并且可以使用定时器（自消息）安排在频道变空时进行发送。</p>
+<p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cPacket *pkt = ...; <span class="comment">// 要传输的数据包</span></span><br><span class="line">cChannel *txChannel = <span class="built_in">gate</span>(<span class="string">&quot;out&quot;</span>)-&gt;<span class="built_in">getTransmissionChannel</span>(); </span><br><span class="line"><span class="keyword">simtime_t</span> txFinishTime = txChannel-&gt;<span class="built_in">getTransmissionFinishTime</span>(); </span><br><span class="line"><span class="keyword">if</span> (txFinishTime &lt;= <span class="built_in">simTime</span>()) &#123; </span><br><span class="line">    <span class="comment">// 通道空闲；立即发送数据包</span></span><br><span class="line">    <span class="built_in">send</span>(pkt, <span class="string">&quot;out&quot;</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="comment">// 存储数据包和调度定时器；当计时器到期时，</span></span><br><span class="line">    <span class="comment">// 数据包应该从队列中移除并发送出去</span></span><br><span class="line">    txQueue.<span class="built_in">insert</span>(pkt); </span><br><span class="line">    <span class="built_in">scheduleAt</span>(txFinishTime, endTxMsg); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>★官方建议不要在路径中的传输通道前面使用传播延迟。</p>
+<h3 id="接收数据包"><a href="#接收数据包" class="headerlink" title="接收数据包"></a>接收数据包</h3><p>对信道的错误建模可能会导致数据包在到达时设置了位错误标志（<code>hasBitError()</code> 方法）。接收模块会检查此标志并丢弃数据包。通常，包对象在完成消息接收的模拟时间（即最后一个比特到达后）被传递到目标模块。但是，接收器模块可以通过使用 <code>setDeliverImmediately()</code> 方法修改接收器门来改变这一点：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gate</span>(<span class="string">&quot;in&quot;</span>)-&gt;<span class="built_in">setDeliverImmediately</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p>此方法只能在简单模块的输入门上调用，它指示模拟内核在对应于接收过程开始的模拟时间传递通过该门到达的数据包。当一个数据包被投递到模块时，可以调用该数据包的 <code>isReceptionStart()</code> 方法来判断它是对应于接收过程的开始还是结束（它应该与输入门的 <code>getDeliverOnReceptionStart()</code> 得到的标志相同），<code>getDuration()</code> 返回传输持续时间。<code>getDeliverOnReceptionStart()</code> 函数只需要调用一次，所以通常在模块的<code>initialize()</code>方法中完成。</p>
+<p>包传输模型如下图所示。</p>
+<p><img src="/2022/07/31/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%B6%88%E6%81%AF/image-20220801220240507.png" alt="image-20220801220240507" style="zoom: 50%;"></p>
+<p>需要终止传输时，可以使用 <code>forceTransmissionFinishTime()</code> 方法。此方法用给定值强制覆盖通道的<code>transmissionFinishTime</code> 成员变量，允许发送方发送另一个数据包而不会引发 <code>channel is currently busy</code> 错误。接收方需要通过某些外部方式（例如通过发送另一个数据包或带外消息）来通知传输中止。</p>
+<h2 id="使用-activity-接收消息"><a href="#使用-activity-接收消息" class="headerlink" title="使用 activity() 接收消息"></a>使用 activity() 接收消息</h2><p>基于 <code>activity()</code> 的模块使用 <code>cSimpleModule</code> 的 <code>receive()</code> 方法接收消息。<code>receive()</code> 不能与基于<code>handleMessage()</code> 的模块一起使用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cMessage *msg = <span class="built_in">receive</span>();</span><br></pre></td></tr></table></figure>
+<p><code>wait()</code> 函数将模块的执行挂起一段给定的模拟时间（增量）。<code>wait()</code> 也不能与基于 <code>handleMessage()</code> 的模块一起使用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">wait</span>(delay);</span><br></pre></td></tr></table></figure>
+<p><code>wait()</code> 函数由 <code>scheduleAt()</code> 后跟一个 <code>receive()</code> 函数实现。<code>wait()</code> 函数在不需要为到达消息做准备的模块中非常方便，例如消息生成器。一个例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (;;) &#123; </span><br><span class="line">    <span class="comment">// 等待一些可能是随机的时间量，</span></span><br><span class="line">    <span class="comment">// 在 interarrivalTime volatile 模块参数中指定</span></span><br><span class="line">    <span class="built_in">wait</span>(<span class="built_in">par</span>(<span class="string">&quot;interarrivalTime&quot;</span>).<span class="built_in">doubleValue</span>()); </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成并发送消息</span></span><br><span class="line">    ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果消息在等待时间间隔内到达，则会报运行时错误。如果希望消息在等待期间到达，可以使用<code>waitAndEnqueue()</code> 函数。除了等待间隔之外，它还需要一个指向队列对象（属于<code>cQueue</code>类）。在等待时间间隔内到达的消息会累积在队列中，等待 <code>waitAndEnqueue()</code> 调用返回后才能被系统处理：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">cQueue <span class="title">queue</span><span class="params">(<span class="string">&quot;queue&quot;</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">waitAndEnqueue</span>(waitTime, &amp;queue);</span><br><span class="line"><span class="keyword">if</span> (!queue.<span class="built_in">empty</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// process messages arrived during wait interval</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/07/31/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%B6%88%E6%81%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OMNet/" rel="tag">OMNet++</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/08/01/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            OMNet++ 基础语法：模块参数、门和连接的访问
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/07/30/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E7%AE%80%E5%8D%95%E6%A8%A1%E5%9D%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">OMNet++ 基础语法：仿真概念和简单模块</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> lgc0208@foxmail.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

@@ -20,6 +20,73 @@
 ]]></content>
   </entry>
   <entry>
+    <title>OMNet++ 基础知识：仿真过程和配置文件</title>
+    <url>/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="仿真过程"><a href="#仿真过程" class="headerlink" title="仿真过程"></a>仿真过程</h2><p><code>OMNet++</code> 的源代码通常包括以下文件：</p>
+<ul>
+<li>C++ 文件（<code>.h</code> 和 <code>.cc</code>）：包含简单模块的实现和其他代码；</li>
+<li>消息文件（<code>.msg</code>）：包含要转换为 C++ 类的消息定义；</li>
+<li>带有组件声明和拓扑描述的 NED 文件（<code>.ned</code>）；</li>
+<li>具有模型参数分配和其他设置的配置文件（<code>.ini</code>）。</li>
+</ul>
+<span id="more"></span>
+<p>简单地说，<code>OMNet++</code> 将源代码转换为可执行文件的过程如下：</p>
+<ol>
+<li>使用消息编译器 <code>opp_msgc</code> 将 <code>.msg</code> 文件翻译为 C++ 文件；</li>
+<li>将 C++ 文件编译为对象形式（<code>.o</code> 文件）；</li>
+<li>目标文件与仿真内核和其他库连接以得到可执行文件或共享库</li>
+</ol>
+<p>需要注意的是，NED 文件与 <code>.ini</code> 文件是由仿真程序在运行时加载的。</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>仿真的配置文件和输入数据通常放置在 <code>.ini</code> 文件中。</p>
+<h3 id="配置文件语法"><a href="#配置文件语法" class="headerlink" title="配置文件语法"></a>配置文件语法</h3><p><code>OMNet++</code> 配置文件是一个面向行的文本文件。编码主要是 ASCII，但在注释和字符串文字中允许使用非 ASCII 字符。</p>
+<p>注释以 <code>#</code> 开头，程序也允许并在执行时忽略空行。可以通过尾随反斜杠的方式将很长的一行代码拆分为多行。即使在名称、数字或字符串常量的中间，这也允许换行。</p>
+<p>配置文件中共有三种类型的行：节标题行、 键值行和指令行：</p>
+<ul>
+<li><p>节标题行是用方括号括起来的节名称。</p>
+</li>
+<li><p>键值行表现形式为 <code>&lt;key&gt;=&lt;value&gt;</code>；如果一行包含多个等号，则最左边的一个等号作为键值分隔符。</p>
+</li>
+<li><p>指令行以 <code>include</code> 开头，后跟要包含的文件的名称。</p>
+</li>
+</ul>
+<p>键可以仅根据语法进一步分类：</p>
+<ol>
+<li>不包含点的键代表全局或每次都要运行的配置选项。</li>
+<li>如果键包含一个点，则考虑其最后一个组件（最后一个点之后的子字符串）。如果最后一个组件包含连字符或等于 <code>typename</code>，则该键表示每个对象的配置选项。</li>
+<li>否则，键代表<em>参数赋值</em>。因此，参数分配键包含一个点，并且在最后一个点之后没有连字符。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"># 注释行</span><br><span class="line">[General]                       # 节标题行</span><br><span class="line">network = Foo                   # 配置选项</span><br><span class="line">debug-on-errors = <span class="literal">false</span>         # 配置选项</span><br><span class="line"></span><br><span class="line">**.vector-recording = <span class="literal">false</span>     # 每个对象的配置选项</span><br><span class="line">**.app*.<span class="keyword">typename</span> = <span class="string">&quot;HttpClient&quot;</span> # 每个对象的配置选项</span><br><span class="line"></span><br><span class="line">**.app*.interval = <span class="number">3</span>s           # 参数值</span><br><span class="line">**.app*.requestURL = <span class="string">&quot;http://www.example.com/this-is-a-very-very-very-very\</span></span><br><span class="line"><span class="string">-very-long-url?q=123456789&quot;</span>     # 一个两行的参数值</span><br></pre></td></tr></table></figure>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p><code>OMNet++</code> 通过 <code>include</code> 关键词在配置文件中引入另一个 <code>.ini</code> 文件，使得大型 <code>.ini</code>  文件可以被划分为逻辑单元、固定单元和可变单元等。例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta"># omnetpp.ini</span></span><br><span class="line">...</span><br><span class="line">include params1.ini</span><br><span class="line">include params2.ini</span><br><span class="line">include ../common/config.ini</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="节标题"><a href="#节标题" class="headerlink" title="节标题"></a>节标题</h3><p>一个 <code>.ini</code> 文件可以包含一个 <code>[general]</code> 部分和多个 <code>[&lt;configname&gt;]</code> 或 <code>[Config &lt;configname&gt;]</code> 部分。也就是说，<code>[Foo]</code> 和 <code>[Config Foo]</code> 等价。各部分的顺序并不重要。</p>
+<h3 id="分配模块参数"><a href="#分配模块参数" class="headerlink" title="分配模块参数"></a>分配模块参数</h3><p>模拟通过模块参数获取输入，这些参数可以在 NED 文件或 <code>omnetpp.ini</code> 中按顺序分配值。由于在 NED 文件中分配的参数不能在 <code>omnetpp.ini</code> 中被覆盖，因此可以将 NED 文件中的参数分配视为“硬编码”。相比之下，在 <code>omnetpp.ini</code> 中维护模块参数设置更容易、更灵活。</p>
+<p>在<code>omnetpp.ini</code>中，模块参数由它们的完整路径（分层名称）引用。该名称由以点分隔的模块名称列表（从顶级模块到包含参数的模块）以及参数名称组成。</p>
+<p>模型可以有大量的参数需要配置，在<code>omnetpp.ini</code>中一一设置会很繁琐。<code>OMNet++</code> 支持通配符模式，允许一次设置多个模型参数。通配规则最明显的区别是<code>*</code>和<code>**</code>之间的区别。此外，表示字符范围时应该用大括号而不是方括号，因为方括号是为模块向量索引的表示法保留的。</p>
+<p>模式语法：</p>
+<ul>
+<li><code>?</code>: 匹配除点 (.) 以外的任何字符</li>
+<li><code>*</code> : 匹配零个或多个字符，除了点 (.)</li>
+<li><code>**</code>：匹配零个或多个字符（任何字符）</li>
+<li><code>&#123;af&#125;</code> : 集合: 匹配 af 范围内的字符</li>
+<li><code>&#123;^af&#125;</code> :否定集: 匹配不在 af 范围内的字符</li>
+<li><code>&#123;38..150&#125;</code>：数字范围：38..150 范围内的任何数字（即数字序列），包括在内；两个限制都是可选的</li>
+<li><code>[38..150]</code>：索引范围：方括号中的任何数字，范围为 38..150，包括 38..150；两个限制都是可选的</li>
+<li>反斜杠（\）：去掉后面字符的特殊含义</li>
+</ul>
+<p>使用通配符时，条目的顺序非常重要。当一个键匹配多个通配符模式时，将使用第一个匹配项，即需要先列出特定设置，然后再列出更一般的设置。示例如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">[General] </span><br><span class="line">*.*.queue[<span class="number">3.</span><span class="number">.5</span>].bufSize = <span class="number">10</span> </span><br><span class="line">*.*.queue[<span class="number">12.</span>.].bufSize = <span class="number">18</span> </span><br><span class="line">*.*.queue[*].bufSize = <span class="number">6</span> # 这只会影响队列<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span> 和 <span class="number">6.</span><span class="number">.11</span></span><br></pre></td></tr></table></figure>
+<p><code>*</code> 通配符用于匹配路径名中的单个模块或参数名称，而 <code>**</code> 可用于匹配路径中的多个组件。例如，<code>**.queue*.bufSize</code> 匹配模型中名称以 <code>queue</code> 开头的所有模块的 <code>bufSize</code> 参数，而 <code>*.queue*.bufSize</code> 或 <code>net.queue*.bufSize</code> 仅选择网络级别的队列。此外，<code>**.queue**.bufSize</code> 也会匹配如 <code>net.queue1.foo.bar.bufSize</code> 的参数。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>OMNet++</category>
+      </categories>
+      <tags>
+        <tag>OMNet++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OMNet++ 基础语法：模块参数、门和连接的访问</title>
     <url>/2022/08/01/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="消息参数的访问"><a href="#消息参数的访问" class="headerlink" title="消息参数的访问"></a>消息参数的访问</h2><p>在 <code>NED</code> 文件中申明的模块参数在运行时用 <code>cPar</code> 类表示。在调用 <code>cComponent</code> 中的成员函数 <code>par()</code> 可以访问模块指针，如：</p>

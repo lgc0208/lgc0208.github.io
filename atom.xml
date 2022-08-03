@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-08-01T15:05:17.587Z</updated>
+  <updated>2022-08-03T03:21:31.797Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OMNet++ 基础知识：仿真过程和配置文件</title>
+    <link href="https://lgc0208.github.io/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>https://lgc0208.github.io/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
+    <published>2022-08-02T08:50:29.000Z</published>
+    <updated>2022-08-03T03:21:31.797Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;仿真过程&quot;&gt;&lt;a href=&quot;#仿真过程&quot; class=&quot;headerlink&quot; title=&quot;仿真过程&quot;&gt;&lt;/a&gt;仿真过程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;OMNet++&lt;/code&gt; 的源代码通常包括以下文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++ 文件（&lt;code&gt;.h&lt;/code&gt; 和 &lt;code&gt;.cc&lt;/code&gt;）：包含简单模块的实现和其他代码；&lt;/li&gt;
+&lt;li&gt;消息文件（&lt;code&gt;.msg&lt;/code&gt;）：包含要转换为 C++ 类的消息定义；&lt;/li&gt;
+&lt;li&gt;带有组件声明和拓扑描述的 NED 文件（&lt;code&gt;.ned&lt;/code&gt;）；&lt;/li&gt;
+&lt;li&gt;具有模型参数分配和其他设置的配置文件（&lt;code&gt;.ini&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    
+    
+    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    
+  </entry>
   
   <entry>
     <title>OMNet++ 基础语法：模块参数、门和连接的访问</title>
@@ -430,29 +457,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>【Python】 module ‘h5py‘ has no attribute ‘File‘解决方案</title>
-    <link href="https://lgc0208.github.io/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/"/>
-    <id>https://lgc0208.github.io/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/</id>
-    <published>2022-01-16T09:34:10.000Z</published>
-    <updated>2022-02-03T05:03:11.957Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;产生报错信息&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;module &lt;span class=&quot;string&quot;&gt;&amp;#x27;h5py&amp;#x27;&lt;/span&gt; has no attribute &lt;span class=&quot;string&quot;&gt;&amp;#x27;File&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;的解决方法&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="编程语言" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
   </entry>
   

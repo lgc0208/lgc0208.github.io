@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>OMNet++ 基础知识：仿真过程和配置文件 |  梦</title>
+      <title>INET ospfv2 simpleTest 示例 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -59,7 +59,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-基础知识：仿真过程和配置文件"
+  id="post-进阶：开源库 INET ospfv2 simpletest 示例"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -70,7 +70,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  OMNet++ 基础知识：仿真过程和配置文件
+  INET ospfv2 simpleTest 示例
 </h1>
  
 
@@ -78,8 +78,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="article-date">
-  <time datetime="2022-08-02T08:50:29.000Z" itemprop="datePublished">2022-08-02</time>
+      <a href="/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/" class="article-date">
+  <time datetime="2022-08-08T08:50:29.000Z" itemprop="datePublished">2022-08-08</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/">OMNet++</a>
@@ -90,7 +90,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.4k</span>
+            <span class="post-count">893</span>
         </span>
     </span>
 
@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -114,61 +114,37 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="仿真过程"><a href="#仿真过程" class="headerlink" title="仿真过程"></a>仿真过程</h2><p><code>OMNet++</code> 的源代码通常包括以下文件：</p>
+  <h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。</p>
+<p><a target="_blank" rel="noopener" href="https://doc.omnetpp.org/inet/api-current/neddoc/inet.node.ospfv2.OspfRouter.html">OspfRouter</a> 是启用了 OSPF 协议路由器的实例化。</p>
+<p><code>Ospfv2</code> 模块实现了 OSPF 协议的第 2 代版本。在该模块中，用户可以使用 <code>ospfConfig</code> 参数指定的 XML 文件配置区域和路由器。网络接口的各种参数也可以在 XML 文件中指定或作为 <code>Ospfv2</code> 模块的参数进行定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**.ospf.ospfConfig = <span class="built_in">xmldoc</span>(<span class="string">&quot;ASConfig.xml&quot;</span>)</span><br><span class="line">**.ospf.helloInterval = <span class="number">12</span>s</span><br><span class="line">**.ospf.retransmissionInterval = <span class="number">6</span>s</span><br></pre></td></tr></table></figure>
+<p>下方是 XML 文件所包含的信息。<code>&lt;OSPFASConfig&gt;</code> 根元素可以包含 <code>&lt;Area&gt;</code> 和 <code>&lt;Router&gt;</code> 元素，这些元素具有各种属性，并指定了网络接口的参数。其中，最重要的是 <code>&lt;Area&gt;</code> 包含的 <code>&lt;AddressRange&gt;</code> 元素，该元素列举了应该被协议提示的网络地址。此外，<code>&lt;Router&gt;</code> 元素可能包含用于配置各种点对点或广播接口的数据。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">OSPFASConfig</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;OSPF.xsd&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Areas --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Area</span> <span class="attr">id</span>=<span class="string">&quot;0.0.0.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AddressRange</span> <span class="attr">address</span>=<span class="string">&quot;H1&quot;</span> <span class="attr">mask</span>=<span class="string">&quot;H1&quot;</span> <span class="attr">status</span>=<span class="string">&quot;Advertise&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AddressRange</span> <span class="attr">address</span>=<span class="string">&quot;H2&quot;</span> <span class="attr">mask</span>=<span class="string">&quot;H2&quot;</span> <span class="attr">status</span>=<span class="string">&quot;Advertise&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AddressRange</span> <span class="attr">address</span>=<span class="string">&quot;R1&gt;R2&quot;</span> <span class="attr">mask</span>=<span class="string">&quot;R1&gt;R2&quot;</span> <span class="attr">status</span>=<span class="string">&quot;Advertise&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AddressRange</span> <span class="attr">address</span>=<span class="string">&quot;R2&gt;R1&quot;</span> <span class="attr">mask</span>=<span class="string">&quot;R2&gt;R1&quot;</span> <span class="attr">status</span>=<span class="string">&quot;Advertise&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Area</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Routers --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Router</span> <span class="attr">name</span>=<span class="string">&quot;R1&quot;</span> <span class="attr">RFC1583Compatible</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">BroadcastInterface</span> <span class="attr">ifName</span>=<span class="string">&quot;eth0&quot;</span> <span class="attr">areaID</span>=<span class="string">&quot;0.0.0.0&quot;</span> <span class="attr">interfaceOutputCost</span>=<span class="string">&quot;1&quot;</span> <span class="attr">routerPriority</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PointToPointInterface</span> <span class="attr">ifName</span>=<span class="string">&quot;eth1&quot;</span> <span class="attr">areaID</span>=<span class="string">&quot;0.0.0.0&quot;</span> <span class="attr">interfaceOutputCost</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Router</span> <span class="attr">name</span>=<span class="string">&quot;R2&quot;</span> <span class="attr">RFC1583Compatible</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PointToPointInterface</span> <span class="attr">ifName</span>=<span class="string">&quot;eth0&quot;</span> <span class="attr">areaID</span>=<span class="string">&quot;0.0.0.0&quot;</span> <span class="attr">interfaceOutputCost</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">BroadcastInterface</span> <span class="attr">ifName</span>=<span class="string">&quot;eth1&quot;</span> <span class="attr">areaID</span>=<span class="string">&quot;0.0.0.0&quot;</span> <span class="attr">interfaceOutputCost</span>=<span class="string">&quot;1&quot;</span> <span class="attr">routerPriority</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">OSPFASConfig</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="实验内容记录"><a href="#实验内容记录" class="headerlink" title="实验内容记录"></a>实验内容记录</h2><p>涉及文件：</p>
 <ul>
-<li>C++ 文件（<code>.h</code> 和 <code>.cc</code>）：包含简单模块的实现和其他代码；</li>
-<li>消息文件（<code>.msg</code>）：包含要转换为 C++ 类的消息定义；</li>
-<li>带有组件声明和拓扑描述的 NED 文件（<code>.ned</code>）；</li>
-<li>具有模型参数分配和其他设置的配置文件（<code>.ini</code>）。</li>
+<li><code>/inet4/examples/ospfv2/simpletest/omnetpp.ini</code></li>
+<li><code>/inet4/examples/ospfv2/simpletest/SimpleTest.ned</code></li>
+<li><code>/inet4/src/inet/applications/udpapp/UdpBasicApp.cc</code></li>
 </ul>
-<span id="more"></span>
-<p>简单地说，<code>OMNet++</code> 将源代码转换为可执行文件的过程如下：</p>
-<ol>
-<li>使用消息编译器 <code>opp_msgc</code> 将 <code>.msg</code> 文件翻译为 C++ 文件；</li>
-<li>将 C++ 文件编译为对象形式（<code>.o</code> 文件）；</li>
-<li>目标文件与仿真内核和其他库连接以得到可执行文件或共享库</li>
-</ol>
-<p>需要注意的是，NED 文件与 <code>.ini</code> 文件是由仿真程序在运行时加载的。</p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>仿真的配置文件和输入数据通常放置在 <code>.ini</code> 文件中。</p>
-<h3 id="配置文件语法"><a href="#配置文件语法" class="headerlink" title="配置文件语法"></a>配置文件语法</h3><p><code>OMNet++</code> 配置文件是一个面向行的文本文件。编码主要是 ASCII，但在注释和字符串文字中允许使用非 ASCII 字符。</p>
-<p>注释以 <code>#</code> 开头，程序也允许并在执行时忽略空行。可以通过尾随反斜杠的方式将很长的一行代码拆分为多行。即使在名称、数字或字符串常量的中间，这也允许换行。</p>
-<p>配置文件中共有三种类型的行：节标题行、 键值行和指令行：</p>
+<p>INET 将节点细分为Host、Router 和 Switch 三种类型，即主机、路由器和交换机。这里的 Host 与设备的概念更加类似，Router 主要负责转发包，Switch 就是 Ethernet 接口。</p>
+<p>在本实验中，涉及到了 <code>udpapp</code> 下的 <code>UdpBasicApp</code> 和 <code>UdpEchoApp</code> 两个 Application。其中：</p>
 <ul>
-<li><p>节标题行是用方括号括起来的节名称。</p>
-</li>
-<li><p>键值行表现形式为 <code>&lt;key&gt;=&lt;value&gt;</code>；如果一行包含多个等号，则最左边的一个等号作为键值分隔符。</p>
-</li>
-<li><p>指令行以 <code>include</code> 开头，后跟要包含的文件的名称。</p>
-</li>
+<li><code>UdpBasicApp</code> 以给定的时间间隔将 UDP 数据包发送到给定的 IP 地址</li>
+<li><code>UdpEchoApp</code>类似于 <code>UdpBasicApp</code>，但它在接收到数据包后发回</li>
 </ul>
-<p>键可以仅根据语法进一步分类：</p>
-<ol>
-<li>不包含点的键代表全局或每次都要运行的配置选项。</li>
-<li>如果键包含一个点，则考虑其最后一个组件（最后一个点之后的子字符串）。如果最后一个组件包含连字符或等于 <code>typename</code>，则该键表示每个对象的配置选项。</li>
-<li>否则，键代表<em>参数赋值</em>。因此，参数分配键包含一个点，并且在最后一个点之后没有连字符。</li>
-</ol>
-<p>例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 注释行</span><br><span class="line">[General]                       # 节标题行</span><br><span class="line">network = Foo                   # 配置选项</span><br><span class="line">debug-on-errors = <span class="literal">false</span>         # 配置选项</span><br><span class="line"></span><br><span class="line">**.vector-recording = <span class="literal">false</span>     # 每个对象的配置选项</span><br><span class="line">**.app*.<span class="keyword">typename</span> = <span class="string">&quot;HttpClient&quot;</span> # 每个对象的配置选项</span><br><span class="line"></span><br><span class="line">**.app*.interval = <span class="number">3</span>s           # 参数值</span><br><span class="line">**.app*.requestURL = <span class="string">&quot;http://www.example.com/this-is-a-very-very-very-very\</span></span><br><span class="line"><span class="string">-very-long-url?q=123456789&quot;</span>     # 一个两行的参数值</span><br></pre></td></tr></table></figure>
-<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p><code>OMNet++</code> 通过 <code>include</code> 关键词在配置文件中引入另一个 <code>.ini</code> 文件，使得大型 <code>.ini</code>  文件可以被划分为逻辑单元、固定单元和可变单元等。例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># omnetpp.ini</span></span><br><span class="line">...</span><br><span class="line">include params1.ini</span><br><span class="line">include params2.ini</span><br><span class="line">include ../common/config.ini</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="节标题"><a href="#节标题" class="headerlink" title="节标题"></a>节标题</h3><p>一个 <code>.ini</code> 文件可以包含一个 <code>[general]</code> 部分和多个 <code>[&lt;configname&gt;]</code> 或 <code>[Config &lt;configname&gt;]</code> 部分。也就是说，<code>[Foo]</code> 和 <code>[Config Foo]</code> 等价。各部分的顺序并不重要。</p>
-<h3 id="分配模块参数"><a href="#分配模块参数" class="headerlink" title="分配模块参数"></a>分配模块参数</h3><p>模拟通过模块参数获取输入，这些参数可以在 NED 文件或 <code>omnetpp.ini</code> 中按顺序分配值。由于在 NED 文件中分配的参数不能在 <code>omnetpp.ini</code> 中被覆盖，因此可以将 NED 文件中的参数分配视为“硬编码”。相比之下，在 <code>omnetpp.ini</code> 中维护模块参数设置更容易、更灵活。</p>
-<p>在<code>omnetpp.ini</code>中，模块参数由它们的完整路径（分层名称）引用。该名称由以点分隔的模块名称列表（从顶级模块到包含参数的模块）以及参数名称组成。</p>
-<p>模型可以有大量的参数需要配置，在<code>omnetpp.ini</code>中一一设置会很繁琐。<code>OMNet++</code> 支持通配符模式，允许一次设置多个模型参数。通配规则最明显的区别是<code>*</code>和<code>**</code>之间的区别。此外，表示字符范围时应该用大括号而不是方括号，因为方括号是为模块向量索引的表示法保留的。</p>
-<p>模式语法：</p>
+<p><code>UdpBasicApp</code> 将 UDP 数据包发送到 <code>destAddresses</code> 参数中给定的 IP 地址。应用程序在每个时间间隔内向其中一个目标发送消息 <code>sendInterval</code>。消息之间的间隔和消息长度可以作为随机变量给出。</p>
+<p><code>UdpEchoApp</code> 类似于 <code>UdpBasicApp</code>，但它在接收到数据包后发回数据包。它只接受带有 <code>UdpHeader</code> 的数据包，即由另一个 <code>UdpEchoApp</code> 生成的数据包。</p>
+<p>该实验的操作方式为：先到 <code>omnetpp</code> 和 <code>inet4</code> 根目录下使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. setenv</span><br></pre></td></tr></table></figure>
+<p>激活环境，然后回到 <code>inet4</code> 根目录下输入 <code>opp_makemake -f</code> 和 <code>make</code> 命令，最后再到程序目录下执行 <code>inet</code> 命令即可。</p>
+<p><strong>需要注意的是，每次对 INET 中的程序进行修改后，都需要重新 <code>make</code>。</strong></p>
+<p><strong>参考资料：</strong></p>
 <ul>
-<li><code>?</code>: 匹配除点 (.) 以外的任何字符</li>
-<li><code>*</code> : 匹配零个或多个字符，除了点 (.)</li>
-<li><code>**</code>：匹配零个或多个字符（任何字符）</li>
-<li><code>&#123;af&#125;</code> : 集合: 匹配 af 范围内的字符</li>
-<li><code>&#123;^af&#125;</code> :否定集: 匹配不在 af 范围内的字符</li>
-<li><code>&#123;38..150&#125;</code>：数字范围：38..150 范围内的任何数字（即数字序列），包括在内；两个限制都是可选的</li>
-<li><code>[38..150]</code>：索引范围：方括号中的任何数字，范围为 38..150，包括 38..150；两个限制都是可选的</li>
-<li>反斜杠（\）：去掉后面字符的特殊含义</li>
+<li><code>UdpBasicApp</code>：<a target="_blank" rel="noopener" href="https://doc.omnetpp.org/inet/api-current/neddoc/inet.applications.udpapp.UdpBasicApp.html">https://doc.omnetpp.org/inet/api-current/neddoc/inet.applications.udpapp.UdpBasicApp.html</a></li>
+<li><code>UdpEchoApp</code>：<a target="_blank" rel="noopener" href="https://doc.omnetpp.org/inet/api-current/neddoc/inet.applications.udpapp.UdpEchoApp.html">https://doc.omnetpp.org/inet/api-current/neddoc/inet.applications.udpapp.UdpEchoApp.html</a></li>
+<li><code>UdpHeader</code>：<a target="_blank" rel="noopener" href="https://doc.omnetpp.org/inet/api-current/neddoc/src-inet-transportlayer-udp-UdpHeader.html">https://doc.omnetpp.org/inet/api-current/neddoc/src-inet-transportlayer-udp-UdpHeader.html</a>)</li>
 </ul>
-<p>使用通配符时，条目的顺序非常重要。当一个键匹配多个通配符模式时，将使用第一个匹配项，即需要先列出特定设置，然后再列出更一般的设置。示例如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[General] </span><br><span class="line">*.*.queue[<span class="number">3.</span><span class="number">.5</span>].bufSize = <span class="number">10</span> </span><br><span class="line">*.*.queue[<span class="number">12.</span>.].bufSize = <span class="number">18</span> </span><br><span class="line">*.*.queue[*].bufSize = <span class="number">6</span> # 这只会影响队列<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span> 和 <span class="number">6.</span><span class="number">.11</span></span><br></pre></td></tr></table></figure>
-<p><code>*</code> 通配符用于匹配路径名中的单个模块或参数名称，而 <code>**</code> 可用于匹配路径中的多个组件。例如，<code>**.queue*.bufSize</code> 匹配模型中名称以 <code>queue</code> 开头的所有模块的 <code>bufSize</code> 参数，而 <code>*.queue*.bufSize</code> 或 <code>net.queue*.bufSize</code> 仅选择网络级别的队列。此外，<code>**.queue**.bufSize</code> 也会匹配如 <code>net.queue1.foo.bar.bufSize</code> 的参数。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/image-20220808215705070.png" alt="实验结果"></p>
  
       <!-- reward -->
       
@@ -239,7 +215,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -252,19 +228,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            tictoc 示例
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/08/01/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/" class="article-nav-link">
+      <a href="/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">OMNet++ 基础语法：模块参数、门和连接的访问</div>
+        <div class="article-nav-title">开源库 INET wireless 示例</div>
       </a>
     
   </nav>

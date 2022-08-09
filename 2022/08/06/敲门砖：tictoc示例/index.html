@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>tictoc 示例 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-敲门砖：tictoc示例"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  tictoc 示例
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/" class="article-date">
+  <time datetime="2022-08-06T08:50:29.000Z" itemprop="datePublished">2022-08-06</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/">OMNet++</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    <code>tictoc</code> 是 <code>OMNet++</code> 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（<code>tic</code> 结点和 <code>toc</code> 结点之间来回传输。<code>tictoc</code> 示例下总共有 18 个小实验。</p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>以 <code>tictoc 1</code> 为例。首先，需要激活 <code>omnet</code> 环境。通过在 <code>omnetpp-5.6.1/</code> 目录下使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. setenv</span><br></pre></td></tr></table></figure>
+<p>随后，输入命令进入 <code>tictoc</code> 示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> sample/tictoc/</span><br></pre></td></tr></table></figure>
+<p>进入之后，需要创建 <code>tictoc1.ned</code>、<code>txc1.cc</code>和 <code>omnetpp.ini</code> 文件：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tictoc1.ned</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义节点 Txc1</span></span><br><span class="line">simple Txc1</span><br><span class="line">&#123;</span><br><span class="line">    gates:</span><br><span class="line">        input in;</span><br><span class="line">        output out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义网络 Tictoc1</span></span><br><span class="line">network Tictoc1</span><br><span class="line">&#123;</span><br><span class="line">    submodules:</span><br><span class="line">        tic: Txc1;</span><br><span class="line">        toc: Txc1;</span><br><span class="line">    connections:</span><br><span class="line">        tic.out --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; toc.in;</span><br><span class="line">        tic.in &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- toc.out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// txc1.cc</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omnetpp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> omnetpp;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Derive the Txc1 class from cSimpleModule. In the Tictoc1 network,</span></span><br><span class="line"><span class="comment"> * both the `tic&#x27; and `toc&#x27; modules are Txc1 objects, created by OMNeT++</span></span><br><span class="line"><span class="comment"> * at the beginning of the simulation.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Txc1</span> :</span> <span class="keyword">public</span> cSimpleModule</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// The following redefined virtual function holds the algorithm.</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(cMessage *msg)</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The module class needs to be registered with OMNeT++</span></span><br><span class="line"><span class="built_in">Define_Module</span>(Txc1);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Txc1::initialize</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Initialize is called at the beginning of the simulation.</span></span><br><span class="line">    <span class="comment">// To bootstrap the tic-toc-tic-toc process, one of the modules needs</span></span><br><span class="line">    <span class="comment">// to send the first message. Let this be `tic&#x27;.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Am I Tic or Toc?</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(<span class="string">&quot;tic&quot;</span>, <span class="built_in">getName</span>()) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// create and send first message on gate &quot;out&quot;. &quot;tictocMsg&quot; is an</span></span><br><span class="line">        <span class="comment">// arbitrary string which will be the name of the message object.</span></span><br><span class="line">        cMessage *msg = <span class="keyword">new</span> <span class="built_in">cMessage</span>(<span class="string">&quot;tictocMsg&quot;</span>);</span><br><span class="line">        <span class="built_in">send</span>(msg, <span class="string">&quot;out&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Txc1::handleMessage</span><span class="params">(cMessage *msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">send</span>(msg, <span class="string">&quot;out&quot;</span>); <span class="comment">// send out the message</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># omnetpp.ini</span></span><br><span class="line">[General]</span><br><span class="line">network = Tictoc1</span><br></pre></td></tr></table></figure>
+<p>创建好需要的文件后，先输入命令创建 <code>Makefile</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opp_makemake</span><br></pre></td></tr></table></figure>
+<p>接下来，再输入 <code>make</code> 命令产生可执行文件 <code>tictoc</code>。最后开始仿真：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tictoc -u Cmdenv</span><br></pre></td></tr></table></figure>
+<p>得到的结果如下图所示：</p>
+<p><img src="/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/image-20220804122925352.png" alt="tictoc1" style="zoom:67%;"></p>
+<p>此时表示仿真已经正常运行。</p>
+<h2 id="示例笔记"><a href="#示例笔记" class="headerlink" title="示例笔记"></a>示例笔记</h2><h3 id="tictoc-1"><a href="#tictoc-1" class="headerlink" title="tictoc 1"></a><code>tictoc 1</code></h3><p>展示了网络、信道和结点的实例化方式以及两个结点相互通信的方式，具体方式如实验步骤章节所示。</p>
+<h3 id="tictoc-2"><a href="#tictoc-2" class="headerlink" title="tictoc 2"></a><code>tictoc 2</code></h3><p>展示新命令：<code>EV</code>，相当于 <code>C++</code> 中的 <code>cout</code> 命令。<strong>但该命令在命令行仿真环境中无法实现预期功能。</strong></p>
+<p>使用了 <code>@display</code> 命令对图形化窗口进行美化，但在命令行中没有太大意义。</p>
+<h3 id="tictoc-3"><a href="#tictoc-3" class="headerlink" title="tictoc 3"></a><code>tictoc 3</code></h3><p>展示命令 <code>watch</code>，可以在图形化窗口中看到实时值，但在命令行中没有太大意义。</p>
+<p>展示了一种停止仿真的方式：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> msg;</span><br></pre></td></tr></table></figure>
+<h3 id="tictoc-4"><a href="#tictoc-4" class="headerlink" title="tictoc 4"></a><code>tictoc 4</code></h3><p>展示从 NED 文件中读取参数的方式：<code>par()</code>。例如 <code>par(&quot;sendMsgOnInit&quot;).boolValue()</code> 就是读取这个布尔型参数的值。</p>
+<p>给参数赋初值可以在 NED 文件中完成，也可以在 <code>omnetpp.ini</code> 文件中完成。以给 <code>limit</code> 参数赋初值为例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// omnetpp.ini</span></span><br><span class="line">[Config Tictoc4]</span><br><span class="line">network = Tictoc4</span><br><span class="line">Tictoc4.toc.limit = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tictoc4.ned</span></span><br><span class="line">simple Txc4</span><br><span class="line">&#123;</span><br><span class="line">    parameters:</span><br><span class="line">        <span class="keyword">bool</span> sendMsgOnInit = <span class="built_in"><span class="keyword">default</span></span>(<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">int</span> limit = <span class="built_in"><span class="keyword">default</span></span>(<span class="number">2</span>);</span><br><span class="line">    gates:</span><br><span class="line">        input in;</span><br><span class="line">        output out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tictoc-5"><a href="#tictoc-5" class="headerlink" title="tictoc 5"></a><code>tictoc 5</code></h3><p>在 <code>tictoc 4</code> 的基础上将 <code>tic</code> 和 <code>toc</code> 分为两个不同的对象。</p>
+<h3 id="tictoc-6"><a href="#tictoc-6" class="headerlink" title="tictoc 6"></a><code>tictoc 6</code></h3><p>展示了利用 <code>scheduleAt()</code> 函数实现的定时功能，初始5秒后开始发送，之后每次接收到间隔1秒自发送：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// txc6.cc</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Txc6::initialize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    event = <span class="keyword">new</span> <span class="built_in">cMessage</span>(<span class="string">&quot;event&quot;</span>);</span><br><span class="line">    tictocMsg = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(<span class="string">&quot;tic&quot;</span>, <span class="built_in">getName</span>()) == <span class="number">0</span>) &#123;</span><br><span class="line">        tictocMsg = <span class="keyword">new</span> <span class="built_in">cMessage</span>(<span class="string">&quot;tictocMsg&quot;</span>);</span><br><span class="line">        <span class="built_in">scheduleAt</span>(<span class="number">5.0</span>, event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Txc6::handleMessage</span><span class="params">(cMessage *msg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg == event) &#123;</span><br><span class="line">        <span class="built_in">send</span>(tictocMsg, <span class="string">&quot;out&quot;</span>);</span><br><span class="line">        tictocMsg = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        tictocMsg = msg;</span><br><span class="line">        <span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>()+<span class="number">1.0</span>, event);	<span class="comment">// simTime() 为当前仿真时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tictoc-7"><a href="#tictoc-7" class="headerlink" title="tictoc 7"></a><code>tictoc 7</code></h3><p>在 <code>tictoc7.ned</code> 文件内新增语句：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">double</span> delayTime @<span class="built_in">unit</span>(s);</span><br></pre></td></tr></table></figure>
+<p>定义了 <code>delayTime</code>，并且指明了单位为秒。此外，在 <code>omnetpp.ini</code> 文件中对 <code>tic</code> 和 <code>toc</code> 的值进行了初始化：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Config Tictoc7]</span><br><span class="line">network = Tictoc7</span><br><span class="line">Tictoc7.tic.delayTime = <span class="built_in">exponential</span>(<span class="number">3</span>s)</span><br><span class="line">Tictoc7.toc.delayTime = <span class="built_in">truncnormal</span>(<span class="number">3</span>s,<span class="number">1</span>s)</span><br></pre></td></tr></table></figure>
+<p>其中的时延都是随机值，第一个是均值为3s，第二个是正态分布。</p>
+<p>该示例中还展示了概率丢包的设计方式，即在 <code>txc7.cc</code> 文件中的 <code>handleMessage(cMessage *msg)</code> 中设计：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">uniform</span>(<span class="number">0</span>, <span class="number">1</span>) &lt; <span class="number">0.1</span>) &#123;</span><br><span class="line">            EV &lt;&lt; <span class="string">&quot;\&quot;Losing\&quot; message\n&quot;</span>;</span><br><span class="line">            <span class="keyword">delete</span> msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">simtime_t</span> delay = <span class="built_in">par</span>(<span class="string">&quot;delayTime&quot;</span>);</span><br><span class="line">            tictocMsg = msg;</span><br><span class="line">            <span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>()+delay, event);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>整个过程就是，首先延迟5秒发，收到后延迟随机时间回发，再收到后延迟随机时间发，并且期间还有一定概率数据丢失。</p>
+<h3 id="tictoc-8"><a href="#tictoc-8" class="headerlink" title="tictoc 8"></a><code>tictoc 8</code></h3><p>首先该示例将 <code>tic</code> 和 <code>toc</code> 定义成了两个类，使得这两个模块可以实现不同的功能或者不同的输入输出。</p>
+<p>此外，该示例展示了丢包重传的方式，即在 <code>txc8.cc</code> 文件中使用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg == timeoutEvent) &#123;</span><br><span class="line">        EV &lt;&lt; <span class="string">&quot;Timeout expired, resending message and restarting timer\n&quot;</span>;</span><br><span class="line">        cMessage *newMsg = <span class="keyword">new</span> <span class="built_in">cMessage</span>(<span class="string">&quot;tictocMsg&quot;</span>);</span><br><span class="line">        <span class="built_in">send</span>(newMsg, <span class="string">&quot;out&quot;</span>);</span><br><span class="line">        <span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>()+timeout, timeoutEvent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>整体流程为 <code>tic</code> 先发出信息，并且等待1秒钟。如果1秒钟后收到了表示超时的自信息，则新建一个消息再发送一次。如果一秒内收到了非自信息，就说明成功发送，此时取消定时并且新建一个信息发送过去。<code>toc</code> 有0.1的概率丢失信息。</p>
+<h3 id="tictoc-9"><a href="#tictoc-9" class="headerlink" title="tictoc 9"></a><code>tictoc 9</code></h3><p>对示例 8 的优化，即重传的时候传送消息的拷贝：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg == timeoutEvent) &#123;</span><br><span class="line">    <span class="built_in">sendCopyOf</span>(message);</span><br><span class="line">    <span class="built_in">scheduleAt</span>(<span class="built_in">simTime</span>()+timeout, timeoutEvent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tictoc-10"><a href="#tictoc-10" class="headerlink" title="tictoc 10"></a><code>tictoc 10</code></h3><p>展示了每个模块具有多个输入输出时的操作方式，即在 NED 文件中：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">simple Txc10</span><br><span class="line">&#123;</span><br><span class="line">    parameters:</span><br><span class="line">        @<span class="built_in">display</span>(<span class="string">&quot;i=block/routing&quot;</span>);</span><br><span class="line">    gates:</span><br><span class="line">        input in[];  <span class="comment">// declare in[] and out[] to be vector gates</span></span><br><span class="line">        output out[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network Tictoc10</span><br><span class="line">&#123;</span><br><span class="line">    submodules:</span><br><span class="line">        tic[<span class="number">6</span>]: Txc10;</span><br><span class="line">    connections:</span><br><span class="line">        tic[<span class="number">0</span>].out++ --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; tic[<span class="number">1</span>].in++;</span><br><span class="line">        tic[<span class="number">0</span>].in++ &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- tic[<span class="number">1</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">1</span>].out++ --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; tic[<span class="number">2</span>].in++;</span><br><span class="line">        tic[<span class="number">1</span>].in++ &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- tic[<span class="number">2</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">1</span>].out++ --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; tic[<span class="number">4</span>].in++;</span><br><span class="line">        tic[<span class="number">1</span>].in++ &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- tic[<span class="number">4</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">3</span>].out++ --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; tic[<span class="number">4</span>].in++;</span><br><span class="line">        tic[<span class="number">3</span>].in++ &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- tic[<span class="number">4</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">4</span>].out++ --&gt; &#123;  delay = <span class="number">100</span>ms; &#125; --&gt; tic[<span class="number">5</span>].in++;</span><br><span class="line">        tic[<span class="number">4</span>].in++ &lt;-- &#123;  delay = <span class="number">100</span>ms; &#125; &lt;-- tic[<span class="number">5</span>].out++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>in</code> 和 <code>out</code> 后面的 ++ 是因为目前不知道要用多少个 <code>in</code> 和 <code>out</code>，就让他们每次执行完自加 1。</p>
+<p><code>txc10.cc</code> 中随机选择输出口进行输出的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Txc10::forwardMessage</span><span class="params">(cMessage *msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// In this example, we just pick a random gate to send it on.</span></span><br><span class="line">    <span class="comment">// We draw a random number between 0 and the size of gate `out[]&#x27;.</span></span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">gateSize</span>(<span class="string">&quot;out&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="built_in">intuniform</span>(<span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">send</span>(msg, <span class="string">&quot;out&quot;</span>, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tictoc-11"><a href="#tictoc-11" class="headerlink" title="tictoc 11"></a><code>tictoc 11</code></h3><p>定义了信道 <code>Channel</code>，其他与示例 10 一致：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">network Tictoc11</span><br><span class="line">&#123;</span><br><span class="line">    types:</span><br><span class="line">        channel Channel extends ned.DelayChannel &#123;</span><br><span class="line">            delay = <span class="number">100</span>ms;</span><br><span class="line">        &#125;</span><br><span class="line">    submodules:</span><br><span class="line">        tic[<span class="number">6</span>]: Txc11;</span><br><span class="line">    connections:</span><br><span class="line">        tic[<span class="number">0</span>].out++ --&gt; Channel --&gt; tic[<span class="number">1</span>].in++;</span><br><span class="line">        tic[<span class="number">0</span>].in++ &lt;-- Channel &lt;-- tic[<span class="number">1</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">1</span>].out++ --&gt; Channel --&gt; tic[<span class="number">2</span>].in++;</span><br><span class="line">        tic[<span class="number">1</span>].in++ &lt;-- Channel &lt;-- tic[<span class="number">2</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">1</span>].out++ --&gt; Channel --&gt; tic[<span class="number">4</span>].in++;</span><br><span class="line">        tic[<span class="number">1</span>].in++ &lt;-- Channel &lt;-- tic[<span class="number">4</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">3</span>].out++ --&gt; Channel --&gt; tic[<span class="number">4</span>].in++;</span><br><span class="line">        tic[<span class="number">3</span>].in++ &lt;-- Channel &lt;-- tic[<span class="number">4</span>].out++;</span><br><span class="line"></span><br><span class="line">        tic[<span class="number">4</span>].out++ --&gt; Channel --&gt; tic[<span class="number">5</span>].in++;</span><br><span class="line">        tic[<span class="number">4</span>].in++ &lt;-- Channel &lt;-- tic[<span class="number">5</span>].out++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里使用的是延迟信道 <code>ned.DelayChannel</code> ，还有理想信道 <code>ned.IdealChannel</code>、数据率信道 <code>ned.DatarateChannel</code>。</p>
+<h3 id="tictoc-12"><a href="#tictoc-12" class="headerlink" title="tictoc 12"></a><code>tictoc 12</code></h3><p>在 NED 文件中引入 <code>gate</code> 以代替 <code>in</code> 和 <code>out</code>，减少代码量：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">simple Txc12</span><br><span class="line">&#123;</span><br><span class="line">    parameters:</span><br><span class="line">        @<span class="built_in">display</span>(<span class="string">&quot;i=block/routing&quot;</span>);</span><br><span class="line">    gates:</span><br><span class="line">        inout gate[];  <span class="comment">// declare two way connections</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// using two way connections to further simplify the network definition</span></span><br><span class="line">network Tictoc12</span><br><span class="line">&#123;</span><br><span class="line">    types:</span><br><span class="line">        channel Channel extends ned.DelayChannel &#123;</span><br><span class="line">            delay = <span class="number">100</span>ms;</span><br><span class="line">        &#125;</span><br><span class="line">    submodules:</span><br><span class="line">        tic[<span class="number">6</span>]: Txc12;</span><br><span class="line">    connections:</span><br><span class="line">        tic[<span class="number">0</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">1</span>].gate++;</span><br><span class="line">        tic[<span class="number">1</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">2</span>].gate++;</span><br><span class="line">        tic[<span class="number">1</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">4</span>].gate++;</span><br><span class="line">        tic[<span class="number">3</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">4</span>].gate++;</span><br><span class="line">        tic[<span class="number">4</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">5</span>].gate++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在使用 <code>gate</code> 代替 <code>in</code> 和 <code>out</code> 后，发送数据也要改变格式，即 <code>send(msg, &quot;gate$o&quot;, k);</code> 其中，<code>gate$o</code>这个 <code>o</code> 代表 <code>out</code>，如果是 <code>i</code> 则代表 <code>in</code>。</p>
+<h3 id="tictoc-13"><a href="#tictoc-13" class="headerlink" title="tictoc 13"></a><code>tictoc 13</code></h3><p>使用 <code>.msg</code> 文件直接通过 <code>build</code> 生成 <code>.h</code> 文件和 <code>.cc</code> 文件，与命令行仿真关系不大。</p>
+<h3 id="tictoc-14"><a href="#tictoc-14" class="headerlink" title="tictoc 14"></a><code>tictoc 14</code></h3><p>介绍了强制类型转换方式：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TicTocMsg13 *ttmsg = check_and_cast&lt;TicTocMsg13 *&gt;(msg);</span><br></pre></td></tr></table></figure>
+<p>此外，消息经过传输后不仅包含了消息名，还包含源节点、目的节点和跳数信息。例如，可以通过函数 <code>msg-&gt;gerDestination()</code> 获取目的地信息。</p>
+<h3 id="tictoc-15"><a href="#tictoc-15" class="headerlink" title="tictoc 15"></a><code>tictoc 15</code></h3><p>介绍了自动记录一个有关消息交换历史的详细日志方法，在 <code>omnetpp.ini</code> 文件中设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">record-eventlog = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>首先在类 <code>txc15</code> 的私有属性中写入变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cLongHistogram hopCountStats;</span><br><span class="line">cOutVector hopCountVector;</span><br></pre></td></tr></table></figure>
+<p>然后在初始化中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hopCountStats.setName(<span class="string">&quot;hopCountStats&quot;</span>);</span><br><span class="line">hopCountVector.setName(<span class="string">&quot;HopCount&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>接着当消息到达目标节点时，更新统计信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hopCountVector.record(hopcount);</span><br><span class="line">hopCountStats.collect(hopcount);</span><br></pre></td></tr></table></figure>
+<p>最后标量信息需要调用finish()函数手动记录：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">recordScalar(<span class="string">&quot;#sent&quot;</span>, numSent);</span><br><span class="line">recordScalar(<span class="string">&quot;#received&quot;</span>, numReceived);</span><br><span class="line"></span><br><span class="line">hopCountStats.recordAs(<span class="string">&quot;hop count&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>把跳数记录在一个输出向量里（横坐标是仿真时间，纵坐标是跳数）</p>
+<h3 id="tictoc-16"><a href="#tictoc-16" class="headerlink" title="tictoc 16"></a><code>tictoc 16</code></h3><p>介绍了使用 <code>@signal</code> 进行数据统计的方式：</p>
+<p><code>@signal [arrival](type = “long”)</code>：定义一个名为 <code>arrival</code> 的 <code>long</code> 类型信号。</p>
+<p><code>@statistic[hopCount](title=&quot;hop count&quot;; source=&quot;arrival&quot;; record=vector,stats; interpolationmode=none);</code>：定义一个统计量，名字叫 <code>hopCount</code>，统计量标题名为 <code>hop count</code>，数据源是信号 <code>arrival</code>，记录形式为向量，<code>stats</code> 代表记录了平均值，方差等，是固定的。</p>
+<p>在 <code>txc16.cc</code> 文件中，首先定义一个 <code>simsignal_t arrivalSignal;</code> 变量，并且对信号进行注册 <code>arrivalSignal = registerSignal(&quot;arrival&quot;);</code>。需要注意的是，每个统计信号都要注册。然后使用 <code>int hopcount = ttmsg-&gt;getHopCount();</code> 得出跳数，最后通过 <code>emit(arrivalSignal, hopcount);</code>函数来对信号进行统计量的输出。</p>
+<p>其中，代码 <code>msg-&gt;setHopCount(msg-&gt;getHopCount()+1);</code> 实现了跳数的增加。</p>
+<h3 id="tictoc-17"><a href="#tictoc-17" class="headerlink" title="tictoc 17"></a><code>tictoc 17</code></h3><p>在示例 16 的基础上增加了一些 GUI 的美化方式，与命令行关系不大。</p>
+<h3 id="tictoc-18"><a href="#tictoc-18" class="headerlink" title="tictoc 18"></a><code>tictoc 18</code></h3><p>更改网络结构，在 NED 文件中引入了 <code>for</code> 循环。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">simple Txc18 extends Txc16</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network TicToc18</span><br><span class="line">&#123;</span><br><span class="line">    parameters:</span><br><span class="line">        <span class="keyword">int</span> numCentralNodes = <span class="built_in"><span class="keyword">default</span></span>(<span class="number">2</span>);</span><br><span class="line">    types:</span><br><span class="line">        channel Channel extends ned.DelayChannel &#123;</span><br><span class="line">            delay = <span class="number">100</span>ms;</span><br><span class="line">        &#125;</span><br><span class="line">    submodules:</span><br><span class="line">        tic[numCentralNodes+<span class="number">4</span>]: Txc18;</span><br><span class="line">    connections:</span><br><span class="line">        <span class="comment">// connect the 2 nodes in one side to the central nodes</span></span><br><span class="line">        tic[<span class="number">0</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">2</span>].gate++;</span><br><span class="line">        tic[<span class="number">1</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[<span class="number">2</span>].gate++;</span><br><span class="line">        <span class="comment">// connect the central nodes together</span></span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">2.</span>.numCentralNodes+<span class="number">1</span> &#123;</span><br><span class="line">            tic[i].gate++ &lt;--&gt; Channel &lt;--&gt; tic[i+<span class="number">1</span>].gate++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// connect the 2 nodes on the other side to the central nodes</span></span><br><span class="line">        tic[numCentralNodes+<span class="number">2</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[numCentralNodes+<span class="number">1</span>].gate++;</span><br><span class="line">        tic[numCentralNodes+<span class="number">3</span>].gate++ &lt;--&gt; Channel &lt;--&gt; tic[numCentralNodes+<span class="number">1</span>].gate++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OMNet/" rel="tag">OMNet++</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            开源库 INET wireless 示例
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">OMNet++ 基础知识：仿真过程和配置文件</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> lgc0208@foxmail.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

@@ -115,6 +115,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。</p>
+<span id="more"></span>
 <p><a target="_blank" rel="noopener" href="https://doc.omnetpp.org/inet/api-current/neddoc/inet.node.ospfv2.OspfRouter.html">OspfRouter</a> 是启用了 OSPF 协议路由器的实例化。</p>
 <p><code>Ospfv2</code> 模块实现了 OSPF 协议的第 2 代版本。在该模块中，用户可以使用 <code>ospfConfig</code> 参数指定的 XML 文件配置区域和路由器。网络接口的各种参数也可以在 XML 文件中指定或作为 <code>Ospfv2</code> 模块的参数进行定义：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**.ospf.ospfConfig = <span class="built_in">xmldoc</span>(<span class="string">&quot;ASConfig.xml&quot;</span>)</span><br><span class="line">**.ospf.helloInterval = <span class="number">12</span>s</span><br><span class="line">**.ospf.retransmissionInterval = <span class="number">6</span>s</span><br></pre></td></tr></table></figure>

@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2022-08-09T08:03:36.511Z</updated>
+  <updated>2022-08-09T08:07:06.139Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -21,16 +21,10 @@
     <link href="https://lgc0208.github.io/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/"/>
     <id>https://lgc0208.github.io/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-08T08:50:29.000Z</published>
-    <updated>2022-08-09T08:03:36.511Z</updated>
+    <updated>2022-08-09T08:07:06.139Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;实验原理&quot;&gt;&lt;a href=&quot;#实验原理&quot; class=&quot;headerlink&quot; title=&quot;实验原理&quot;&gt;&lt;/a&gt;实验原理&lt;/h2&gt;&lt;p&gt;OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。&lt;/p&gt;</summary>
     
     
     
@@ -48,16 +42,10 @@
     <link href="https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"/>
     <id>https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-07T08:50:29.000Z</published>
-    <updated>2022-08-09T08:04:47.365Z</updated>
+    <updated>2022-08-09T08:07:24.184Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;示例-1-两台主机无线通信&quot;&gt;&lt;a href=&quot;#示例-1-两台主机无线通信&quot; class=&quot;headerlink&quot; title=&quot;示例 1 两台主机无线通信&quot;&gt;&lt;/a&gt;示例 1 两台主机无线通信&lt;/h2&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;创建一个包含 2 个主机的网络，其中一台主机向另一台主机发送 UDP 数据流。在实验过程尽量简化底层协议模型。官方示例保存在 &lt;code&gt;inet4/tutorials/wireless/&lt;/code&gt; 路径中。&lt;/p&gt;</summary>
     
     
     
@@ -75,16 +63,10 @@
     <link href="https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/"/>
     <id>https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-06T08:50:29.000Z</published>
-    <updated>2022-08-09T08:04:10.915Z</updated>
+    <updated>2022-08-09T08:07:16.996Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNet++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
     
     
     

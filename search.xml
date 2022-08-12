@@ -20,6 +20,122 @@
 ]]></content>
   </entry>
   <entry>
+    <title>从博弈论到 MARL.中科院自动化所张海峰讲座.20200606</title>
+    <url>/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="内容摘要"><a href="#内容摘要" class="headerlink" title="内容摘要"></a>内容摘要</h2><p>随着以图像识别为代表的“感知智能”日趋成熟，越来越多的人工智能研究者开始关注以 AlphaGo 为代表的“<strong>决策智能</strong>”。在即将来临的物联网时代，<strong>群体决策智能将成为一个研究重点</strong>。</p>
+<span id="more"></span>
+<p>传统上，博弈论研究的是多个智能体的理性决策问题。它定义了动作、收益等博弈基本概念，侧重分析理性智能体的博弈结果，即均衡。然而，在很多现实问题中，博弈的状态空间和动作空间都很大，<strong>智能体的绝对理性是很难实现的</strong>.智能体往往处在不断的策略学习过程中。因此，近年来兴起的<strong>多智能体强化学习</strong>主要研究智能体策略的同步学习和演化问题，它在无人机群控制、智能交通系统、智能工业机器人等场景中具有很大的应用前景。</p>
+<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>AI 发展趋势是由智能感知到智能决策，再到群体智能决策。群体智能决策的场景有王者荣耀、快递机器人配送、自动驾驶等。</p>
+<h2 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h2><h3 id="博弈定义"><a href="#博弈定义" class="headerlink" title="博弈定义"></a>博弈定义</h3><p>定义玩家集合为 $N = \{1,2,…,n\}$，策略集合为 $A_1,A_2,…,A_n$，收益函数为 $r_1,r_2,…,r_n$</p>
+<h3 id="矩阵博弈"><a href="#矩阵博弈" class="headerlink" title="矩阵博弈"></a>矩阵博弈</h3><p>以囚徒困境为例，玩家 1 和玩家 2 的策略空间及收益组合如下所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">坦白</th>
+<th style="text-align:center">抵赖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">坦白</td>
+<td style="text-align:center">1， 1</td>
+<td style="text-align:center">3， 0</td>
+</tr>
+<tr>
+<td style="text-align:center">抵赖</td>
+<td style="text-align:center">0， 3</td>
+<td style="text-align:center">2， 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中包含一些基本假设：</p>
+<ul>
+<li>两个玩家同时决策</li>
+<li>玩家知道所有博弈元素</li>
+<li>玩家是理性的，追求自身收益最大化</li>
+</ul>
+<h3 id="策略推理"><a href="#策略推理" class="headerlink" title="策略推理"></a>策略推理</h3><h4 id="占优策略-Dominant-Strategy"><a href="#占优策略-Dominant-Strategy" class="headerlink" title="占优策略 Dominant Strategy"></a>占优策略 Dominant Strategy</h4><p>无论对方采取什么策略，对己方都是最优的策略。即在上表中，无论玩家 2 选什么，玩家 1 选坦白都是更优的。因此，坦白是玩家 1 的占优策略。</p>
+<p>在此基础上，玩家 2 的占优策略也是坦白，此时称坦白是玩家 2 的<strong>最优应对 Best-response</strong>。</p>
+<h3 id="博弈的解"><a href="#博弈的解" class="headerlink" title="博弈的解"></a>博弈的解</h3><h4 id="纳什均衡-Nash-Equilibrium"><a href="#纳什均衡-Nash-Equilibrium" class="headerlink" title="纳什均衡 Nash Equilibrium"></a>纳什均衡 Nash Equilibrium</h4><p>任何玩家都不能通过独自改变策略而获益，即所有玩家都处在最佳应对的策略组合。</p>
+<p>其数学定义为：给定一个策略组合 $a=(a_1,a_2,…,a_n)\in A_1\times A_2\times … \times A_n$，若 $r_1(a_1,a_2,…,a_n) \geq r_1(a_1’,a_2,…,a_n), \forall a_1’\in A_1$ 且  $r_2(a_1,a_2,…,a_n) \geq r_2(a_1,a_2’,…,a_n), \forall a_2’\in A_2$ 且 … 且  $r_n(a_1,a_2,…,a_n) \geq r_n(a_1,a_2,…,a_n’), \forall a_n’\in A_n$，那么策略组合 $a=(a_1,a_2,…,a_n)\in A_1\times A_2\times … \times A_n$ 是一个纳什均衡。</p>
+<h4 id="混合策略纳什均衡-Mixed-Strategy-Nash-Equilibrium"><a href="#混合策略纳什均衡-Mixed-Strategy-Nash-Equilibrium" class="headerlink" title="混合策略纳什均衡 Mixed Strategy Nash Equilibrium"></a>混合策略纳什均衡 Mixed Strategy Nash Equilibrium</h4><p>混合策略是一个概率分布 $(p_1,p_2,…,p_n)$，其中 $p_i$ 表示选择动作 $i$ 的概率。</p>
+<p>混合策略纳什均衡是一个混合策略组合，任何玩家都不能通过独自改变混合策略而使得自身期望收益变高，例如剪刀石头布博弈。</p>
+<p><strong>任意博弈，必然存在一个混合策略纳什均衡。</strong></p>
+<h4 id="协同问题"><a href="#协同问题" class="headerlink" title="协同问题"></a>协同问题</h4><p>在面临多个均衡时，如何选取均衡需要依靠玩家间的协同，例如创立通信机制，制定社会规则等等。</p>
+<h3 id="合作博弈-Cooperative-Game"><a href="#合作博弈-Cooperative-Game" class="headerlink" title="合作博弈 Cooperative Game"></a>合作博弈 Cooperative Game</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">左</th>
+<th style="text-align:center">右</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">左</td>
+<td style="text-align:center">1， 1</td>
+<td style="text-align:center">0， 0</td>
+</tr>
+<tr>
+<td style="text-align:center">右</td>
+<td style="text-align:center">0， 0</td>
+<td style="text-align:center">1， 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="竞争博弈-Competitive-Game"><a href="#竞争博弈-Competitive-Game" class="headerlink" title="竞争博弈 Competitive  Game"></a>竞争博弈 Competitive  Game</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">石头</th>
+<th style="text-align:center">剪子</th>
+<th style="text-align:center">布</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">石头</td>
+<td style="text-align:center">0， 0</td>
+<td style="text-align:center">1， -1</td>
+<td style="text-align:center">-1， 1</td>
+</tr>
+<tr>
+<td style="text-align:center">剪子</td>
+<td style="text-align:center">-1， 1</td>
+<td style="text-align:center">0， 0</td>
+<td style="text-align:center">1， -1</td>
+</tr>
+<tr>
+<td style="text-align:center">布</td>
+<td style="text-align:center">1， -1</td>
+<td style="text-align:center">-1， 1</td>
+<td style="text-align:center">0， 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="多智能体强化学习"><a href="#多智能体强化学习" class="headerlink" title="多智能体强化学习"></a>多智能体强化学习</h2><p>多智能体强化学习是现实中的博弈问题，具有状态、动作空间大，博弈元素不完全可知的问题。强化学习的学习目标包括了均衡、协同和合作三个部分。</p>
+<p>参考论文：</p>
+<p>Bi-level Actor-Critic for Multi-agent Coordination：<a href="https://arxiv.org/abs/1909.03510">https://arxiv.org/abs/1909.03510</a></p>
+<p>Probabilistic Recursive Reasoning for Multi-Agent Reinforcement Learning：<a href="https://arxiv.org/abs/1901.09207">https://arxiv.org/abs/1901.09207</a></p>
+<p>Multiagent Bidirectionally-Coordinated Nets: Emergence of Human-level Coordination in Learning to Play StarCraft Combat Games：<a href="https://arxiv.org/abs/1703.10069">https://arxiv.org/abs/1703.10069</a></p>
+<p>Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments：<a href="https://arxiv.org/abs/1706.02275">https://arxiv.org/abs/1706.02275</a></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>强化学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>INET ospfv2 simpleTest 示例</title>
     <url>/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。</p>
@@ -3392,122 +3508,6 @@ ReLU(z) = max\{0, w^{T}x+b\}</script><p>至下一层神经元或作为整个神�
       </categories>
       <tags>
         <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>从博弈论到 MARL.中科院自动化所张海峰讲座.20200606</title>
-    <url>/2020/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="内容摘要"><a href="#内容摘要" class="headerlink" title="内容摘要"></a>内容摘要</h2><p>随着以图像识别为代表的“感知智能”日趋成熟，越来越多的人工智能研究者开始关注以 AlphaGo 为代表的“<strong>决策智能</strong>”。在即将来临的物联网时代，<strong>群体决策智能将成为一个研究重点</strong>。</p>
-<span id="more"></span>
-<p>传统上，博弈论研究的是多个智能体的理性决策问题。它定义了动作、收益等博弈基本概念，侧重分析理性智能体的博弈结果，即均衡。然而，在很多现实问题中，博弈的状态空间和动作空间都很大，<strong>智能体的绝对理性是很难实现的</strong>.智能体往往处在不断的策略学习过程中。因此，近年来兴起的<strong>多智能体强化学习</strong>主要研究智能体策略的同步学习和演化问题，它在无人机群控制、智能交通系统、智能工业机器人等场景中具有很大的应用前景。</p>
-<h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>AI 发展趋势是由智能感知到智能决策，再到群体智能决策。群体智能决策的场景有王者荣耀、快递机器人配送、自动驾驶等。</p>
-<h2 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h2><h3 id="博弈定义"><a href="#博弈定义" class="headerlink" title="博弈定义"></a>博弈定义</h3><p>定义玩家集合为 $N = \{1,2,…,n\}$，策略集合为 $A_1,A_2,…,A_n$，收益函数为 $r_1,r_2,…,r_n$</p>
-<h3 id="矩阵博弈"><a href="#矩阵博弈" class="headerlink" title="矩阵博弈"></a>矩阵博弈</h3><p>以囚徒困境为例，玩家 1 和玩家 2 的策略空间及收益组合如下所示：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">坦白</th>
-<th style="text-align:center">抵赖</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">坦白</td>
-<td style="text-align:center">1， 1</td>
-<td style="text-align:center">3， 0</td>
-</tr>
-<tr>
-<td style="text-align:center">抵赖</td>
-<td style="text-align:center">0， 3</td>
-<td style="text-align:center">2， 2</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>其中包含一些基本假设：</p>
-<ul>
-<li>两个玩家同时决策</li>
-<li>玩家知道所有博弈元素</li>
-<li>玩家是理性的，追求自身收益最大化</li>
-</ul>
-<h3 id="策略推理"><a href="#策略推理" class="headerlink" title="策略推理"></a>策略推理</h3><h4 id="占优策略-Dominant-Strategy"><a href="#占优策略-Dominant-Strategy" class="headerlink" title="占优策略 Dominant Strategy"></a>占优策略 Dominant Strategy</h4><p>无论对方采取什么策略，对己方都是最优的策略。即在上表中，无论玩家 2 选什么，玩家 1 选坦白都是更优的。因此，坦白是玩家 1 的占优策略。</p>
-<p>在此基础上，玩家 2 的占优策略也是坦白，此时称坦白是玩家 2 的<strong>最优应对 Best-response</strong>。</p>
-<h3 id="博弈的解"><a href="#博弈的解" class="headerlink" title="博弈的解"></a>博弈的解</h3><h4 id="纳什均衡-Nash-Equilibrium"><a href="#纳什均衡-Nash-Equilibrium" class="headerlink" title="纳什均衡 Nash Equilibrium"></a>纳什均衡 Nash Equilibrium</h4><p>任何玩家都不能通过独自改变策略而获益，即所有玩家都处在最佳应对的策略组合。</p>
-<p>其数学定义为：给定一个策略组合 $a=(a_1,a_2,…,a_n)\in A_1\times A_2\times … \times A_n$，若 $r_1(a_1,a_2,…,a_n) \geq r_1(a_1’,a_2,…,a_n), \forall a_1’\in A_1$ 且  $r_2(a_1,a_2,…,a_n) \geq r_2(a_1,a_2’,…,a_n), \forall a_2’\in A_2$ 且 … 且  $r_n(a_1,a_2,…,a_n) \geq r_n(a_1,a_2,…,a_n’), \forall a_n’\in A_n$，那么策略组合 $a=(a_1,a_2,…,a_n)\in A_1\times A_2\times … \times A_n$ 是一个纳什均衡。</p>
-<h4 id="混合策略纳什均衡-Mixed-Strategy-Nash-Equilibrium"><a href="#混合策略纳什均衡-Mixed-Strategy-Nash-Equilibrium" class="headerlink" title="混合策略纳什均衡 Mixed Strategy Nash Equilibrium"></a>混合策略纳什均衡 Mixed Strategy Nash Equilibrium</h4><p>混合策略是一个概率分布 $(p_1,p_2,…,p_n)$，其中 $p_i$ 表示选择动作 $i$ 的概率。</p>
-<p>混合策略纳什均衡是一个混合策略组合，任何玩家都不能通过独自改变混合策略而使得自身期望收益变高，例如剪刀石头布博弈。</p>
-<p><strong>任意博弈，必然存在一个混合策略纳什均衡。</strong></p>
-<h4 id="协同问题"><a href="#协同问题" class="headerlink" title="协同问题"></a>协同问题</h4><p>在面临多个均衡时，如何选取均衡需要依靠玩家间的协同，例如创立通信机制，制定社会规则等等。</p>
-<h3 id="合作博弈-Cooperative-Game"><a href="#合作博弈-Cooperative-Game" class="headerlink" title="合作博弈 Cooperative Game"></a>合作博弈 Cooperative Game</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">左</th>
-<th style="text-align:center">右</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">左</td>
-<td style="text-align:center">1， 1</td>
-<td style="text-align:center">0， 0</td>
-</tr>
-<tr>
-<td style="text-align:center">右</td>
-<td style="text-align:center">0， 0</td>
-<td style="text-align:center">1， 1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="竞争博弈-Competitive-Game"><a href="#竞争博弈-Competitive-Game" class="headerlink" title="竞争博弈 Competitive  Game"></a>竞争博弈 Competitive  Game</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">石头</th>
-<th style="text-align:center">剪子</th>
-<th style="text-align:center">布</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">石头</td>
-<td style="text-align:center">0， 0</td>
-<td style="text-align:center">1， -1</td>
-<td style="text-align:center">-1， 1</td>
-</tr>
-<tr>
-<td style="text-align:center">剪子</td>
-<td style="text-align:center">-1， 1</td>
-<td style="text-align:center">0， 0</td>
-<td style="text-align:center">1， -1</td>
-</tr>
-<tr>
-<td style="text-align:center">布</td>
-<td style="text-align:center">1， -1</td>
-<td style="text-align:center">-1， 1</td>
-<td style="text-align:center">0， 0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="多智能体强化学习"><a href="#多智能体强化学习" class="headerlink" title="多智能体强化学习"></a>多智能体强化学习</h2><p>多智能体强化学习是现实中的博弈问题，具有状态、动作空间大，博弈元素不完全可知的问题。强化学习的学习目标包括了均衡、协同和合作三个部分。</p>
-<p>参考论文：</p>
-<p>Bi-level Actor-Critic for Multi-agent Coordination：<a href="https://arxiv.org/abs/1909.03510">https://arxiv.org/abs/1909.03510</a></p>
-<p>Probabilistic Recursive Reasoning for Multi-Agent Reinforcement Learning：<a href="https://arxiv.org/abs/1901.09207">https://arxiv.org/abs/1901.09207</a></p>
-<p>Multiagent Bidirectionally-Coordinated Nets: Emergence of Human-level Coordination in Learning to Play StarCraft Combat Games：<a href="https://arxiv.org/abs/1703.10069">https://arxiv.org/abs/1703.10069</a></p>
-<p>Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments：<a href="https://arxiv.org/abs/1706.02275">https://arxiv.org/abs/1706.02275</a></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>强化学习</category>
-      </categories>
-      <tags>
-        <tag>强化学习</tag>
       </tags>
   </entry>
   <entry>

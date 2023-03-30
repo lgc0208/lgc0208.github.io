@@ -59,6 +59,48 @@
   </entry>
   
   <entry>
+    <title>OSPF 协议介绍</title>
+    <link href="https://lgc0208.github.io/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://lgc0208.github.io/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/</id>
+    <published>2022-09-09T08:50:29.000Z</published>
+    <updated>2023-03-30T08:19:34.718Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文记录了 OSPF 的基本信息。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="网络路由" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1/"/>
+    
+    
+    <category term="网络路由协议" scheme="https://lgc0208.github.io/tags/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>INET 中加入自定义协议的方法</title>
+    <link href="https://lgc0208.github.io/2022/08/30/INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/"/>
+    <id>https://lgc0208.github.io/2022/08/30/INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/</id>
+    <published>2022-08-30T08:50:29.000Z</published>
+    <updated>2023-03-30T08:19:23.196Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;当 INET 原生不具备所需实验环境时，我们可能需要自己编写一些网络协议以实现预期功能。基于此，本文将对 INET 中加入自定义协议的方法进行调研和记录。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
+    
+    
+    <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从博弈论到 MARL.中科院自动化所张海峰讲座.20200606</title>
     <link href="https://lgc0208.github.io/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     <id>https://lgc0208.github.io/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</id>
@@ -105,7 +147,7 @@
     <link href="https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"/>
     <id>https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-07T08:50:29.000Z</published>
-    <updated>2022-08-09T08:07:24.184Z</updated>
+    <updated>2023-03-30T08:19:58.709Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;示例-1-两台主机无线通信&quot;&gt;&lt;a href=&quot;#示例-1-两台主机无线通信&quot; class=&quot;headerlink&quot; title=&quot;示例 1 两台主机无线通信&quot;&gt;&lt;/a&gt;示例 1 两台主机无线通信&lt;/h2&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;创建一个包含 2 个主机的网络，其中一台主机向另一台主机发送 UDP 数据流。在实验过程尽量简化底层协议模型。官方示例保存在 &lt;code&gt;inet4/tutorials/wireless/&lt;/code&gt; 路径中。&lt;/p&gt;</summary>
@@ -114,19 +156,19 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
     
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
     
   </entry>
   
   <entry>
-    <title>tictoc 示例</title>
+    <title>OMNeT++ tictoc 示例</title>
     <link href="https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/"/>
     <id>https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-06T08:50:29.000Z</published>
-    <updated>2022-08-09T08:07:16.996Z</updated>
+    <updated>2023-03-30T08:19:16.122Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNet++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
@@ -135,10 +177,10 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
     
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   
@@ -412,50 +454,6 @@
     
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【系统】 修改 hosts 文件</title>
-    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/"/>
-    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/</id>
-    <published>2022-05-23T08:24:07.000Z</published>
-    <updated>2022-05-23T10:46:45.869Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;记录了在各种系统下修改 hosts 文件的方式&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Win10】 HM 软件安装</title>
-    <link href="https://lgc0208.github.io/2022/04/24/HM_setup/"/>
-    <id>https://lgc0208.github.io/2022/04/24/HM_setup/</id>
-    <published>2022-04-24T03:23:43.000Z</published>
-    <updated>2022-04-28T08:46:23.524Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;记录了 HM 软件的安装过程。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="HM" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HM/"/>
-    
-    
-    <category term="HM" scheme="https://lgc0208.github.io/tags/HM/"/>
-    
-    <category term="软件安装" scheme="https://lgc0208.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   

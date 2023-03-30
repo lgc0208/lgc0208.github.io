@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>关于我 |  梦</title>
+      <title>OSPF 协议介绍 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -59,8 +59,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-OSPF协议介绍"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -70,30 +70,100 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  关于我
+  OSPF 协议介绍
 </h1>
  
 
       
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2022-09-09T08:50:29.000Z" itemprop="datePublished">2022-09-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1/">网络路由</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-  <p>欢迎来到我的博客！这里将记录我学习和生活的一些日常~</p>
-<p>下面是我的一些基本信息</p>
+  <p>本文记录了 OSPF 的基本信息。</p>
+<span id="more"></span>
+<h2 id="开放式最短路径优先协议-OSPF"><a href="#开放式最短路径优先协议-OSPF" class="headerlink" title="开放式最短路径优先协议 OSPF"></a>开放式最短路径优先协议 OSPF</h2><h3 id="一、OSPF-简介"><a href="#一、OSPF-简介" class="headerlink" title="一、OSPF 简介"></a>一、OSPF 简介</h3><p>OSPF（Open Shortest Path First）开放最短路径优先协议是一个基于链路状态的自制系统内部网关协议，使用链路状态路由（LSR）算法，直接工作在 IP 层上。在网络中使用 OSPF 协议后，大部分路由将根据 OSPF 协议自行计算和生成，无需人工配置。当网络拓扑发生变化时，OSPF 协议可以自动计算、更正路由，方便了实际的网络管理。</p>
+<p>OSPF 从可用路由器收集链路状态信息并构建网络拓扑图，该拓扑以路由表的形式呈现给 Internet 层，通过该路由表根据数据包的 IP 地址路由数据包。OSPF 基于 Dijkstra 算法计算每条路线的最短路径树。构建路由表的 OSPF 路由策略由每个路由接口关联的链路度量来管理，可考虑的成本因素包括了路由器的距离（往返时间）、链路的吞吐量、链路可用性等。</p>
+<p>OSPF 的基础术语包括了：</p>
 <ul>
-<li>北京邮电大学/信息与通信工程学院/本科生</li>
-<li>北京邮电大学/人工智能学院/硕士研究生</li>
-<li>邮箱：lgc0208@foxmail.com</li>
-<li>Github: <a target="_blank" rel="noopener" href="https://github.com/lgc0208">https://github.com/lgc0208</a></li>
-<li>CSDN：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45817309?spm=1000.2115.3001.5343">https://blog.csdn.net/weixin_45817309?spm=1000.2115.3001.5343</a></li>
+<li><em>Router-ID</em>：路由器标识符，用于在 OSPF 域中唯一地标识一台路由器 </li>
+<li><em>度量值</em>：OSPF 使用 Cost（开销）作为路由的度量值，每一个激活了 OSPF 的接口都会维护一个接口 Cost值，接口 Cost 值 = OSPF 指定的缺省参考值/接口带宽。其中，Cost 也可以手动配置</li>
 </ul>
-<p>您可以访问我的 <a target="_blank" rel="noopener" href="https://github.com/lgc0208">GitHub</a> 主页进一步了解我在学业方面的一些成果</p>
-<p>我开发的一些其他小工具：</p>
-<ul>
-<li><a href="https://lgc0208.github.io/course_reference_SICE_BUPT/">北京邮电大学信息与通信工程学院选课指南</a></li>
-<li><a href="https://lgc0208.github.io/reference_format_generation/">参考文献格式生成器（目前支持 GB/T 7714-2015 和 IEEE）</a></li>
-</ul>
+<h3 id="二、OSPF-的-5-种报文"><a href="#二、OSPF-的-5-种报文" class="headerlink" title="二、OSPF 的 5 种报文"></a>二、OSPF 的 5 种报文</h3><p>与 UDP、TCP 等其他的路由协议不同，OSPF 不通过传输协议传输数据。OSPF 直接生成 IP 数据报，定义了 5 种不同的消息类型用于各种类型的通信：</p>
+<h4 id="2-1-Hello-包"><a href="#2-1-Hello-包" class="headerlink" title="2.1 Hello 包"></a>2.1 Hello 包</h4><p>OSPF 的 Hello 消息作为一种问候形式让路由器得以发现其本地链路和网络上的其他相邻路由器，这些消息在相邻设备之间建立邻接关系并传达如何在自治系统中使用 OSPF 的关键参数。在正常运行期间，路由器会定期向其邻居节点发送 Hello 消息。如果相邻路由器停止接收来自邻居节点的 Hello 消息，则在设定的时间段后，判断邻居路由器已关闭。</p>
+<h4 id="2-2-数据库描述消息-Database-Description"><a href="#2-2-数据库描述消息-Database-Description" class="headerlink" title="2.2 数据库描述消息 Database Description"></a>2.2 数据库描述消息 Database Description</h4><p>数据库描述消息包含自治系统的拓扑描述，描述消息将该区域的链路状态数据库（LSDB）的内容从一台服务器传送到另一台服务器。</p>
+<h4 id="2-3-链路状态数据消息"><a href="#2-3-链路状态数据消息" class="headerlink" title="2.3 链路状态数据消息"></a>2.3 链路状态数据消息</h4><h5 id="2-3-1-链路状态请求（LSR-Link-State-Request）"><a href="#2-3-1-链路状态请求（LSR-Link-State-Request）" class="headerlink" title="2.3.1 链路状态请求（LSR, Link State Request）"></a>2.3.1 链路状态请求（LSR, Link State Request）</h5><p>一个路由器使用链路状态请求消息向另一台路由器请求有关 LSDB 的一部分更新信息（链路状态信息 LSA）。该消息指定了请求设备希望获得更多最新信息的链接。</p>
+<h5 id="2-3-2-链路状态更新（LSU-Link-State-Update）"><a href="#2-3-2-链路状态更新（LSU-Link-State-Update）" class="headerlink" title="2.3.2 链路状态更新（LSU, Link State Update）"></a>2.3.2 链路状态更新（LSU, Link State Update）</h5><p>链路状态更新消息包含有关 LSDB 上某些链路状态的更新信息，用以响应链路状态请求信息。链路状态更新信息由路由器定期广播和多播。LSU 的内容将被用于更新接收他们的路由器的 LSDB 信息。</p>
+<h5 id="2-3-3-链路状态确认（LSAck-Link-State-ACK）"><a href="#2-3-3-链路状态确认（LSAck-Link-State-ACK）" class="headerlink" title="2.3.3 链路状态确认（LSAck, Link State ACK）"></a>2.3.3 链路状态确认（LSAck, Link State ACK）</h5><p>链路状态确认信息通过明确确认已经收到 LSU 信息来保障链路状态交换过程的可靠性。</p>
+<h3 id="三、OSPF-的-3-步工作过程"><a href="#三、OSPF-的-3-步工作过程" class="headerlink" title="三、OSPF 的 3 步工作过程"></a>三、OSPF 的 3 步工作过程</h3><h4 id="3-1-发现邻居"><a href="#3-1-发现邻居" class="headerlink" title="3.1 发现邻居"></a>3.1 发现邻居</h4><p>OSPF 路由器通过组播 hello 包， 通过同一个广播域内的接口建立一组邻居关系，如下图所示。所有的邻居都可能与自己交换链路信息。</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-16801642125786.png" alt="发现邻居"></p>
+<p>在这一过程中，<strong>OSPF 存在 4 种不同的状态</strong>：</p>
+<ol>
+<li><em>Down 状态</em>：邻居的初始状态，表示没有从邻居收到任何消息。在 NBMA（非广播-多路访问网络）网络上，此状态下仍然可以向静态配置的邻居发送 Hello 报文，发送间隔为 PollInterval，通常与 Router DeadInterval 间隔相同。</li>
+<li><em>Attempt 状态</em>：该状态只在 NBMA（非广播-多路访问网络）中存在，表示没有收到邻居的任何信息，但是已经周期性地向邻居发送报文，发送间隔为 HelloInterval。如果在 Router DeadInterval 间隔内未收到邻居的 Hello 报文，则转换为 Down 状态。</li>
+<li><em>Init 状态</em>：路由器已经从邻居收到了 Hello 报文，但是自己的 Router ID 不再所收到的 Hello 报文的邻居列表中，表示尚未与邻居建立双向通信关系。</li>
+<li><em>2-Way 状态</em>：路由器发现自己的 Router ID 存在于收到的 Hello 报文的邻居列表中，已确认可以双向通信。</li>
+</ol>
+<h4 id="3-2-建立邻接关系"><a href="#3-2-建立邻接关系" class="headerlink" title="3.2 建立邻接关系"></a>3.2 建立邻接关系</h4><p>只有建立了邻接关系的邻居路由器才会交换链路状态信息。为了提高链路状态信息的交换效率，OSPF 采用的是 DR/BDR 方式建立连接关系。这种方式在同一个广播域的接口中选举一个组长 DR（Designated Router，指定路由器） 和一个副组长 DBR（Backup Designated Router，备份指定路由器）。<strong>网络中的所有路由器只与 DR 和 BDR 建立邻接关系</strong>，即所有的信息只会与 DR 和 DBR 交换。这种做法大大减少了网络中的邻接关系数，如下图所示。</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-16801642233688.png" alt="邻接关系数"></p>
+<p>需要注意的是，在广播型网络中 OSPF 才会选择 DR 和 BDR，而在 P2P 网络中不会选举 DR 和 BDR。</p>
+<p>建立邻接关系的过程如下所示：</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016423067610.png" alt="建立邻接关系"></p>
+<p>在上述过程中，Router 1 首先发送一个 DD 报文，宣称自己是 Master（MS = 1），并规定序列号 Seq = X。I = 1 表示这是第 1 个 DD 报文，M = 1 说明这不是最后一个报文。之后每发送一个新的 DD 报文，Seq 都要加 1。另一方 Slave 方每次发送 DD 报文时使用接受到的上一个 Master 的 DD 报文中的 Seq。</p>
+<p>Router 2 在收到 Router 1 的 DD 报文后，将 Router 1 的邻居状态机改为 Exstart，并回应了一个 DD 报文。该 DD 报文中同样把不含有LSA 的摘要信息。由于 Router 2 的 Router ID 较大，所以在报文中 Router 2 认为自己是 Master，并且重新规定序列号 Seq = Y。</p>
+<p>Router 1 收到报文后，同意 Router 2 作为 Master 并将 Router 2 的邻居状态机修改为 Exchange。Router 1 使用 Router 2 的序列号 Seq = Y 来发送新的 DD 报文，该报文开始正式传送 LSA 的摘要。在该报文中，Router 1 将 MS 赋值为 0，表示自己是 Slave。</p>
+<p>Router 2 收到报文后，发送新的 DD 报文来描述自己的 LSA 摘要，此时 Router 2 发送的报文序列号为 Seq = Y + 1。</p>
+<p>上述过程持续进行，Router 1 通过重复 Router 2 的序列号来确认已经收到 Router 2 的报文，Router 2 通过将序列号 Seq 加 1 来确认已收到 Router 1 的报文。当 Router 2 发送最后一个 DD 报文时，在报文中写上 M = 0。</p>
+<p>在这一过程中，<strong>OSPF 也存在 4 种不同的状态</strong>：</p>
+<ol>
+<li><em>ExStart 状态</em>：路由器开始向邻居发送 DD 报文（数据库摘要报文）。Master/Slave 主从关系也是在这个状态下形成的，初始 DD 序列号也是在此状态下确定的。在该状态下发送的 DD 报文不包括 LSA 摘要信息。</li>
+<li><em>Exchange 状态</em>：路由器与邻居之间互相发送包含 LSA 摘要的 DD 报文。</li>
+<li><em>Loading 状态</em>：在此状态下，路由器与邻居之间互相发送 LSR、LSU、LSAck 报文。假设 Router 1 向 Router 2 请求更新 LSA，则由 Router 1 先向 Router 2 发送 LSR 请求，Router 2 用 LSU 报文回应 Router 1 的请求。Router 1 收到后，发送 LSAck 报文进行确认。</li>
+<li><em>Full 状态</em>：LSDB 同步过程完成，路由器与邻居之间形成了完全的邻接关系。</li>
+</ol>
+<h4 id="3-3-交换链路状态信息"><a href="#3-3-交换链路状态信息" class="headerlink" title="3.3 交换链路状态信息"></a>3.3 交换链路状态信息</h4><p>每台 OSPF 路由器都存在一个 LSDB（Link State Database，链路状态数据库），LSDB 中的每一条数据都是一个 LSA（Link State Advertisement，链路状态公告），用来描述链路状态信息，例如网络中某台路由器的 ID、OSPF 接口、直连的网段、路径开销等。</p>
+<p>OSPF 路由器的链路状态信息更新方式为触发更新或每隔 30 分钟更新一次。其中，触发更新指当网络发生变化的时候，不需要等到 30 分钟的更新周期就立即向邻居节点发送信息。OSPF 的状态更新采用增量更新机制，只发邻居需要的 LSA。当状态收敛以后，区域内的所有路由器都具有相同的 LSDB。这时候的 LSDB 能体现全区域的网络拓扑结构，包括了网络中路由器个数、路由器 ID、每台路由器的直连网段、开销等。</p>
+<p>交换链路状态信息的过程如下图所示。</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016424242512.png" alt="交换链路状态信息"></p>
+<h4 id="3-4-计算路由"><a href="#3-4-计算路由" class="headerlink" title="3.4 计算路由"></a>3.4 计算路由</h4><p>每台路由器都会根据自己的 LSDB 独立计算路由。路由器将 LSDB 中的 LSA 信息转换为网络的带权有向图后，以自己为根结点通过 Dijkstra 算法计算最短路径树，如下图所示。</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016425112614.png" alt="计算路由"></p>
+<h4 id="3-5-OSPF-的区域管理制度"><a href="#3-5-OSPF-的区域管理制度" class="headerlink" title="3.5 OSPF 的区域管理制度"></a>3.5 OSPF 的区域管理制度</h4><p>在 OSPF 工作过程中采用了分区域的管理制度，如下图所示。不同的两个区域之间通过区域边界路由器 ABR 所连接。在同一个区域内的路由器才会建立邻居关系，交换 LSA。收敛后，同一个区域内的所有设备具有相同的 LSDB，这个 LSDB 反映了区域内的链路状态，再计算区域内的路由。不同区域之间，由区域边界路由器 ABR 直接转发路由。</p>
+<p><img src="/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016425745216.png" alt="OSPF 的区域管理制度"></p>
+<p>此外，每个区域有一个 32 位二进制的 ID，可以表示为一个十进制数，也可以表示为点分十进制形式。例如，区域 0 等价于区域 0.0.0.0，区域 1 等价于区域 0.0.0.1。需要注意的是，区域 0 是 OSPF 网络的骨干区域，除区域 0 以外的区域都是非骨干区域。非骨干区域之间不能直接通信，需要通过骨干区域 0 进行转发，以防止产生环路路由。如果一个网络中有不同的 OSPF 区域，那么一定有一个区域是区域 0。</p>
  
       <!-- reward -->
       
@@ -164,15 +234,36 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/about/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/" rel="tag">网络路由协议</a></li></ul>
+
     </footer>
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【WinError 10013】 以一种访问权限不允许的方式做了一个访问套接字的尝试
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/08/30/INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">INET 中加入自定义协议的方法</div>
+      </a>
+    
+  </nav>
+
    
 <!-- valine评论 -->
 <div id="vcomments-box">
@@ -222,7 +313,8 @@
 </style>
 
  
-    
+   
+     
 </article>
 
 </section>
@@ -367,6 +459,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

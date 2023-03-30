@@ -20,6 +20,25 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【WinError 10013】 以一种访问权限不允许的方式做了一个访问套接字的尝试</title>
+    <url>/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在使用 Tensorboard 的过程中，遇到报错 <code>[WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试</code></p>
+<span id="more"></span>
+<p><strong>可能原因：</strong> 当前端口被占用。</p>
+<p><strong>解决方案：</strong> 以 6006 端口为例，首先打开命令行，输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -aon|findstr <span class="string">&quot;6006&quot;</span></span><br></pre></td></tr></table></figure>
+<p>查找当前正在占用 6006 端口的进程 PID。</p>
+<p>查询到对应进程 PID 后，打开 <code>任务管理器</code> ，点击 <code>详细信息</code>，找到 PID 对应的进程关闭即可。</p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从博弈论到 MARL.中科院自动化所张海峰讲座.20200606</title>
     <url>/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="内容摘要"><a href="#内容摘要" class="headerlink" title="内容摘要"></a>内容摘要</h2><p>随着以图像识别为代表的“感知智能”日趋成熟，越来越多的人工智能研究者开始关注以 AlphaGo 为代表的“<strong>决策智能</strong>”。在即将来临的物联网时代，<strong>群体决策智能将成为一个研究重点</strong>。</p>
@@ -917,6 +936,22 @@
 <li>右键右下角 Wi-Fi 图标，打开 <code>网络和 Internet</code> 设置，选择 <code>代理</code>，发现手动设置代理中使用代理服务器被打开了。关闭代理服务器后重新打开浏览器，恢复正常。</li>
 </ol>
 <p><img src="/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/image-20220413101213948.png" alt="关闭代理服务器"></p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【系统】 你需要 Lenovo 权限才能对此文件夹进行更改</title>
+    <url>/2022/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录了在删除文件时遇到 <code>你需要 Lenovo 权限才能对此文件夹进行更改</code> 的最简单解决方法</p>
+<span id="more"></span>
+<p>最近将一个代码文件下载到桌面后，想删除时遇到了 <code>你需要 Lenovo 权限才能对此文件夹进行更改</code> 问题。参考了很多修改权限等方式，都无法解决。最后发现了一个最简单的解决方法：</p>
+<p>将所需要删除的文件夹剪切到 <code>C:\Program Files</code> 文件夹中，再进行删除，就可以直接删除了。</p>
 ]]></content>
       <categories>
         <category>那些年我踩过的坑</category>

@@ -2,11 +2,13 @@
 <search>
   <entry>
     <title>关于我</title>
-    <url>/2022/01/28/%E5%85%B3%E4%BA%8E%E6%88%91/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>欢迎来到我的博客！这里将记录我学习和生活的一些日常~</p>
+    <url>/2022/03/30/%E5%85%B3%E4%BA%8E%E6%88%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><p>欢迎来到我的博客！这里将记录我学习和生活的一些日常~</p>
 <p>下面是我的一些基本信息</p>
 <ul>
 <li>北京邮电大学/信息与通信工程学院/本科生</li>
+<li>北京邮电大学/人工智能学院/硕士研究生</li>
 <li>邮箱：lgc0208@foxmail.com</li>
 <li>Github: <a href="https://github.com/lgc0208">https://github.com/lgc0208</a></li>
 <li>CSDN：<a href="https://blog.csdn.net/weixin_45817309?spm=1000.2115.3001.5343">https://blog.csdn.net/weixin_45817309?spm=1000.2115.3001.5343</a></li>
@@ -16,6 +18,8 @@
 <ul>
 <li><a href="https://lgc0208.github.io/course_reference_SICE_BUPT/">北京邮电大学信息与通信工程学院选课指南</a></li>
 <li><a href="https://lgc0208.github.io/reference_format_generation/">参考文献格式生成器（目前支持 GB/T 7714-2015 和 IEEE）</a></li>
+</ul>
+</li>
 </ul>
 ]]></content>
   </entry>

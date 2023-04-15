@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2023-03-30T06:58:17.959Z</updated>
+  <updated>2023-04-15T10:38:52.356Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Tensorboard】 Tensorboard展示所有数据</title>
+    <link href="https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/"/>
+    <id>https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/</id>
+    <published>2023-04-14T08:53:33.000Z</published>
+    <updated>2023-04-15T10:38:52.356Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍了在 Tensorboard 展示数据时显示所有数据的方法&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【系统】 你需要 Lenovo 权限才能对此文件夹进行更改</title>
@@ -424,27 +445,6 @@
     <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Python】 导出项目依赖</title>
-    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E5%AF%BC%E5%87%BApython%E4%BE%9D%E8%B5%96/"/>
-    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E5%AF%BC%E5%87%BApython%E4%BE%9D%E8%B5%96/</id>
-    <published>2022-05-23T12:02:07.000Z</published>
-    <updated>2022-05-23T10:51:15.275Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;介绍借助 &lt;code&gt;pipreqs&lt;/code&gt; 导出 Python 项目所需依赖的方式&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="编程语言" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>

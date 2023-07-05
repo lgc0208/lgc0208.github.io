@@ -90,7 +90,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">312</span>
+            <span class="post-count">314</span>
         </span>
     </span>
 
@@ -125,7 +125,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
 <p>接下来生成自己的 <code>token</code>，在 Github 上点击右上角头像，进入 <code>Settings</code>，在左侧导航栏中点击 <code>Developer settings</code>，再点击 <code>Personal access tokens</code> 和 <code>Tokens</code>，进入 Token 生成页面。点击右上方的 <code>Generate new token</code> 按键，输入账号密码后，勾选 <code>repo</code>，设置使用期限，设置 <code>Note</code>，然后点击 <code>Generate token</code> 就可以生成一个令牌。复制令牌备用。</p>
 <p>接下来，在命令行上设置 URL。其中，<code>&lt;your_token&gt;</code> 换成我们刚才得到的令牌，<code>&lt;USERNAME&gt;</code> 换成自己的 Github 用户名，<code>&lt;REPO&gt;</code> 是项目名称</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url pfrp  https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url &lt;REPO&gt; https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git</span><br></pre></td></tr></table></figure>
 <p>然后 push 上去即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u 仓库名 分支名</span><br></pre></td></tr></table></figure>
  

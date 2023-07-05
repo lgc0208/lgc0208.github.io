@@ -346,6 +346,74 @@
 
     
     <article
+  id="post-踩过的坑_服务器上关联git"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/"
+    >【Git】 服务器上关联 Github</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/" class="article-date">
+  <time datetime="2023-02-21T08:24:10.000Z" itemprop="datePublished">2023-02-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>首先在所需目录将其变成 Git 可以管理的仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 目录路径</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>首先，配置 git 信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;名称&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后使用 <code>git add</code> 和 <code>git commit</code> 将内容添加到本地版本库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;说明内容&quot;</span></span><br></pre></td></tr></table></figure>
+<p>接下来将本地 Git 仓库与远程 Git 仓库连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add 仓库名 git@github.com:Github的ID/仓库名.git</span><br></pre></td></tr></table></figure>
+<p>这时候可以查看一下本地连接的远程库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>接下来生成自己的 <code>token</code>，在 Github 上点击右上角头像，进入 <code>Settings</code>，在左侧导航栏中点击 <code>Developer settings</code>，再点击 <code>Personal access tokens</code> 和 <code>Tokens</code>，进入 Token 生成页面。点击右上方的 <code>Generate new token</code> 按键，输入账号密码后，勾选 <code>repo</code>，设置使用期限，设置 <code>Note</code>，然后点击 <code>Generate token</code> 就可以生成一个令牌。复制令牌备用。</p>
+<p>接下来，在命令行上设置 URL。其中，<code>&lt;your_token&gt;</code> 换成我们刚才得到的令牌，<code>&lt;USERNAME&gt;</code> 换成自己的 Github 用户名，<code>&lt;REPO&gt;</code> 是项目名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url pfrp  https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git</span><br></pre></td></tr></table></figure>
+<p>然后 push 上去即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u 仓库名 分支名</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" rel="tag">踩过的坑</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Docker镜像打包过程"
   class="article article-type-post"
   itemscope
@@ -677,63 +745,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OMNet/" rel="tag">OMNet++</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-敲门砖：开源库 INET wireless 示例"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"
-    >开源库 INET wireless 示例</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/" class="article-date">
-  <time datetime="2022-08-07T08:50:29.000Z" itemprop="datePublished">2022-08-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/">网络仿真器</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="示例-1-两台主机无线通信"><a href="#示例-1-两台主机无线通信" class="headerlink" title="示例 1 两台主机无线通信"></a>示例 1 两台主机无线通信</h2><h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>创建一个包含 2 个主机的网络，其中一台主机向另一台主机发送 UDP 数据流。在实验过程尽量简化底层协议模型。官方示例保存在 <code>inet4/tutorials/wireless/</code> 路径中。</p> 
-      <a class="article-more-link" href="/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/INET/" rel="tag">INET</a></li></ul>
 
     </footer>
   </div>

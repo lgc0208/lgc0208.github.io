@@ -58,6 +58,33 @@
       </tags>
   </entry>
   <entry>
+    <title>【Git】 服务器上关联 Github</title>
+    <url>/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>首先在所需目录将其变成 Git 可以管理的仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 目录路径</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>首先，配置 git 信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;名称&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后使用 <code>git add</code> 和 <code>git commit</code> 将内容添加到本地版本库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;说明内容&quot;</span></span><br></pre></td></tr></table></figure>
+<p>接下来将本地 Git 仓库与远程 Git 仓库连接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add 仓库名 git@github.com:Github的ID/仓库名.git</span><br></pre></td></tr></table></figure>
+<p>这时候可以查看一下本地连接的远程库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>接下来生成自己的 <code>token</code>，在 Github 上点击右上角头像，进入 <code>Settings</code>，在左侧导航栏中点击 <code>Developer settings</code>，再点击 <code>Personal access tokens</code> 和 <code>Tokens</code>，进入 Token 生成页面。点击右上方的 <code>Generate new token</code> 按键，输入账号密码后，勾选 <code>repo</code>，设置使用期限，设置 <code>Note</code>，然后点击 <code>Generate token</code> 就可以生成一个令牌。复制令牌备用。</p>
+<p>接下来，在命令行上设置 URL。其中，<code>&lt;your_token&gt;</code> 换成我们刚才得到的令牌，<code>&lt;USERNAME&gt;</code> 换成自己的 Github 用户名，<code>&lt;REPO&gt;</code> 是项目名称</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote set-url pfrp  https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git</span><br></pre></td></tr></table></figure>
+<p>然后 push 上去即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push -u 仓库名 分支名</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【系统】 Docker 镜像打包过程</title>
     <url>/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>介绍了 Docker 中镜像的打包过程。</p>

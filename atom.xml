@@ -59,6 +59,33 @@
   </entry>
   
   <entry>
+    <title>【Git】 服务器上关联 Github</title>
+    <link href="https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/"/>
+    <id>https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/</id>
+    <published>2023-02-21T08:24:10.000Z</published>
+    <updated>2023-07-05T07:18:34.337Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【系统】 Docker 镜像打包过程</title>
     <link href="https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/"/>
     <id>https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/</id>
@@ -418,27 +445,6 @@
     
     
     <summary type="html">&lt;p&gt;记录了在 Ubuntu 系统安装 ns-3 的方式&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Win10】 安装Hexo并绑定Github</title>
-    <link href="https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/"/>
-    <id>https://lgc0208.github.io/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E5%AE%89%E8%A3%85%E5%92%8C%E7%BB%91%E5%AE%9Agithub/</id>
-    <published>2022-05-23T13:14:10.000Z</published>
-    <updated>2022-05-23T11:29:17.373Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文介绍安装 hexo 并绑定 Github 的方式。&lt;/p&gt;</summary>
     
     
     

@@ -4336,7 +4336,8 @@ ReLU(z) = max\{0, w^{T}x+b\}</script><p>至下一层神经元或作为整个神�
     <url>/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>首先在所需目录将其变成 Git 可以管理的仓库</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 目录路径</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>首先，配置 git 信息</p>
+<span id="more"></span>
+<p>配置 git 信息</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;名称&quot;</span></span><br></pre></td></tr></table></figure>
 <p>然后使用 <code>git add</code> 和 <code>git commit</code> 将内容添加到本地版本库</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;说明内容&quot;</span></span><br></pre></td></tr></table></figure>

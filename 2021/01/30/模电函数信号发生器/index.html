@@ -114,7 +114,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。</p>
+  <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。</p>
 <span id="more"></span>
 <h1 id="1-设计任务要求"><a href="#1-设计任务要求" class="headerlink" title="1 设计任务要求"></a>1 设计任务要求</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设计并制作一个简易的方波-三角波-正弦波信号发生器，供电电源为 ，要求频率调节方便，并满足以下指标：<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.输出频率在1KHZ~10KHZ范围内连续可调。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.方波输出电压峰峰值U~OPP~=12V（误差&lt;20%），上升、下降沿均小于10μs。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.三角波输出电压峰峰值U~OPP~=8V（±20%）。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.在1KHZ-10KHZ的频率范围内，正弦波输出电压峰峰值U~OPP~≥1V，无明显失真。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.输出方波为占空比可调的矩形波，占空比可调范围不小于30%-70%。</p>
 <h1 id="2-设计思路和整体设计框图"><a href="#2-设计思路和整体设计框图" class="headerlink" title="2 设计思路和整体设计框图"></a>2 设计思路和整体设计框图</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据实验要求，需要制作一个简易方波—三角波—正弦波的信号发生器。因此，容易想到的两种解决方案如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.先通过正弦振荡电路产生正弦波，再通过正弦波-方波变换电路得到方波，最后通过方波-三角波变换电路得到三角波，从而实现功能；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.先通过方波振荡电路产生方波，再通过方波-三角波变换电路产生三角波，最后通过三角波-正弦波变换电路产生正弦波，从而实现功能。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决方案1和2所对应的总体流程框图分别如图1和图2所示。</p>

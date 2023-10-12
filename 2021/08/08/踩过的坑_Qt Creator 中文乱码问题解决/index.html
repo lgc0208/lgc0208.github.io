@@ -114,7 +114,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>在编译 Qt Creator 项目时出现中文乱码</p>
+  <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在编译 Qt Creator 项目时出现中文乱码</p>
 <span id="more"></span>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>在 pro 文件下添加如下代码即可：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msvc &#123;</span><br><span class="line">QMAKE_CFLAGS += /utf<span class="number">-8</span></span><br><span class="line">QMAKE_CXXFLAGS += /utf<span class="number">-8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

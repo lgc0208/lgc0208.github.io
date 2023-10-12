@@ -114,7 +114,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="消息参数的访问"><a href="#消息参数的访问" class="headerlink" title="消息参数的访问"></a>消息参数的访问</h2><p>在 <code>NED</code> 文件中申明的模块参数在运行时用 <code>cPar</code> 类表示。在调用 <code>cComponent</code> 中的成员函数 <code>par()</code> 可以访问模块指针，如：</p>
+  <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="消息参数的访问"><a href="#消息参数的访问" class="headerlink" title="消息参数的访问"></a>消息参数的访问</h2><p>在 <code>NED</code> 文件中申明的模块参数在运行时用 <code>cPar</code> 类表示。在调用 <code>cComponent</code> 中的成员函数 <code>par()</code> 可以访问模块指针，如：</p>
 <span id="more"></span>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cPar&amp; delayPar = <span class="built_in">par</span>(<span class="string">&quot;delay&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>其中，<code>cPar</code> 类是一个存储值的对象。可以使用与参数的 <code>NED</code> 类型对应的方法读取<code>cPar</code> 的值： <code>boolValue()</code>、<code>intValue()</code>、 <code>doubleValue()</code>、<code>stringValue()</code>、<code>stdstringValue()</code>、 <code>xmlValue()</code>，例如</p>

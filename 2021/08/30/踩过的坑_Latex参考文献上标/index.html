@@ -112,7 +112,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>本文介绍了LaTeX中将参考文献的引用改为上标的方式</p>
+  <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了LaTeX中将参考文献的引用改为上标的方式</p>
 <span id="more"></span>
 <p>改变 <code>\cite</code> 指令的格式，在文章中添加代码段：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\makeatletter</span><br><span class="line">　　\def\@cite<span class="comment">#1#2&#123;\textsuperscript&#123;[&#123;#1\if@tempswa , #2\fi&#125;]&#125;&#125;</span></span><br><span class="line">\makeatother</span><br></pre></td></tr></table></figure>

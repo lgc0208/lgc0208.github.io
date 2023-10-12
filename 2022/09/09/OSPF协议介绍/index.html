@@ -114,7 +114,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>本文记录了 OSPF 的基本信息。</p>
+  <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文记录了 OSPF 的基本信息。</p>
 <span id="more"></span>
 <h2 id="开放式最短路径优先协议-OSPF"><a href="#开放式最短路径优先协议-OSPF" class="headerlink" title="开放式最短路径优先协议 OSPF"></a>开放式最短路径优先协议 OSPF</h2><h3 id="一、OSPF-简介"><a href="#一、OSPF-简介" class="headerlink" title="一、OSPF 简介"></a>一、OSPF 简介</h3><p>OSPF（Open Shortest Path First）开放最短路径优先协议是一个基于链路状态的自制系统内部网关协议，使用链路状态路由（LSR）算法，直接工作在 IP 层上。在网络中使用 OSPF 协议后，大部分路由将根据 OSPF 协议自行计算和生成，无需人工配置。当网络拓扑发生变化时，OSPF 协议可以自动计算、更正路由，方便了实际的网络管理。</p>
 <p>OSPF 从可用路由器收集链路状态信息并构建网络拓扑图，该拓扑以路由表的形式呈现给 Internet 层，通过该路由表根据数据包的 IP 地址路由数据包。OSPF 基于 Dijkstra 算法计算每条路线的最短路径树。构建路由表的 OSPF 路由策略由每个路由接口关联的链路度量来管理，可考虑的成本因素包括了路由器的距离（往返时间）、链路的吞吐量、链路可用性等。</p>

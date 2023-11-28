@@ -24,6 +24,58 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【Linux】docker限制容器内存的方法</title>
+    <url>/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在服务器中使用 docker 时，如果不对 docker 的可调用内存进行限制，当 docker 内的程序出现不可预测的问题时，就很有可能因为内存爆炸导致服务器主机的瘫痪。而对 docker 进行限制后，可以将瘫痪范围控制在 docker 内。</p>
+<p>因此，本文将介绍使用 docker 进行容器内存限制的方法。</p>
+<span id="more"></span>
+<h3 id="容器内存限制"><a href="#容器内存限制" class="headerlink" title="容器内存限制"></a>容器内存限制</h3><p>使用 docker 进行容器内存限制有两种方法，一种是在启动时对容器内存进行限制；另一种是容器启动后对容器内存进行限制。</p>
+<h4 id="（1）启动时进行限制"><a href="#（1）启动时进行限制" class="headerlink" title="（1）启动时进行限制"></a>（1）启动时进行限制</h4><p>在启动时，通过命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run ... -m 40G ...</span><br></pre></td></tr></table></figure></p>
+<p>中的 <code>-m 40G</code> 部分限制开启容器的可调用内存。此处限制容器可调用内存上限为 40 G。</p>
+<h4 id="（2）启动后进行限制"><a href="#（2）启动后进行限制" class="headerlink" title="（2）启动后进行限制"></a>（2）启动后进行限制</h4><p>已经启动一个容器后，可以使用 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker update -m 40G &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
+<p>开启容器的内存限制。其中，<code>-m 40G</code> 部分限制了可调用内存上限为 40 G，后面 <code>&#123;container_id/container_name&#125;</code> 表示容器 ID 或者容器名。</p>
+<h3 id="限制情况查看"><a href="#限制情况查看" class="headerlink" title="限制情况查看"></a>限制情况查看</h3><p>完成限制后，可以在容器内或主机内查看限制情况。</p>
+<h4 id="（1）在主机内查看"><a href="#（1）在主机内查看" class="headerlink" title="（1）在主机内查看"></a>（1）在主机内查看</h4><p>在主机内，只需要通过命令 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stats &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
+<p>即可查看对容器的限制情况，如下图所示。</p>
+<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128210818583.png" alt="image-20231128210818583"></p>
+<h4 id="2-在容器内查看"><a href="#2-在容器内查看" class="headerlink" title="(2) 在容器内查看"></a>(2) 在容器内查看</h4><p>在容器内，通过命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /sys/fs/cgroup/memory/memory.limit_in_bytes </span><br></pre></td></tr></table></figure>
+<p>即可查看容器的内存限制，如下图所示。单位为 Byte。</p>
+<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128211022287.png" alt="image-20231128211022287"></p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】htop命令中显示相同进程</title>
+    <url>/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>使用 htop 的过程中会发现有很多同样的进程被标注了绿色大量显示。如下图所示。</p>
+<p><img src="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128200120548.png" alt="image-20231128200120548"></p>
+<p>这使得在大量程序运行时想要找到需要观察的进程变的困难。本文介绍了如何省略这些重复现实的进程。</p>
+<span id="more"></span>
+<ol>
+<li>输入 <code>htop</code>，显示出 htop 界面。</li>
+<li>按下 F2 键，进入 Setup 模式</li>
+<li>点击 <code>Display options</code> 选项，将 <code>Hide kernel threads</code> 和 <code>Hide userland process thread</code> 选中即可。</li>
+</ol>
+<p><img src="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128201344616.png" alt="image-20231128201344616"></p>
+]]></content>
+      <categories>
+        <category>那些年我踩过的坑</category>
+        <category>系统/软件</category>
+      </categories>
+      <tags>
+        <tag>踩过的坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【MacOS】 IMAP命令“APPEND”（至Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案</title>
     <url>/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文介绍了在 MacOS 系统中，使用邮件 APP 进行发信后提示 IMAP 命令 “APPEND”（至 Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案。</p>

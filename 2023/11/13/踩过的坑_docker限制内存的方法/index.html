@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>那些年我踩过的坑 |  梦</title>
+      <title>【Linux】docker限制容器内存的方法 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -58,327 +58,224 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-踩过的坑_docker限制内存的方法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【Linux】docker限制容器内存的方法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2023-11-13T12:02:07.000Z" itemprop="datePublished">2023-11-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">395</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在服务器中使用 docker 时，如果不对 docker 的可调用内存进行限制，当 docker 内的程序出现不可预测的问题时，就很有可能因为内存爆炸导致服务器主机的瘫痪。而对 docker 进行限制后，可以将瘫痪范围控制在 docker 内。</p>
+<p>因此，本文将介绍使用 docker 进行容器内存限制的方法。</p>
+<span id="more"></span>
+<h3 id="容器内存限制"><a href="#容器内存限制" class="headerlink" title="容器内存限制"></a>容器内存限制</h3><p>使用 docker 进行容器内存限制有两种方法，一种是在启动时对容器内存进行限制；另一种是容器启动后对容器内存进行限制。</p>
+<h4 id="（1）启动时进行限制"><a href="#（1）启动时进行限制" class="headerlink" title="（1）启动时进行限制"></a>（1）启动时进行限制</h4><p>在启动时，通过命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ... -m 40G ...</span><br></pre></td></tr></table></figure></p>
+<p>中的 <code>-m 40G</code> 部分限制开启容器的可调用内存。此处限制容器可调用内存上限为 40 G。</p>
+<h4 id="（2）启动后进行限制"><a href="#（2）启动后进行限制" class="headerlink" title="（2）启动后进行限制"></a>（2）启动后进行限制</h4><p>已经启动一个容器后，可以使用 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update -m 40G &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
+<p>开启容器的内存限制。其中，<code>-m 40G</code> 部分限制了可调用内存上限为 40 G，后面 <code>&#123;container_id/container_name&#125;</code> 表示容器 ID 或者容器名。</p>
+<h3 id="限制情况查看"><a href="#限制情况查看" class="headerlink" title="限制情况查看"></a>限制情况查看</h3><p>完成限制后，可以在容器内或主机内查看限制情况。</p>
+<h4 id="（1）在主机内查看"><a href="#（1）在主机内查看" class="headerlink" title="（1）在主机内查看"></a>（1）在主机内查看</h4><p>在主机内，只需要通过命令 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
+<p>即可查看对容器的限制情况，如下图所示。</p>
+<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128210818583.png" alt="image-20231128210818583"></p>
+<h4 id="2-在容器内查看"><a href="#2-在容器内查看" class="headerlink" title="(2) 在容器内查看"></a>(2) 在容器内查看</h4><p>在容器内，通过命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/fs/cgroup/memory/memory.limit_in_bytes </span><br></pre></td></tr></table></figure>
+<p>即可查看容器的内存限制，如下图所示。单位为 Byte。</p>
+<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128211022287.png" alt="image-20231128211022287"></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
         <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
         </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">那些年我踩过的坑</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
+      </ul>
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  <time datetime="2023-11-13T12:02:07.000Z" itemprop="datePublished">11/13</time>
-</a>
+    
+    <footer class="article-footer">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/"
-    >【Linux】docker限制容器内存的方法</a> 
-</h2>
- 
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  <time datetime="2023-10-23T12:02:07.000Z" itemprop="datePublished">10/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/"
-    >【Linux】htop命令中显示相同进程</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/" class="archive-article-date">
-  <time datetime="2023-10-12T08:53:33.000Z" itemprop="datePublished">10/12</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"
-    >【MacOS】 IMAP命令“APPEND”（至Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  <time datetime="2023-04-14T08:53:33.000Z" itemprop="datePublished">04/14</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/"
-    >【Tensorboard】 Tensorboard展示所有数据</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/" class="archive-article-date">
-  <time datetime="2023-03-30T08:24:07.000Z" itemprop="datePublished">03/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/"
-    >【系统】 你需要 Lenovo 权限才能对此文件夹进行更改</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/" class="archive-article-date">
-  <time datetime="2023-02-21T08:24:10.000Z" itemprop="datePublished">02/21</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/"
-    >【Git】 服务器上关联 Github</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/" class="archive-article-date">
-  <time datetime="2022-09-26T02:05:02.000Z" itemprop="datePublished">09/26</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/"
-    >【WinError 10013】 以一种访问权限不允许的方式做了一个访问套接字的尝试</a> 
-</h2>
- 
+</div>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" rel="tag">踩过的坑</a></li></ul>
+
+    </footer>
   </div>
 
+   
+  <nav class="article-nav">
     
     
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/" class="archive-article-date">
-  <time datetime="2022-07-24T08:24:10.000Z" itemprop="datePublished">07/24</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/"
-    >【Typora】 This beta version of Typora is expired, please download and install a newer version.</a> 
-</h2>
- 
-
-    </header>
+      <a href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【Linux】htop命令中显示相同进程</div>
+      </a>
     
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  <time datetime="2022-05-23T13:24:10.000Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/"
-    >【Win10】 使用Hexo对博客进行更新</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Ubuntu%E5%AE%89%E8%A3%85ns3/" class="archive-article-date">
-  <time datetime="2022-05-23T13:24:07.000Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Ubuntu%E5%AE%89%E8%A3%85ns3/"
-    >【Ubuntu】 安装ns3</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-      
-    </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/page/2/">2</a><a class="page-number" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/page/3/">3</a><a class="extend next" rel="next" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/page/2/">下一页</a>
   </nav>
-  
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -521,6 +418,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2023-12-04T03:34:25.627Z</updated>
+  <updated>2023-12-04T08:36:01.632Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Linux】 服务器免密登陆</title>
+    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/</id>
+    <published>2023-12-04T08:35:07.000Z</published>
+    <updated>2023-12-04T08:36:01.632Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;由于专业要求，我需要经常通过 VSCode、Terminal 等工具连接远程服务器开展工作。而每次连接都需要输入一次或多次密码无疑影响了工作体验。基于该背景，本文介绍了免密登陆远程服务器的方式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【Pytorch】固定随机数种子</title>
@@ -413,27 +434,6 @@
     
     
     <summary type="html">&lt;h2 id=&quot;消息参数的访问&quot;&gt;&lt;a href=&quot;#消息参数的访问&quot; class=&quot;headerlink&quot; title=&quot;消息参数的访问&quot;&gt;&lt;/a&gt;消息参数的访问&lt;/h2&gt;&lt;p&gt;在 &lt;code&gt;NED&lt;/code&gt; 文件中申明的模块参数在运行时用 &lt;code&gt;cPar&lt;/code&gt; 类表示。在调用 &lt;code&gt;cComponent&lt;/code&gt; 中的成员函数 &lt;code&gt;par()&lt;/code&gt; 可以访问模块指针，如：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
-    
-    
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OMNet++ 基础语法：消息</title>
-    <link href="https://lgc0208.github.io/2022/07/31/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%B6%88%E6%81%AF/"/>
-    <id>https://lgc0208.github.io/2022/07/31/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%B6%88%E6%81%AF/</id>
-    <published>2022-07-31T08:50:29.000Z</published>
-    <updated>2022-08-01T15:04:47.948Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;cMessage-类&quot;&gt;&lt;a href=&quot;#cMessage-类&quot; class=&quot;headerlink&quot; title=&quot;cMessage 类&quot;&gt;&lt;/a&gt;&lt;code&gt;cMessage&lt;/code&gt; 类&lt;/h2&gt;&lt;p&gt;&lt;code&gt;cMessage&lt;/code&gt; 类是 &lt;code&gt;OMNet++&lt;/code&gt; 的核心类，它及其子类的对象可以模拟时间、包、帧、蜂窝、网络中的信号传输、系统中的实体传输等。Message在创建时可以指定名字、消息类型、长度、位错误标记、优先权：&lt;/p&gt;</summary>
     
     
     

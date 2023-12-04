@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>归档 |  梦</title>
+      <title>【Docker】 Docker attach 命令卡死的解决方案 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -58,267 +58,219 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-Docker attach卡死的解决方案"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【Docker】 Docker attach 命令卡死的解决方案
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2022-12-04T08:14:26.000Z" itemprop="datePublished">2022-12-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Docker/">Docker</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">206</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在启动较早期的容器时，出现了使用 <code>docker attach container_name</code> 命令后卡死的问题。本文介绍了如何解决该问题。</p>
+<span id="more"></span>
+<p>首先，在使用 <code>docker attach container_name</code> 命令前需要先保证容器已经开启。此时，输入 <code>docker attach container_name</code> 命令后卡死的原因大概率是容器的驻守程序设定为 sshd 而非 bash。然而，sshd 驻守进程是不接受输入的，因此任何输入在该容器内都无效，在命令行中表现为卡死状态。</p>
+<p>了解症结后，解决方案就非常简单了，只需要把不接受输入的 sshd 驻守进程更换为交互式的 bash 进程即可。对一个正在运行的程序而言，只需要输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_name /bin/bash</span><br></pre></td></tr></table></figure>
+<p>即可进入对应容器。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
         <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
         </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">归档</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+      </ul>
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/24/HM_setup/" class="archive-article-date">
-  <time datetime="2022-04-24T03:23:43.000Z" itemprop="datePublished">04/24</time>
-</a>
+    
+    <footer class="article-footer">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/24/HM_setup/"
-    >【Win10】 HM 软件安装</a> 
-</h2>
- 
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  <time datetime="2022-04-16T08:24:07.000Z" itemprop="datePublished">04/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/16/LINUX_%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/"
-    >【LINUX】 使用服务器虚拟环境运行 Python 代码</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/" class="archive-article-date">
-  <time datetime="2022-04-13T02:05:02.000Z" itemprop="datePublished">04/13</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%88%96%E5%9C%B0%E5%9D%80%E6%9C%89%E8%AF%AF/"
-    >【Win10】 代理服务器出现问题或地址有误</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/30/%E5%85%B3%E4%BA%8E%E6%88%91/" class="archive-article-date">
-  <time datetime="2022-03-30T06:03:43.000Z" itemprop="datePublished">03/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/30/%E5%85%B3%E4%BA%8E%E6%88%91/"
-    >关于我</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/03/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_office%E5%9B%BE%E6%A0%87%E7%A9%BA%E7%99%BD/" class="archive-article-date">
-  <time datetime="2022-03-03T13:49:16.000Z" itemprop="datePublished">03/03</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/03/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_office%E5%9B%BE%E6%A0%87%E7%A9%BA%E7%99%BD/"
-    >【Win10】 解决 Office 安装后图标空白的问题</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/" class="archive-article-date">
-  <time datetime="2022-02-18T09:52:07.000Z" itemprop="datePublished">02/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/02/18/%E5%8C%97%E9%82%AE%E4%BF%A1%E9%80%9A%E9%99%A2%E9%80%89%E8%AF%BE%E5%8F%82%E8%80%83%E6%8C%87%E5%8D%97/"
-    >北京邮电大学信息与通信工程学院选课参考指南</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/02/02/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_flask%E6%97%A5%E5%BF%97/" class="archive-article-date">
-  <time datetime="2022-02-02T12:02:07.000Z" itemprop="datePublished">02/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/02/02/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_flask%E6%97%A5%E5%BF%97/"
-    >【Python】【Flask】 使用 gunicorn 运行 flask app 时无法记录日志的解决方法</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  <time datetime="2022-01-16T09:34:10.000Z" itemprop="datePublished">01/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/01/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_h5py%E6%8A%A5%E9%94%99/"
-    >【Python】 module ‘h5py‘ has no attribute ‘File‘解决方案</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/11/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9A%84%E6%83%85%E5%86%B5/" class="archive-article-date">
-  <time datetime="2021-12-11T08:53:33.000Z" itemprop="datePublished">12/11</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/12/11/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9A%84%E6%83%85%E5%86%B5/"
-    >【Win10】 解决文件夹被占用无法删除的情况</a> 
-</h2>
- 
+</div>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/12/01/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Mathtype%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E5%8F%AA%E8%83%BD%E8%BE%93%E5%85%A5/" class="archive-article-date">
-  <time datetime="2021-12-01T04:11:38.000Z" itemprop="datePublished">12/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/12/01/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Mathtype%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E5%8F%AA%E8%83%BD%E8%BE%93%E5%85%A5/"
-    >【Mathtype】 编辑时无法删除，只能输入的解决方法</a> 
-</h2>
- 
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
 
-    </header>
-    
-    
+    </footer>
   </div>
-</article>
-      
-      
-    </div>
-  </div>
-  
-  
 
-  
-  <nav class="page-nav">
+   
+  <nav class="article-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/page/3/">上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/5/">下一页</a>
+      <a href="/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【Git】 服务器上关联 Github
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【系统】 Docker 镜像打包过程</div>
+      </a>
+    
   </nav>
-  
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -461,6 +413,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

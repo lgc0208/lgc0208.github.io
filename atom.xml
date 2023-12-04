@@ -189,6 +189,27 @@
   </entry>
   
   <entry>
+    <title>【Docker】 Docker attach 命令卡死的解决方案</title>
+    <link href="https://lgc0208.github.io/2022/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://lgc0208.github.io/2022/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2022-12-04T08:14:26.000Z</published>
+    <updated>2023-12-04T08:14:27.713Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在启动较早期的容器时，出现了使用 &lt;code&gt;docker attach container_name&lt;/code&gt; 命令后卡死的问题。本文介绍了如何解决该问题。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Docker" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Docker/"/>
+    
+    
+    <category term="Docker" scheme="https://lgc0208.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【系统】 Docker 镜像打包过程</title>
     <link href="https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/"/>
     <id>https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/</id>
@@ -413,32 +434,6 @@
     
     
     <summary type="html">&lt;h2 id=&quot;cMessage-类&quot;&gt;&lt;a href=&quot;#cMessage-类&quot; class=&quot;headerlink&quot; title=&quot;cMessage 类&quot;&gt;&lt;/a&gt;&lt;code&gt;cMessage&lt;/code&gt; 类&lt;/h2&gt;&lt;p&gt;&lt;code&gt;cMessage&lt;/code&gt; 类是 &lt;code&gt;OMNet++&lt;/code&gt; 的核心类，它及其子类的对象可以模拟时间、包、帧、蜂窝、网络中的信号传输、系统中的实体传输等。Message在创建时可以指定名字、消息类型、长度、位错误标记、优先权：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
-    
-    
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OMNet++ 基础语法：仿真概念和简单模块</title>
-    <link href="https://lgc0208.github.io/2022/07/30/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E7%AE%80%E5%8D%95%E6%A8%A1%E5%9D%97/"/>
-    <id>https://lgc0208.github.io/2022/07/30/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E7%AE%80%E5%8D%95%E6%A8%A1%E5%9D%97/</id>
-    <published>2022-07-30T08:50:29.000Z</published>
-    <updated>2022-08-01T15:04:26.834Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;仿真概念&quot;&gt;&lt;a href=&quot;#仿真概念&quot; class=&quot;headerlink&quot; title=&quot;仿真概念&quot;&gt;&lt;/a&gt;仿真概念&lt;/h2&gt;&lt;h3 id=&quot;OMNet-中的离散事件&quot;&gt;&lt;a href=&quot;#OMNet-中的离散事件&quot; class=&quot;headerlink&quot; title=&quot;OMNet++ 中的离散事件&quot;&gt;&lt;/a&gt;&lt;code&gt;OMNet++&lt;/code&gt; 中的离散事件&lt;/h3&gt;&lt;p&gt;一个离散时间系统是指一个系统的状态改变方式是离散的。简而言之，系统状态的修改仅在事件发生时进行。离散时间系统可以使用离散事件模拟进行仿真。以计算机网络为例，计算机网络通常被看做是离散时间系统，他的一些离散事件包括了：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;数据包传输的开始&lt;/li&gt;
-&lt;li&gt;数据包传输的结束&lt;/li&gt;
-&lt;li&gt;重传超时到期&lt;/li&gt;
-&lt;/ul&gt;</summary>
     
     
     

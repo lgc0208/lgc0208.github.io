@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>【Linux】docker限制容器内存的方法 |  梦</title>
+      <title>【Pytorch】模型的保存和加载 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -59,7 +59,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-踩过的坑_docker限制内存的方法"
+  id="post-踩过的坑_pytorch保存和加载模型"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -70,7 +70,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  【Linux】docker限制容器内存的方法
+  【Pytorch】模型的保存和加载
 </h1>
  
 
@@ -78,11 +78,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2023-11-13T12:02:07.000Z" itemprop="datePublished">2023-11-13</time>
+      <a href="/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time datetime="2023-12-04T02:41:00.000Z" itemprop="datePublished">2023-12-04</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a>
   </div>
   
 <div class="word_count">
@@ -90,7 +90,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">395</span>
+            <span class="post-count">1k</span>
         </span>
     </span>
 
@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -114,24 +114,40 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>在服务器中使用 docker 时，如果不对 docker 的可调用内存进行限制，当 docker 内的程序出现不可预测的问题时，就很有可能因为内存爆炸导致服务器主机的瘫痪。而对 docker 进行限制后，可以将瘫痪范围控制在 docker 内。</p>
-<p>因此，本文将介绍使用 docker 进行容器内存限制的方法。</p>
+  <p>在对神经网络模型进行训练时，定期地保存模型可以增加程序的抗风险能力。同时，通过对保存模型的加载可以很方便地复现和使用我们训练好的神经网络模型。基于此，本文记录了 Pytorch 中的模型保存和加载方法。</p>
 <span id="more"></span>
-<h3 id="容器内存限制"><a href="#容器内存限制" class="headerlink" title="容器内存限制"></a>容器内存限制</h3><p>使用 docker 进行容器内存限制有两种方法，一种是在启动时对容器内存进行限制；另一种是容器启动后对容器内存进行限制。</p>
-<h4 id="（1）启动时进行限制"><a href="#（1）启动时进行限制" class="headerlink" title="（1）启动时进行限制"></a>（1）启动时进行限制</h4><p>在启动时，通过命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ... -m 40G ...</span><br></pre></td></tr></table></figure></p>
-<p>中的 <code>-m 40G</code> 部分限制开启容器的可调用内存。此处限制容器可调用内存上限为 40 G。</p>
-<h4 id="（2）启动后进行限制"><a href="#（2）启动后进行限制" class="headerlink" title="（2）启动后进行限制"></a>（2）启动后进行限制</h4><p>已经启动一个容器后，可以使用 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update -m 40G &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
-<p>开启容器的内存限制。其中，<code>-m 40G</code> 部分限制了可调用内存上限为 40 G，后面 <code>&#123;container_id/container_name&#125;</code> 表示容器 ID 或者容器名。</p>
-<h3 id="限制情况查看"><a href="#限制情况查看" class="headerlink" title="限制情况查看"></a>限制情况查看</h3><p>完成限制后，可以在容器内或主机内查看限制情况。</p>
-<h4 id="（1）在主机内查看"><a href="#（1）在主机内查看" class="headerlink" title="（1）在主机内查看"></a>（1）在主机内查看</h4><p>在主机内，只需要通过命令 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats &#123;container_id/container_name&#125;</span><br></pre></td></tr></table></figure>
-<p>即可查看对容器的限制情况，如下图所示。</p>
-<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128210818583.png" alt="image-20231128210818583"></p>
-<h4 id="2-在容器内查看"><a href="#2-在容器内查看" class="headerlink" title="(2) 在容器内查看"></a>(2) 在容器内查看</h4><p>在容器内，通过命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/fs/cgroup/memory/memory.limit_in_bytes </span><br></pre></td></tr></table></figure>
-<p>即可查看容器的内存限制，如下图所示。单位为 Byte。</p>
-<p><img src="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/image-20231128211022287.png" alt="image-20231128211022287"></p>
+<p>Pytorch的模型后缀一般为 <code>.pt</code> 或 <code>.pth</code>。在保存模型时，我们有两种选择：</p>
+<ul>
+<li>保存整个神经网络模型，包括神经网络的模型结构和模型参数</li>
+<li>只保存神经网络的模型参数</li>
+</ul>
+<p>不同的保存方式对应不同的加载方式。</p>
+<h4 id="1-只保存神经网络的模型参数"><a href="#1-只保存神经网络的模型参数" class="headerlink" title="1. 只保存神经网络的模型参数"></a>1. 只保存神经网络的模型参数</h4><p>只保留神经网络的模型参数时，调用的是 <code>torch.save()</code> 函数，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">torch.save(model.state_dict(), <span class="string">&quot;model.pt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>此时，在 <code>model.pt</code> 文件中将保存神经包含 <code>weight</code> 参数和 <code>bias</code> 参数的字典以反映神经网络模型的状态信息。也就是说，该方式只保存了神经网络中可以进行学习的参数。</p>
+<p>在加载参数时，需要先建立好对应结构的神经网络模型，然后再进行调用，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">model.load_state_dict(torch.load(<span class="string">&quot;model.pt&quot;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="2-保存整个神经网络模型"><a href="#2-保存整个神经网络模型" class="headerlink" title="2. 保存整个神经网络模型"></a>2. 保存整个神经网络模型</h4><p>在保存整个神经网络时，调用的也是 <code>torch.save()</code> 函数，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">torch.save(model, <span class="string">&quot;model.pt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>而在加载模型时，并不需要先建立好对应的神经网络模型结构，而是可以直接赋值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = torch.load(<span class="string">&quot;model.pt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3-保存训练过程的-Checkpoint-以期继续训练"><a href="#3-保存训练过程的-Checkpoint-以期继续训练" class="headerlink" title="3. 保存训练过程的 Checkpoint 以期继续训练"></a>3. 保存训练过程的 Checkpoint 以期继续训练</h4><p>若是在训练途中保存 Checkpoint，仍可以通过调用 <code>torch.save()</code> 函数实现需求：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">torch.save(&#123;</span><br><span class="line">  <span class="string">&quot;episode&quot;</span>: episode,</span><br><span class="line">  <span class="string">&quot;current_step&quot;</span>: current_step,</span><br><span class="line">  <span class="string">&quot;model_state_dict&quot;</span>: model.state_dict(),</span><br><span class="line">  <span class="string">&quot;optimizer_state_dict&quot;</span>: optimizer.state_dict(),</span><br><span class="line">  <span class="string">&quot;loss&quot;</span>: loss,</span><br><span class="line">  <span class="string">&quot;reward&quot;</span>: reward,</span><br><span class="line">  ...</span><br><span class="line">&#125;, <span class="string">&quot;model.pt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>此时，在加载时需要对对应内容进行索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">opt = ...</span><br><span class="line">check_point = torch.load(<span class="string">&quot;model.pt&quot;</span>)</span><br><span class="line">model.load_state_dict(check_point[<span class="string">&quot;model_state_dict&quot;</span>])</span><br><span class="line">opt.load_state_dict(check_point[<span class="string">&quot;optimizer_state_dict&quot;</span>])</span><br><span class="line">episode = check_point[<span class="string">&quot;episode&quot;</span>]</span><br><span class="line">current_step = check_point[<span class="string">&quot;current_step&quot;</span>]</span><br><span class="line">loss = check_point[<span class="string">&quot;loss&quot;</span>]</span><br><span class="line">reward = check_point[<span class="string">&quot;reward&quot;</span>]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>此外，若是想在同一个文件里保存多个模型，也可以使用该方法保存，并通过索引读取不同的参数。</p>
+<h4 id="4-读取模型后需要注意的事"><a href="#4-读取模型后需要注意的事" class="headerlink" title="4. 读取模型后需要注意的事"></a>4. 读取模型后需要注意的事</h4><p>在使用保存的模型进行预测时，调用后还需要加上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">eval</span>()</span><br></pre></td></tr></table></figure>
+<p>同时，也需要关闭梯度的计算。此时的写法为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model = ...</span><br><span class="line">model.load_state_dict(torch.load(<span class="string">&quot;model.pt&quot;</span>))</span><br><span class="line"><span class="comment"># 或 model.load(&quot;model.pt&quot;)</span></span><br><span class="line"></span><br><span class="line">model.<span class="built_in">eval</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">  ...</span><br><span class="line">  predict_data = model(input_data)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<p>同样的，在使用保存的模型进行训练时，也需要加上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.train()</span><br></pre></td></tr></table></figure>
+<p>将模型转换为训练模式。</p>
+<p>上述操作的必要性在于，在训练阶段和测试阶段中 Dropout 层和 Batch Normalization 层将产生不同影响。若是不加控制，则在训练阶段和测试阶段难以得到期望结果。</p>
+<p>对于 Dropout 层而言，在前向传播时，dropout 函数会让神经元的激活值以给定的概率停止工作（神经网络神经元的值置 0）以避免神经网络对局部特征的过度依赖，进而增强模型的泛化性。而在测试的时候，我们使用的是已经训练好的模型。在使用过程中显然不需要 dropout 的功能。同时，如果 dropout 功能仍然存在，将不可避免地会影响到最终输出结果的准确性。</p>
+<p>对于 Batch Normalization 层而言，Batch Normalization 是为了让神经网络每层的数据输入都保持在相近的范围：</p>
+<script type="math/tex; mode=display">
+h = f(g \cdot \frac{x-\mu}{\sigma} + b)</script><p>其中，模型是通过计算输入数据的均值和方差来实现 Batch Normalization。而在使用模型的时候，对输入的单个数据或需要预测的一批数据计算均值和方差是没有意义的，而应该直接使用训练阶段得到的对整体样本空间估算的均值和方差进行计算。</p>
  
       <!-- reward -->
       
@@ -202,7 +218,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -215,19 +231,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            【Pytorch】模型的保存和加载
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/" class="article-nav-link">
+      <a href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">【Linux】htop命令中显示相同进程</div>
+        <div class="article-nav-title">【Linux】docker限制容器内存的方法</div>
       </a>
     
   </nav>

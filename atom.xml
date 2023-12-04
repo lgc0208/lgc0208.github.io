@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2023-11-28T13:12:36.134Z</updated>
+  <updated>2023-12-04T02:41:12.203Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Pytorch】模型的保存和加载</title>
+    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/</id>
+    <published>2023-12-04T02:41:00.000Z</published>
+    <updated>2023-12-04T02:41:12.203Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在对神经网络模型进行训练时，定期地保存模型可以增加程序的抗风险能力。同时，通过对保存模型的加载可以很方便地复现和使用我们训练好的神经网络模型。基于此，本文记录了 Pytorch 中的模型保存和加载方法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Pytorch" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Pytorch/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>【Linux】docker限制容器内存的方法</title>
@@ -43,11 +64,11 @@
     <link href="https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/"/>
     <id>https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/</id>
     <published>2023-10-23T12:02:07.000Z</published>
-    <updated>2023-11-28T12:13:46.870Z</updated>
+    <updated>2023-12-04T01:42:07.322Z</updated>
     
     
     <summary type="html">&lt;p&gt;使用 htop 的过程中会发现有很多同样的进程被标注了绿色大量显示。如下图所示。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128200120548.png&quot; alt=&quot;image-20231128200120548&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128200120548.png&quot; alt=&quot;很多同样的进程被标注了绿色大量显示&quot;&gt;&lt;/p&gt;
 &lt;p&gt;这使得在大量程序运行时想要找到需要观察的进程变的困难。本文介绍了如何省略这些重复现实的进程。&lt;/p&gt;</summary>
     
     
@@ -428,29 +449,6 @@
     
     
     <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Typora】 This beta version of Typora is expired, please download and install a newer version.</title>
-    <link href="https://lgc0208.github.io/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/"/>
-    <id>https://lgc0208.github.io/2022/07/24/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_typora%E5%8F%96%E6%B6%88%E5%8D%87%E7%BA%A7/</id>
-    <published>2022-07-24T08:24:10.000Z</published>
-    <updated>2022-07-24T15:35:33.493Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在使用一段时间 beta 版本 Typora 后，打开 Typora 可能会跳出：&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;This beta version of Typora is expired, please download and install a newer version.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;下面提供一个解决方法。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    
-    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
   </entry>
   

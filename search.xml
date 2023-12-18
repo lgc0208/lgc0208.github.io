@@ -44,6 +44,24 @@
       </tags>
   </entry>
   <entry>
+    <title>【Docker】 Docker attach 命令卡死的解决方案</title>
+    <url>/2023/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在启动较早期的容器时，出现了使用 <code>docker attach container_name</code> 命令后卡死的问题。本文介绍了如何解决该问题。</p>
+<span id="more"></span>
+<p>首先，在使用 <code>docker attach container_name</code> 命令前需要先保证容器已经开启。此时，输入 <code>docker attach container_name</code> 命令后卡死的原因大概率是容器的驻守程序设定为 sshd 而非 bash。然而，sshd 驻守进程是不接受输入的，因此任何输入在该容器内都无效，在命令行中表现为卡死状态。</p>
+<p>了解症结后，解决方案就非常简单了，只需要把不接受输入的 sshd 驻守进程更换为交互式的 bash 进程即可。对一个正在运行的程序而言，只需要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_name /bin/bash</span><br></pre></td></tr></table></figure>
+<p>即可进入对应容器。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Pytorch】固定随机数种子</title>
     <url>/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在对神经网络模型进行训练时，有时候会存在对训练过程进行复现的需求。然而，每次运行时 Pytorch、Numpy 中的随机性将使得该目的变得困难重重。在程序运行前固定所有随机数的种子有望解决这一问题。基于此，本文记录了 Pytorch 中的固定随机数种子的方法。</p>
@@ -250,24 +268,6 @@ h = f(g \cdot \frac{x-\mu}{\sigma} + b)</script><p>其中，模型是通过计�
       </categories>
       <tags>
         <tag>踩过的坑</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Docker】 Docker attach 命令卡死的解决方案</title>
-    <url>/2022/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在启动较早期的容器时，出现了使用 <code>docker attach container_name</code> 命令后卡死的问题。本文介绍了如何解决该问题。</p>
-<span id="more"></span>
-<p>首先，在使用 <code>docker attach container_name</code> 命令前需要先保证容器已经开启。此时，输入 <code>docker attach container_name</code> 命令后卡死的原因大概率是容器的驻守程序设定为 sshd 而非 bash。然而，sshd 驻守进程是不接受输入的，因此任何输入在该容器内都无效，在命令行中表现为卡死状态。</p>
-<p>了解症结后，解决方案就非常简单了，只需要把不接受输入的 sshd 驻守进程更换为交互式的 bash 进程即可。对一个正在运行的程序而言，只需要输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_name /bin/bash</span><br></pre></td></tr></table></figure>
-<p>即可进入对应容器。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>

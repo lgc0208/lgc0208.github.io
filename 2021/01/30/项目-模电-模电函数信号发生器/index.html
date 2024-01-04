@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>简易函数信号发生器的设计和实现 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-项目-模电-模电函数信号发生器"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  简易函数信号发生器的设计和实现
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/" class="article-date">
+  <time datetime="2021-01-30T15:28:15.000Z" itemprop="datePublished">2021-01-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%A8%A1%E7%94%B5/">模电</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文记述了笔者设计并实现以±12V供电电压输出1KHZ~10KHZ频率连续可调的方波、三角波和正弦波的过程。其中，方波输出电压峰峰值为12V（误差&lt;20%），占空比可调、三角波输出电压峰峰值为8V（±20%），正弦波输出电压峰峰值≥1V。</p>
+<span id="more"></span>
+<h1 id="1-设计任务要求"><a href="#1-设计任务要求" class="headerlink" title="1 设计任务要求"></a>1 设计任务要求</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设计并制作一个简易的方波-三角波-正弦波信号发生器，供电电源为 ，要求频率调节方便，并满足以下指标：<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.输出频率在1KHZ~10KHZ范围内连续可调。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.方波输出电压峰峰值U~OPP~=12V（误差&lt;20%），上升、下降沿均小于10μs。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.三角波输出电压峰峰值U~OPP~=8V（±20%）。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.在1KHZ-10KHZ的频率范围内，正弦波输出电压峰峰值U~OPP~≥1V，无明显失真。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.输出方波为占空比可调的矩形波，占空比可调范围不小于30%-70%。</p>
+<h1 id="2-设计思路和整体设计框图"><a href="#2-设计思路和整体设计框图" class="headerlink" title="2 设计思路和整体设计框图"></a>2 设计思路和整体设计框图</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据实验要求，需要制作一个简易方波—三角波—正弦波的信号发生器。因此，容易想到的两种解决方案如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.先通过正弦振荡电路产生正弦波，再通过正弦波-方波变换电路得到方波，最后通过方波-三角波变换电路得到三角波，从而实现功能；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.先通过方波振荡电路产生方波，再通过方波-三角波变换电路产生三角波，最后通过三角波-正弦波变换电路产生正弦波，从而实现功能。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决方案1和2所对应的总体流程框图分别如图1和图2所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/2021013022415553.png" alt=" "></p>
+<center><b>图 1<b></b></b></center>
+
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224220672.png" alt=" "></p>
+<center><b>图 2<b></b></b></center>
+
+<h1 id="3-分块电路和总体电路的设计-含电路图"><a href="#3-分块电路和总体电路的设计-含电路图" class="headerlink" title="3 分块电路和总体电路的设计(含电路图)"></a>3 分块电路和总体电路的设计(含电路图)</h1><h2 id="3-1-矩形和三角波发生器"><a href="#3-1-矩形和三角波发生器" class="headerlink" title="3.1 矩形和三角波发生器"></a>3.1 矩形和三角波发生器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据LM318N和UA741CP的数据手册和文献资料，LM318N是一种性能好，价格低，使用可靠的高速运算放大器，适合多种情况下信号的高速放大。因此，笔者采用运算速度较快的LM318N作为矩形波发生电路的运放，而实验所提供的UA741CP运放则用于三角波发生电路。该部分的电路图如图3所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70.png" alt=" "></p>
+<center><b>图 3<b></b></b></center>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该部分电路中，运放LM318N接成迟滞电压比较器，运放UA741CP接成反相输入式积分器，期分期的输入电压来自于迟滞电压比较器的输出，迟滞电压比较器的输入信号来自于积分器的输出。设迟滞电压比较器的输出 的初始值为高电平，经过积分器后可在UA741CP的6端口处得到线性下降的输出信号 。这时该线性下降的信号又反馈至迟滞电压比较器的输入端，当其下降至比较器的下门限电压 时，比较器的输出将产生跳变，由低电平跳变为高电平，如此循环往复，最终迟滞电压比较器的输出 为方波信号，而在反相积分器的输出端 可以得到三角波信号。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设稳压管反向击穿电压为 ，正向导通电压为 ，故该电路产生的方波和三角波的输出幅度分别为：</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/202101302244371.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该实验中，要求方波的输出电压峰峰值U~OPP~=12V(误差&lt;20%) ，三角波的输出电压峰峰值U~OPP~=8V(误差&lt;20%) ，故可以计算出：</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224622514.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于在普通实践运用中，电阻值的选取多为千欧量级。选取电阻值过小会导致电路中的电流过大，选取电阻值过大会导致热噪声的过大，进而影响输出结果。故在此笔者选取两个电阻的阻值分别为：</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224658818.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于要使得集成运放两输入端的对地直流电阻箱等，运放的偏置电流才不会产生附加的失调电压，故运放输入端所接电阻要平衡，因此有</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224732309.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同时，在LM318N的输出端接入一个限流电阻R~O~=3.3KΩ以保护电路。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在矩形波-三角波发生电路中，由理论分析，电路的震荡频率为：</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224828658-164387022312442.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要满足输出频率在1KHZ-10KHZ范围内连续可调，于是选用 100KΩ的可调电位器进行调频，且选择电容值C=0.01μF的电容，电阻值R~2~=10kΩ。与上文相同，在运放的输入端所接电阻要平衡，故可以得到R~4~=R~2~=10kΩ。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于Multisim中的元器件库缺乏双稳压管，根据实验中方波峰峰值的要求，选择两个稳压值为6V的稳压管D1,D2代替元件2DW232进行仿真。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，改变方波的占空比可以通过将RC反馈电路中的R变成一个滑动变阻器和两个二极管组成的模块，通过调节滑动变阻器使其充放电时间不同，从而改变方波的占空比。改进后的方波-三角波发生电路如图4所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387021984240.png" alt=" "></p>
+<center><b>图 4<b></b></b></center>
+
+<h2 id="3-2-正弦波发生器"><a href="#3-2-正弦波发生器" class="headerlink" title="3.2 正弦波发生器"></a>3.2 正弦波发生器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在该设计中的前半部分已经成功得到了符合实验要求的矩形波和三角波，因此，该部分模块所要实现的主要功能为三角波到正弦波的转变。三角波到正弦波的转换电路种类多样，包括了二极管桥式电路、二极管可变分压器电路和差分放大器等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本实验中，笔者利用差分放大器传输特性曲线的非线性，进而实现三角波到正弦波的变换。其原理图如图5所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130225130515.png" alt=" "></p>
+<center><b>图 5<b></b></b></center>
+
+<p>由图5可知：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    （1）差分放大器的传输特性曲线越对称、线性区越窄越好；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    （2）输入三角波的幅度应该正好使得晶体管接近截止区。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    图6为笔者在Multisim软件上实现三角波到正弦波变换的差分电路。图中的Rp1用来调节输入三角波的幅度大小，Rp2调整电路的对称性，并联电阻R9用来减小差分放大器传输特性曲线的线性区。电容C2,C3,C4为隔直流电容，C5为滤波电容，用于滤除正弦波波峰和波谷处的毛刺，滤除谐波分量，改善输出正弦波的波形。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387021444437.png" alt=" "></p>
+<center><b>图 6<b></b></b></center>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据电路实际情况，隔直流电容C2,C3采用了33uF的电容，C4采用了1uF的电容，并根据仿真出的正弦波效果选择了6800pF的C5作为滤波电容。Q1,Q2,Q3,Q4根据实验室提供的元器件，在仿真时选择的是8050NPN管。</p>
+<h2 id="3-3-整体电路"><a href="#3-3-整体电路" class="headerlink" title="3.3 整体电路"></a>3.3 整体电路</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将三角波发生器的输出端接入正弦波发生器的输入端，即可获得完整的方波-三角波-正弦波发生电路。整体的实际电路图如图7所示。整体的Multisim仿真原理图及波形图将在本文第七部分详细呈现。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387021141035.png" alt=" "></p>
+<center><b>图 7<b></b></b></center>
+
+<h1 id="4-所实现的功能说明"><a href="#4-所实现的功能说明" class="headerlink" title="4 所实现的功能说明"></a>4 所实现的功能说明</h1><h2 id="4-1-矩形和三角波发生器"><a href="#4-1-矩形和三角波发生器" class="headerlink" title="4.1 矩形和三角波发生器"></a>4.1 矩形和三角波发生器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现了将输入的±12V直流信号转变为输出电压峰峰值U~OPP~=12V（误差≤20%）的方波，上升、下降沿均小于10μs且输出的方波的占空比在30%-70%内可调节，频率在1KHZ-10KHZ内可调节，并可以输出电压峰峰值U~OPP~=8V（误差≤20%）的三角波信号。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实验室实测的波形图如图8，图9，图10所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387020780133.png" alt=" "></p>
+<center><b>图 8<b></b></b></center>
+
+<p><div align="center"></div></p>
+<p><image src="https://img-blog.csdnimg.cn/2021013022592943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70"><br>&lt;/div&gt;</image></p>
+<center><b>图 9<b></b></b></center>
+
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387020462631.png" alt=" "></p>
+<center><b>图 10<b></b></b></center>
+
+<h2 id="4-2-正弦波发生器"><a href="#4-2-正弦波发生器" class="headerlink" title="4.2 正弦波发生器"></a>4.2 正弦波发生器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现了将输入的三角波转换为正弦波的功能，正弦波峰峰值大于1V~PP~，无明显失真。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实验室实测波形图如图11，图12所示。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387020203529.png" alt=" "></p>
+<center><b>图 11<b></b></b></center>
+![ ](%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387019908527.png)
+
+<center><b>图 12<b></b></b></center>
+
+<h1 id="5-故障及问题分析"><a href="#5-故障及问题分析" class="headerlink" title="5 故障及问题分析"></a>5 故障及问题分析</h1><h2 id="5-1-无法正确提供-12V的电压值"><a href="#5-1-无法正确提供-12V的电压值" class="headerlink" title="5.1 无法正确提供-12V的电压值"></a>5.1 无法正确提供-12V的电压值</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：初步尝试时，将双输出恒压源的其中一个输出端（红线）和另一个输入端（黑线）分别接在了面包板两侧的地，导致获得的波形与仿真结果相差甚远，如图13所示。通过分析和查阅相关文献资料后，将接法修改为将红线和黑线接在同一个位置后，再通过导线将面包板两侧的地连接起来，成功解决了该故障。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387019500525.png" alt=" "></p>
+<center><b>图 13<b></b></b></center>
+
+<h2 id="5-2-波形频率无法满足1KHZ-10KHZ范围内可调"><a href="#5-2-波形频率无法满足1KHZ-10KHZ范围内可调" class="headerlink" title="5.2 波形频率无法满足1KHZ-10KHZ范围内可调"></a>5.2 波形频率无法满足1KHZ-10KHZ范围内可调</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：根据理论分析可知，电路的震荡频率为</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130224828658.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;笔者最初的设想是随着滑动变阻器划片的移动， R~P2~可以趋近于无穷小，此时<script type="math/tex">\frac{R_{P2}}{R_{P1}}</script>趋近于0。同理，R~P1~可以趋近于无穷大，此时<script type="math/tex">\frac{R_{P2}}{R_{P1}}</script>应当趋近于无穷大。然而实际电路中，波形的频率增加或降低到一定值时，无论如何调整滑动变阻器的划片都无法使得波形频率进一步改变。因此，笔者通过改变震荡频率公式前的系数 <script type="math/tex">\frac{R_{f}}{4R_1R_2C}</script>，即通过改变R~1~、R~2~和C的值来改变电路的震荡频率范围。</p>
+<h2 id="5-3-双稳压管2DW232接入电路中后没有稳压效果"><a href="#5-3-双稳压管2DW232接入电路中后没有稳压效果" class="headerlink" title="5.3 双稳压管2DW232接入电路中后没有稳压效果"></a>5.3 双稳压管2DW232接入电路中后没有稳压效果</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：查阅资料后发现，双稳压管2DW232是电压基准二极管，参数为6.0V-6.5V，30mA和200mW，2DW232的示意图如图14所示。2DW232中封装了一对稳压二极管，内部结构如图15所示。因此，将2DW232接入电源时应该从两个稳压管两端接线。在确定管脚时先用万用表的电阻档，分别测量两个管脚之间的电阻值。当测量到某一个管脚和另外两个管脚之间的电阻值都相同时，该管脚即为图14所示的2号管脚，不接入电路。调整2DW232后，稳压效果生效，故此解决问题。</p>
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/20210130230730907.png" alt=" "></p>
+<center><b>图 14<b></b></b></center>
+
+<p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387018156120-164387018295322.png" alt=" "></p>
+<center><b>图 15<b></b></b></center>
+
+<h2 id="5-4-正弦波波形出现截止失真"><a href="#5-4-正弦波波形出现截止失真" class="headerlink" title="5.4 正弦波波形出现截止失真"></a>5.4 正弦波波形出现截止失真</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：根据理论分析可知，当晶体管的静态工作点设置较低时，由于输入信号的叠加有可能使叠加后的波形一部分进入截止区，输出电压的顶部出现削波。因此，需要给三极管足够的偏置，使得BJT都工作在放大区，而不进入饱和区或截止区。</p>
+<h2 id="5-5-将RC电路中的R替换为二极管和滑动变阻器的组合后波形消失"><a href="#5-5-将RC电路中的R替换为二极管和滑动变阻器的组合后波形消失" class="headerlink" title="5.5 将RC电路中的R替换为二极管和滑动变阻器的组合后波形消失"></a>5.5 将RC电路中的R替换为二极管和滑动变阻器的组合后波形消失</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：无法出现波形后，笔者首先将改变后的部分还原，发现仍然有波形出现。因此锁定出现问题的部分为二极管和滑动变阻器的组合。检查后发现二极管和滑动变阻器都接在该有的位置，因此怀疑是否存在二极管或滑动变阻器损坏的问题。更换二极管后，示波器上出现波形，故此解决问题。</p>
+<h2 id="5-6-不小心将接好的面包板摔在地上后无法出现波形"><a href="#5-6-不小心将接好的面包板摔在地上后无法出现波形" class="headerlink" title="5.6 不小心将接好的面包板摔在地上后无法出现波形"></a>5.6 不小心将接好的面包板摔在地上后无法出现波形</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：首先检查元器件是否有缺失，电路连线是否有缺失。肉眼检查后发现元件和连线无误，重新接入电源和示波器后发现仍然没有波形。此时使用改锥对触碰每一条导线，发现触碰其中一条接地线时示波器上有波形跳动。将该条导线替换后示波器上波形正常，故此解决问题。</p>
+<h2 id="5-7-找不到仿真中合适的电阻值"><a href="#5-7-找不到仿真中合适的电阻值" class="headerlink" title="5.7 找不到仿真中合适的电阻值"></a>5.7 找不到仿真中合适的电阻值</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因分析：通过查阅资料发现，电阻的制造过程中每一个电阻的阻值都存在一定范围内的误差，且并非所有的阻值都有对应的电阻。因此在选择电阻接入电路时，笔者尽可能选择接近仿真时所使用的电阻值接入电路，以减小影响。</p>
+<h1 id="6-Multisim仿真原理图、波形图"><a href="#6-Multisim仿真原理图、波形图" class="headerlink" title="6 Multisim仿真原理图、波形图"></a>6 Multisim仿真原理图、波形图</h1><h2 id="6-1-矩形和三角波发生器"><a href="#6-1-矩形和三角波发生器" class="headerlink" title="6.1 矩形和三角波发生器"></a>6.1 矩形和三角波发生器</h2><h3 id="6-1-1-仿真原理图"><a href="#6-1-1-仿真原理图" class="headerlink" title="6.1.1 仿真原理图"></a>6.1.1 仿真原理图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387016749217-164387017240019.png" alt=" "></p>
+<h3 id="6-1-2-仿真波形图"><a href="#6-1-2-仿真波形图" class="headerlink" title="6.1.2 仿真波形图"></a>6.1.2 仿真波形图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387016164815.png" alt=" "></p>
+<h3 id="6-1-3-实测波形图"><a href="#6-1-3-实测波形图" class="headerlink" title="6.1.3 实测波形图"></a>6.1.3 实测波形图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387014524312-164387014703314.png" alt=" "></p>
+<h2 id="6-2-正弦波发生器"><a href="#6-2-正弦波发生器" class="headerlink" title="6.2 正弦波发生器"></a>6.2 正弦波发生器</h2><h3 id="6-2-1-仿真原理图"><a href="#6-2-1-仿真原理图" class="headerlink" title="6.2.1 仿真原理图"></a>6.2.1 仿真原理图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-16438701238485.png" alt=" "></p>
+<h3 id="6-2-2-仿真波形图"><a href="#6-2-2-仿真波形图" class="headerlink" title="6.2.2 仿真波形图"></a>6.2.2 仿真波形图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-16438701297688.png" alt=" "></p>
+<h3 id="6-2-3-实测波形图"><a href="#6-2-3-实测波形图" class="headerlink" title="6.2.3 实测波形图"></a>6.2.3 实测波形图</h3><p><img src="/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164387013126410.png" alt=" "></p>
+<h1 id="7-所用元器件及测试仪表清单"><a href="#7-所用元器件及测试仪表清单" class="headerlink" title="7 所用元器件及测试仪表清单"></a>7 所用元器件及测试仪表清单</h1><h2 id="7-1-所用元器件"><a href="#7-1-所用元器件" class="headerlink" title="7.1 所用元器件"></a>7.1 所用元器件</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>电阻R（Ω）</th>
+<th>个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1k</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3.3k</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4.7k</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5.6k</td>
+<td>2</td>
+</tr>
+<tr>
+<td>12k</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20k</td>
+<td>1</td>
+</tr>
+<tr>
+<td>22k</td>
+<td>1</td>
+</tr>
+<tr>
+<td>30k</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>电位器（Ω）</th>
+<th>个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>100k</td>
+<td>2</td>
+</tr>
+<tr>
+<td>200k</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>电容(uF)</th>
+<th>个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0068</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>33</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>其他元器件(名称)</th>
+<th>个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运算放大器LM318N</td>
+<td>1</td>
+</tr>
+<tr>
+<td>运算放大器UA741CP</td>
+<td>1</td>
+</tr>
+<tr>
+<td>三极管8050</td>
+<td>4</td>
+</tr>
+<tr>
+<td>双稳压管2DW232</td>
+<td>1</td>
+</tr>
+<tr>
+<td>二极管1N4148</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="7-2-测试所用的仪器"><a href="#7-2-测试所用的仪器" class="headerlink" title="7.2 测试所用的仪器"></a>7.2 测试所用的仪器</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>型号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>示波器</td>
+<td>MDO3012</td>
+</tr>
+<tr>
+<td>直流稳压电源</td>
+<td>SS2323</td>
+</tr>
+<tr>
+<td>面包板</td>
+<td>无</td>
+</tr>
+<tr>
+<td>万用表</td>
+<td>UT61A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="8-参考文献"><a href="#8-参考文献" class="headerlink" title="8 参考文献"></a>8 参考文献</h1><p>[1]杨世清.高速运算放大器LM318N应用简介[J].集成电路应用,1993,05:19-20.<br>[2]王骥,王立臣,杜爽.模拟电路分析与设计[M].清华大学出版社:北京,2012:202-277.<br>[3]周开邻,王彩君,杨睿.模拟电路实验[M].国防工业出版社:北京,2009:99-102.<br>[4]Texas Instruments.LM118/LM218/LM318 Operational Amplifiers datasheet (Rev. C)[EB/OL].<a target="_blank" rel="noopener" href="https://www.ti.com/lit/ds/symlink/lm318-n.pdf?ts=1603718649867&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLM318-N,2013-3-20">https://www.ti.com/lit/ds/symlink/lm318-n.pdf?ts=1603718649867&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLM318-N,2013-3-20</a>.<br>[5]Texas Instruments.µA741 General-Purpose Operational Amplifiers[EB/OL].<a target="_blank" rel="noopener" href="https://www.ti.com/lit/ds/symlink/ua741.pdf?ts=1603718760064&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fsitesearch%252Fdocs%252Funiversalsearch.tsp%253FsearchTerm%253Dua741,2018-1-15">https://www.ti.com/lit/ds/symlink/ua741.pdf?ts=1603718760064&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fsitesearch%252Fdocs%252Funiversalsearch.tsp%253FsearchTerm%253Dua741,2018-1-15</a>.<br>[6]电子爱好者.2DW232参数[EB/OL].<a target="_blank" rel="noopener" href="https://www.dianziaihaozhe.com/jingtiguan/?model=2DW232,2010">https://www.dianziaihaozhe.com/jingtiguan/?model=2DW232,2010</a>.<br>[7]电子发烧友.1N4148二极管的作用[EB/OL].<a target="_blank" rel="noopener" href="http://www.elecfans.com/yuanqijian/erjiguang/20171031573210.html,2017-10-31">http://www.elecfans.com/yuanqijian/erjiguang/20171031573210.html,2017-10-31</a>.<br>[8]Tektronix.MDO3000系列混合域示波器用户手册[EB/OL].www.tektronix.com,2020-8-13.<br>[9]陈翠.函数信号发生器的工作原理[EB/OL].<a target="_blank" rel="noopener" href="http://www.elecfans.com/d/775486.html,2018-9-12">http://www.elecfans.com/d/775486.html,2018-9-12</a>.<br>[10]刘宝玲,北京邮电大学信息与通信工程学院.电子电路基础 第二版[M].高等教育出版社:北京,2013:392-395.</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2021/01/30/%E9%A1%B9%E7%9B%AE-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%87%BD%E6%95%B0%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E7%94%B5/" rel="tag">模电</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/02/02/%E9%A1%B9%E7%9B%AE-Python-Python%E4%BA%94%E5%AD%90%E6%A3%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            基于 pygame 的五子棋小游戏
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/01/30/%E9%A1%B9%E7%9B%AE-Verilog-%E6%95%B0%E7%94%B5%E7%94%B5%E5%AD%90%E7%90%B4/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">基于 Verilog 和 EPM1270T144C5 的简易电子琴</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> lgc0208@foxmail.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

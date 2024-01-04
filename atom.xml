@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2023-12-04T08:36:01.632Z</updated>
+  <updated>2024-01-04T02:54:32.599Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>【Linux】 服务器免密登陆</title>
-    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"/>
-    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/</id>
     <published>2023-12-04T08:35:07.000Z</published>
-    <updated>2023-12-04T08:36:01.632Z</updated>
+    <updated>2024-01-04T02:54:32.599Z</updated>
     
     
     <summary type="html">&lt;p&gt;由于专业要求，我需要经常通过 VSCode、Terminal 等工具连接远程服务器开展工作。而每次连接都需要输入一次或多次密码无疑影响了工作体验。基于该背景，本文介绍了免密登陆远程服务器的方式。&lt;/p&gt;</summary>
@@ -32,6 +32,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Linux" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -39,8 +41,8 @@
   
   <entry>
     <title>【Docker】 Docker attach 命令卡死的解决方案</title>
-    <link href="https://lgc0208.github.io/2023/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://lgc0208.github.io/2023/12/04/Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Docker-Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Docker-Docker%20attach%E5%8D%A1%E6%AD%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
     <published>2023-12-04T08:14:26.000Z</published>
     <updated>2023-12-18T07:21:13.211Z</updated>
     
@@ -60,8 +62,8 @@
   
   <entry>
     <title>【Pytorch】固定随机数种子</title>
-    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/"/>
-    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/</id>
     <published>2023-12-04T03:26:00.000Z</published>
     <updated>2023-12-04T03:34:25.627Z</updated>
     
@@ -81,10 +83,10 @@
   
   <entry>
     <title>【Pytorch】模型的保存和加载</title>
-    <link href="https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://lgc0208.github.io/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/</id>
     <published>2023-12-04T02:41:00.000Z</published>
-    <updated>2023-12-04T02:41:12.203Z</updated>
+    <updated>2023-12-04T02:43:26.654Z</updated>
     
     
     <summary type="html">&lt;p&gt;在对神经网络模型进行训练时，定期地保存模型可以增加程序的抗风险能力。同时，通过对保存模型的加载可以很方便地复现和使用我们训练好的神经网络模型。基于此，本文记录了 Pytorch 中的模型保存和加载方法。&lt;/p&gt;</summary>
@@ -102,10 +104,10 @@
   
   <entry>
     <title>【Linux】docker限制容器内存的方法</title>
-    <link href="https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <id>https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <link href="https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <published>2023-11-13T12:02:07.000Z</published>
-    <updated>2023-11-28T13:12:36.134Z</updated>
+    <updated>2024-01-04T02:57:44.692Z</updated>
     
     
     <summary type="html">&lt;p&gt;在服务器中使用 docker 时，如果不对 docker 的可调用内存进行限制，当 docker 内的程序出现不可预测的问题时，就很有可能因为内存爆炸导致服务器主机的瘫痪。而对 docker 进行限制后，可以将瘫痪范围控制在 docker 内。&lt;/p&gt;
@@ -117,6 +119,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Linux" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -124,14 +128,14 @@
   
   <entry>
     <title>【Linux】htop命令中显示相同进程</title>
-    <link href="https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/"/>
-    <id>https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/</id>
+    <link href="https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/"/>
+    <id>https://lgc0208.github.io/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/</id>
     <published>2023-10-23T12:02:07.000Z</published>
-    <updated>2023-12-04T01:42:07.322Z</updated>
+    <updated>2024-01-04T03:01:18.393Z</updated>
     
     
     <summary type="html">&lt;p&gt;使用 htop 的过程中会发现有很多同样的进程被标注了绿色大量显示。如下图所示。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128200120548.png&quot; alt=&quot;很多同样的进程被标注了绿色大量显示&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/image-20231128200120548.png&quot; alt=&quot;很多同样的进程被标注了绿色大量显示&quot;&gt;&lt;/p&gt;
 &lt;p&gt;这使得在大量程序运行时想要找到需要观察的进程变的困难。本文介绍了如何省略这些重复现实的进程。&lt;/p&gt;</summary>
     
     
@@ -140,6 +144,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Linux" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -147,10 +153,10 @@
   
   <entry>
     <title>【MacOS】 IMAP命令“APPEND”（至Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案</title>
-    <link href="https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
-    <id>https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/</id>
+    <link href="https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
+    <id>https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/</id>
     <published>2023-10-12T08:53:33.000Z</published>
-    <updated>2023-10-12T02:09:49.355Z</updated>
+    <updated>2024-01-04T03:08:58.973Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了在 MacOS 系统中，使用邮件 APP 进行发信后提示 IMAP 命令 “APPEND”（至 Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案。&lt;/p&gt;</summary>
@@ -161,6 +167,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="MacOS" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/MacOS/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -168,10 +176,10 @@
   
   <entry>
     <title>【Tensorboard】 Tensorboard展示所有数据</title>
-    <link href="https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/"/>
-    <id>https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/</id>
+    <link href="https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Tensorboard-Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/"/>
+    <id>https://lgc0208.github.io/2023/04/14/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Tensorboard-Tensorboard%E5%B1%95%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE/</id>
     <published>2023-04-14T08:53:33.000Z</published>
-    <updated>2023-04-15T10:38:52.356Z</updated>
+    <updated>2024-01-04T03:04:42.510Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了在 Tensorboard 展示数据时显示所有数据的方法&lt;/p&gt;</summary>
@@ -182,17 +190,19 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Tensorboard" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Tensorboard/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
   </entry>
   
   <entry>
-    <title>【系统】 你需要 Lenovo 权限才能对此文件夹进行更改</title>
-    <link href="https://lgc0208.github.io/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/"/>
-    <id>https://lgc0208.github.io/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/</id>
+    <title>【Win10】 你需要 Lenovo 权限才能对此文件夹进行更改</title>
+    <link href="https://lgc0208.github.io/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows-%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/"/>
+    <id>https://lgc0208.github.io/2023/03/30/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows-%E9%9C%80%E8%A6%81Lenovo%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%88%A0%E9%99%A4/</id>
     <published>2023-03-30T08:24:07.000Z</published>
-    <updated>2023-03-30T06:58:17.959Z</updated>
+    <updated>2024-01-04T02:57:02.924Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录了在删除文件时遇到 &lt;code&gt;你需要 Lenovo 权限才能对此文件夹进行更改&lt;/code&gt; 的最简单解决方法&lt;/p&gt;</summary>
@@ -203,6 +213,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Windows" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Windows/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -210,10 +222,10 @@
   
   <entry>
     <title>【Git】 服务器上关联 Github</title>
-    <link href="https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/"/>
-    <id>https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/</id>
+    <link href="https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Git-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/"/>
+    <id>https://lgc0208.github.io/2023/02/21/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Git-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%85%B3%E8%81%94git/</id>
     <published>2023-02-21T08:24:10.000Z</published>
-    <updated>2023-07-05T08:39:33.448Z</updated>
+    <updated>2024-01-04T02:56:00.910Z</updated>
     
     
     <summary type="html">&lt;p&gt;首先在所需目录将其变成 Git 可以管理的仓库&lt;/p&gt;
@@ -225,6 +237,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Git" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Git/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -232,8 +246,8 @@
   
   <entry>
     <title>【系统】 Docker 镜像打包过程</title>
-    <link href="https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/"/>
-    <id>https://lgc0208.github.io/2022/11/26/Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/</id>
+    <link href="https://lgc0208.github.io/2022/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Docker-Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/"/>
+    <id>https://lgc0208.github.io/2022/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Docker-Docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B/</id>
     <published>2022-11-26T02:10:26.000Z</published>
     <updated>2023-04-15T10:40:36.551Z</updated>
     
@@ -253,10 +267,10 @@
   
   <entry>
     <title>【WinError 10013】 以一种访问权限不允许的方式做了一个访问套接字的尝试</title>
-    <link href="https://lgc0208.github.io/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/"/>
-    <id>https://lgc0208.github.io/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91_WinError10013/</id>
+    <link href="https://lgc0208.github.io/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows-WinError10013/"/>
+    <id>https://lgc0208.github.io/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows-WinError10013/</id>
     <published>2022-09-26T02:05:02.000Z</published>
-    <updated>2022-09-26T15:11:00.146Z</updated>
+    <updated>2024-01-04T03:03:05.245Z</updated>
     
     
     <summary type="html">&lt;p&gt;在使用 Tensorboard 的过程中，遇到报错 &lt;code&gt;[WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试&lt;/code&gt;&lt;/p&gt;</summary>
@@ -267,6 +281,8 @@
     
     <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
     
+    <category term="Windows" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Windows/"/>
+    
     
     <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
     
@@ -274,8 +290,8 @@
   
   <entry>
     <title>OSPF 协议介绍</title>
-    <link href="https://lgc0208.github.io/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://lgc0208.github.io/2022/09/09/OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/</id>
+    <link href="https://lgc0208.github.io/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://lgc0208.github.io/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/</id>
     <published>2022-09-09T08:50:29.000Z</published>
     <updated>2023-03-30T08:19:34.718Z</updated>
     
@@ -295,10 +311,10 @@
   
   <entry>
     <title>INET 中加入自定义协议的方法</title>
-    <link href="https://lgc0208.github.io/2022/08/30/INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/"/>
-    <id>https://lgc0208.github.io/2022/08/30/INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/</id>
+    <link href="https://lgc0208.github.io/2022/08/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/"/>
+    <id>https://lgc0208.github.io/2022/08/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/</id>
     <published>2022-08-30T08:50:29.000Z</published>
-    <updated>2023-03-30T08:19:23.196Z</updated>
+    <updated>2024-01-04T02:42:04.904Z</updated>
     
     
     <summary type="html">&lt;p&gt;当 INET 原生不具备所需实验环境时，我们可能需要自己编写一些网络协议以实现预期功能。基于此，本文将对 INET 中加入自定义协议的方法进行调研和记录。&lt;/p&gt;</summary>
@@ -307,17 +323,21 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
+    
+    <category term="INET" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/INET/"/>
     
     
     <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
+    
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   
   <entry>
     <title>从博弈论到 MARL.中科院自动化所张海峰讲座.20200606</title>
-    <link href="https://lgc0208.github.io/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://lgc0208.github.io/2022/08/11/%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://lgc0208.github.io/2022/08/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lgc0208.github.io/2022/08/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E4%BB%8E%E5%8D%9A%E5%BC%88%E8%AE%BA%E5%88%B0%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</id>
     <published>2022-08-11T07:23:45.000Z</published>
     <updated>2022-08-12T01:20:11.491Z</updated>
     
@@ -337,10 +357,10 @@
   
   <entry>
     <title>INET ospfv2 simpleTest 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/08/%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/</id>
+    <link href="https://lgc0208.github.io/2022/08/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://lgc0208.github.io/2022/08/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-08T08:50:29.000Z</published>
-    <updated>2022-08-09T08:07:06.139Z</updated>
+    <updated>2024-01-04T02:42:21.536Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;实验原理&quot;&gt;&lt;a href=&quot;#实验原理&quot; class=&quot;headerlink&quot; title=&quot;实验原理&quot;&gt;&lt;/a&gt;实验原理&lt;/h2&gt;&lt;p&gt;OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。&lt;/p&gt;</summary>
@@ -349,19 +369,23 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
+    
+    <category term="INET" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/INET/"/>
     
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
+    
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   
   <entry>
     <title>开源库 INET wireless 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/07/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/</id>
+    <link href="https://lgc0208.github.io/2022/08/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://lgc0208.github.io/2022/08/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-07T08:50:29.000Z</published>
-    <updated>2023-03-30T08:19:58.709Z</updated>
+    <updated>2024-01-04T02:42:41.260Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;示例-1-两台主机无线通信&quot;&gt;&lt;a href=&quot;#示例-1-两台主机无线通信&quot; class=&quot;headerlink&quot; title=&quot;示例 1 两台主机无线通信&quot;&gt;&lt;/a&gt;示例 1 两台主机无线通信&lt;/h2&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;创建一个包含 2 个主机的网络，其中一台主机向另一台主机发送 UDP 数据流。在实验过程尽量简化底层协议模型。官方示例保存在 &lt;code&gt;inet4/tutorials/wireless/&lt;/code&gt; 路径中。&lt;/p&gt;</summary>
@@ -370,28 +394,32 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
+    
+    <category term="INET" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/INET/"/>
     
     
     <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
+    
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   
   <entry>
     <title>OMNeT++ tictoc 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/06/%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/</id>
+    <link href="https://lgc0208.github.io/2022/08/06/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://lgc0208.github.io/2022/08/06/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/</id>
     <published>2022-08-06T08:50:29.000Z</published>
-    <updated>2023-03-30T08:19:16.122Z</updated>
+    <updated>2024-01-04T02:34:12.992Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNet++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNeT++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
     
     
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="网络仿真器" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F%E5%99%A8/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
     
     
     <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
@@ -399,14 +427,14 @@
   </entry>
   
   <entry>
-    <title>OMNet++ 基础知识：仿真过程和配置文件</title>
-    <link href="https://lgc0208.github.io/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>https://lgc0208.github.io/2022/08/02/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
+    <title>OMNeT++ 基础知识：仿真过程和配置文件</title>
+    <link href="https://lgc0208.github.io/2022/08/02/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>https://lgc0208.github.io/2022/08/02/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
     <published>2022-08-02T08:50:29.000Z</published>
-    <updated>2022-08-09T08:03:10.377Z</updated>
+    <updated>2024-01-04T02:30:37.912Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;仿真过程&quot;&gt;&lt;a href=&quot;#仿真过程&quot; class=&quot;headerlink&quot; title=&quot;仿真过程&quot;&gt;&lt;/a&gt;仿真过程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;OMNet++&lt;/code&gt; 的源代码通常包括以下文件：&lt;/p&gt;
+    <summary type="html">&lt;h2 id=&quot;仿真过程&quot;&gt;&lt;a href=&quot;#仿真过程&quot; class=&quot;headerlink&quot; title=&quot;仿真过程&quot;&gt;&lt;/a&gt;仿真过程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;OMNeT++&lt;/code&gt; 的源代码通常包括以下文件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;C++ 文件（&lt;code&gt;.h&lt;/code&gt; 和 &lt;code&gt;.cc&lt;/code&gt;）：包含简单模块的实现和其他代码；&lt;/li&gt;
 &lt;li&gt;消息文件（&lt;code&gt;.msg&lt;/code&gt;）：包含要转换为 C++ 类的消息定义；&lt;/li&gt;
@@ -418,19 +446,19 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
     
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   
   <entry>
-    <title>OMNet++ 基础语法：模块参数、门和连接的访问</title>
-    <link href="https://lgc0208.github.io/2022/08/01/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/"/>
-    <id>https://lgc0208.github.io/2022/08/01/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/</id>
+    <title>OMNeT++ 基础语法：模块参数、门和连接的访问</title>
+    <link href="https://lgc0208.github.io/2022/08/01/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/"/>
+    <id>https://lgc0208.github.io/2022/08/01/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E3%80%81%E9%97%A8%E5%92%8C%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BF%E9%97%AE/</id>
     <published>2022-08-01T08:50:29.000Z</published>
-    <updated>2022-08-01T15:05:17.587Z</updated>
+    <updated>2024-01-04T02:29:56.940Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;消息参数的访问&quot;&gt;&lt;a href=&quot;#消息参数的访问&quot; class=&quot;headerlink&quot; title=&quot;消息参数的访问&quot;&gt;&lt;/a&gt;消息参数的访问&lt;/h2&gt;&lt;p&gt;在 &lt;code&gt;NED&lt;/code&gt; 文件中申明的模块参数在运行时用 &lt;code&gt;cPar&lt;/code&gt; 类表示。在调用 &lt;code&gt;cComponent&lt;/code&gt; 中的成员函数 &lt;code&gt;par()&lt;/code&gt; 可以访问模块指针，如：&lt;/p&gt;</summary>
@@ -439,10 +467,10 @@
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
     
     
-    <category term="OMNet++" scheme="https://lgc0208.github.io/tags/OMNet/"/>
+    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   

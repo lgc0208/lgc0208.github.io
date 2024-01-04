@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>OSPF 协议介绍 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-学习笔记-网络路由-OSPF协议介绍"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  OSPF 协议介绍
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2022-09-09T08:50:29.000Z" itemprop="datePublished">2022-09-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1/">网络路由</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>本文记录了 OSPF 的基本信息。</p>
+<span id="more"></span>
+<h2 id="开放式最短路径优先协议-OSPF"><a href="#开放式最短路径优先协议-OSPF" class="headerlink" title="开放式最短路径优先协议 OSPF"></a>开放式最短路径优先协议 OSPF</h2><h3 id="一、OSPF-简介"><a href="#一、OSPF-简介" class="headerlink" title="一、OSPF 简介"></a>一、OSPF 简介</h3><p>OSPF（Open Shortest Path First）开放最短路径优先协议是一个基于链路状态的自制系统内部网关协议，使用链路状态路由（LSR）算法，直接工作在 IP 层上。在网络中使用 OSPF 协议后，大部分路由将根据 OSPF 协议自行计算和生成，无需人工配置。当网络拓扑发生变化时，OSPF 协议可以自动计算、更正路由，方便了实际的网络管理。</p>
+<p>OSPF 从可用路由器收集链路状态信息并构建网络拓扑图，该拓扑以路由表的形式呈现给 Internet 层，通过该路由表根据数据包的 IP 地址路由数据包。OSPF 基于 Dijkstra 算法计算每条路线的最短路径树。构建路由表的 OSPF 路由策略由每个路由接口关联的链路度量来管理，可考虑的成本因素包括了路由器的距离（往返时间）、链路的吞吐量、链路可用性等。</p>
+<p>OSPF 的基础术语包括了：</p>
+<ul>
+<li><em>Router-ID</em>：路由器标识符，用于在 OSPF 域中唯一地标识一台路由器 </li>
+<li><em>度量值</em>：OSPF 使用 Cost（开销）作为路由的度量值，每一个激活了 OSPF 的接口都会维护一个接口 Cost值，接口 Cost 值 = OSPF 指定的缺省参考值/接口带宽。其中，Cost 也可以手动配置</li>
+</ul>
+<h3 id="二、OSPF-的-5-种报文"><a href="#二、OSPF-的-5-种报文" class="headerlink" title="二、OSPF 的 5 种报文"></a>二、OSPF 的 5 种报文</h3><p>与 UDP、TCP 等其他的路由协议不同，OSPF 不通过传输协议传输数据。OSPF 直接生成 IP 数据报，定义了 5 种不同的消息类型用于各种类型的通信：</p>
+<h4 id="2-1-Hello-包"><a href="#2-1-Hello-包" class="headerlink" title="2.1 Hello 包"></a>2.1 Hello 包</h4><p>OSPF 的 Hello 消息作为一种问候形式让路由器得以发现其本地链路和网络上的其他相邻路由器，这些消息在相邻设备之间建立邻接关系并传达如何在自治系统中使用 OSPF 的关键参数。在正常运行期间，路由器会定期向其邻居节点发送 Hello 消息。如果相邻路由器停止接收来自邻居节点的 Hello 消息，则在设定的时间段后，判断邻居路由器已关闭。</p>
+<h4 id="2-2-数据库描述消息-Database-Description"><a href="#2-2-数据库描述消息-Database-Description" class="headerlink" title="2.2 数据库描述消息 Database Description"></a>2.2 数据库描述消息 Database Description</h4><p>数据库描述消息包含自治系统的拓扑描述，描述消息将该区域的链路状态数据库（LSDB）的内容从一台服务器传送到另一台服务器。</p>
+<h4 id="2-3-链路状态数据消息"><a href="#2-3-链路状态数据消息" class="headerlink" title="2.3 链路状态数据消息"></a>2.3 链路状态数据消息</h4><h5 id="2-3-1-链路状态请求（LSR-Link-State-Request）"><a href="#2-3-1-链路状态请求（LSR-Link-State-Request）" class="headerlink" title="2.3.1 链路状态请求（LSR, Link State Request）"></a>2.3.1 链路状态请求（LSR, Link State Request）</h5><p>一个路由器使用链路状态请求消息向另一台路由器请求有关 LSDB 的一部分更新信息（链路状态信息 LSA）。该消息指定了请求设备希望获得更多最新信息的链接。</p>
+<h5 id="2-3-2-链路状态更新（LSU-Link-State-Update）"><a href="#2-3-2-链路状态更新（LSU-Link-State-Update）" class="headerlink" title="2.3.2 链路状态更新（LSU, Link State Update）"></a>2.3.2 链路状态更新（LSU, Link State Update）</h5><p>链路状态更新消息包含有关 LSDB 上某些链路状态的更新信息，用以响应链路状态请求信息。链路状态更新信息由路由器定期广播和多播。LSU 的内容将被用于更新接收他们的路由器的 LSDB 信息。</p>
+<h5 id="2-3-3-链路状态确认（LSAck-Link-State-ACK）"><a href="#2-3-3-链路状态确认（LSAck-Link-State-ACK）" class="headerlink" title="2.3.3 链路状态确认（LSAck, Link State ACK）"></a>2.3.3 链路状态确认（LSAck, Link State ACK）</h5><p>链路状态确认信息通过明确确认已经收到 LSU 信息来保障链路状态交换过程的可靠性。</p>
+<h3 id="三、OSPF-的-3-步工作过程"><a href="#三、OSPF-的-3-步工作过程" class="headerlink" title="三、OSPF 的 3 步工作过程"></a>三、OSPF 的 3 步工作过程</h3><h4 id="3-1-发现邻居"><a href="#3-1-发现邻居" class="headerlink" title="3.1 发现邻居"></a>3.1 发现邻居</h4><p>OSPF 路由器通过组播 hello 包， 通过同一个广播域内的接口建立一组邻居关系，如下图所示。所有的邻居都可能与自己交换链路信息。</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-16801642125786.png" alt="发现邻居"></p>
+<p>在这一过程中，<strong>OSPF 存在 4 种不同的状态</strong>：</p>
+<ol>
+<li><em>Down 状态</em>：邻居的初始状态，表示没有从邻居收到任何消息。在 NBMA（非广播-多路访问网络）网络上，此状态下仍然可以向静态配置的邻居发送 Hello 报文，发送间隔为 PollInterval，通常与 Router DeadInterval 间隔相同。</li>
+<li><em>Attempt 状态</em>：该状态只在 NBMA（非广播-多路访问网络）中存在，表示没有收到邻居的任何信息，但是已经周期性地向邻居发送报文，发送间隔为 HelloInterval。如果在 Router DeadInterval 间隔内未收到邻居的 Hello 报文，则转换为 Down 状态。</li>
+<li><em>Init 状态</em>：路由器已经从邻居收到了 Hello 报文，但是自己的 Router ID 不再所收到的 Hello 报文的邻居列表中，表示尚未与邻居建立双向通信关系。</li>
+<li><em>2-Way 状态</em>：路由器发现自己的 Router ID 存在于收到的 Hello 报文的邻居列表中，已确认可以双向通信。</li>
+</ol>
+<h4 id="3-2-建立邻接关系"><a href="#3-2-建立邻接关系" class="headerlink" title="3.2 建立邻接关系"></a>3.2 建立邻接关系</h4><p>只有建立了邻接关系的邻居路由器才会交换链路状态信息。为了提高链路状态信息的交换效率，OSPF 采用的是 DR/BDR 方式建立连接关系。这种方式在同一个广播域的接口中选举一个组长 DR（Designated Router，指定路由器） 和一个副组长 DBR（Backup Designated Router，备份指定路由器）。<strong>网络中的所有路由器只与 DR 和 BDR 建立邻接关系</strong>，即所有的信息只会与 DR 和 DBR 交换。这种做法大大减少了网络中的邻接关系数，如下图所示。</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-16801642233688.png" alt="邻接关系数"></p>
+<p>需要注意的是，在广播型网络中 OSPF 才会选择 DR 和 BDR，而在 P2P 网络中不会选举 DR 和 BDR。</p>
+<p>建立邻接关系的过程如下所示：</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016423067610.png" alt="建立邻接关系"></p>
+<p>在上述过程中，Router 1 首先发送一个 DD 报文，宣称自己是 Master（MS = 1），并规定序列号 Seq = X。I = 1 表示这是第 1 个 DD 报文，M = 1 说明这不是最后一个报文。之后每发送一个新的 DD 报文，Seq 都要加 1。另一方 Slave 方每次发送 DD 报文时使用接受到的上一个 Master 的 DD 报文中的 Seq。</p>
+<p>Router 2 在收到 Router 1 的 DD 报文后，将 Router 1 的邻居状态机改为 Exstart，并回应了一个 DD 报文。该 DD 报文中同样把不含有LSA 的摘要信息。由于 Router 2 的 Router ID 较大，所以在报文中 Router 2 认为自己是 Master，并且重新规定序列号 Seq = Y。</p>
+<p>Router 1 收到报文后，同意 Router 2 作为 Master 并将 Router 2 的邻居状态机修改为 Exchange。Router 1 使用 Router 2 的序列号 Seq = Y 来发送新的 DD 报文，该报文开始正式传送 LSA 的摘要。在该报文中，Router 1 将 MS 赋值为 0，表示自己是 Slave。</p>
+<p>Router 2 收到报文后，发送新的 DD 报文来描述自己的 LSA 摘要，此时 Router 2 发送的报文序列号为 Seq = Y + 1。</p>
+<p>上述过程持续进行，Router 1 通过重复 Router 2 的序列号来确认已经收到 Router 2 的报文，Router 2 通过将序列号 Seq 加 1 来确认已收到 Router 1 的报文。当 Router 2 发送最后一个 DD 报文时，在报文中写上 M = 0。</p>
+<p>在这一过程中，<strong>OSPF 也存在 4 种不同的状态</strong>：</p>
+<ol>
+<li><em>ExStart 状态</em>：路由器开始向邻居发送 DD 报文（数据库摘要报文）。Master/Slave 主从关系也是在这个状态下形成的，初始 DD 序列号也是在此状态下确定的。在该状态下发送的 DD 报文不包括 LSA 摘要信息。</li>
+<li><em>Exchange 状态</em>：路由器与邻居之间互相发送包含 LSA 摘要的 DD 报文。</li>
+<li><em>Loading 状态</em>：在此状态下，路由器与邻居之间互相发送 LSR、LSU、LSAck 报文。假设 Router 1 向 Router 2 请求更新 LSA，则由 Router 1 先向 Router 2 发送 LSR 请求，Router 2 用 LSU 报文回应 Router 1 的请求。Router 1 收到后，发送 LSAck 报文进行确认。</li>
+<li><em>Full 状态</em>：LSDB 同步过程完成，路由器与邻居之间形成了完全的邻接关系。</li>
+</ol>
+<h4 id="3-3-交换链路状态信息"><a href="#3-3-交换链路状态信息" class="headerlink" title="3.3 交换链路状态信息"></a>3.3 交换链路状态信息</h4><p>每台 OSPF 路由器都存在一个 LSDB（Link State Database，链路状态数据库），LSDB 中的每一条数据都是一个 LSA（Link State Advertisement，链路状态公告），用来描述链路状态信息，例如网络中某台路由器的 ID、OSPF 接口、直连的网段、路径开销等。</p>
+<p>OSPF 路由器的链路状态信息更新方式为触发更新或每隔 30 分钟更新一次。其中，触发更新指当网络发生变化的时候，不需要等到 30 分钟的更新周期就立即向邻居节点发送信息。OSPF 的状态更新采用增量更新机制，只发邻居需要的 LSA。当状态收敛以后，区域内的所有路由器都具有相同的 LSDB。这时候的 LSDB 能体现全区域的网络拓扑结构，包括了网络中路由器个数、路由器 ID、每台路由器的直连网段、开销等。</p>
+<p>交换链路状态信息的过程如下图所示。</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016424242512.png" alt="交换链路状态信息"></p>
+<h4 id="3-4-计算路由"><a href="#3-4-计算路由" class="headerlink" title="3.4 计算路由"></a>3.4 计算路由</h4><p>每台路由器都会根据自己的 LSDB 独立计算路由。路由器将 LSDB 中的 LSA 信息转换为网络的带权有向图后，以自己为根结点通过 Dijkstra 算法计算最短路径树，如下图所示。</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016425112614.png" alt="计算路由"></p>
+<h4 id="3-5-OSPF-的区域管理制度"><a href="#3-5-OSPF-的区域管理制度" class="headerlink" title="3.5 OSPF 的区域管理制度"></a>3.5 OSPF 的区域管理制度</h4><p>在 OSPF 工作过程中采用了分区域的管理制度，如下图所示。不同的两个区域之间通过区域边界路由器 ABR 所连接。在同一个区域内的路由器才会建立邻居关系，交换 LSA。收敛后，同一个区域内的所有设备具有相同的 LSDB，这个 LSDB 反映了区域内的链路状态，再计算区域内的路由。不同区域之间，由区域边界路由器 ABR 直接转发路由。</p>
+<p><img src="/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/image-168016425745216.png" alt="OSPF 的区域管理制度"></p>
+<p>此外，每个区域有一个 32 位二进制的 ID，可以表示为一个十进制数，也可以表示为点分十进制形式。例如，区域 0 等价于区域 0.0.0.0，区域 1 等价于区域 0.0.0.1。需要注意的是，区域 0 是 OSPF 网络的骨干区域，除区域 0 以外的区域都是非骨干区域。非骨干区域之间不能直接通信，需要通过骨干区域 0 进行转发，以防止产生环路路由。如果一个网络中有不同的 OSPF 区域，那么一定有一个区域是区域 0。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2022/09/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1-OSPF%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/" rel="tag">网络路由协议</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/09/26/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows-WinError10013/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【WinError 10013】 以一种访问权限不允许的方式做了一个访问套接字的尝试
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/08/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-INET%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">INET 中加入自定义协议的方法</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> lgc0208@foxmail.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

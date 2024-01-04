@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="记录学业和生活" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>C++学习笔记-树 |  梦</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/sun.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="梦" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-学习笔记-Cpp-C++学习笔记_树"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C++学习笔记-树
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/" class="article-date">
+  <time datetime="2020-04-23T02:10:26.000Z" itemprop="datePublished">2020-04-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Cpp/">Cpp</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">7.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">33 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前言：<strong>树型结构是</strong>一类重要的<strong>非线性结构</strong>,其特点是结点之间有分支,并具有层次关系。</p>
+<span id="more"></span>
+<h1 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h1><h2 id="1-1-1-树"><a href="#1-1-1-树" class="headerlink" title="1.1.1 树"></a>1.1.1 树</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是由n(n≥１)个有限结点组成的一个具有层次关系的集合, 把它叫作“树”是因为它看起来像一棵倒挂的树,也就是说树是根朝上,而叶朝下的。如图所示：<br><img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423091058696.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;它具有以下的特点：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;① 每个结点有零个或多个子结点;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;② <strong>每个子结点只有一个父结点</strong>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③ <strong>没有前驱的结点为根结点</strong>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④ 除了根结点外,每个子结点可以分为许多个不相交的子树。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为方便描述树的特点，先列出将会涉及到的<strong>树的基本概念</strong>：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①<strong>结点的度</strong>：一个结点含有的子树个数；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>树的度</strong>：一棵树中，最大的结点的度；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③<strong>叶结点</strong>（终端结点）：度为0的结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④<strong>分支结点</strong>（非终端结点）：度不为0的结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑤<strong>孩子结点</strong>：一个结点的子树的根结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑥<strong>双亲结点</strong>（父结点）：在含有孩子的结点中，该结点称为孩子结点的双亲结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑦<strong>兄弟结点</strong>：具有相同双亲的结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑧<strong>祖先节点</strong>：从根到该结点所经分支上的所有结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑨<strong>子孙结点</strong>：以某结点为根的子树中任意结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑩<strong>节点的层次</strong>：从根开始定义，根为第一层，根的孩子为第二层，以此类推。如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑪<strong>树的高度（深度</strong>）：树中结点的最大层次；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑫<strong>路径</strong>：从根结点到某一结点的一条通道；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⑬<strong>路径长度</strong>：路径经过的边的个数。如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423092220707-16438689651564.png" alt=" "></p>
+<h2 id="1-1-2-二叉树"><a href="#1-1-2-二叉树" class="headerlink" title="1.1.2 二叉树"></a>1.1.2 二叉树</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.综述：二叉树是每个结点最多有两个子树的有序树，通常<strong>子树的根被称为“左子树”和“右子树”</strong>。如下图所示。二叉树是一种最简单的树结构，任何树都可以简单转换为二叉树。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423092422559.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.树和二叉树的区别<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①树的结点个数至少为1，而二叉树的结点个数可以为0；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②树中结点的最大度数没有限制，而<strong>二叉树结点最大度数为2</strong>；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.两种特殊的而二叉树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）<strong>满二叉树</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;满二叉树中<strong>所有的叶节点都在最后一层</strong>，而其他<strong>分支结点的度数都为2</strong>。示例如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423092743663.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<strong>完全二叉树</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若一个二叉树<strong>扣除其最后一层后变成</strong>一个满二叉树，且<strong>最后一层的所有结点都向左靠齐</strong>，则称该二叉树为完全二叉树。示例如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423092948715.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;★<strong>满二叉树一定为完全二叉树，完全二叉树不一定为满二叉树</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.二叉树常见的性质<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>性质1</strong>&nbsp;&nbsp;&nbsp;&nbsp;一颗非空二叉树的第i层上最多有2^i-1^个结点（i≥1）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>性质2</strong>&nbsp;&nbsp;&nbsp;&nbsp;深度为h的二叉树最多有2^h^-1个结点（h＞1）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>性质3</strong>&nbsp;&nbsp;&nbsp;&nbsp;对于任何一棵二叉树T，如果其终端结点数为n~0~，度为2的结点数为n~2~，则n~0~=n~2~+1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>性质4</strong>&nbsp;&nbsp;&nbsp;&nbsp;若一个正则二叉树（只有度为0和2结点的二叉树）中有n个叶子结点，则该二叉树结点总数为log~2~n（由 性质2 推导）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>性质5</strong>&nbsp;&nbsp;&nbsp;&nbsp;对于具有n个结点的完全二叉树，如果如果按照从上到下、同一层次上的结点按从左 到右的顺序对二叉树中的所有结点从1开始顺序编号,则对于序号为i的结点,有<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;① 如果i＞1,则序号为i的结点其双亲结点的序号为[i/2] ([i/2] 表示对i/2的值取整); 如果i＝1,则结点i为根结点,没有双亲<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;② 如果2i＞n,则结点i无左孩子(此时结点i为终端结点);否则其左孩子为结点2i<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③ 如果2i＋1＞n,则结点i无右孩子;否则其右孩子为结点2i＋1</p>
+<h2 id="1-1-3-森林"><a href="#1-1-3-森林" class="headerlink" title="1.1.3 森林"></a>1.1.3 森林</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由m（m≥0）棵互不相交的树构成的集合称为森林。如下图所示，该森林由三棵树所构成：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423094158844.png" alt=" "></p>
+<h1 id="1-2-基本操作"><a href="#1-2-基本操作" class="headerlink" title="1.2 基本操作"></a>1.2 基本操作</h1><h2 id="1-2-1-树的遍历"><a href="#1-2-1-树的遍历" class="headerlink" title="1.2.1 树的遍历"></a>1.2.1 树的遍历</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<strong>前序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①访问根结点；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②按照从左到右的顺序前序遍历根结点的每一棵子树。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<strong>后序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①按照从左到右的顺序后序遍历根结点的每一棵子树；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②访问根结点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.<strong>层序遍历（广度遍历）</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从树的第一层（也就是根结点）开始自上而下逐层遍历，每一层按照从左到右的顺序逐个访问结点。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;下图展示了按照这三种遍历方式所对应的遍历结果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/2020042309454245.png" alt=" "></p>
+<h2 id="1-2-2-二叉树的遍历"><a href="#1-2-2-二叉树的遍历" class="headerlink" title="1.2.2 二叉树的遍历"></a>1.2.2 二叉树的遍历</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<strong>前序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①访问根结点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②前序遍历访问根结点的左子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③前序遍历访问根结点的右子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<strong>中序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①中序遍历访问根结点的左子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②访问根结点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③中序遍历访问根结点的右子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.<strong>后序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①后序遍历访问根结点的左子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②后序遍历访问根结点的右子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③访问根结点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.<strong>层序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按照从上到下，同一层次从左到右的顺序访问二叉树</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图展示了一棵二叉树四种遍历方式的结果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423095108960.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;★由二叉树的<strong>前序（后序）序列和中序序列</strong>可以唯一<strong>确定一棵二叉树</strong>，但是<strong>只由前序序列和后序序列不能确定一棵二叉树</strong>。</p>
+<h2 id="1-2-3-森林的遍历"><a href="#1-2-3-森林的遍历" class="headerlink" title="1.2.3 森林的遍历"></a>1.2.3 森林的遍历</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<strong>前序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若森林非空，则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①访问森林中第一棵树的根结点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②前序遍历第一棵树中根结点的每一棵子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③前序遍历除第一棵树外的其他树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<strong>后序遍历</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若森林非空，则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①后序遍历第一棵树的根结点的各个子树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②访问第一棵树的根结点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③后序遍历除第一棵树外的其他树</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图给出了一个三棵树的森林的两种遍历结果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423095629544.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;★根据森林，树和二叉树的关系，可以得知：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①<strong>前序遍历森林</strong>＝<strong>前序遍历</strong>该森林对应的<strong>二叉树</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②<strong>后序遍历<strong>**</strong></strong>森林<strong>＝</strong>中序遍历<strong>该森林所对应的</strong>二叉树<strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③</strong>前序遍历树<strong>＝</strong>前序遍历<strong>该树所对应的</strong>二叉树<strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;④</strong>后序遍历树<strong>＝</strong>中序遍历<strong>该树所对应的</strong>二叉树**</p>
+<h2 id="1-2-4-树、森林和二叉树的转换"><a href="#1-2-4-树、森林和二叉树的转换" class="headerlink" title="1.2.4 树、森林和二叉树的转换"></a>1.2.4 树、森林和二叉树的转换</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<strong>树、森林转换成二叉树</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①在所有兄弟之间加一条线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②对每个结点，去掉该结点和除长子外与其他孩子的连线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树转换为二叉树如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200423100103177.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;森林转换成二叉树如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386900806714.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<strong>二叉树转换成树、森林</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若结点x是双亲y的左孩子，则把x的右孩子、右孩子的右孩子都与y连起来，最后去掉双亲到右孩子的连线。如图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386901068116.png" alt=" "></p>
+<h1 id="1-3-存储结构"><a href="#1-3-存储结构" class="headerlink" title="1.3 存储结构"></a>1.3 存储结构</h1><h2 id="1-3-1-数的存储结构"><a href="#1-3-1-数的存储结构" class="headerlink" title="1.3.1 数的存储结构"></a>1.3.1 数的存储结构</h2><p>基本要求：<br>&nbsp;&nbsp;&nbsp;&nbsp;①能够存储各结点信息；<br>&nbsp;&nbsp;&nbsp;&nbsp;②唯一的表示各结点之间的逻辑结构——父子关系</p>
+<p>1.双亲表示法<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）原理：利用一维数组来表示树,一维数组的每个元素表示树的结点,其中包括结点的数据和该结点 的双亲在数组中的下标；数组中的第一个元 素表示根结点,该结点无双亲,因此parent域用-1表示,其他结点按照层序存储.如结点B、 C、D 的双亲结点是下标为0的根结点,其parent域用0表示。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386901279318.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;（2）C++描述</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span> &gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">pNode</span> //结点的<span class="title">C</span>++描述</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T data;</span><br><span class="line">	<span class="keyword">int</span> parent;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1000</span></span><br><span class="line">pNode&lt; T &gt; Tree[MAXSIZE]; <span class="comment">//树的C++描述</span></span><br><span class="line"><span class="keyword">int</span> size; <span class="comment">//树的总结点数</span></span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;（3）结点结构：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/2020042420032552.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;（4） 优点：结构简单,查找结点的双亲或者祖先非常方便</p>
+<p>2.孩子表示法<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）应用时需要查找当前结点的孩子,双亲表示法就会比较复杂。此时为了适应查找孩子结点的需求，可以使用孩子表示法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386901887121.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;（2）C++描述</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CNode</span> //孩子链表结点结构</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> child; <span class="comment">//孩子结点在表头数组中的下标</span></span><br><span class="line">	CNode* next; <span class="comment">//指向下一个孩子结点</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span> &gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">CBNode</span> //表头结点</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T data;</span><br><span class="line">	CNode* firstchild; <span class="comment">//指向第一个孩子结点</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;（3）孩子表示法与双亲表示法正好相反,查找孩子结点很方便,但是查找双亲结点较为复杂</p>
+<p>3.多重链表法<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）原理：多重链表法指每个结点包括一个结点信息域和多个指针域,每个指针域指向该结点的 一个孩子结点,通过各个指针域的值反映出树中各结点之间的逻辑关系。这种表示法中,树中每个结点有多个指针域,从而形成了多条链表。由于每个结点的孩子个数没有限制,各结点的度数又各异,可能会造成存储空间的浪费。例如,一棵度为k的 树,若其结点总数为n,则至少要浪费nk－n＋１个空指针域<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386902152923.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：<strong>不适合存储度数较大的树</strong></p>
+<p>4.孩子兄弟表示法<br>&nbsp;&nbsp;&nbsp;&nbsp;（1）原理：孩子兄弟表示法又称二叉链表表示法,链表中的每个结点包含一个数据域和两个指针域, 其中,数据域用来存储结点数据;第１个指针域指向该结点的第一个孩子结点;第２个指针域指向该结点的第一个右兄弟。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386902366625.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;（2）C++描述</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span> &gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">TNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T data;</span><br><span class="line">	TNode&lt;T&gt;* firstchild;</span><br><span class="line">	TNode&lt;T&gt;* rightsib;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;（3） 优点：可以将任意复杂的树结构转换成二叉树,这样对树的研究就可以转化为对二叉树的研究,降低了问题的复杂程度</p>
+<h2 id="1-3-2-二叉树的存储结构"><a href="#1-3-2-二叉树的存储结构" class="headerlink" title="1.3.2 二叉树的存储结构"></a>1.3.2 二叉树的存储结构</h2><p>1.顺序存储结构：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二叉树的顺序存储结构使用一维数组存储二叉树的结点,利用结点的存储位置来表示结点之间的关系。具体如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）将二叉树按照完全二叉树编号;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）其中无结点的位置使用NULL表示,结点则存储在一维数组相应的位置上。如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386902633027.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种存储数据的方法逻辑简单但会造成空间的浪费,因此,该方法最适合存储完全二叉树</p>
+<p>2.二叉链表<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）基本思想如下图所示：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386902825029.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）结点结构：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200424201901424.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）C++描述：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span> &gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T data;</span><br><span class="line">	BiNode&lt;T&gt;* lchild;</span><br><span class="line">	BiNode&lt;T&gt;* rchild;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二叉链表的存储方式和树的孩子兄弟表示法的存储结构完全相同,任何一棵复杂的树都可以容易地使用二叉链表的方式进行存储</p>
+<p>3.三叉链表<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在二叉链表的存储方式下,从某结点出发可以直接访问到它的孩子结点,但要找到它的双亲,则必须从根结点开始搜索,最坏情况下,可能需要遍历整个二叉链表。所以, 在这种情况下,可以采用三叉链表来存储二叉树,以避免该问题的发生<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）结构：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386903221032.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）结点结构：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200424202300239.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）C++描述：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">T</span> &gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T data;</span><br><span class="line">	BiNode&lt;T&gt;* parent;</span><br><span class="line">	BiNode&lt;T&gt;* lchild;</span><br><span class="line">	BiNode&lt;T&gt;* rchild;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="1-4-二叉树的实现"><a href="#1-4-二叉树的实现" class="headerlink" title="1.4 二叉树的实现"></a>1.4 二叉树的实现</h1><h2 id="1-4-1-二叉树的声明"><a href="#1-4-1-二叉树的声明" class="headerlink" title="1.4.1 二叉树的声明"></a>1.4.1 二叉树的声明</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用二叉链表作为存储结构的二叉树其简单的 C＋＋ 描述如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="class"><span class="keyword">class</span> <span class="title">BiTree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(BiNode&lt;T&gt;* &amp;R, T data[], <span class="keyword">int</span> i, <span class="keyword">int</span> n)</span></span>; <span class="comment">//创建二叉树</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Release</span><span class="params">(BiNode&lt;T&gt;* R)</span></span>; <span class="comment">//释放二叉树</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	BiNode&lt;T&gt;* root; <span class="comment">//根结点</span></span><br><span class="line">	<span class="built_in">BiTree</span>(T data[], <span class="keyword">int</span> n); <span class="comment">//构造函数</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiNode&lt;T&gt;* R)</span></span>; <span class="comment">//前序遍历</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiNode&lt;T&gt;* R)</span></span>; <span class="comment">//中序遍历</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiNode&lt;T&gt;* R)</span></span>; <span class="comment">//后序遍历</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BiNode&lt;T&gt;* R)</span></span>; <span class="comment">//层序遍历</span></span><br><span class="line">	~<span class="built_in">BiTree</span>(); <span class="comment">//析构函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="1-4-2-二叉树的关键算法"><a href="#1-4-2-二叉树的关键算法" class="headerlink" title="1.4.2 二叉树的关键算法"></a>1.4.2 二叉树的关键算法</h2><p>1.二叉树的创建<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建立二叉树有很多种方法,其中较为简单的就是使用顺序存储结构来建立二叉链表。以顺序存储结构为输入创建二叉树时,采用先建立根结点,再建立左右孩子的方法递归地建立用二叉链表表示的二叉树,其 C＋＋描述如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="keyword">void</span> BiTree&lt;T&gt;::<span class="built_in">Create</span>(BiNode &lt;T&gt;*&amp; R, T data[], <span class="keyword">int</span> i, <span class="keyword">int</span> n) <span class="comment">//i表示位置，从1开始</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;= n &amp;&amp; data[i - <span class="number">1</span>] != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		R = <span class="keyword">new</span> BiNode&lt;T&gt;; <span class="comment">//创建根结点</span></span><br><span class="line">		R-&gt;data = data[i - <span class="number">1</span>];</span><br><span class="line">		R-&gt;lchild = R-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="built_in">Create</span>(R-&gt;lchild, data, <span class="number">2</span> * i); <span class="comment">//创建左子树</span></span><br><span class="line">		<span class="built_in">Create</span>(R-&gt;rchild, data, <span class="number">2</span> * i + <span class="number">1</span>); <span class="comment">//创建右子树</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> BiTree&lt;T&gt;::<span class="built_in">BiTree</span>(T data[], <span class="keyword">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">Create</span>(root, data, <span class="number">1</span>, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述递归程序分解步骤如下,假设输入为下图所示的顺序存储结构表示的二叉树,则递归地建立用二叉链表表示的二叉树示意图如下图所示<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386903745135.png" alt=" "><br>２．二叉树前序、中序、后序遍历的实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由二叉树的前序遍历定义,结合递归,前序遍历的结果如下图所示。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200424204249786.png" alt=" "></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C＋＋算法描述如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="keyword">void</span> BiTree&lt;T&gt;::<span class="built_in">PreOrder</span>(BiNode&lt;T&gt;* R)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (R != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; R-&gt;data; <span class="comment">//访问结点</span></span><br><span class="line">		<span class="built_in">PreOrder</span>(R-&gt;lchild); <span class="comment">//遍历左子树</span></span><br><span class="line">		<span class="built_in">PreOrder</span>(R-&gt;rchild); <span class="comment">//遍历右子树</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对于中序遍历,只需要把语句 cout &lt;&lt; R-&gt;data; 移到语句 PreOrder(R-&gt;lchild); 之后即可;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对于后续遍历,只需要把语句 cout &lt;&lt; R-&gt;data; 移到语句 PreOrder(R-&gt;rchild); 之后即可。</p>
+<p>3.层序遍历的实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 二叉链表的层序遍历基本思想如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386904121038.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 具体描述如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【1】若根结点非空，入队。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【2】如果队列不空：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【2.1】队头元素出队；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【2.2】访问该元素；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【2.3】若该结点的左孩子非空，则左孩子入队；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【2.4】若该结点的右孩子非空，则右孩子入队。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C++描述如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="keyword">void</span> BiTree&lt;T&gt;::<span class="built_in">LevelOrder</span>(BiNode&lt;T&gt;* R)</span><br><span class="line">&#123;</span><br><span class="line">	BiNode&lt;T&gt;* queue[MAXSIZE];</span><br><span class="line">	<span class="keyword">int</span> f = <span class="number">0</span>; r = <span class="number">0</span>; <span class="comment">//初始化空队列</span></span><br><span class="line">	<span class="keyword">if</span> (R != <span class="literal">NULL</span>) queue[++r] = R; <span class="comment">//根结点入队</span></span><br><span class="line">	<span class="keyword">while</span> (f != r)</span><br><span class="line">	&#123;</span><br><span class="line">		BiNode&lt;T&gt;* p = queue[++f]; <span class="comment">//表头元素出队</span></span><br><span class="line">		cout &lt;&lt; p-&gt;data; <span class="comment">//出队打印</span></span><br><span class="line">		<span class="keyword">if</span> (p-&gt;lchild != <span class="literal">NULL</span>) queue[++r] = p-&gt;lchild; <span class="comment">//左孩子入队</span></span><br><span class="line">		<span class="keyword">if</span> (p-&gt;rchild != <span class="literal">NULL</span>) queue[++r] = p-&gt;rchild; <span class="comment">//右孩子入队</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.析构函数的实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 二叉链表属于动态存储分配,因此,需要在析构函数中释放二叉链表的所有结点.为了防止内存泄漏,释放结点时应先释放该结点的左右子树,左右子树全部释放完毕后再释放该结点。采用后序遍历的方法，具体实现如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="keyword">void</span> BiTree&lt;T&gt;::<span class="built_in">Release</span>(BiNode&lt;T&gt;* R) <span class="comment">//释放二叉树</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (R != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">Release</span>(R-&gt;lchild); <span class="comment">//释放左子树</span></span><br><span class="line">		<span class="built_in">Release</span>(R-&gt;rchild); <span class="comment">//释放右子树</span></span><br><span class="line">		<span class="keyword">delete</span> R; <span class="comment">//释放根结点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> BiTree&lt;T&gt;::~<span class="built_in">BiTree</span>() <span class="comment">//释放二叉树</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">Release</span>(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1-5-Huffman树"><a href="#1-5-Huffman树" class="headerlink" title="1.5 Huffman树"></a>1.5 Huffman树</h1><h2 id="1-5-1-Huffman树的定义与存储结构"><a href="#1-5-1-Huffman树的定义与存储结构" class="headerlink" title="1.5.1 Huffman树的定义与存储结构"></a>1.5.1 Huffman树的定义与存储结构</h2><p>1.Huffman树的定义<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;哈夫曼树又称<strong>最优二叉树</strong>,是一种<strong>带权路径长度最短的二叉树</strong>。<strong>树的带权路径长度</strong>, 就<strong>是树中所有叶结点的权值乘上其到根结点的路径长度</strong>(若根结点为０层,叶结点到根结点的路径长度为叶结点的层数)<strong>之和</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386904403440.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图（C）所示的二叉树其带权路径长度最短,而且再也找不出比此二叉树带权路径长度更短的二叉树了,因此图（C）所示是一棵哈夫曼树</p>
+<p>2.Huffman编码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）<strong>Huffman编码根据字符出现的概率来构造平均长度最短的编码，是一种变长的编码</strong>。它的基本原理是频繁使用的数据用较小的代码代替，较少使用的数据用较大的编码代替，每个数据的代码不相同，但最终编码的平均长度最小。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）变长的编码：<strong>Huffman编码得到的字符编码，其长度因符号出现的概率而有所不同</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）Huffman编码的规则：从根结点到叶结点（包含原信息）的路径，向左孩子前进编码为0，向右孩子前进编码为1.也可以反过来规定<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示例：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200426093035934.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得到字符A、B、C、Z的编码分别为0、11、100、101.显然<strong>Huffman编码</strong>是前缀编码，即<strong>任何一个字符的编码都不是另一个字符编码的前缀</strong>。</p>
+<p>3.Huffman树的存储结构<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以静态散链表来存储结点：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> weight; <span class="comment">//结点权值</span></span><br><span class="line">	<span class="keyword">int</span> parent; <span class="comment">//双亲数组下标</span></span><br><span class="line">	<span class="keyword">int</span> LChild; <span class="comment">//左孩子数组下标</span></span><br><span class="line">	<span class="keyword">int</span> RChild; <span class="comment">//右孩子数组下标</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Huffman树是一棵正则二叉树（只有度为0或2的结点的二叉树）。根据二叉树的性质，一棵n个叶子的Huffman树共有2n-1个结点，可以用一个大小为2n-1的一维数组存放Huffman树的各个节点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如下图（a）所示的Huffman树有4个叶子结点，因此可以定义存储结构为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HNode* HTree = <span class="keyword">new</span> HNode[<span class="number">7</span>];</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其存储内容如下图（b）所示，-1表示无孩子结点或双亲结点<br><img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386904901043.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还需要设计Huffman编码表对每个结点进行存储。编码表中各元素的C++描述如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HCode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	string code;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，data存储结点的内存（这里假设其数据类型为char）。code数组存储结点对应的编码（这里采用string存储）。使用HCode类型定义一个一维数组，就可以存储所有结点的编码了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来就可以设计Huffman编码的相关算法了，如构造、编码、解码算法。其C++类描述如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Huffman</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	HNode* HTree; <span class="comment">//Huffman树</span></span><br><span class="line">	HCode* HCodeTable; <span class="comment">//存储编码表</span></span><br><span class="line">	<span class="keyword">int</span> N; <span class="comment">//叶子结点数量</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">code</span><span class="params">(<span class="keyword">int</span> i, string newcode)</span></span>; <span class="comment">//递归函数，对第i个结点编码</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateHTree</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n, <span class="keyword">char</span> name[])</span></span>; <span class="comment">//创建Huffman树</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateCodeTable</span><span class="params">()</span></span>; <span class="comment">//创建编码表</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Encode</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* d)</span></span>; <span class="comment">//编码</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Decode</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* d)</span></span>; <span class="comment">//解码</span></span><br><span class="line">	~<span class="built_in">Huffman</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，HTree存储Huffman树的结构，HCodeTable存储每个结点的编码内容。（假设要编码的数据和编码结果均为字符串类型）</p>
+<h2 id="1-5-2-Huffman树的构造"><a href="#1-5-2-Huffman树的构造" class="headerlink" title="1.5.2 Huffman树的构造"></a>1.5.2 Huffman树的构造</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造Huffman树的方法就是Huffman算法，描述如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将n个带权值的结点构成n棵二叉树的集合T，每棵二叉树只有一个根结点，其左右子树都为空：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;①在T中选取两个根结点权值最小的二叉树作为左右子树，构成一棵新二叉树。其根结点的权值为左右子树根结点权值之和；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②在T中删除这两棵树，将新树加入T；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;③重复①②操作，直到T中仅存一棵树，该树即Huffman树<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图示如下：<br><img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70-164386905149945.png" alt=" "><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生成这样的Huffman树的C++描述：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入参数a[]存储每种字符的权值，n为字符的种类，name为各个字符的内容</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Huffman::CreateHTree</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n, <span class="keyword">char</span> name[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	N = n;</span><br><span class="line">	HCodeTable = <span class="keyword">new</span> HCode[N];</span><br><span class="line">	HTree = <span class="keyword">new</span> HNode[<span class="number">2</span> * n - <span class="number">1</span>]; <span class="comment">//根据权重数组a[0..n-1]初始化Huffman树</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		HTree[i].weight = a[i];</span><br><span class="line">		HTree[i].LChild = HTree[i].RChild = HTree[i].parent = <span class="number">-1</span>;</span><br><span class="line">		HCodeTable[i].data = name[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &lt; <span class="number">2</span> * N - <span class="number">1</span>; i++) <span class="comment">//开始建立Huffman树</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">SelectMin</span>(x, y, <span class="number">0</span>, i); <span class="comment">//从1~i中选出两个权值最小的结点的函数</span></span><br><span class="line">		HTree[x].parent = HTree[y].parent = i;</span><br><span class="line">		HTree[i].weight = HTree[x].weight + HTree[y].weight;</span><br><span class="line">		HTree[i].LChild = x;</span><br><span class="line">		HTree[i].RChild = y;</span><br><span class="line">		HTree[i].parent = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-3-Huffman编码表的构建"><a href="#1-5-3-Huffman编码表的构建" class="headerlink" title="1.5.3 Huffman编码表的构建"></a>1.5.3 Huffman编码表的构建</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文采用向上而下递归的处理方式，对每一个结点进行编码。若子树的根结点是其父结点的左分支则编码“0”，若是右分支则编码“1”，递归处理直到叶子结点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生成编码表的C++描述如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Huffman::code</span><span class="params">(<span class="keyword">int</span> i, string newcode)</span> <span class="comment">//递归函数，对第i个结点编码</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (HTree[i].LChild == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		HCodeTable[i].code = newcode;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">code</span>(HTree[i].LChild, newcode + <span class="string">&quot;0&quot;</span>);</span><br><span class="line">	<span class="built_in">code</span>(HTree[i].RChild, newcode + <span class="string">&quot;1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Huffman::CreateCodeTable</span><span class="params">()</span> <span class="comment">//生成编码表</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">code</span>(<span class="number">2</span> * N - <span class="number">2</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如下图（a）所示的Huffman树，其对应编码表可以是下图（b）的结构<br><img src="/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/20200426102848593.png" alt=" "></p>
+<h2 id="1-5-4-Huffman编、解码的实现"><a href="#1-5-4-Huffman编、解码的实现" class="headerlink" title="1.5.4 Huffman编、解码的实现"></a>1.5.4 Huffman编、解码的实现</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常,对一段信息进行哈夫曼编码时,<strong>需要对编码的数据进行两遍扫描</strong>.<br>（1）第一遍用来统计原数据中各字符出现的频率,利用得到的频率值创建哈夫曼树,并要把树的信息及编码表保存起来,以便解压时创建同样的哈夫曼树进行解压;<br>（2）第二遍根据第一遍扫描得到的哈夫曼编码表对原始数据进行编码,并把编码后得到的码字存储起来</p>
+<p>1.编码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生成编码表后，对于要编码的字符串，每读出一个字符，只要在编码表中找出对应编码即可；</p>
+<p>2.解码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其基本思想是将编码串从左到右逐位判别，直到确定一个字符。即从Huffman根节点开始，根据每一位是0或者1选择左分支或右分支，直到到达叶子结点，至此每一个字符解码结束。然后，再从根结点开始下一个字符的解码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解码算法的C++描述如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Huffman::Decode</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* d)</span> <span class="comment">//s为编码串，d为解码后的字符串</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> parent = <span class="number">2</span> * N - <span class="number">2</span>; <span class="comment">//根结点在HTree中的下标</span></span><br><span class="line">		<span class="keyword">while</span> (HTree[parent].LChild != <span class="number">-1</span>) <span class="comment">//如果不是叶子结点</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (*s == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">				parent = HTree[parent].LChild;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				parent = HTree[parent].RChild;</span><br><span class="line">			s++;</span><br><span class="line">		&#125;</span><br><span class="line">		*d = HCodeTable[parent].data;</span><br><span class="line">		d++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2020/04/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Cpp-C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E6%A0%91/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cpp/" rel="tag">Cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/04/24/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(4)/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            模电学习笔记_双极型晶体管及其放大电路（4）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/22/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A8%A1%E7%94%B5-%E6%A8%A1%E7%94%B5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1(3)/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">模电学习笔记_双极型晶体管及其放大电路（3）</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> lgc0208@foxmail.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/sun.svg" alt="梦"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/weixin.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1294952823# 网易云分享的音乐ID(更换音乐请更改此配置项)&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

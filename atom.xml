@@ -86,10 +86,10 @@
   
   <entry>
     <title>【Pytorch】固定随机数种子</title>
-    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/"/>
-    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-pytorch%E5%9B%BA%E5%AE%9A%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90/</id>
     <published>2023-12-04T03:26:00.000Z</published>
-    <updated>2023-12-04T03:34:25.627Z</updated>
+    <updated>2024-01-10T08:48:17.328Z</updated>
     
     
     <summary type="html">&lt;p&gt;在对神经网络模型进行训练时，有时候会存在对训练过程进行复现的需求。然而，每次运行时 Pytorch、Numpy 中的随机性将使得该目的变得困难重重。在程序运行前固定所有随机数的种子有望解决这一问题。基于此，本文记录了 Pytorch 中的固定随机数种子的方法。&lt;/p&gt;</summary>
@@ -97,6 +97,8 @@
     
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Python" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
     
     <category term="Pytorch" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Pytorch/"/>
     
@@ -107,10 +109,10 @@
   
   <entry>
     <title>【Pytorch】模型的保存和加载</title>
-    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/</id>
     <published>2023-12-04T02:41:00.000Z</published>
-    <updated>2023-12-04T02:43:26.654Z</updated>
+    <updated>2024-01-10T08:48:07.476Z</updated>
     
     
     <summary type="html">&lt;p&gt;在对神经网络模型进行训练时，定期地保存模型可以增加程序的抗风险能力。同时，通过对保存模型的加载可以很方便地复现和使用我们训练好的神经网络模型。基于此，本文记录了 Pytorch 中的模型保存和加载方法。&lt;/p&gt;</summary>
@@ -118,6 +120,31 @@
     
     
     <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Python" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
+    
+    <category term="Pytorch" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Pytorch/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Pytorch】在多进程中使用 CUDA</title>
+    <link href="https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-%E5%9C%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8CUDA/"/>
+    <id>https://lgc0208.github.io/2023/12/04/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Python:Pytorch-%E5%9C%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8CUDA/</id>
+    <published>2023-12-04T02:41:00.000Z</published>
+    <updated>2024-01-10T09:21:04.037Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Python 原生自带的多进程库不支持在子进程中调用 CUDA 进行加速运算。因此，本文介绍了使用 Pytorch 中的 multiprocessing 库实现在子进程中调用 CUDA 的方法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Python" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Python/"/>
     
     <category term="Pytorch" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Pytorch/"/>
     
@@ -438,33 +465,6 @@
     
     
     <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNeT++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
-    
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OMNeT++ 基础知识：仿真过程和配置文件</title>
-    <link href="https://lgc0208.github.io/2022/08/02/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>https://lgc0208.github.io/2022/08/02/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%BF%E7%9C%9F%E8%BF%87%E7%A8%8B%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</id>
-    <published>2022-08-02T08:50:29.000Z</published>
-    <updated>2024-01-04T02:30:37.912Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;仿真过程&quot;&gt;&lt;a href=&quot;#仿真过程&quot; class=&quot;headerlink&quot; title=&quot;仿真过程&quot;&gt;&lt;/a&gt;仿真过程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;OMNeT++&lt;/code&gt; 的源代码通常包括以下文件：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C++ 文件（&lt;code&gt;.h&lt;/code&gt; 和 &lt;code&gt;.cc&lt;/code&gt;）：包含简单模块的实现和其他代码；&lt;/li&gt;
-&lt;li&gt;消息文件（&lt;code&gt;.msg&lt;/code&gt;）：包含要转换为 C++ 类的消息定义；&lt;/li&gt;
-&lt;li&gt;带有组件声明和拓扑描述的 NED 文件（&lt;code&gt;.ned&lt;/code&gt;）；&lt;/li&gt;
-&lt;li&gt;具有模型参数分配和其他设置的配置文件（&lt;code&gt;.ini&lt;/code&gt;）。&lt;/li&gt;
-&lt;/ul&gt;</summary>
     
     
     

@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2024-01-04T08:35:06.327Z</updated>
+  <updated>2024-02-29T01:47:19.511Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数位 dp 解法</title>
+    <link href="https://lgc0208.github.io/2024/02/29/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%94%E8%AF%95%E9%A2%98-%E6%95%B0%E4%BD%8Ddp%E8%A7%A3%E6%B3%95/"/>
+    <id>https://lgc0208.github.io/2024/02/29/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%94%E8%AF%95%E9%A2%98-%E6%95%B0%E4%BD%8Ddp%E8%A7%A3%E6%B3%95/</id>
+    <published>2024-02-29T01:46:29.000Z</published>
+    <updated>2024-02-29T01:47:19.511Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍了数位 dp 解法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="笔试题" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%AC%94%E8%AF%95%E9%A2%98/"/>
+    
+    
+    <category term="笔试题" scheme="https://lgc0208.github.io/tags/%E7%AC%94%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>【MacOS】 睡眠按钮变灰的解决方案</title>
@@ -451,27 +472,6 @@
     
     
     <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OMNeT++ tictoc 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/06/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/06/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9Atictoc%E7%A4%BA%E4%BE%8B/</id>
-    <published>2022-08-06T08:50:29.000Z</published>
-    <updated>2024-01-04T02:34:12.992Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    &lt;code&gt;tictoc&lt;/code&gt; 是 &lt;code&gt;OMNeT++&lt;/code&gt; 官方给出的入门示例。示例模拟了一个 2 结点网络，数据包在这两个节点之间（&lt;code&gt;tic&lt;/code&gt; 结点和 &lt;code&gt;toc&lt;/code&gt; 结点之间来回传输。&lt;code&gt;tictoc&lt;/code&gt; 示例下总共有 18 个小实验。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
-    
     
     <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     

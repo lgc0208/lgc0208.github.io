@@ -6,7 +6,7 @@
   <link href="https://lgc0208.github.io/atom.xml" rel="self"/>
   
   <link href="https://lgc0208.github.io/"/>
-  <updated>2024-02-29T01:47:19.511Z</updated>
+  <updated>2024-02-29T07:12:18.006Z</updated>
   <id>https://lgc0208.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Linux】查看进程属于哪一个容器的方法</title>
+    <link href="https://lgc0208.github.io/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/"/>
+    <id>https://lgc0208.github.io/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/</id>
+    <published>2024-02-29T15:02:07.000Z</published>
+    <updated>2024-02-29T07:12:18.006Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在观察一个运行着多个容器的服务器时，当发现容器内的某个进程状况出现异常，这时候就需要快速判断进程所属容器。基于此，本文介绍了一种在服务器中判断进程所属容器的方法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="Linux" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MacOS】 屏幕或菜单栏显示歌词的方式</title>
+    <link href="https://lgc0208.github.io/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-%E5%B1%8F%E5%B9%95%E6%88%96%E8%8F%9C%E5%8D%95%E6%A0%8F%E6%98%BE%E7%A4%BA%E6%AD%8C%E8%AF%8D/"/>
+    <id>https://lgc0208.github.io/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-%E5%B1%8F%E5%B9%95%E6%88%96%E8%8F%9C%E5%8D%95%E6%A0%8F%E6%98%BE%E7%A4%BA%E6%AD%8C%E8%AF%8D/</id>
+    <published>2024-02-29T06:23:10.000Z</published>
+    <updated>2024-02-29T06:46:44.171Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在使用 Macbook 自带的 i 音乐听歌的时候发现无法显示歌词。本文记录并提供了一个解决方案。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="那些年我踩过的坑" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+    <category term="系统/软件" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="MacOS" scheme="https://lgc0208.github.io/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/MacOS/"/>
+    
+    
+    <category term="踩过的坑" scheme="https://lgc0208.github.io/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>数位 dp 解法</title>
@@ -424,56 +470,6 @@
     
     
     <category term="强化学习" scheme="https://lgc0208.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>INET ospfv2 simpleTest 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20ospfv2%20simpletest%20%E7%A4%BA%E4%BE%8B/</id>
-    <published>2022-08-08T08:50:29.000Z</published>
-    <updated>2024-01-04T02:42:21.536Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;实验原理&quot;&gt;&lt;a href=&quot;#实验原理&quot; class=&quot;headerlink&quot; title=&quot;实验原理&quot;&gt;&lt;/a&gt;实验原理&lt;/h2&gt;&lt;p&gt;OSPF（开放最短路径优先）是一种用于 IP 网络的路由协议。它使用链路状态路由 (LSR) 算法，属于内部网关协议 (IGP) 组，在单个自治系统 (AS) 内运行。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
-    
-    <category term="INET" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/INET/"/>
-    
-    
-    <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开源库 INET wireless 示例</title>
-    <link href="https://lgc0208.github.io/2022/08/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://lgc0208.github.io/2022/08/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-OMNeT++:INET-%E6%95%B2%E9%97%A8%E7%A0%96%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%20INET%20wireless%20%E7%A4%BA%E4%BE%8B/</id>
-    <published>2022-08-07T08:50:29.000Z</published>
-    <updated>2024-01-04T02:42:41.260Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;示例-1-两台主机无线通信&quot;&gt;&lt;a href=&quot;#示例-1-两台主机无线通信&quot; class=&quot;headerlink&quot; title=&quot;示例 1 两台主机无线通信&quot;&gt;&lt;/a&gt;示例 1 两台主机无线通信&lt;/h2&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;创建一个包含 2 个主机的网络，其中一台主机向另一台主机发送 UDP 数据流。在实验过程尽量简化底层协议模型。官方示例保存在 &lt;code&gt;inet4/tutorials/wireless/&lt;/code&gt; 路径中。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习笔记" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/OMNeT/"/>
-    
-    <category term="INET" scheme="https://lgc0208.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/INET/"/>
-    
-    
-    <category term="INET" scheme="https://lgc0208.github.io/tags/INET/"/>
-    
-    <category term="OMNeT++" scheme="https://lgc0208.github.io/tags/OMNeT/"/>
     
   </entry>
   

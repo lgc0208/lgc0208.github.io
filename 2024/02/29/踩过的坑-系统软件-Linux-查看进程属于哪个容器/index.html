@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Linux |  梦</title>
+      <title>【Linux】查看进程属于哪一个容器的方法 |  梦</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/sun.svg" />
@@ -58,252 +58,218 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-踩过的坑-系统软件-Linux-查看进程属于哪个容器"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【Linux】查看进程属于哪一个容器的方法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/" class="article-date">
+  <time datetime="2024-02-29T15:02:07.000Z" itemprop="datePublished">2024-02-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">207</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在观察一个运行着多个容器的服务器时，当发现容器内的某个进程状况出现异常，这时候就需要快速判断进程所属容器。基于此，本文介绍了一种在服务器中判断进程所属容器的方法。</p>
+<span id="more"></span>
+<ol>
+<li><p>首先，先在服务器上使用 <code>top</code> 命令查看到某个进程对应的 PID。</p>
+</li>
+<li><p>将得到的 PID 填入下面的代码并输入命令行：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psid=xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(docker container ls --format <span class="string">&quot;&#123;&#123;.ID&#125;&#125;&quot;</span>); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    id_count=$(docker top <span class="variable">$i</span> | grep <span class="variable">$&#123;psid&#125;</span> | wc -l)</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;id_count&#125;</span> -gt 0 ]]</span><br><span class="line">      <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">&quot;<span class="variable">$i</span>    &quot;</span></span><br><span class="line">        docker inspect -f <span class="string">&#x27;&#123;&#123;.Name&#125;&#125;&#x27;</span> <span class="variable">$i</span> | tr -d <span class="string">&quot;/&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>此时，命令行上就会输入该进程所属的容器信息，包含容器 id 和容器名，如下图所示。</li>
+</ol>
+<p><img src="/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/image-20240229151148526.png" alt></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
         <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
         </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">Linux</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2024" class="archive-year">2024</a>
+      </ul>
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/" class="archive-article-date">
-  <time datetime="2024-02-29T15:02:07.000Z" itemprop="datePublished">02/29</time>
-</a>
+    
+    <footer class="article-footer">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/"
-    >【Linux】查看进程属于哪一个容器的方法</a> 
-</h2>
- 
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lgc0208.github.io/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-Linux-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%AA%E5%AE%B9%E5%99%A8/" alt="微信分享二维码">
     </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/" class="archive-article-date">
-  <time datetime="2023-12-04T08:35:07.000Z" itemprop="datePublished">12/04</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/12/04/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/"
-    >【Linux】 服务器免密登陆</a> 
-</h2>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" rel="tag">踩过的坑</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/02/29/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-%E5%B1%8F%E5%B9%95%E6%88%96%E8%8F%9C%E5%8D%95%E6%A0%8F%E6%98%BE%E7%A4%BA%E6%AD%8C%E8%AF%8D/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【MacOS】 屏幕或菜单栏显示歌词的方式</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "9Vh791RymMFcXDMd7WLX5uK3-gzGzoHsz",
+    app_key: "3F3lWYfhMRuo1jPHArn44zkC",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
  
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
+   
+     
 </article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  <time datetime="2023-11-13T12:02:07.000Z" itemprop="datePublished">11/13</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/"
-    >【Linux】docker限制容器内存的方法</a> 
-</h2>
- 
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  <time datetime="2023-10-23T12:02:07.000Z" itemprop="datePublished">10/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/10/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-htop%E5%91%BD%E4%BB%A4%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%90%8C%E8%BF%9B%E7%A8%8B/"
-    >【Linux】htop命令中显示相同进程</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-Ubuntu%E5%AE%89%E8%A3%85ns3/" class="archive-article-date">
-  <time datetime="2022-05-23T13:24:07.000Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-Ubuntu%E5%AE%89%E8%A3%85ns3/"
-    >【Linux】 安装ns3</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows:Linux:MacOS-%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  <time datetime="2022-05-23T08:24:07.000Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/05/23/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Windows:Linux:MacOS-%E4%BF%AE%E6%94%B9host%E6%96%87%E4%BB%B6/"
-    >【Windows/Linux/MacOS/Andriod】 修改 hosts 文件</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/MacOS/">MacOS</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Windows/">Windows</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  <time datetime="2022-04-16T08:24:07.000Z" itemprop="datePublished">04/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/16/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-%E5%85%B3%E9%97%ADnohup%E8%BF%9B%E7%A8%8B/"
-    >【Linux】 使用服务器虚拟环境运行 Python 代码</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">那些年我踩过的坑</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/">系统/软件</a> / <a class="article-category-link" href="/categories/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E7%B3%BB%E7%BB%9F-%E8%BD%AF%E4%BB%B6/Linux/">Linux</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-      
-    </div>
-  </div>
-  
-  
-
-  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -446,6 +412,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

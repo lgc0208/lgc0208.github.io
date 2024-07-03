@@ -218,10 +218,8 @@
 <center><b>图 15 MAX II EPM1270T144C5管脚分配图<b></b></b></center>
 
 <p><div align="center"></div></p>
-<p><image src="https://img-blog.csdnimg.cn/20210130220530555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgxNzMwOQ==,size_16,color_FFFFFF,t_70"><br>&lt;/div&gt;</image></p>
-<center><b>图 16 管脚分配图<b></b></b></center>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p><image src="./项目-Verilog-数电电子琴/20210130220530555.png"><br>&lt;/div&gt;</image></p>
+<p><center><b>图 16 管脚分配图<b></b></b></center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <h1 id="6-故障问题及分析"><a href="#6-故障问题及分析" class="headerlink" title="6 故障问题及分析"></a>6 故障问题及分析</h1><h2 id="6-1-按键消抖后无法实现功能"><a href="#6-1-按键消抖后无法实现功能" class="headerlink" title="6.1 按键消抖后无法实现功能"></a>6.1 按键消抖后无法实现功能</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故障描述：调用按键消抖后蜂鸣器只产生“噗”的一声，而无法正常发出音调。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题分析：经过分析按键消抖的方式和蜂鸣器发声的条件，发现按键消抖主要是靠产生的脉冲信号实现功能，而电子琴发声需要按键产生持续的高电平。同时，在该情况下按键不消抖并不会影响到电子琴功能的输出和用户的体验，因此取消按键消抖模块，该问题得以解决。</p>
 <h2 id="6-2-仿真时蜂鸣器信号无波形"><a href="#6-2-仿真时蜂鸣器信号无波形" class="headerlink" title="6.2 仿真时蜂鸣器信号无波形"></a>6.2 仿真时蜂鸣器信号无波形</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故障描述：在使用Quartus自带仿真时，点击运行仿真，蜂鸣器信号保持为一条直线。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题分析：Quartus自带的仿真时间上限为100us，而需要输出的信号频率导致了其需要更长的时间才能展现出来，因此编写testbench文件，调用ModelSim软件进行仿真，问题得以解决。</p>
 <h2 id="6-3-对自动播放进行仿真时没有波形变化"><a href="#6-3-对自动播放进行仿真时没有波形变化" class="headerlink" title="6.3 对自动播放进行仿真时没有波形变化"></a>6.3 对自动播放进行仿真时没有波形变化</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故障描述：使用Quartus自带仿真对自动播放功能进行仿真时，无法显示自动播放所产生的各种波形变换。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题分析：Quartus自带的仿真时间上限为100us，而一个四分音符播放所需要的时间至少为0.25秒，远远大于Quartus自带的仿真时间上限，因此通过编写testbench文件，调用ModelSim软件进行仿真，问题得以解决。</p>
@@ -786,6 +784,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

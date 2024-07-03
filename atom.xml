@@ -225,7 +225,7 @@
     <link href="https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>https://lgc0208.github.io/2023/11/13/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-Linux-docker%E9%99%90%E5%88%B6%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <published>2023-11-13T12:02:07.000Z</published>
-    <updated>2024-01-04T02:57:44.692Z</updated>
+    <updated>2024-07-03T09:33:35.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;在服务器中使用 docker 时，如果不对 docker 的可调用内存进行限制，当 docker 内的程序出现不可预测的问题时，就很有可能因为内存爆炸导致服务器主机的瘫痪。而对 docker 进行限制后，可以将瘫痪范围控制在 docker 内。&lt;/p&gt;
@@ -274,7 +274,7 @@
     <link href="https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
     <id>https://lgc0208.github.io/2023/10/12/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91-%E7%B3%BB%E7%BB%9F:%E8%BD%AF%E4%BB%B6-MacOS-mac%E9%82%AE%E7%AE%B1%E5%8F%91%E4%BF%A1%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/</id>
     <published>2023-10-12T08:53:33.000Z</published>
-    <updated>2024-01-04T03:08:58.973Z</updated>
+    <updated>2024-07-03T09:33:49.199Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了在 MacOS 系统中，使用邮件 APP 进行发信后提示 IMAP 命令 “APPEND”（至 Sent Messages）失败，服务器出错：Mail has saved by smtp！的解决方案。&lt;/p&gt;</summary>
